@@ -1,0 +1,14 @@
+H:\MyProject\WeightManager\QuarryServer\LB.Web.Base\bin\Release\LB.Web.Base.dll
+H:\MyProject\WeightManager\QuarryServer\LB.Web.Base\bin\Release\LB.Web.Base.pdb
+H:\MyProject\WeightManager\QuarryServer\LB.Web.Base\bin\Release\LB.Web.Contants.dll
+H:\MyProject\WeightManager\QuarryServer\LB.Web.Base\bin\Release\LB.Web.Contants.pdb
+H:\MyProject\WeightManager\QuarryServer\LB.Web.Base\obj\Release\LB.Web.Base.csprojResolveAssemblyReference.cache
+H:\MyProject\WeightManager\QuarryServer\LB.Web.Base\obj\Release\LB.Web.Base.dll
+H:\MyProject\WeightManager\QuarryServer\LB.Web.Base\obj\Release\LB.Web.Base.pdb
+G:\MyProject\WeightManager\QuarryServer\LB.Web.Base\bin\Release\LB.Web.Base.dll
+G:\MyProject\WeightManager\QuarryServer\LB.Web.Base\bin\Release\LB.Web.Base.pdb
+G:\MyProject\WeightManager\QuarryServer\LB.Web.Base\bin\Release\LB.Web.Contants.dll
+G:\MyProject\WeightManager\QuarryServer\LB.Web.Base\bin\Release\LB.Web.Contants.pdb
+G:\MyProject\WeightManager\QuarryServer\LB.Web.Base\obj\Release\LB.Web.Base.csprojResolveAssemblyReference.cache
+G:\MyProject\WeightManager\QuarryServer\LB.Web.Base\obj\Release\LB.Web.Base.dll
+G:\MyProject\WeightManager\QuarryServer\LB.Web.Base\obj\Release\LB.Web.Base.pdb

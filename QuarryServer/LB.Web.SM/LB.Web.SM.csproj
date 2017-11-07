@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E88E8AD0-2CE4-4CDC-A04C-F6CE415553CE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LB.Web.SM</RootNamespace>
+    <AssemblyName>LB.Web.SM</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\LB.Web.ServiceMonitor\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\BLLModifyBillDetail.cs" />
+    <Compile Include="BLL\BLLModifyBillHeader.cs" />
+    <Compile Include="BLL\BLLSaleCarInOutBill.cs" />
+    <Compile Include="BLL\BLLSaleCarReturnBill.cs" />
+    <Compile Include="BLL\Factory\AssemblyStart.cs" />
+    <Compile Include="BLL\Factory\SaleInTimer.cs" />
+    <Compile Include="DAL\DALModifyBillDetail.cs" />
+    <Compile Include="DAL\DALModifyBillHeader.cs" />
+    <Compile Include="DAL\DALSaleCarInOutBill.cs" />
+    <Compile Include="DAL\DALSaleCarReturnBill.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LB.Web.Base\LB.Web.Base.csproj">
+      <Project>{2dcbbc87-24b2-42d4-b680-21ea0245fe01}</Project>
+      <Name>LB.Web.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.Web.Contants\LB.Web.Contants.csproj">
+      <Project>{dad2cbf3-e516-412b-8350-e4e0e717b09e}</Project>
+      <Name>LB.Web.Contants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.Web.IBLL\LB.Web.IBLL.csproj">
+      <Project>{df0ffe8c-33b4-46fe-85a1-44689ec20f01}</Project>
+      <Name>LB.Web.IBLL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,2 @@
+P:\Dev\WorkFolder\M3v80\DotNet\TS.RMT\bin\Debug\TS.RMT.ServiceMonitor.exe.config
+H:\MyProject\WeightManager\QuarryServer\bin\Debug\TS.RMT.ServiceMonitor.exe.config

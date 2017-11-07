@@ -1,0 +1,12 @@
+c:\users\linrubin\documents\visual studio 2015\Projects\FaxBusiness\bin\Debug\FaxBusiness.dll
+c:\users\linrubin\documents\visual studio 2015\Projects\FaxBusiness\bin\Debug\FaxBusiness.pdb
+c:\users\linrubin\documents\visual studio 2015\Projects\FaxBusiness\bin\Debug\IFaxBusiness.dll
+c:\users\linrubin\documents\visual studio 2015\Projects\FaxBusiness\bin\Debug\IFaxBusiness.pdb
+c:\users\linrubin\documents\visual studio 2015\Projects\FaxBusiness\obj\Debug\FaxBusiness.csprojResolveAssemblyReference.cache
+c:\users\linrubin\documents\visual studio 2015\Projects\FaxBusiness\obj\Debug\FaxBusiness.dll
+c:\users\linrubin\documents\visual studio 2015\Projects\FaxBusiness\obj\Debug\FaxBusiness.pdb
+H:\MyProject\WeightManager\QuarryServer\LB.Web.ServerMonitor\bin\Debug\FaxBusiness.dll
+H:\MyProject\WeightManager\QuarryServer\LB.Web.ServerMonitor\bin\Debug\FaxBusiness.pdb
+H:\MyProject\WeightManager\QuarryServer\FaxBusiness\obj\Debug\FaxBusiness.csprojResolveAssemblyReference.cache
+H:\MyProject\WeightManager\QuarryServer\FaxBusiness\obj\Debug\FaxBusiness.dll
+H:\MyProject\WeightManager\QuarryServer\FaxBusiness\obj\Debug\FaxBusiness.pdb

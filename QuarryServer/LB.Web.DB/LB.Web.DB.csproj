@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E8D006C2-E1E4-4E51-B0BB-13E5EDEA8D41}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LB.Web.DB</RootNamespace>
+    <AssemblyName>LB.Web.DB</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\LB.Web.ServiceMonitor\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BackUp\BackUpHelper.cs" />
+    <Compile Include="BLL\BLLDbCameraConfig.cs" />
+    <Compile Include="BLL\BLLDbReportView.cs" />
+    <Compile Include="BLL\BLLDbInfraredDeviceConfig.cs" />
+    <Compile Include="BLL\BLLDbErrorLog.cs" />
+    <Compile Include="BLL\BLLDbSystemConst.cs" />
+    <Compile Include="BLL\BLLDbWeightType.cs" />
+    <Compile Include="BLL\BLLDbDescription.cs" />
+    <Compile Include="BLL\BLLDbWeightDeviceUserType.cs" />
+    <Compile Include="BLL\BLLDbBackUpConfig.cs" />
+    <Compile Include="BLL\BLLDbReportTemplate.cs" />
+    <Compile Include="BLL\BLLDbSysLog.cs" />
+    <Compile Include="BLL\BLLDBUser.cs" />
+    <Compile Include="BLL\BLLPermission.cs" />
+    <Compile Include="BLL\BLLSysViewType.cs" />
+    <Compile Include="BLL\BLLUserPermission.cs" />
+    <Compile Include="BLL\BLLDbSysConfig.cs" />
+    <Compile Include="BLL\Factory\AssemblyStart.cs" />
+    <Compile Include="DAL\DALDbSysConfig.cs" />
+    <Compile Include="DAL\DALDbReportView.cs" />
+    <Compile Include="DAL\DALDbInfraredDeviceConfig.cs" />
+    <Compile Include="DAL\DALDbErrorLog.cs" />
+    <Compile Include="DAL\DALDbSystemConst.cs" />
+    <Compile Include="DAL\DALDbWeightType.cs" />
+    <Compile Include="DAL\DALDbDescription.cs" />
+    <Compile Include="DAL\DALDbCameraConfig.cs" />
+    <Compile Include="DAL\DALDbWeightDeviceUserType.cs" />
+    <Compile Include="DAL\DALDbBackUpConfig.cs" />
+    <Compile Include="DAL\DALDbReportTemplate.cs" />
+    <Compile Include="DAL\DALDbSysLog.cs" />
+    <Compile Include="DAL\DALDBUser.cs" />
+    <Compile Include="DAL\DALPermission.cs" />
+    <Compile Include="DAL\DALSysViewType.cs" />
+    <Compile Include="DAL\DALUserPermission.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\LB.Web.Base\LB.Web.Base.csproj">
+      <Project>{2dcbbc87-24b2-42d4-b680-21ea0245fe01}</Project>
+      <Name>LB.Web.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.Web.Contants\LB.Web.Contants.csproj">
+      <Project>{dad2cbf3-e516-412b-8350-e4e0e717b09e}</Project>
+      <Name>LB.Web.Contants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.Web.IBLL\LB.Web.IBLL.csproj">
+      <Project>{df0ffe8c-33b4-46fe-85a1-44689ec20f01}</Project>
+      <Name>LB.Web.IBLL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

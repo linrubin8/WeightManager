@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2DCBBC87-24B2-42D4-B680-21EA0245FE01}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LB.Web.Base</RootNamespace>
+    <AssemblyName>LB.Web.Base</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\LB.Web.ServiceMonitor\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\Factory\FactoryArgs.cs" />
+    <Compile Include="Base\Factory\GetBLLObjectEventArgs.cs" />
+    <Compile Include="Base\Helper\CommonHelper.cs" />
+    <Compile Include="Base\Helper\DbException.cs" />
+    <Compile Include="Base\Helper\DBHelper.cs" />
+    <Compile Include="Base\Helper\DBMSSQL.cs" />
+    <Compile Include="Base\Helper\HardwareSerial.cs" />
+    <Compile Include="Base\Helper\IBLLFunction.cs" />
+    <Compile Include="Base\Helper\IBllObject.cs" />
+    <Compile Include="Base\Helper\IDBBase.cs" />
+    <Compile Include="Base\Helper\LBConverter.cs" />
+    <Compile Include="Base\Helper\LBDbParameter.cs" />
+    <Compile Include="Base\Helper\LBDbParameterCollection.cs" />
+    <Compile Include="Base\Helper\LBDbType.cs" />
+    <Compile Include="Base\Helper\LogHelper.cs" />
+    <Compile Include="Base\Helper\SettingValue.cs" />
+    <Compile Include="Base\Helper\SQLServerDAL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LB.Web.Contants\LB.Web.Contants.csproj">
+      <Project>{dad2cbf3-e516-412b-8350-e4e0e717b09e}</Project>
+      <Name>LB.Web.Contants</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

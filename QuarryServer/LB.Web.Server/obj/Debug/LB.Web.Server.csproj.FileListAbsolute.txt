@@ -1,0 +1,10 @@
+H:\MyProject\WeightManager\QuarryServer\LB.Web.ServerMonitor\bin\Debug\LB.Web.Server.exe
+H:\MyProject\WeightManager\QuarryServer\LB.Web.Server\obj\Debug\LB.Web.Server.exe
+H:\MyProject\WeightManager\QuarryServer\LB.Web.Server\obj\Debug\LB.Web.Server.pdb
+H:\MyProject\WeightManager\QuarryServer\LB.Web.ServerMonitor\bin\Debug\LB.Web.Server.pdb
+H:\MyProject\WeightManager\QuarryServer\LB.Web.Server\obj\Debug\LB.Web.Server.ProjectInstaller.resources
+H:\MyProject\WeightManager\QuarryServer\LB.Web.Server\obj\Debug\LB.Web.Server.csproj.GenerateResource.Cache
+H:\MyProject\WeightManager\QuarryServer\LB.Web.Server\obj\Debug\LB.Web.Server.Service.resources
+H:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\LB.Web.Server.exe
+H:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\LB.Web.Server.pdb
+H:\MyProject\WeightManager\QuarryServer\LB.Web.Server\obj\Debug\LB.Web.Server.csprojResolveAssemblyReference.cache
