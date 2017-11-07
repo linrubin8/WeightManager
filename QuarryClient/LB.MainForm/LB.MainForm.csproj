@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ECEA6DEB-C611-4487-9EE1-641240CF8CBF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LB.MainForm</RootNamespace>
+    <AssemblyName>LB.MainForm</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>bitbug_favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CSkin, Version=16.1.14.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\CSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="DMSkin, Version=0.3.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DMSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport.Bars, Version=2015.3.3.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\FastReport.Bars.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport.Editor, Version=2015.3.3.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\FastReport.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmShowMaxCameral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShowMaxCameral.Designer.cs">
+      <DependentUpon>frmShowMaxCameral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\Temp\frmImportCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\Temp\frmImportCustomer.Designer.cs">
+      <DependentUpon>frmImportCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MasterMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterMainForm.Designer.cs">
+      <DependentUpon>MasterMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\CtlBaseInfoSelection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainForm\CtlBaseInfoSelection.Designer.cs">
+      <DependentUpon>CtlBaseInfoSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\frmAutoPrint.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainForm\frmAutoPrint.Designer.cs">
+      <DependentUpon>frmAutoPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\frmChooseReceiveType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainForm\frmChooseReceiveType.Designer.cs">
+      <DependentUpon>frmChooseReceiveType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\frmDevelopViewConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainForm\frmDevelopViewConfig.Designer.cs">
+      <DependentUpon>frmDevelopViewConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\frmSQLScriptBuilder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\frmSQLScriptBuilder.Designer.cs">
+      <DependentUpon>frmSQLScriptBuilder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\Permission\frmAddPermission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\Permission\frmAddPermission.Designer.cs">
+      <DependentUpon>frmAddPermission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\Permission\frmPermissionConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainForm\Permission\frmPermissionConfig.Designer.cs">
+      <DependentUpon>frmPermissionConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WeightForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WeightForm.Designer.cs">
+      <DependentUpon>WeightForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WeightForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WeightForm2.Designer.cs">
+      <DependentUpon>WeightForm2.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmShowMaxCameral.resx">
+      <DependentUpon>frmShowMaxCameral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\Temp\frmImportCustomer.resx">
+      <DependentUpon>frmImportCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MasterMainForm.resx">
+      <DependentUpon>MasterMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\CtlBaseInfoSelection.resx">
+      <DependentUpon>CtlBaseInfoSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\frmAutoPrint.resx">
+      <DependentUpon>frmAutoPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\frmChooseReceiveType.resx">
+      <DependentUpon>frmChooseReceiveType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\frmDevelopViewConfig.resx">
+      <DependentUpon>frmDevelopViewConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\frmSQLScriptBuilder.resx">
+      <DependentUpon>frmSQLScriptBuilder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\Permission\frmAddPermission.resx">
+      <DependentUpon>frmAddPermission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\Permission\frmPermissionConfig.resx">
+      <DependentUpon>frmPermissionConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="WeightForm.resx">
+      <DependentUpon>WeightForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeightForm2.resx">
+      <DependentUpon>WeightForm2.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FastReport\FastReport.csproj">
+      <Project>{7c64fbdc-25e5-47ff-b6f8-443256745e2d}</Project>
+      <Name>FastReport</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.Base\LB.Base.csproj">
+      <Project>{739059d0-9d83-4881-b502-b08cca50a4e4}</Project>
+      <Name>LB.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.Common\LB.Common.csproj">
+      <Project>{88240f2e-3447-4a6e-a598-8fee981b5a4a}</Project>
+      <Name>LB.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.Controls\LB.Controls.csproj">
+      <Project>{04c9ad34-d6ab-4518-9701-9f991d3a8b60}</Project>
+      <Name>LB.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.Login\LB.Login.csproj">
+      <Project>{12978718-afcb-4ab2-b00f-cdbd3c2aaa23}</Project>
+      <Name>LB.Login</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.RPReceive\LB.RPReceive.csproj">
+      <Project>{a6740fe0-03ab-40e9-a2fd-b4f7a904dc36}</Project>
+      <Name>LB.RPReceive</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.MI\LB.MI.csproj">
+      <Project>{f53a2fcb-4279-4214-af1c-857c1942995e}</Project>
+      <Name>LB.MI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.SysConfig\LB.SysConfig.csproj">
+      <Project>{948f87ee-5644-4cb5-afa2-c8aeeb1470c2}</Project>
+      <Name>LB.SysConfig</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnSave.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnClose.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnDelete.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnBalanceApportion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnConfig.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon031.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_销售管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TVCodeChild.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPrintNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnCopy.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnEnterEditNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMore2New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\取皮重.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon159.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_出纳管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bitbug_favicon.ico" />
+    <Content Include="logo.ico" />
+    <None Include="Resources\MenuIcon307.png" />
+    <None Include="Resources\btnUnOutStockNew.png" />
+    <None Include="Resources\MenuIcon123.gif" />
+    <None Include="Resources\btnEnterViewNew.png" />
+    <None Include="Resources\btnDeleteNew.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

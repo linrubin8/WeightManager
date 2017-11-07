@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{04C9AD34-D6AB-4518-9701-9F991D3A8B60}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LB</RootNamespace>
+    <AssemblyName>LB.Controls</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\LB.MainForm\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\LB.MainForm\bin\Debug\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CSkin">
+      <HintPath>..\LB.MainForm\bin\Debug\CSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="DMSkin">
+      <HintPath>..\LB.MainForm\bin\Debug\DMSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport.Bars, Version=2015.3.3.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LB.MainForm\bin\Debug\FastReport.Bars.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport.Editor, Version=2015.3.3.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LB.MainForm\bin\Debug\FastReport.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\Args\PageEventArgs.cs" />
+    <Compile Include="Controls\Args\SelectedRowArgs.cs" />
+    <Compile Include="Controls\Args\TabPageCloseEventArgs.cs" />
+    <Compile Include="Controls\Args\ToolStripReportArgs.cs" />
+    <Compile Include="Controls\CtlFieldHeaderPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CtlFieldHeaderPanel.Designer.cs">
+      <DependentUpon>CtlFieldHeaderPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DataGridViewStyleSetting.cs" />
+    <Compile Include="Controls\Helper\LBEnum.cs" />
+    <Compile Include="Controls\Helper\LBShowForm.cs" />
+    <Compile Include="Controls\ILBTextBox.cs" />
+    <Compile Include="Controls\LBBillForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\LBBillForm.Designer.cs">
+      <DependentUpon>LBBillForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LBDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\LBDataGridView.Designer.cs">
+      <DependentUpon>LBDataGridView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LBDataGridViewButtonCell.cs" />
+    <Compile Include="Controls\LBDataGridViewButtonColumn.cs" />
+    <Compile Include="Controls\LBDataGridViewComboBoxColumn.cs" />
+    <Compile Include="Controls\LBDateTime.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\LBDateTime.Designer.cs">
+      <DependentUpon>LBDateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LBDateTimeTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\LBDateTimeTextBox.Designer.cs">
+      <DependentUpon>LBDateTimeTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LBForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\LBForm.Designer.cs">
+      <DependentUpon>LBForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LBMetroComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\LBMetroComboBox.Designer.cs">
+      <DependentUpon>LBMetroComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LBSkinTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\LBSkinTextBox.Designer.cs">
+      <DependentUpon>LBSkinTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LBTabControl\LBMainTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\LBTabControl\LBMainTabControl.Designer.cs">
+      <DependentUpon>LBMainTabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LBTabControl\TabPageClose.cs" />
+    <Compile Include="Controls\LBSkinButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\LBSkinButton.Designer.cs">
+      <DependentUpon>LBSkinButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LBToolStripDropDownReportViewButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\LBToolStripDropDownReportViewButton.Designer.cs">
+      <DependentUpon>LBToolStripDropDownReportViewButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LBToolStripReportViewButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\LBToolStripReportViewButton.Designer.cs">
+      <DependentUpon>LBToolStripReportViewButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LBToolStripDropDownButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\LBToolStripDropDownButton.Designer.cs">
+      <DependentUpon>LBToolStripDropDownButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LBToolStripMenuItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\LBToolStripMenuItem.Designer.cs">
+      <DependentUpon>LBToolStripMenuItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LBUIPageBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\LBUIPageBase.Designer.cs">
+      <DependentUpon>LBUIPageBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Report\frmEditReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Report\frmEditReport.designer.cs">
+      <DependentUpon>frmEditReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Report\frmReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Report\frmReport.designer.cs">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Report\PrinterHelper.cs" />
+    <Compile Include="Controls\Report\ReportArgs.cs" />
+    <Compile Include="Controls\Report\ReportCommon.cs" />
+    <Compile Include="Controls\Report\ReportHelper.cs" />
+    <Compile Include="Controls\Report\ReportPreviewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Report\ReportPreviewer.Designer.cs">
+      <DependentUpon>ReportPreviewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Report\ReportRequestArgs.cs" />
+    <Compile Include="Controls\Searcher\CtlSearcher.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Searcher\CtlSearcher.Designer.cs">
+      <DependentUpon>CtlSearcher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TestForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\TestForm1.Designer.cs">
+      <DependentUpon>TestForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LBToolStripButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\LBToolStripButton.Designer.cs">
+      <DependentUpon>LBToolStripButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LBTextBox\AutoCompleteEntry.cs" />
+    <Compile Include="Controls\LBTextBox\AutoCompleteEntryCollection.cs" />
+    <Compile Include="Controls\LBTextBox\AutoCompleteTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\LBTextBox\AutoCompleteTrigger.cs" />
+    <Compile Include="Controls\LBTextBox\AutoCompleteTriggerCollection.cs" />
+    <Compile Include="Controls\LBTextBox\CoolTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\LBTextBox\IAutoCompleteEntry.cs" />
+    <Compile Include="Controls\LBTextBox\Messages.cs" />
+    <Compile Include="Controls\LBTextBox\ShortCutTrigger.cs" />
+    <Compile Include="Controls\LBTextBox\TextLengthTrigger.cs" />
+    <Compile Include="Controls\LBTextBox\TriggerState.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\CtlFieldHeaderPanel.resx">
+      <DependentUpon>CtlFieldHeaderPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\LBBillForm.resx">
+      <DependentUpon>LBBillForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\LBDateTime.resx">
+      <DependentUpon>LBDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\LBForm.resx">
+      <DependentUpon>LBForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\LBTabControl\LBMainTabControl.resx">
+      <DependentUpon>LBMainTabControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\LBUIPageBase.resx">
+      <DependentUpon>LBUIPageBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Report\frmEditReport.resx">
+      <DependentUpon>frmEditReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Report\frmReport.resx">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Report\ReportPreviewer.resx">
+      <DependentUpon>ReportPreviewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Searcher\CtlSearcher.resx">
+      <DependentUpon>CtlSearcher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TestForm1.resx">
+      <DependentUpon>TestForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\LBTextBox\AutoCompleteTextBox.resx">
+      <DependentUpon>AutoCompleteTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\LBTextBox\CoolTextBox.resx">
+      <DependentUpon>CoolTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FastReport\FastReport.csproj">
+      <Project>{7c64fbdc-25e5-47ff-b6f8-443256745e2d}</Project>
+      <Name>FastReport</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.Base\LB.Base.csproj">
+      <Project>{739059d0-9d83-4881-b502-b08cca50a4e4}</Project>
+      <Name>LB.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.Common\LB.Common.csproj">
+      <Project>{88240f2e-3447-4a6e-a598-8fee981b5a4a}</Project>
+      <Name>LB.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.StyleResource\LB.StyleResource.csproj">
+      <Project>{bb3a2964-6a7e-479a-b180-b156fbcc868b}</Project>
+      <Name>LB.StyleResource</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icon1.ico" />
+    <None Include="Resources\btnPrint.gif" />
+    <None Include="Resources\btnConfig.gif" />
+    <None Include="Resources\btnPreview.gif" />
+    <None Include="Resources\ICO_Delete.ico" />
+    <None Include="Resources\20160916050321165_easyicon_net_16.ico" />
+    <None Include="Resources\Icon1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

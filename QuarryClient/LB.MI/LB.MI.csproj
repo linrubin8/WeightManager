@@ -1,0 +1,428 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F53A2FCB-4279-4214-AF1C-857C1942995E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LB.MI</RootNamespace>
+    <AssemblyName>LB.MI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CSkin">
+      <HintPath>..\LB.MainForm\bin\Debug\CSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="DMSkin">
+      <HintPath>..\LB.MainForm\bin\Debug\DMSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MI\frmAddOutBill.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmAddOutBill.Designer.cs">
+      <DependentUpon>frmAddOutBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmAddInBill.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmAddInBill.Designer.cs">
+      <DependentUpon>frmAddInBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmAutoPrint.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmAutoPrint.Designer.cs">
+      <DependentUpon>frmAutoPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmBankManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmBankManager.Designer.cs">
+      <DependentUpon>frmBankManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmBankEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmBankEdit.Designer.cs">
+      <DependentUpon>frmBankEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmChargeType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmChargeType.Designer.cs">
+      <DependentUpon>frmChargeType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmChargeTypeManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmChargeTypeManager.Designer.cs">
+      <DependentUpon>frmChargeTypeManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmSaleCarInOutCancel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmSaleCarInOutCancel.Designer.cs">
+      <DependentUpon>frmSaleCarInOutCancel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmSaleCarInOutDisneyBigPicture.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmSaleCarInOutDisneyBigPicture.Designer.cs">
+      <DependentUpon>frmSaleCarInOutDisneyBigPicture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmPurchaseBill.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmPurchaseBill.Designer.cs">
+      <DependentUpon>frmPurchaseBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmSalesReturnBill.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmSalesReturnBill.Designer.cs">
+      <DependentUpon>frmSalesReturnBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\LBPreviceReport.cs" />
+    <Compile Include="MI\MIControls\SaleChangeItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\MIControls\SaleChangeItem.Designer.cs">
+      <DependentUpon>SaleChangeItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmAddCarWeight.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmAddCarWeight.Designer.cs">
+      <DependentUpon>frmAddCarWeight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmCarEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmCarEdit.Designer.cs">
+      <DependentUpon>frmCarEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmCarManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmCarManager.Designer.cs">
+      <DependentUpon>frmCarManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmCarRefCustomerQuery.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmCarRefCustomerQuery.Designer.cs">
+      <DependentUpon>frmCarRefCustomerQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmCarQuery.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmCarQuery.Designer.cs">
+      <DependentUpon>frmCarQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmCarWeightManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmCarWeightManager.Designer.cs">
+      <DependentUpon>frmCarWeightManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmCustomerEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmCustomerEdit.Designer.cs">
+      <DependentUpon>frmCustomerEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmSaleCarChangeBill.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmSaleCarChangeBill.Designer.cs">
+      <DependentUpon>frmSaleCarChangeBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmSaleCarChangeDealConfirm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmSaleCarChangeDealConfirm.Designer.cs">
+      <DependentUpon>frmSaleCarChangeDealConfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmSaleCarChangeReturnAmount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmSaleCarChangeReturnAmount.Designer.cs">
+      <DependentUpon>frmSaleCarChangeReturnAmount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmUOM.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmUOM.designer.cs">
+      <DependentUpon>frmUOM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmItemType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmItemType.designer.cs">
+      <DependentUpon>frmItemType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmSaleCarInOutBillManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmSaleCarInOutBillManager.Designer.cs">
+      <DependentUpon>frmSaleCarInOutBillManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmSaleCarInOutEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmSaleCarInOutEdit.Designer.cs">
+      <DependentUpon>frmSaleCarInOutEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmUOMManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmUOMManager.Designer.cs">
+      <DependentUpon>frmUOMManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmCustomerManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmCustomerManager.Designer.cs">
+      <DependentUpon>frmCustomerManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmItemBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmItemBase.Designer.cs">
+      <DependentUpon>frmItemBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmItemBaseManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmItemBaseManager.designer.cs">
+      <DependentUpon>frmItemBaseManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmModifyBillHeaderEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmModifyBillHeaderEdit.Designer.cs">
+      <DependentUpon>frmModifyBillHeaderEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmModifyBillHeaderQuery.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmModifyBillHeaderQuery.Designer.cs">
+      <DependentUpon>frmModifyBillHeaderQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MI\frmAddOutBill.resx">
+      <DependentUpon>frmAddOutBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmAddInBill.resx">
+      <DependentUpon>frmAddInBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmAutoPrint.resx">
+      <DependentUpon>frmAutoPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmBankManager.resx">
+      <DependentUpon>frmBankManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmBankEdit.resx">
+      <DependentUpon>frmBankEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmChargeType.resx">
+      <DependentUpon>frmChargeType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmChargeTypeManager.resx">
+      <DependentUpon>frmChargeTypeManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmSaleCarInOutCancel.resx">
+      <DependentUpon>frmSaleCarInOutCancel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmSaleCarInOutDisneyBigPicture.resx">
+      <DependentUpon>frmSaleCarInOutDisneyBigPicture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmPurchaseBill.resx">
+      <DependentUpon>frmPurchaseBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmSalesReturnBill.resx">
+      <DependentUpon>frmSalesReturnBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\MIControls\SaleChangeItem.resx">
+      <DependentUpon>SaleChangeItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmAddCarWeight.resx">
+      <DependentUpon>frmAddCarWeight.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmCarEdit.resx">
+      <DependentUpon>frmCarEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmCarManager.resx">
+      <DependentUpon>frmCarManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmCarRefCustomerQuery.resx">
+      <DependentUpon>frmCarRefCustomerQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmCarQuery.resx">
+      <DependentUpon>frmCarQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmCarWeightManager.resx">
+      <DependentUpon>frmCarWeightManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmCustomerEdit.resx">
+      <DependentUpon>frmCustomerEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmSaleCarChangeBill.resx">
+      <DependentUpon>frmSaleCarChangeBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmSaleCarChangeDealConfirm.resx">
+      <DependentUpon>frmSaleCarChangeDealConfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmSaleCarChangeReturnAmount.resx">
+      <DependentUpon>frmSaleCarChangeReturnAmount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmUOM.resx">
+      <DependentUpon>frmUOM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmItemType.resx">
+      <DependentUpon>frmItemType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmSaleCarInOutBillManager.resx">
+      <DependentUpon>frmSaleCarInOutBillManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmSaleCarInOutEdit.resx">
+      <DependentUpon>frmSaleCarInOutEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmUOMManager.resx">
+      <DependentUpon>frmUOMManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmCustomerManager.resx">
+      <DependentUpon>frmCustomerManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmItemBase.resx">
+      <DependentUpon>frmItemBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmItemBaseManager.resx">
+      <DependentUpon>frmItemBaseManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmModifyBillHeaderEdit.resx">
+      <DependentUpon>frmModifyBillHeaderEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmModifyBillHeaderQuery.resx">
+      <DependentUpon>frmModifyBillHeaderQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LB.Base\LB.Base.csproj">
+      <Project>{739059d0-9d83-4881-b502-b08cca50a4e4}</Project>
+      <Name>LB.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.Common\LB.Common.csproj">
+      <Project>{88240f2e-3447-4a6e-a598-8fee981b5a4a}</Project>
+      <Name>LB.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.Controls\LB.Controls.csproj">
+      <Project>{04c9ad34-d6ab-4518-9701-9f991d3a8b60}</Project>
+      <Name>LB.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.StyleResource\LB.StyleResource.csproj">
+      <Project>{bb3a2964-6a7e-479a-b180-b156fbcc868b}</Project>
+      <Name>LB.StyleResource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.SysConfig\LB.SysConfig.csproj">
+      <Project>{948f87ee-5644-4cb5-afa2-c8aeeb1470c2}</Project>
+      <Name>LB.SysConfig</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnApprove.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnRedo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUnPostInUse.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnReset.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUnApprove.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnFieldAndDataNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnClose.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnNewSave3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnNewSave31.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnFaxNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnEnterEdit.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MI\IFaxBusiness - 副本 %282%29.dll" />
+    <None Include="Resources\btnRefSource.gif" />
+    <None Include="Resources\btnMultiPrompt.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

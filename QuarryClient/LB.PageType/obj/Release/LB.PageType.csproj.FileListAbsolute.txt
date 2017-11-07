@@ -1,0 +1,8 @@
+H:\MyProject\WeightManager\QuarryClient\LB.PageType\bin\Release\LB.PageType.dll
+H:\MyProject\WeightManager\QuarryClient\LB.PageType\bin\Release\LB.PageType.pdb
+H:\MyProject\WeightManager\QuarryClient\LB.PageType\obj\Release\LB.PageType.dll
+H:\MyProject\WeightManager\QuarryClient\LB.PageType\obj\Release\LB.PageType.pdb
+G:\MyProject\WeightManager\QuarryClient\LB.PageType\bin\Release\LB.PageType.dll
+G:\MyProject\WeightManager\QuarryClient\LB.PageType\bin\Release\LB.PageType.pdb
+G:\MyProject\WeightManager\QuarryClient\LB.PageType\obj\Release\LB.PageType.dll
+G:\MyProject\WeightManager\QuarryClient\LB.PageType\obj\Release\LB.PageType.pdb

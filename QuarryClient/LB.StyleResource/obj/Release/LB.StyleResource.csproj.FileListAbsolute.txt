@@ -1,0 +1,13 @@
+H:\MyProject\WeightManager\QuarryClient\LB.StyleResource\bin\Release\LB.StyleResource.dll
+H:\MyProject\WeightManager\QuarryClient\LB.StyleResource\bin\Release\LB.StyleResource.pdb
+H:\MyProject\WeightManager\QuarryClient\LB.StyleResource\obj\Release\LB.StyleResource.Properties.Resources.resources
+H:\MyProject\WeightManager\QuarryClient\LB.StyleResource\obj\Release\LB.StyleResource.csproj.GenerateResource.Cache
+H:\MyProject\WeightManager\QuarryClient\LB.StyleResource\obj\Release\LB.StyleResource.dll
+H:\MyProject\WeightManager\QuarryClient\LB.StyleResource\obj\Release\LB.StyleResource.pdb
+G:\MyProject\WeightManager\QuarryClient\LB.StyleResource\bin\Release\LB.StyleResource.dll
+G:\MyProject\WeightManager\QuarryClient\LB.StyleResource\bin\Release\LB.StyleResource.pdb
+G:\MyProject\WeightManager\QuarryClient\LB.StyleResource\obj\Release\LB.StyleResource.csprojResolveAssemblyReference.cache
+G:\MyProject\WeightManager\QuarryClient\LB.StyleResource\obj\Release\LB.StyleResource.Properties.Resources.resources
+G:\MyProject\WeightManager\QuarryClient\LB.StyleResource\obj\Release\LB.StyleResource.csproj.GenerateResource.Cache
+G:\MyProject\WeightManager\QuarryClient\LB.StyleResource\obj\Release\LB.StyleResource.dll
+G:\MyProject\WeightManager\QuarryClient\LB.StyleResource\obj\Release\LB.StyleResource.pdb

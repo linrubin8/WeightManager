@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{948F87EE-5644-4CB5-AFA2-C8AEEB1470C2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LB.SysConfig</RootNamespace>
+    <AssemblyName>LB.SysConfig</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\LB.MainForm\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\LB.MainForm\bin\Debug\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CSkin">
+      <HintPath>..\LB.MainForm\bin\Debug\CSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="DMSkin">
+      <HintPath>..\LB.MainForm\bin\Debug\DMSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport.Bars, Version=2015.3.3.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LB.MainForm\bin\Debug\FastReport.Bars.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport.Editor, Version=2015.3.3.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LB.MainForm\bin\Debug\FastReport.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SysConfig\ExportSQLConfig.cs" />
+    <Compile Include="SysConfig\frmAddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SysConfig\frmAddUser.Designer.cs">
+      <DependentUpon>frmAddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SysConfig\frmBackUpConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SysConfig\frmBackUpConfig.Designer.cs">
+      <DependentUpon>frmBackUpConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SysConfig\frmCameraConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SysConfig\frmCameraConfig.Designer.cs">
+      <DependentUpon>frmCameraConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SysConfig\frmCarTareManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SysConfig\frmCarTareManager.Designer.cs">
+      <DependentUpon>frmCarTareManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SysConfig\frmChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SysConfig\frmChangePassword.Designer.cs">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SysConfig\frmDescriptionAdd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SysConfig\frmDescriptionAdd.Designer.cs">
+      <DependentUpon>frmDescriptionAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SysConfig\frmDescriptionManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SysConfig\frmDescriptionManager.Designer.cs">
+      <DependentUpon>frmDescriptionManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SysConfig\frmEditBackUp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SysConfig\frmEditBackUp.Designer.cs">
+      <DependentUpon>frmEditBackUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SysConfig\frmAddReportView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SysConfig\frmAddReportView.designer.cs">
+      <DependentUpon>frmAddReportView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SysConfig\frmInfraredDeviceConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SysConfig\frmInfraredDeviceConfig.Designer.cs">
+      <DependentUpon>frmInfraredDeviceConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SysConfig\frmInfraredDeviceConnectPic.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SysConfig\frmInfraredDeviceConnectPic.Designer.cs">
+      <DependentUpon>frmInfraredDeviceConnectPic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SysConfig\frmLogManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SysConfig\frmLogManager.Designer.cs">
+      <DependentUpon>frmLogManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SysConfig\frmReportView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SysConfig\frmReportView.Designer.cs">
+      <DependentUpon>frmReportView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SysConfig\frmSysConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SysConfig\frmSysConfig.Designer.cs">
+      <DependentUpon>frmSysConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SysConfig\frmUserManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SysConfig\frmUserManager.Designer.cs">
+      <DependentUpon>frmUserManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SysConfig\frmUserPermission.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SysConfig\frmUserPermission.Designer.cs">
+      <DependentUpon>frmUserPermission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SysConfig\frmWeightConfigType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SysConfig\frmWeightConfigType.Designer.cs">
+      <DependentUpon>frmWeightConfigType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SysConfig\frmWeightDecive.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SysConfig\frmWeightDecive.Designer.cs">
+      <DependentUpon>frmWeightDecive.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysConfig\frmAddUser.resx">
+      <DependentUpon>frmAddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysConfig\frmBackUpConfig.resx">
+      <DependentUpon>frmBackUpConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysConfig\frmCameraConfig.resx">
+      <DependentUpon>frmCameraConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysConfig\frmCarTareManager.resx">
+      <DependentUpon>frmCarTareManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysConfig\frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysConfig\frmDescriptionAdd.resx">
+      <DependentUpon>frmDescriptionAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysConfig\frmDescriptionManager.resx">
+      <DependentUpon>frmDescriptionManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysConfig\frmEditBackUp.resx">
+      <DependentUpon>frmEditBackUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysConfig\frmAddReportView.resx">
+      <DependentUpon>frmAddReportView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysConfig\frmInfraredDeviceConfig.resx">
+      <DependentUpon>frmInfraredDeviceConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysConfig\frmInfraredDeviceConnectPic.resx">
+      <DependentUpon>frmInfraredDeviceConnectPic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysConfig\frmLogManager.resx">
+      <DependentUpon>frmLogManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysConfig\frmReportView.resx">
+      <DependentUpon>frmReportView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysConfig\frmSysConfig.resx">
+      <DependentUpon>frmSysConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysConfig\frmUserManager.resx">
+      <DependentUpon>frmUserManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysConfig\frmUserPermission.resx">
+      <DependentUpon>frmUserPermission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysConfig\frmWeightConfigType.resx">
+      <DependentUpon>frmWeightConfigType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysConfig\frmWeightDecive.resx">
+      <DependentUpon>frmWeightDecive.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FastReport\FastReport.csproj">
+      <Project>{7c64fbdc-25e5-47ff-b6f8-443256745e2d}</Project>
+      <Name>FastReport</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.Base\LB.Base.csproj">
+      <Project>{739059d0-9d83-4881-b502-b08cca50a4e4}</Project>
+      <Name>LB.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.Common\LB.Common.csproj">
+      <Project>{88240f2e-3447-4a6e-a598-8fee981b5a4a}</Project>
+      <Name>LB.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.Controls\LB.Controls.csproj">
+      <Project>{04c9ad34-d6ab-4518-9701-9f991d3a8b60}</Project>
+      <Name>LB.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.Report\LB.Report.csproj">
+      <Project>{b74451b8-3c98-49cd-bfed-fc79c41cb742}</Project>
+      <Name>LB.Report</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.StyleResource\LB.StyleResource.csproj">
+      <Project>{bb3a2964-6a7e-479a-b180-b156fbcc868b}</Project>
+      <Name>LB.StyleResource</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnClose.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnListMode.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnNewSave3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnOpenAdd.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnReset.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnDelete.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnNewSave31.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\52c29f7cd3c31.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\001.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

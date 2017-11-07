@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A6740FE0-03AB-40E9-A2FD-B4F7A904DC36}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LB.RPReceive</RootNamespace>
+    <AssemblyName>LB.RPReceive</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CSkin">
+      <HintPath>..\LB.MainForm\bin\Debug\CSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="DMSkin">
+      <HintPath>..\LB.MainForm\bin\Debug\DMSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RPReceive\frmEditReceiveBill.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RPReceive\frmEditReceiveBill.Designer.cs">
+      <DependentUpon>frmEditReceiveBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RPReceive\frmReceiveBillQuery.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RPReceive\frmReceiveBillQuery.Designer.cs">
+      <DependentUpon>frmReceiveBillQuery.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LB.Base\LB.Base.csproj">
+      <Project>{739059d0-9d83-4881-b502-b08cca50a4e4}</Project>
+      <Name>LB.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.Common\LB.Common.csproj">
+      <Project>{88240f2e-3447-4a6e-a598-8fee981b5a4a}</Project>
+      <Name>LB.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.Controls\LB.Controls.csproj">
+      <Project>{04c9ad34-d6ab-4518-9701-9f991d3a8b60}</Project>
+      <Name>LB.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.Report\LB.Report.csproj">
+      <Project>{b74451b8-3c98-49cd-bfed-fc79c41cb742}</Project>
+      <Name>LB.Report</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.StyleResource\LB.StyleResource.csproj">
+      <Project>{bb3a2964-6a7e-479a-b180-b156fbcc868b}</Project>
+      <Name>LB.StyleResource</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPReceive\frmEditReceiveBill.resx">
+      <DependentUpon>frmEditReceiveBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPReceive\frmReceiveBillQuery.resx">
+      <DependentUpon>frmReceiveBillQuery.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnApprove.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnClearAll.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnClose.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnOpenAdd.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnRedo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnSave.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUnApprove.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnDelete.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunProcedure">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ProcedureType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strLoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bSerializeValue" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="bSerializeDataType" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunProcedureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RunProcedureResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="dtOut">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMsg" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolIsError" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunView">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="iViewType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strLoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strFieldNames" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strWhere" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strOrderBy" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunViewResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RunViewResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMsg" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolIsError" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunDirectSQL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strLoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strSQL" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunDirectSQLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RunDirectSQLResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMsg" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolIsError" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="User_Insert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strAccount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="User_InsertResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConnectServer">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConnectServerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConnectServerResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadClientFileInfo">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadClientFileInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadClientFileInfoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadFileByte">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strFileFullName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iPosition" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="iMaxLength" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadFileByteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bSplitFile" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="RunProcedureSoapIn">
+    <wsdl:part name="parameters" element="tns:RunProcedure" />
+  </wsdl:message>
+  <wsdl:message name="RunProcedureSoapOut">
+    <wsdl:part name="parameters" element="tns:RunProcedureResponse" />
+  </wsdl:message>
+  <wsdl:message name="RunViewSoapIn">
+    <wsdl:part name="parameters" element="tns:RunView" />
+  </wsdl:message>
+  <wsdl:message name="RunViewSoapOut">
+    <wsdl:part name="parameters" element="tns:RunViewResponse" />
+  </wsdl:message>
+  <wsdl:message name="RunDirectSQLSoapIn">
+    <wsdl:part name="parameters" element="tns:RunDirectSQL" />
+  </wsdl:message>
+  <wsdl:message name="RunDirectSQLSoapOut">
+    <wsdl:part name="parameters" element="tns:RunDirectSQLResponse" />
+  </wsdl:message>
+  <wsdl:message name="User_InsertSoapIn">
+    <wsdl:part name="parameters" element="tns:User_Insert" />
+  </wsdl:message>
+  <wsdl:message name="User_InsertSoapOut">
+    <wsdl:part name="parameters" element="tns:User_InsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConnectServerSoapIn">
+    <wsdl:part name="parameters" element="tns:ConnectServer" />
+  </wsdl:message>
+  <wsdl:message name="ConnectServerSoapOut">
+    <wsdl:part name="parameters" element="tns:ConnectServerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadClientFileInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadClientFileInfo" />
+  </wsdl:message>
+  <wsdl:message name="ReadClientFileInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadClientFileInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadFileByteSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadFileByte" />
+  </wsdl:message>
+  <wsdl:message name="ReadFileByteSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadFileByteResponse" />
+  </wsdl:message>
+  <wsdl:portType name="LBWebServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RunProcedure">
+      <wsdl:input message="tns:RunProcedureSoapIn" />
+      <wsdl:output message="tns:RunProcedureSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RunView">
+      <wsdl:input message="tns:RunViewSoapIn" />
+      <wsdl:output message="tns:RunViewSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RunDirectSQL">
+      <wsdl:input message="tns:RunDirectSQLSoapIn" />
+      <wsdl:output message="tns:RunDirectSQLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="User_Insert">
+      <wsdl:input message="tns:User_InsertSoapIn" />
+      <wsdl:output message="tns:User_InsertSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConnectServer">
+      <wsdl:input message="tns:ConnectServerSoapIn" />
+      <wsdl:output message="tns:ConnectServerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadClientFileInfo">
+      <wsdl:input message="tns:ReadClientFileInfoSoapIn" />
+      <wsdl:output message="tns:ReadClientFileInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadFileByte">
+      <wsdl:input message="tns:ReadFileByteSoapIn" />
+      <wsdl:output message="tns:ReadFileByteSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LBWebServiceSoap" type="tns:LBWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunProcedure">
+      <soap:operation soapAction="http://tempuri.org/RunProcedure" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunView">
+      <soap:operation soapAction="http://tempuri.org/RunView" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunDirectSQL">
+      <soap:operation soapAction="http://tempuri.org/RunDirectSQL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_Insert">
+      <soap:operation soapAction="http://tempuri.org/User_Insert" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConnectServer">
+      <soap:operation soapAction="http://tempuri.org/ConnectServer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadClientFileInfo">
+      <soap:operation soapAction="http://tempuri.org/ReadClientFileInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadFileByte">
+      <soap:operation soapAction="http://tempuri.org/ReadFileByte" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LBWebServiceSoap12" type="tns:LBWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunProcedure">
+      <soap12:operation soapAction="http://tempuri.org/RunProcedure" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunView">
+      <soap12:operation soapAction="http://tempuri.org/RunView" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunDirectSQL">
+      <soap12:operation soapAction="http://tempuri.org/RunDirectSQL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_Insert">
+      <soap12:operation soapAction="http://tempuri.org/User_Insert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConnectServer">
+      <soap12:operation soapAction="http://tempuri.org/ConnectServer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadClientFileInfo">
+      <soap12:operation soapAction="http://tempuri.org/ReadClientFileInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadFileByte">
+      <soap12:operation soapAction="http://tempuri.org/ReadFileByte" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LBWebService">
+    <wsdl:port name="LBWebServiceSoap" binding="tns:LBWebServiceSoap">
+      <soap:address location="http://211.149.203.13:2020/LBWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LBWebServiceSoap12" binding="tns:LBWebServiceSoap12">
+      <soap12:address location="http://211.149.203.13:2020/LBWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

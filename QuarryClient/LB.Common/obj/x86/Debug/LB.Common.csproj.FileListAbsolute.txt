@@ -1,0 +1,9 @@
+H:\MyProject\WeightManager\QuarryClient\LB.Common\bin\x86\Debug\LB.Common.dll
+H:\MyProject\WeightManager\QuarryClient\LB.Common\bin\x86\Debug\LB.Common.pdb
+H:\MyProject\WeightManager\QuarryClient\LB.Common\bin\x86\Debug\LB.Base.dll
+H:\MyProject\WeightManager\QuarryClient\LB.Common\bin\x86\Debug\LB.Base.pdb
+H:\MyProject\WeightManager\QuarryClient\LB.Common\obj\x86\Debug\LB.Common.csprojResolveAssemblyReference.cache
+H:\MyProject\WeightManager\QuarryClient\LB.Common\obj\x86\Debug\LB.Common.Camera.ViewCamera.resources
+H:\MyProject\WeightManager\QuarryClient\LB.Common\obj\x86\Debug\LB.Common.csproj.GenerateResource.Cache
+H:\MyProject\WeightManager\QuarryClient\LB.Common\obj\x86\Debug\LB.Common.dll
+H:\MyProject\WeightManager\QuarryClient\LB.Common\obj\x86\Debug\LB.Common.pdb

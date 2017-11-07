@@ -1,0 +1,1600 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BB3A2964-6A7E-479A-B180-B156FBCC868B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LB.StyleResource</RootNamespace>
+    <AssemblyName>LB.StyleResource</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\LB.MainForm\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="StyleResource\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AppRunning.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ATabClose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ATabCloseHot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bool_checked.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bool_checked_ReadOnly.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bool_checkedHover.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bool_uncheck.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bool_uncheck_ReadOnly.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bool_uncheckHover.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnAccessory.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnAccountNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnAddUp.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnAlarm.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnAlarmHot.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnApportion.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnApportionNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnApprove.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnAsk.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnBalanceApportion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnBalanceCompute.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnBalanceStockInvoice.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnBillBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnBillRed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnCancel.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnChangePassword.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnChartNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnClearAll.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnClose.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnClose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnCloseNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnComplete.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnCompleteNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnConfig.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnConfirmNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnCopy.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnCopyNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnCustomer.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnDelete.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnDeleteNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnDelFaxNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnEdit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnEnterEdit.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnEnterEditNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnEnterView.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnEnterViewNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnExport.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnFaxNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnFieldAndData.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnFieldAndData2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnFieldAndDataNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnFieldNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnFilter.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnFilterNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnForbidNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnGenTarget.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnGridMode.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnHelp.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnHelpHot.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnIncomeNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnInStock2New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnInStockNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnListMode.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMessage.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMessageDraft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMessageGarbage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMessageHot.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMessageIn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMessageNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMessageNormal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMessageNotify.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMessageOut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMessageRecycled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMore2New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMore3New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMoreNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMoveDown.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMoveUp.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMSEmptyImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMSImportance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMSNormal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMSReverted.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMSToRead.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMultiPrompt.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnNavFirst.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnNavLast.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnNavNext.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnNavPrevious.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnNewSave3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnOpenAdd.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnOpenAddNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnOutStock2New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnOutStockNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPaste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPaste1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPause.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPermissionData.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPermissionDataBrowse.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPermissionField.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPermissionFieldBrowse.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPostInUse.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPreview.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPreview2New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPreviewNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPrint.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPrintListNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPrintNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPrintSetNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnQuery.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnRedo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnRefresh.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnRefreshNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnRefSource.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnReset.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnRotateHorizontal.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnRotateVertical.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnSave.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnSave2New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnSaveNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnSelectAll.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnShowChange.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnShowChange2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnShowListNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnSQL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnStop.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnSubmitNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnSupplier.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnTaxisNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnTransferNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUnApprove.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUnComplete.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUnCompleteNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUnConfirmNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUndo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUnForbidNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUnInStock2New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUnInStockNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUnOutStock2New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUnOutStockNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUnPostInUse.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUnSubmit.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUnSubmitNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUpdate.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUpdate2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUpdate3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnVersionDone.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnView.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnWindowNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Calendar.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CalendarHot.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Checked.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CriteriaProject.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CriteriaProjectSmall.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Define001.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Define002.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Define003.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Define004.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Define005.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Define006.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Define007.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Define008.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Define009.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Define010.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Define011.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Define012.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Define013.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_财务互联.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_采购管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_车间工序排产.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_出纳管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_初始化.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_存货核算.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_短信中心.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_工资管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_工作管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_基础资料.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_客户资源管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_库存管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_门店管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_任务管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_日志管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_生产管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_受托加工管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_条码管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_委外加工管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_物料需求计划.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_系统设置.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_消息中心.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_销售管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_应付管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_应收管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon_整体流程.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon000.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon001.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon002.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon002.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon003.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon003.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon004.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon004.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon005.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon005.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon006.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon006.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon007.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon007.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon008.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon009.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon010.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon011.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon012.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon013.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon014.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon015.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon016.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon017.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon018.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon019.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon020.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon021.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon022.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon023.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon024.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon025.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon026.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon027.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon028.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon029.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon030.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon031.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon032.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon033.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon034.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon035.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon036.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon037.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon101.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon102.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon103.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon104.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon105.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon106.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon107.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon108.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon109.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon110.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon111.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon112.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon113.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon114.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon115.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon116.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon117.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon118.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon119.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon120.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon121.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon122.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon123.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon124.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon125.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon126.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon127.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon128.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon129.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon130.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon131.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon132.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon133.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menuicon134.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menuicon135.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menuicon136.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon137.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menuicon138.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menuicon139.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menuicon140.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menuicon141.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menuicon142.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menuicon143.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon144.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menuicon145.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon146.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menuicon147.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon148.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon149.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon150.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon151.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menuicon152.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon153.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon154.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon155.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon156.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon157.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon158.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon159.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon160.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon161.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon201.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon202.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon203.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon204.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon205.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon206.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon207.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon208.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon209.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon210.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon211.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon212.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon213.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon214.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon215.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon216.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon217.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon218.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon219.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon220.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon221.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon222.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon223.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon224.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon225.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon226.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon227.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon228.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon229.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon230.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon231.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon232.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon300.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon301.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon302.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon303.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon304.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon305.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon306.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon307.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon308.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon309.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon310.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon311.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon312.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon313.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon314.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon315.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon316.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon317.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon318.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon319.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon320.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon322.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon323.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon324.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon325.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon326.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon327.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon328.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon329.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon330.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon331.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon332.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon333.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon334.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon335.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon336.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon337.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon338.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon339.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon340.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon341.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon342.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon343.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon344.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon345.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon346.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon347.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon348.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon349.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon350.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon351.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon352.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon353.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon354.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon355.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon356.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon357.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon358.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon359.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon360.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon361.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon362.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon363.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon364.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon365.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon366.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon367.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon368.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon369.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon370.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon371.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon372.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon373.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon374.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon375.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon376.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon377.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon378.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon379.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon380.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon381.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon382.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon383.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon384.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon385.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon386.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon387.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon388.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon389.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon390.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon391.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon392.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon393.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon394.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon395.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon396.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon397.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon398.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon399.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon400.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon401.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon402.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon403.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon404.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon405.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon406.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon407.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon408.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon409.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon410.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon411.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon412.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Prompt.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PromptHot.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PromptReturn.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PromptReturnHot.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SeparatorArrow.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SeparatorArrowClose.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TabBarLeft.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TabBarLeftClose.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TabBarLeftHover.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TabBarMiddle.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TabBarMiddleHover.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TabBarRight.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TabBarRightHover.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool001.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool002.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool003.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool004.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool005.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool006.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool007.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool008.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool009.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool010.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool011.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool012.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool013.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool014.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool015.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool016.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool017.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool018.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool019.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool020.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool021.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool022.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool023.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool024.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool025.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool026.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool027.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool028.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool029.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool030.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool031.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool032.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool033.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool034.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool035.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool036.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool037.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool038.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TVCodeChild.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TVCodeChildGray.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TVCodeItem.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TVCodeTop.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TVCodeWarehouse.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tvfiscalperiod.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tvfiscalperiodclose.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tvfiscalperiodopen.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\View.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ViewHot.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WinCloseAll.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WinCloseAllHot.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LBLogo.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
