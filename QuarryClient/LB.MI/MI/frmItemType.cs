@@ -49,7 +49,7 @@ namespace LB.MI
             {
                 this.VerifyTextBoxIsEmpty();//校验控件值是否为空
                 
-                int iSPType = mlItemTypeID > 0 ? 20101 : 20100;
+                int iSPType = mlItemTypeID > 0 ? 20501 : 20500;
 
                 LBDbParameterCollection parmCol = new LBDbParameterCollection();
                 parmCol.Add(new LBParameter("ItemTypeID", enLBDbType.Int64, mlItemTypeID));
@@ -82,7 +82,7 @@ namespace LB.MI
                         parmCol.Add(new LBParameter("ItemTypeID", enLBDbType.Int64, mlItemTypeID));
                         DataSet dsReturn;
                         Dictionary<string, object> dictValue;
-                        ExecuteSQL.CallSP(20102, parmCol, out dsReturn, out dictValue);
+                        ExecuteSQL.CallSP(20502, parmCol, out dsReturn, out dictValue);
                     }
                     this.Close();
                 }

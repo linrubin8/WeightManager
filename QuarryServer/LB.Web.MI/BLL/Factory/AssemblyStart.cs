@@ -23,9 +23,9 @@ namespace LB.Web.MI.BLL.Factory
 
             switch (iSPType)
             {
-                case 20100:
-                case 20101:
-                case 20102:
+                case 20500:
+                case 20501:
+                case 20502:
                     args.BLLFunction = new BLLDBItemType();
                     break;
 

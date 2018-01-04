@@ -23,15 +23,15 @@ namespace LB.Web.MI.BLL
             string strFunName = "";
             switch (iFunctionType)
             {
-                case 20100:
+                case 20500:
                     strFunName = "DBItemType_Insert";
                     break;
 
-                case 20101:
+                case 20501:
                     strFunName = "DBItemType_Update";
                     break;
 
-                case 20102:
+                case 20502:
                     strFunName = "DBItemType_Delete";
                     break;
             }

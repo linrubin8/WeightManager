@@ -175,7 +175,7 @@ namespace LB.MI
                         parmCol.Add(new LBParameter("ItemTypeID", enLBDbType.Int64, lItemTypeID));
                         DataSet dsReturn;
                         Dictionary<string, object> dictValue;
-                        ExecuteSQL.CallSP(20102, parmCol, out dsReturn, out dictValue);
+                        ExecuteSQL.CallSP(20502, parmCol, out dsReturn, out dictValue);
                     }
                     BuildTree();
                 }
