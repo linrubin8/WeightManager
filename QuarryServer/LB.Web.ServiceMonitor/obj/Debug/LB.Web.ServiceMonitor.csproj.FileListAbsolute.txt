@@ -19,11 +19,11 @@ G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\obj\Debug\LB.Web.S
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\obj\Debug\LB.Web.ServiceMonitor.pdb
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\LB.Web.ServiceMonitor.exe
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\LB.Web.ServiceMonitor.pdb
-G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\LB.RMT.Base.pdb
-G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\LB.Web.ServiceTool.pdb
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\obj\Debug\LB.Web.ServiceMonitor.csprojResolveAssemblyReference.cache
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\obj\Debug\LB.Web.Properties.Resources.resources
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\obj\Debug\LB.Web.ServiceMonitor.frmRemoteConfig.resources
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\obj\Debug\LB.Web.ServiceMonitor.frmServerForm.resources
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\obj\Debug\LB.Web.ServiceMonitor.frmWebLinkConfig.resources
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\obj\Debug\LB.Web.ServiceMonitor.csproj.GenerateResource.Cache
+G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\LB.RMT.Base.pdb
+G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\LB.Web.ServiceTool.pdb

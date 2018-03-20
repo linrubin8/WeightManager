@@ -77,6 +77,7 @@ namespace LB.MainForm
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+            lblCustomerRemainAmount.Visible = label4.Visible = false;
 
             mTimer = new System.Windows.Forms.Timer();
             mTimer.Interval = 100;
@@ -724,7 +725,17 @@ namespace LB.MainForm
                         decimal decSalesReceivedAmount = LBConverter.ToDecimal(dtCustomer.Rows[0]["SalesReceivedAmount"]);
                         this.lblCustomerRemainAmount.Text = (decTotalReceivedAmount - decSalesReceivedAmount).ToString();
                         //客户收款方式
-                        this.txtReceiveType.SelectedValue = LBConverter.ToInt32(dtCustomer.Rows[0]["ReceiveType"]);
+                        int iReceiveType = LBConverter.ToInt32(dtCustomer.Rows[0]["ReceiveType"]);
+                        this.txtReceiveType.SelectedValue = iReceiveType;
+
+                        //if (iReceiveType == 0|| iReceiveType == 3|| iReceiveType == 4)//现金、免费、汽油外购客户需要将客户充值余额隐藏
+                        //{
+                        //    lblCustomerRemainAmount.Visible=label4.Visible = false;
+                        //}
+                        //else
+                        //{
+                        //    lblCustomerRemainAmount.Visible = label4.Visible = true;
+                        //}
                     }
                 }
 
@@ -983,6 +994,13 @@ namespace LB.MainForm
         {
             try
             {
+                long lCustomerID = LBConverter.ToInt64(this.txtCustomerID.TextBox.SelectedItemID);
+                if (lCustomerID > 0)
+                {
+                    //校验预付客户余额是否低于预警值
+                    VerifyAmountNotEnough(lCustomerID);
+                }
+
                 VerifyDeviceIsSteady();//校验地磅数值是否稳定以及红外线对射是否正常
 
                 if (_WeightType== enWeightType.WeightIn)
@@ -2688,6 +2706,47 @@ namespace LB.MainForm
         }
 
         #endregion -- 根据权限设置按钮的只读属性 --
+
+        #region -- 校验预付客户是否余额不足 --
+
+        private void VerifyAmountNotEnough(long lCustomerID)
+        {
+            using (DataTable dtCustomer = ExecuteSQL.CallView(112, "AmountNotEnough,ReceiveType,TotalReceivedAmount,SalesReceivedAmount", "CustomerID=" + lCustomerID.ToString(), ""))
+            {
+                if (dtCustomer.Rows.Count > 0)
+                {
+                    decimal decTotalReceivedAmount = LBConverter.ToDecimal(dtCustomer.Rows[0]["TotalReceivedAmount"]);
+                    decimal decSalesReceivedAmount = LBConverter.ToDecimal(dtCustomer.Rows[0]["SalesReceivedAmount"]);
+                    decimal decAmountNotEnough = LBConverter.ToDecimal(dtCustomer.Rows[0]["AmountNotEnough"]);//预警值
+                    int iReceiveType = LBConverter.ToInt32(dtCustomer.Rows[0]["ReceiveType"]);
+
+                    if (iReceiveType == 1)//预付客户需要校验余额是否低于预警值
+                    {
+                        decimal decWarmAmount = 0;
+                        if (decAmountNotEnough > 0)
+                        {
+                            decWarmAmount = decAmountNotEnough;
+                        }
+                        else
+                        {
+                            //预付客户充值余额预警值
+                            int iAmountNotEnough;
+                            SysConfigValue.GetSysConfig("AmountNotEnough", out iAmountNotEnough);
+                            decWarmAmount = iAmountNotEnough;
+                        }
+                        if (decWarmAmount > 0)
+                        {
+                            if (decTotalReceivedAmount - decSalesReceivedAmount < decWarmAmount)
+                            {
+                                LB.WinFunction.LBCommonHelper.ShowCommonMessage("该客户余额低于" + decWarmAmount.ToString("0") + "元，请通知客户及时充值！");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        #endregion
 
     }
 

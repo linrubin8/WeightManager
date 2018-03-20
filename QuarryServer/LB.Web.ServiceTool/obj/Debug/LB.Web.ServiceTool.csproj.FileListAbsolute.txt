@@ -5,6 +5,5 @@ H:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceTool\obj\Debug\LB.Web.Serv
 H:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceTool\obj\Debug\LB.Web.ServiceTool.csprojResolveAssemblyReference.cache
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\LB.Web.ServiceTool.dll
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\LB.Web.ServiceTool.pdb
-G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceTool\obj\Debug\LB.Web.ServiceTool.csprojResolveAssemblyReference.cache
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceTool\obj\Debug\LB.Web.ServiceTool.dll
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceTool\obj\Debug\LB.Web.ServiceTool.pdb

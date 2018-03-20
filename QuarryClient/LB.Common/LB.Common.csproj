@@ -79,6 +79,7 @@
     <Compile Include="Common\Camera\ViewCamera.Designer.cs">
       <DependentUpon>ViewCamera.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\CHCNetSDK.cs" />
     <Compile Include="Common\CommonHelper.cs" />
     <Compile Include="Common\HikSDK.cs" />
     <Compile Include="Common\LBConst.cs" />

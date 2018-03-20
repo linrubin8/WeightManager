@@ -423,7 +423,10 @@ namespace LB.Controls.LBTextBox
             {
                 if (SelectedItemID != null)
                 {
-                    return this.selectedEntry.DataBindItem;
+                    if (this.selectedEntry != null)
+                    {
+                        return this.selectedEntry.DataBindItem;
+                    }
                 }
                 return null;
             }

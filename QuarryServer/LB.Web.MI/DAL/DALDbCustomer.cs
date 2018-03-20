@@ -13,7 +13,7 @@ namespace LB.Web.MI.DAL
         public void Customer_Insert(FactoryArgs args, out t_BigID CustomerID, t_String CustomerCode,t_String CustomerName, t_String Contact, t_String Phone, t_String Address, 
             t_Bool CarIsLimit,t_ID AmountType, t_String LicenceNum, t_String Description,t_Bool IsForbid,t_ID ReceiveType,
             t_Decimal CreditAmount,t_Bool IsDisplayPrice, t_Bool IsDisplayAmount, t_Bool IsPrintAmount, t_Bool IsAllowOverFul,
-            t_Bool IsAllowEmptyIn)
+            t_Bool IsAllowEmptyIn, t_Decimal AmountNotEnough)
         {
             CarIsLimit.IsNullToZero();
             IsDisplayPrice.IsNullToZero();
@@ -48,14 +48,15 @@ namespace LB.Web.MI.DAL
             parms.Add(new LBDbParameter("CreateTime", new t_DTSmall(DateTime.Now)));
             parms.Add(new LBDbParameter("ChangeBy", new t_String(args.LoginName)));
             parms.Add(new LBDbParameter("ChangeTime", new t_DTSmall(DateTime.Now)));
+            parms.Add(new LBDbParameter("AmountNotEnough", AmountNotEnough));
 
             string strSQL = @"
 insert into dbo.DbCustomer(CustomerCode,CustomerName, Contact, Phone, Address, CarIsLimit, AmountType, LicenceNum, 
     Description, IsForbid, ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, 
-    CreateBy, CreateTime, ChangeBy, ChangeTime,IsAllowEmptyIn)
+    CreateBy, CreateTime, ChangeBy, ChangeTime,IsAllowEmptyIn,AmountNotEnough)
 values(@CustomerCode, @CustomerName, @Contact, @Phone, @Address, @CarIsLimit, @AmountType, @LicenceNum, 
     @Description, @IsForbid, @ReceiveType, @CreditAmount, @IsDisplayPrice, @IsDisplayAmount, @IsPrintAmount, @IsAllowOverFul, 
-    @CreateBy, @CreateTime, @ChangeBy, @ChangeTime,@IsAllowEmptyIn)
+    @CreateBy, @CreateTime, @ChangeBy, @ChangeTime,@IsAllowEmptyIn,@AmountNotEnough)
 
 set @CustomerID = @@identity
 ";
@@ -66,7 +67,7 @@ set @CustomerID = @@identity
         public void Customer_Update(FactoryArgs args, t_BigID CustomerID, t_String CustomerName, t_String Contact, t_String Phone, t_String Address,
             t_Bool CarIsLimit, t_ID AmountType, t_String LicenceNum, t_String Description, t_Bool IsForbid, t_ID ReceiveType,
             t_Decimal CreditAmount, t_Bool IsDisplayPrice, t_Bool IsDisplayAmount, t_Bool IsPrintAmount, t_Bool IsAllowOverFul,
-            t_Bool IsAllowEmptyIn)
+            t_Bool IsAllowEmptyIn, t_Decimal AmountNotEnough)
         {
             CarIsLimit.IsNullToZero();
             IsDisplayPrice.IsNullToZero();
@@ -97,6 +98,7 @@ set @CustomerID = @@identity
             parms.Add(new LBDbParameter("IsAllowEmptyIn", IsAllowEmptyIn));
             parms.Add(new LBDbParameter("ChangeBy", new t_String(args.LoginName)));
             parms.Add(new LBDbParameter("ChangeTime", new t_DTSmall(DateTime.Now)));
+            parms.Add(new LBDbParameter("AmountNotEnough", AmountNotEnough));
 
             string strSQL = @"
 update dbo.DbCustomer
@@ -117,7 +119,8 @@ set CustomerName = @CustomerName,
     IsAllowOverFul=@IsAllowOverFul, 
     ChangeBy=@ChangeBy, 
     ChangeTime=@ChangeTime,
-    IsAllowEmptyIn = @IsAllowEmptyIn
+    IsAllowEmptyIn = @IsAllowEmptyIn,   
+    AmountNotEnough = @AmountNotEnough
 where CustomerID =  @CustomerID
 ";
             DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);

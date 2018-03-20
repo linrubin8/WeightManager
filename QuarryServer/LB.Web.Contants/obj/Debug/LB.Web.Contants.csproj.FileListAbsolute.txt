@@ -15,4 +15,3 @@ G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\LB.Web.C
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\LB.Web.Contants.pdb
 G:\MyProject\WeightManager\QuarryServer\LB.Web.Contants\obj\Debug\LB.Web.Contants.dll
 G:\MyProject\WeightManager\QuarryServer\LB.Web.Contants\obj\Debug\LB.Web.Contants.pdb
-G:\MyProject\WeightManager\QuarryServer\LB.Web.Contants\obj\Debug\LB.Web.Contants.csprojResolveAssemblyReference.cache

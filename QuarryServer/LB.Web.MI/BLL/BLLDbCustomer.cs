@@ -42,7 +42,7 @@ namespace LB.Web.MI.BLL
         public void Customer_Insert(FactoryArgs args, out t_BigID CustomerID,out t_String CustomerCode, t_String CustomerName, t_String Contact, t_String Phone, t_String Address,
             t_Bool CarIsLimit, t_ID AmountType, t_String LicenceNum, t_String Description, t_Bool IsForbid, t_ID ReceiveType,
             t_Decimal CreditAmount, t_Bool IsDisplayPrice, t_Bool IsDisplayAmount, t_Bool IsPrintAmount, t_Bool IsAllowOverFul,
-            t_Bool IsAllowEmptyIn)
+            t_Bool IsAllowEmptyIn,t_Decimal AmountNotEnough)
         {
             CustomerCode = new t_String();
             CustomerID = new t_BigID();
@@ -70,13 +70,13 @@ namespace LB.Web.MI.BLL
                 CustomerCode.SetValueWithObject("K"+CodeIndex.ToString());
 
             _DALDbCustomer.Customer_Insert(args, out CustomerID, CustomerCode, CustomerName, Contact, Phone, Address, CarIsLimit, AmountType, LicenceNum, Description,
-                IsForbid, ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, IsAllowEmptyIn);
+                IsForbid, ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, IsAllowEmptyIn, AmountNotEnough);
         }
 
         public void Customer_Update(FactoryArgs args, t_BigID CustomerID, t_String CustomerName, t_String Contact, t_String Phone, t_String Address,
             t_Bool CarIsLimit, t_ID AmountType, t_String LicenceNum, t_String Description, t_Bool IsForbid, t_ID ReceiveType,
             t_Decimal CreditAmount, t_Bool IsDisplayPrice, t_Bool IsDisplayAmount, t_Bool IsPrintAmount, t_Bool IsAllowOverFul,
-            t_Bool IsAllowEmptyIn)
+            t_Bool IsAllowEmptyIn, t_Decimal AmountNotEnough)
         {
             IsAllowEmptyIn.IsNullToZero();
             using (DataTable dtCustomer = _DALDbCustomer.GetCustomerByName(args, CustomerID, CustomerName))
@@ -88,7 +88,7 @@ namespace LB.Web.MI.BLL
             }
 
             _DALDbCustomer.Customer_Update(args, CustomerID, CustomerName, Contact, Phone, Address, CarIsLimit, AmountType, LicenceNum, Description,
-                IsForbid, ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, IsAllowEmptyIn);
+                IsForbid, ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, IsAllowEmptyIn, AmountNotEnough);
         }
 
         public void Customer_Delete(FactoryArgs args, t_BigID CustomerID)

@@ -277,6 +277,7 @@ namespace LB.MI
             parmCol.Add(new LBParameter("IsPrintAmount", enLBDbType.Boolean, this.chkIsPrintAmount.Checked));
             parmCol.Add(new LBParameter("IsAllowOverFul", enLBDbType.Boolean, this.chkIsAllowOverFul.Checked));
             parmCol.Add(new LBParameter("IsAllowEmptyIn", enLBDbType.Boolean, this.chkIsAllowEmptyIn.Checked));
+            parmCol.Add(new LBParameter("AmountNotEnough", enLBDbType.Decimal, this.txtAmountNotEnough.Text));
             DataSet dsReturn;
             Dictionary<string, object> dictValue;
             ExecuteSQL.CallSP(iSPType, parmCol, out dsReturn, out dictValue);
@@ -312,6 +313,7 @@ namespace LB.MI
                     this.txtCreditAmount.Text = drHeader["CreditAmount"].ToString();
                     this.txtAmountType.SelectedValue = LBConverter.ToInt32(drHeader["AmountType"]);
                     this.txtReceiveType.SelectedValue = LBConverter.ToInt32(drHeader["ReceiveType"]);
+                    this.txtAmountNotEnough.Text = drHeader["AmountNotEnough"].ToString();
 
                     this.chkCarIsLimit.Checked = LBConverter.ToBoolean(drHeader["CarIsLimit"]);
                     this.chkIsDisplayPrice.Checked = LBConverter.ToBoolean(drHeader["IsDisplayPrice"]);

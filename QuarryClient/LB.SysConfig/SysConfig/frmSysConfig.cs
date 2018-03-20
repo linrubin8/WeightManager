@@ -64,6 +64,11 @@ namespace LB.SysConfig.SysConfig
                         int.TryParse(strConfigValue, out iValue);
                         this.txtAllowPrintOutReportCount.Text = iValue.ToString();
                         break;
+
+                    case "AmountNotEnough"://预付客户充值余额预警值
+                        int.TryParse(strConfigValue, out iValue);
+                        this.txtAmountNotEnough.Text = iValue.ToString();
+                        break;
                 }
             }
         }
@@ -89,6 +94,10 @@ namespace LB.SysConfig.SysConfig
             drNew = dtSPIN.NewRow();
             drNew["SysConfigFieldName"] = "AllowPrintOutReportCount";
             drNew["SysConfigValue"] = this.txtAllowPrintOutReportCount.Text;
+            dtSPIN.Rows.Add(drNew);
+            drNew = dtSPIN.NewRow();
+            drNew["SysConfigFieldName"] = "AmountNotEnough";
+            drNew["SysConfigValue"] = this.txtAmountNotEnough.Text;
             dtSPIN.Rows.Add(drNew);
 
             DataSet dsReturn;
