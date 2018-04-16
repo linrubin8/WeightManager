@@ -25,5 +25,7 @@ namespace IFaxBusiness
         DataTable ReadClientFileInfo();
 
         void ReadFileByte(string strFileFullName, int iPosition, int iMaxLength, out byte[] bSplitFile);
+
+        void ReadRegister(out bool IsRegister, out int ProductType, out string RegisterInfoJson, out DateTime DeadLine);
     }
 }

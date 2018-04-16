@@ -59,6 +59,10 @@
       <Project>{dad2cbf3-e516-412b-8350-e4e0e717b09e}</Project>
       <Name>LB.Web.Contants</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LB.Web.Encrypt\LB.Web.Encrypt.csproj">
+      <Project>{cdf00a86-5bfa-4b80-aa97-fb96ad59fde8}</Project>
+      <Name>LB.Web.Encrypt</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

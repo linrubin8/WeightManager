@@ -5,6 +5,5 @@ H:\MyProject\WeightManager\QuarryServer\IFaxBusiness\obj\Release\IFaxBusiness.dl
 H:\MyProject\WeightManager\QuarryServer\IFaxBusiness\obj\Release\IFaxBusiness.pdb
 G:\MyProject\WeightManager\QuarryServer\IFaxBusiness\bin\Release\IFaxBusiness.dll
 G:\MyProject\WeightManager\QuarryServer\IFaxBusiness\bin\Release\IFaxBusiness.pdb
-G:\MyProject\WeightManager\QuarryServer\IFaxBusiness\obj\Release\IFaxBusiness.csprojResolveAssemblyReference.cache
 G:\MyProject\WeightManager\QuarryServer\IFaxBusiness\obj\Release\IFaxBusiness.dll
 G:\MyProject\WeightManager\QuarryServer\IFaxBusiness\obj\Release\IFaxBusiness.pdb

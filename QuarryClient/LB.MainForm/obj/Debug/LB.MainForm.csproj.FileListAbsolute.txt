@@ -77,13 +77,4 @@ G:\MyProject\WeightManager\QuarryClient\LB.MainForm\obj\Debug\LB.MainForm.Proper
 G:\MyProject\WeightManager\QuarryClient\LB.MainForm\obj\Debug\LB.MainForm.WeightForm.resources
 G:\MyProject\WeightManager\QuarryClient\LB.MainForm\obj\Debug\LB.MainForm.WeightForm2.resources
 G:\MyProject\WeightManager\QuarryClient\LB.MainForm\obj\Debug\LB.MainForm.csproj.GenerateResource.Cache
-G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug\IFaxBusiness.dll
-G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug\LB.StyleResource.dll
-G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug\FastReport.pdb
-G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug\FastReport.xml
-G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug\LB.Base.pdb
-G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug\LB.Common.pdb
-G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug\LB.Controls.pdb
-G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug\LB.Login.pdb
-G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug\LB.SysConfig.pdb
-G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug\LB.StyleResource.pdb
+G:\MyProject\WeightManager\QuarryClient\LB.MainForm\obj\Debug\LB.MainForm.MainForm.frmReceiveSerialData.resources

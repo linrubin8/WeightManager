@@ -71,6 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Args\LBSerialDataArgs.cs" />
     <Compile Include="Common\Args\LBQueryFilterArgs.cs" />
     <Compile Include="Common\Camera\PingCamera.cs" />
     <Compile Include="Common\Camera\ViewCamera.cs">
@@ -90,7 +91,9 @@
     <Compile Include="Common\LBInFrareHelper.cs" />
     <Compile Include="Common\LBLog.cs" />
     <Compile Include="Common\LBPermission.cs" />
+    <Compile Include="Common\LBPortHelper.cs" />
     <Compile Include="Common\LBSerialHelper.cs" />
+    <Compile Include="Common\Serial\SerialObject.cs" />
     <Compile Include="Common\SysConfigValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

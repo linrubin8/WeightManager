@@ -346,5 +346,12 @@ namespace LB.WinFunction
         }
 
         #endregion
+
+        //校验软件权限
+        public static void ReadRegister(out bool IsRegister,out int ProductType, out string RegisterInfoJson, out DateTime DeadLine)
+        {
+            IFaxBusiness.IMyFaxBusiness webservice = GetWebService();
+            webservice.ReadRegister(out IsRegister,out ProductType,out RegisterInfoJson, out DeadLine);
+        }
     }
 }

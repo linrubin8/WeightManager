@@ -43,6 +43,7 @@ namespace LB.MainForm
         {
             InitializeComponent();
             this.pnlSteadyStatus.Paint += PnlSteadyStatus_Paint;
+            this.pnlWebSteadyStatus.Paint += PnlWebSteadyStatus_Paint;
         }
 
         private void PnlSteadyStatus_Paint(object sender, PaintEventArgs e)
@@ -68,6 +69,35 @@ namespace LB.MainForm
                 
                 e.Graphics.FillEllipse(brush, new RectangleF((pnlSteadyStatus.Width- fwidth)/2, (pnlSteadyStatus.Height - fwidth) / 2, fwidth, fwidth));
                 e.Graphics.DrawEllipse(pen, new RectangleF((pnlSteadyStatus.Width - fwidth) / 2, (pnlSteadyStatus.Height - fwidth) / 2, fwidth, fwidth));
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void PnlWebSteadyStatus_Paint(object sender, PaintEventArgs e)
+        {
+            try
+            {
+                float fwidth = 20;
+
+                Pen pen = new Pen(Brushes.Black);
+                Brush brush = Brushes.Green;
+                if (LBPortHelper.IsWebSteady)
+                {
+                    brush = Brushes.Green;
+                    this.lblWebSteady.Text = "稳定";
+                    this.lblWebSteady.ForeColor = Color.Green;
+                }
+                else
+                {
+                    brush = Brushes.Red;
+                    this.lblWebSteady.Text = "不稳定";
+                    this.lblWebSteady.ForeColor = Color.Red;
+                }
+
+                e.Graphics.FillEllipse(brush, new RectangleF((pnlWebSteadyStatus.Width - fwidth) / 2, (pnlWebSteadyStatus.Height - fwidth) / 2, fwidth, fwidth));
+                e.Graphics.DrawEllipse(pen, new RectangleF((pnlWebSteadyStatus.Width - fwidth) / 2, (pnlWebSteadyStatus.Height - fwidth) / 2, fwidth, fwidth));
             }
             catch (Exception ex)
             {
@@ -112,6 +142,8 @@ namespace LB.MainForm
 
             mVersionThread = new Thread(VerifyRefleshVersion);
             mVersionThread.Start();
+
+            //LBSerialHelper.LBSerialDataEvent += LBSerialHelper_LBSerialDataEvent;
         }
 
         #region -- 校验刷新版本号 --
@@ -150,7 +182,7 @@ namespace LB.MainForm
         private void InitData()
         {
             LBPermission.ReadAllPermission();//加载所有权限信息
-
+            LBPortHelper.StartCheckConnect();//启动网络检测进程
             LBLog.AssemblyStart();
 
             this.grdMain.LBLoadConst();
@@ -224,15 +256,19 @@ namespace LB.MainForm
             try
             {
                 this.pnlSteadyStatus.Invalidate();
+                this.pnlWebSteadyStatus.Invalidate();
                 this.lblWeight.Text = LBSerialHelper.WeightValue.ToString();
                 this.pnlCarHeader.BackColor = LBInFrareHelper.HeaderClosed ? Color.Green : Color.Red;
                 this.pnlCarTail.BackColor = LBInFrareHelper.TailClosed ? Color.Green : Color.Red;
 
-                //自动刷新
-                if (CientVersion_SaleBill != ServerVersion_SaleBill)
+                //自动刷新(网络稳定状态下才自动刷新)
+                if (LBPortHelper.IsWebSteady)
                 {
-                    LoadAllSalesBill();
-                    CientVersion_SaleBill = ServerVersion_SaleBill;
+                    if (CientVersion_SaleBill != ServerVersion_SaleBill)
+                    {
+                        LoadAllSalesBill();
+                        CientVersion_SaleBill = ServerVersion_SaleBill;
+                    }
                 }
             }
             catch (Exception ex)
@@ -1451,6 +1487,7 @@ namespace LB.MainForm
 
             long lItemID = LBConverter.ToInt64(this.txtItemID.TextBox.SelectedItemID);
             long lCustomerID = LBConverter.ToInt64(this.txtCustomerID.TextBox.SelectedItemID);
+            int iCalculateType = LBConverter.ToInt32(this.txtCalculateType.SelectedValue);//0按重量计算 1按车计算
             decimal decCustomerRemainAmount = 0;
             bool bolNeedCreateInBill = false;//是否需要生成入场单
             if (lSaleCarInBillID == 0)//如果入场单号为空，则判断该客户是否允许空磅入场，如果是，则先读取默认皮重然后自动生成入场订单
@@ -1467,17 +1504,26 @@ namespace LB.MainForm
                         decimal decSalesReceivedAmount = LBConverter.ToDecimal(drvCustomer["SalesReceivedAmount"]);
                         decCustomerRemainAmount = decTotalReceivedAmount - decSalesReceivedAmount;
 
-                        if (decDefaultCarWeight <= 0)
+                        if (iCalculateType == 0)
                         {
-                            LB.WinFunction.LBCommonHelper.ShowCommonMessage("该车辆未设置默认皮重");
-                            return;
-                        }
-
-                        if (LB.WinFunction.LBCommonHelper.ConfirmMessage("该车牌默认皮重为【" + decDefaultCarWeight.ToString("0") + "】,是否读取默认皮重值？", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                        {
-                            this.txtCarTare.Text = decDefaultCarWeight.ToString("0");
                             bolNeedCreateInBill = true;
+                            this.txtCarTare.Text = decDefaultCarWeight.ToString("0");
                         }
+                        else
+                        {
+                            if (decDefaultCarWeight <= 0)
+                            {
+                                LB.WinFunction.LBCommonHelper.ShowCommonMessage("该车辆未设置默认皮重");
+                                return;
+                            }
+
+                            if (LB.WinFunction.LBCommonHelper.ConfirmMessage("该车牌默认皮重为【" + decDefaultCarWeight.ToString("0") + "】,是否读取默认皮重值？", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                this.txtCarTare.Text = decDefaultCarWeight.ToString("0");
+                                bolNeedCreateInBill = true;
+                            }
+                        }
+                        
                     }
                 }
             }
@@ -1485,9 +1531,8 @@ namespace LB.MainForm
             decimal decCarTare = LBConverter.ToDecimal(this.txtCarTare.Text);
 
             int iReceiveType = LBConverter.ToInt32(this.txtReceiveType.SelectedValue);
-            int iCalculateType = LBConverter.ToInt32(this.txtCalculateType.SelectedValue);
             decimal decTotalWeight = LBConverter.ToDecimal(this.txtTotalWeight.Text);
-            decimal decSuttleWeight = LBConverter.ToDecimal(this.txtSuttleWeight.Text);
+            decimal decSuttleWeight = decTotalWeight - decCarTare; //LBConverter.ToDecimal(this.txtSuttleWeight.Text);
             decimal decPrice = LBConverter.ToDecimal(this.txtPrice.Text);
             decimal decAmount = LBConverter.ToDecimal(this.txtAmount.Text);
 
@@ -1504,7 +1549,7 @@ namespace LB.MainForm
             {
                 throw new Exception("当前【净重】值为0，无法保存！");
             }
-            if (decCarTare == 0)
+            if (iCalculateType==1 && decCarTare == 0)
             {
                 throw new Exception("当前【皮重】值为0，无法保存！");
             }
@@ -1803,7 +1848,7 @@ namespace LB.MainForm
                 e.Cancel = true;
                 return;
             }
-
+            //LBSerialHelper.LBSerialDataEvent -= LBSerialHelper_LBSerialDataEvent;
             if (mVersionThread != null && mVersionThread.IsAlive)
             {
                 mVersionThread.Abort();
@@ -1824,6 +1869,7 @@ namespace LB.MainForm
             
             LBSerialHelper.StopTimer();
             LBInFrareHelper.StopTimer();
+            LBPortHelper.EndThread();
 
             foreach (KeyValuePair<ViewCamera,Panel> keyvalue in dictCamera)
             {
@@ -2747,6 +2793,42 @@ namespace LB.MainForm
         }
 
         #endregion
+
+        ////frmReceiveSerialData _frmReceiveData = null;
+        private void lblWeight_Click(object sender, EventArgs e)
+        {
+            //if (_frmReceiveData == null)
+            //{
+            //    _frmReceiveData = new MainForm.frmReceiveSerialData();
+            //    _frmReceiveData.FormClosed += _frmReceiveData_FormClosed;
+            //}
+            //_frmReceiveData.ShowDialog();
+
+        }
+
+        //private void _frmReceiveData_FormClosed(object sender, FormClosedEventArgs e)
+        //{
+        //    if (_frmReceiveData != null)
+        //    {
+        //        _frmReceiveData = null;
+        //    }
+        //}
+
+        private void LBSerialHelper_LBSerialDataEvent(Common.Args.LBSerialDataArgs e)
+        {
+            try
+            {
+                //string strReceiveData = e.ReceiveData;
+                //if (_frmReceiveData != null)
+                //{
+                //    _frmReceiveData.AppendReceiveData(strReceiveData);
+                //}
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
 
     }
 

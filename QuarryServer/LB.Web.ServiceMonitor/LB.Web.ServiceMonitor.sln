@@ -27,6 +27,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LB.Web.RP", "..\LB.Web.RP\L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LB.RMT.Base", "..\LB.RMT.Base\LB.RMT.Base.csproj", "{99BA582D-1182-440F-BC1C-A8FFB9D70D0F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LB.Web.ServerTemp", "..\LB.Web.ServerTemp\LB.Web.ServerTemp.csproj", "{DE8A2928-9BF6-4AB9-A593-ECCBAB04A206}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LB.Web.Encrypt", "..\LB.Web.Encrypt\LB.Web.Encrypt.csproj", "{CDF00A86-5BFA-4B80-AA97-FB96AD59FDE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +85,14 @@ Global
 		{99BA582D-1182-440F-BC1C-A8FFB9D70D0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99BA582D-1182-440F-BC1C-A8FFB9D70D0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99BA582D-1182-440F-BC1C-A8FFB9D70D0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE8A2928-9BF6-4AB9-A593-ECCBAB04A206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE8A2928-9BF6-4AB9-A593-ECCBAB04A206}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE8A2928-9BF6-4AB9-A593-ECCBAB04A206}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE8A2928-9BF6-4AB9-A593-ECCBAB04A206}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDF00A86-5BFA-4B80-AA97-FB96AD59FDE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDF00A86-5BFA-4B80-AA97-FB96AD59FDE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDF00A86-5BFA-4B80-AA97-FB96AD59FDE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDF00A86-5BFA-4B80-AA97-FB96AD59FDE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

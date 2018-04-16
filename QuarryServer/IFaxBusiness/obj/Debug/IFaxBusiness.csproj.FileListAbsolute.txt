@@ -16,3 +16,4 @@ G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\IFaxBusi
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\IFaxBusiness.pdb
 G:\MyProject\WeightManager\QuarryServer\IFaxBusiness\obj\Debug\IFaxBusiness.dll
 G:\MyProject\WeightManager\QuarryServer\IFaxBusiness\obj\Debug\IFaxBusiness.pdb
+G:\MyProject\WeightManager\QuarryServer\IFaxBusiness\obj\Debug\IFaxBusiness.csprojResolveAssemblyReference.cache

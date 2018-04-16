@@ -41,13 +41,8 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="IFaxBusiness, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LB.MainForm\bin\Debug\IFaxBusiness.dll</HintPath>
-    </Reference>
-    <Reference Include="LB.Web.IRemoting, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LB.MainForm\bin\Debug\LB.Web.IRemoting.dll</HintPath>
+    <Reference Include="IFaxBusiness">
+      <HintPath>..\LB.MainForm\bin\Release\IFaxBusiness.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

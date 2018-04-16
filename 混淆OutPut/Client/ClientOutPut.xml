@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE dotfuscator SYSTEM "http://www.preemptive.com/dotfuscator/dtd/dotfuscator_v2.3.dtd">
+<dotfuscator version="2.3">
+  <!--This is application generated code. Do not edit manually.-->
+  <propertylist>
+    <property name="ILASM_v4.0.30319" value="C:\Windows\Microsoft.NET\Framework\v4.0.30319\ilasm.exe" />
+    <property name="ILDASM_v4.0.30319" value="C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1A\bin\NETFX 4.5.1 Tools\ildasm.exe" />
+  </propertylist>
+  <input>
+    <loadpaths />
+    <asmlist>
+      <inputassembly refid="0833207e-82b8-4c9d-9cf6-cb3568e1acad">
+        <option>honoroas</option>
+        <option>stripoa</option>
+        <option>library</option>
+        <option>transformxaml</option>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="FaxBusiness.dll" />
+      </inputassembly>
+      <inputassembly refid="c40299b6-1e1a-44a4-baae-5e427044aa6f">
+        <option>honoroas</option>
+        <option>stripoa</option>
+        <option>library</option>
+        <option>transformxaml</option>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="IFaxBusiness.dll" />
+      </inputassembly>
+      <inputassembly refid="1c97cd5b-1074-47c3-a277-67c7e7acb6ee">
+        <option>honoroas</option>
+        <option>stripoa</option>
+        <option>library</option>
+        <option>transformxaml</option>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.Base.dll" />
+      </inputassembly>
+      <inputassembly refid="67c9e094-7eab-4d01-9bb2-1bdca981df2b">
+        <option>honoroas</option>
+        <option>stripoa</option>
+        <option>library</option>
+        <option>transformxaml</option>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.Common.dll" />
+      </inputassembly>
+      <inputassembly refid="c32f8a85-9878-49c3-8c61-f931a3acea30">
+        <option>honoroas</option>
+        <option>stripoa</option>
+        <option>library</option>
+        <option>transformxaml</option>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.Controls.dll" />
+      </inputassembly>
+      <inputassembly refid="86fbc188-5266-485f-bec3-9dcdf8b920ea">
+        <option>honoroas</option>
+        <option>stripoa</option>
+        <option>library</option>
+        <option>transformxaml</option>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.Login.dll" />
+      </inputassembly>
+      <inputassembly refid="c2a987d0-751a-4694-b236-55e5d38a7367">
+        <option>honoroas</option>
+        <option>stripoa</option>
+        <option>library</option>
+        <option>transformxaml</option>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.MainForm.exe" />
+      </inputassembly>
+      <inputassembly refid="34c57055-e31a-4309-8064-8d3e8f9a57a9">
+        <option>honoroas</option>
+        <option>stripoa</option>
+        <option>library</option>
+        <option>transformxaml</option>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.MI.dll" />
+      </inputassembly>
+      <inputassembly refid="50b8b8cd-6299-484f-b09a-29109159f122">
+        <option>honoroas</option>
+        <option>stripoa</option>
+        <option>library</option>
+        <option>transformxaml</option>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.PageType.dll" />
+      </inputassembly>
+      <inputassembly refid="04dc1e1c-1526-4b15-b365-e45d8a247d66">
+        <option>honoroas</option>
+        <option>stripoa</option>
+        <option>library</option>
+        <option>transformxaml</option>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.Report.dll" />
+      </inputassembly>
+      <inputassembly refid="8b151efb-38d9-4007-b469-22d51f7bb65c">
+        <option>honoroas</option>
+        <option>stripoa</option>
+        <option>library</option>
+        <option>transformxaml</option>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.RPReceive.dll" />
+      </inputassembly>
+      <inputassembly refid="feb8f057-2f5d-45be-ae30-a6ec4eb78512">
+        <option>honoroas</option>
+        <option>stripoa</option>
+        <option>library</option>
+        <option>transformxaml</option>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.StyleResource.dll" />
+      </inputassembly>
+      <inputassembly refid="18bfc200-9b59-419f-a584-c1dbfbb9abaf">
+        <option>honoroas</option>
+        <option>stripoa</option>
+        <option>library</option>
+        <option>transformxaml</option>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.SysConfig.dll" />
+      </inputassembly>
+    </asmlist>
+  </input>
+  <output>
+    <file dir="${configdir}\Dotfuscated" />
+  </output>
+  <renaming>
+    <option>enhancedOI</option>
+    <excludelist>
+      <assembly>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="FaxBusiness.dll" />
+      </assembly>
+      <assembly>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="IFaxBusiness.dll" />
+      </assembly>
+      <assembly>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.Base.dll" />
+      </assembly>
+      <assembly>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.Common.dll" />
+      </assembly>
+      <assembly>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.Controls.dll" />
+      </assembly>
+      <assembly>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.Login.dll" />
+      </assembly>
+      <assembly>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.MainForm.exe" />
+      </assembly>
+      <assembly>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.MI.dll" />
+      </assembly>
+      <assembly>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.PageType.dll" />
+      </assembly>
+      <assembly>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.Report.dll" />
+      </assembly>
+      <assembly>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.RPReceive.dll" />
+      </assembly>
+      <assembly>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.StyleResource.dll" />
+      </assembly>
+      <assembly>
+        <file dir="G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.SysConfig.dll" />
+      </assembly>
+    </excludelist>
+    <mapping>
+      <mapoutput overwrite="false">
+        <file dir="${configdir}\Dotfuscated" name="Map.xml" />
+      </mapoutput>
+    </mapping>
+    <referencerulelist>
+      <referencerule rulekey="{6655B10A-FD58-462d-8D4F-5B1316DFF0FF}" />
+      <referencerule rulekey="{229FD6F8-5BCC-427b-8F72-A7A413ECDF1A}" />
+      <referencerule rulekey="{2B7E7C8C-A39A-4db8-9DFC-6AFD38509061}" />
+      <referencerule rulekey="{494EA3BA-B947-44B5-BEE8-A11CC85AAF9B}" />
+      <referencerule rulekey="{89769974-93E9-4e71-8D92-BE70E855ACFC}" />
+      <referencerule rulekey="{7D9C8B02-2383-420f-8740-A9760394C2C1}" />
+    </referencerulelist>
+  </renaming>
+  <controlflow level="high" />
+  <stringencrypt />
+  <sos mergeruntime="true">
+    <option>dontsendtamper</option>
+  </sos>
+  <smartobfuscation>
+    <smartobfuscationreport verbosity="all" overwrite="false" />
+  </smartobfuscation>
+</dotfuscator>

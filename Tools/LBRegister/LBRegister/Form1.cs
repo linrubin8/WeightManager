@@ -22,7 +22,14 @@ namespace LBRegister
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string str = "Register=1;DeadLine="+this.txtDeadLine.Text;
+            int iProductType = 0;
+            if(this.rbWeight.Checked)
+                iProductType = 0;
+            else if(this.rbGrooveWeight.Checked)
+                iProductType = 1;
+            else if (this.rbGrooveCount.Checked)
+                iProductType = 2;
+            string str = "Register=1;ProductType="+ iProductType + ";DeadLine=" + this.txtDeadLine.Text;
             this.txtRegister.Text = EncryptAes(str, "linrubin"+this.txtSeries.Text);
         }
 
@@ -101,5 +108,10 @@ namespace LBRegister
         }
 
         #endregion
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

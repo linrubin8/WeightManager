@@ -1024,5 +1024,18 @@ namespace LB.Web.ServiceMonitor
                 MonitorHelper.DealWithError( err );
             }
         }
-	}
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmDisk frm = new ServiceMonitor.frmDisk();
+                frm.ShowDialog();
+            }
+            catch (Exception err)
+            {
+                MonitorHelper.DealWithError(err);
+            }
+        }
+    }
 }

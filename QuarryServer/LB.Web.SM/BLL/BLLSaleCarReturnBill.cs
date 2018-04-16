@@ -21,6 +21,7 @@ namespace LB.Web.SM.BLL
         private IBLLSaleCarInOutBill _IBLLSaleCarInOutBill;
         private IBLLDbErrorLog _IBLLDbErrorLog = null;
         private IBLLDbSystemConst _IBLLDbSystemConst = null;
+        private IBLLDbSysConfig _IBLLDbSysConfig = null;
         public BLLSaleCarReturnBill()
         {
             _DALSaleCarInOutBill = new DAL.DALSaleCarInOutBill();
@@ -28,6 +29,7 @@ namespace LB.Web.SM.BLL
             _IBLLSaleCarInOutBill = (IBLLSaleCarInOutBill)DBHelper.GetFunctionMethod(14100);
             _IBLLDbErrorLog = (IBLLDbErrorLog)DBHelper.GetFunctionMethod(20000);
             _IBLLDbSystemConst = (IBLLDbSystemConst)DBHelper.GetFunctionMethod(20100);
+            _IBLLDbSysConfig = (IBLLDbSysConfig)DBHelper.GetFunctionMethod(14300);
         }
 
         public override string GetFunctionName(int iFunctionType)
@@ -85,9 +87,18 @@ namespace LB.Web.SM.BLL
                 }
             }
 
+            //读取退货单号前缀
+            t_String SysConfigFieldName = new t_String("SaleReturnBillCode");
+            t_String SysConfigValue;
+            _IBLLDbSysConfig.GetConfigValue(args, SysConfigFieldName, out SysConfigValue);
+            if (SysConfigValue.Value == "")
+            {
+                SysConfigValue.Value = "TH";
+            }
+
             t_String SaleCarReturnBilCode = new t_String();
             //生成编码
-            string strBillFont = "TH" + DateTime.Now.ToString("yyyyMM") + "-";
+            string strBillFont = SysConfigValue.Value.TrimEnd() + DateTime.Now.ToString("yyyyMM") + "-";
             using (DataTable dtBillCode = _DALSaleCarReturnBill.GetMaxInBillCode(args, strBillFont))
             {
                 if (dtBillCode.Rows.Count > 0)

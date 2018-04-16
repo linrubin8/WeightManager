@@ -188,6 +188,7 @@
       <DependentUpon>ReportPreviewer.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Report\ReportRequestArgs.cs" />
+    <Compile Include="Controls\Report\ReportTemplateProcess.cs" />
     <Compile Include="Controls\Searcher\CtlSearcher.cs">
       <SubType>UserControl</SubType>
     </Compile>

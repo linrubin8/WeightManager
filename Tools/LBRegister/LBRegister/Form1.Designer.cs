@@ -35,6 +35,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtRegister = new System.Windows.Forms.TextBox();
+            this.rbWeight = new System.Windows.Forms.RadioButton();
+            this.rbGrooveWeight = new System.Windows.Forms.RadioButton();
+            this.rbGrooveCount = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // label1
@@ -56,7 +59,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 47);
+            this.label2.Location = new System.Drawing.Point(20, 81);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 2;
@@ -64,7 +67,7 @@
             // 
             // txtDeadLine
             // 
-            this.txtDeadLine.Location = new System.Drawing.Point(67, 47);
+            this.txtDeadLine.Location = new System.Drawing.Point(67, 77);
             this.txtDeadLine.Name = "txtDeadLine";
             this.txtDeadLine.Size = new System.Drawing.Size(304, 21);
             this.txtDeadLine.TabIndex = 3;
@@ -72,7 +75,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(151, 105);
+            this.button1.Location = new System.Drawing.Point(147, 131);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(102, 23);
             this.button1.TabIndex = 4;
@@ -83,7 +86,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 81);
+            this.label3.Location = new System.Drawing.Point(20, 107);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 12);
             this.label3.TabIndex = 5;
@@ -91,17 +94,54 @@
             // 
             // txtRegister
             // 
-            this.txtRegister.Location = new System.Drawing.Point(67, 78);
+            this.txtRegister.Location = new System.Drawing.Point(67, 104);
             this.txtRegister.Name = "txtRegister";
             this.txtRegister.ReadOnly = true;
             this.txtRegister.Size = new System.Drawing.Size(304, 21);
             this.txtRegister.TabIndex = 6;
             // 
+            // rbWeight
+            // 
+            this.rbWeight.AutoSize = true;
+            this.rbWeight.Checked = true;
+            this.rbWeight.Location = new System.Drawing.Point(22, 46);
+            this.rbWeight.Name = "rbWeight";
+            this.rbWeight.Size = new System.Drawing.Size(71, 16);
+            this.rbWeight.TabIndex = 7;
+            this.rbWeight.TabStop = true;
+            this.rbWeight.Text = "称重软件";
+            this.rbWeight.UseVisualStyleBackColor = true;
+            // 
+            // rbGrooveWeight
+            // 
+            this.rbGrooveWeight.AutoSize = true;
+            this.rbGrooveWeight.Location = new System.Drawing.Point(110, 46);
+            this.rbGrooveWeight.Name = "rbGrooveWeight";
+            this.rbGrooveWeight.Size = new System.Drawing.Size(71, 16);
+            this.rbGrooveWeight.TabIndex = 8;
+            this.rbGrooveWeight.TabStop = true;
+            this.rbGrooveWeight.Text = "入槽称重";
+            this.rbGrooveWeight.UseVisualStyleBackColor = true;
+            // 
+            // rbGrooveCount
+            // 
+            this.rbGrooveCount.AutoSize = true;
+            this.rbGrooveCount.Location = new System.Drawing.Point(200, 46);
+            this.rbGrooveCount.Name = "rbGrooveCount";
+            this.rbGrooveCount.Size = new System.Drawing.Size(95, 16);
+            this.rbGrooveCount.TabIndex = 9;
+            this.rbGrooveCount.TabStop = true;
+            this.rbGrooveCount.Text = "车辆计数软件";
+            this.rbGrooveCount.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(383, 140);
+            this.ClientSize = new System.Drawing.Size(383, 166);
+            this.Controls.Add(this.rbGrooveCount);
+            this.Controls.Add(this.rbGrooveWeight);
+            this.Controls.Add(this.rbWeight);
             this.Controls.Add(this.txtRegister);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
@@ -111,6 +151,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -125,6 +166,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtRegister;
+        private System.Windows.Forms.RadioButton rbWeight;
+        private System.Windows.Forms.RadioButton rbGrooveWeight;
+        private System.Windows.Forms.RadioButton rbGrooveCount;
     }
 }
 

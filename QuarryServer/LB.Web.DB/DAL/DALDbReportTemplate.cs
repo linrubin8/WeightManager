@@ -66,18 +66,16 @@ values(@ReportTemplateID, @PrinterName, @MachineName, @IsManualPaperType,
         }
 
         public void Update(FactoryArgs args,
-           t_BigID ReportTemplateID, t_String ReportTemplateName, t_DTSmall TemplateFileTime, t_ID TemplateSeq,
-           t_String Description,t_Image TemplateData,
+           t_BigID ReportTemplateID, t_String ReportTemplateName, t_ID TemplateSeq,
+           t_String Description,
             t_String PrinterName, t_String MachineName, t_Bool IsManualPaperType, t_String PaperType, t_Bool IsManualPaperSize,
             t_ID PaperSizeHeight, t_ID PaperSizeWidth, t_Bool IsPaperTransverse, t_ID PrintCount)
         {
             LBDbParameterCollection parms = new LBDbParameterCollection();
             parms.Add(new LBDbParameter("ReportTemplateID", ReportTemplateID));
             parms.Add(new LBDbParameter("ReportTemplateName", ReportTemplateName));
-            parms.Add(new LBDbParameter("TemplateFileTime", TemplateFileTime));
             parms.Add(new LBDbParameter("TemplateSeq", TemplateSeq));
             parms.Add(new LBDbParameter("Description", Description));
-            parms.Add(new LBDbParameter("TemplateData", TemplateData));
 
             parms.Add(new LBDbParameter("PrinterName", PrinterName));
             parms.Add(new LBDbParameter("MachineName", MachineName));
@@ -91,10 +89,8 @@ values(@ReportTemplateID, @PrinterName, @MachineName, @IsManualPaperType,
             string strSQL = @"
 update dbo.DbReportTemplate
 set ReportTemplateName = @ReportTemplateName, 
-    TemplateFileTime=@TemplateFileTime,
     TemplateSeq=@TemplateSeq,
-    Description=@Description,
-    TemplateData=isnull(@TemplateData,TemplateData)
+    Description=@Description
 where ReportTemplateID = @ReportTemplateID
 
 if not exists(select 1 from dbo.DbPrinterConfig where ReportTemplateID = @ReportTemplateID)
@@ -118,6 +114,23 @@ begin
         PrintCount = @PrintCount
     where ReportTemplateID = @ReportTemplateID
 end
+";
+            DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);
+        }
+
+        public void UpdateReportTemplate(FactoryArgs args,
+           t_BigID ReportTemplateID, t_DTSmall TemplateFileTime,t_Image TemplateData)
+        {
+            LBDbParameterCollection parms = new LBDbParameterCollection();
+            parms.Add(new LBDbParameter("ReportTemplateID", ReportTemplateID));
+            parms.Add(new LBDbParameter("TemplateFileTime", TemplateFileTime));
+            parms.Add(new LBDbParameter("TemplateData", TemplateData));
+            string strSQL = @"
+update dbo.DbReportTemplate
+set TemplateFileTime=@TemplateFileTime,
+    TemplateData=isnull(@TemplateData,TemplateData)
+where ReportTemplateID = @ReportTemplateID
+
 ";
             DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);
         }

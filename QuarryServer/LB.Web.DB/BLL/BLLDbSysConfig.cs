@@ -2,6 +2,7 @@
 using LB.Web.Base.Helper;
 using LB.Web.Contants.DBType;
 using LB.Web.DB.DAL;
+using LB.Web.IBLL.IBLL.IBLLDB;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Text;
 
 namespace LB.Web.DB.BLL
 {
-    public class BLLDbSysConfig : IBLLFunction
+    public class BLLDbSysConfig : IBLLFunction, IBLLDbSysConfig
     {
         private DALDbSysConfig _DALDbSysConfig = null;
         public BLLDbSysConfig()

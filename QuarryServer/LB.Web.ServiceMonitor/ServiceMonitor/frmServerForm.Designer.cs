@@ -82,6 +82,7 @@
             this.picStatus4DBAutoBackUp = new System.Windows.Forms.PictureBox();
             this.txtName4DBAutoBackUp = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnRegister = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picStatus)).BeginInit();
             this.contextMenuIcon.SuspendLayout();
             this.tcService.SuspendLayout();
@@ -366,6 +367,7 @@
             // 
             // tpgM3
             // 
+            this.tpgM3.Controls.Add(this.btnRegister);
             this.tpgM3.Controls.Add(this.btnConfig);
             this.tpgM3.Controls.Add(this.btnWebLink);
             this.tpgM3.Controls.Add(this.btnReStart);
@@ -389,7 +391,7 @@
             // btnWebLink
             // 
             this.btnWebLink.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnWebLink.Location = new System.Drawing.Point(189, 204);
+            this.btnWebLink.Location = new System.Drawing.Point(234, 223);
             this.btnWebLink.Name = "btnWebLink";
             this.btnWebLink.Size = new System.Drawing.Size(90, 23);
             this.btnWebLink.TabIndex = 12;
@@ -622,6 +624,17 @@
             this.label4.TabIndex = 19;
             this.label4.Text = "服务名称：";
             // 
+            // btnRegister
+            // 
+            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRegister.Location = new System.Drawing.Point(27, 219);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(74, 20);
+            this.btnRegister.TabIndex = 13;
+            this.btnRegister.Text = "注册";
+            this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+            // 
             // frmServerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -707,5 +720,6 @@
 		private System.Windows.Forms.ToolStripMenuItem itemRestart4itemWebAutoUpdate;
 		private System.Windows.Forms.ToolStripMenuItem itemRestart4DBAutoBackUp;
         private System.Windows.Forms.Button btnWebLink;
-	}
+        private System.Windows.Forms.Button btnRegister;
+    }
 }

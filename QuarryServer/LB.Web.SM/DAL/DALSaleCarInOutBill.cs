@@ -50,7 +50,7 @@ order by SaleCarInBillCode desc
 
         public void InsertInBill(FactoryArgs args, out t_BigID SaleCarInBillID, t_String SaleCarInBillCode, t_BigID CarID,
             t_BigID ItemID, t_DTSmall BillDate, t_ID ReceiveType, t_ID CalculateType, t_Float CarTare, t_BigID CustomerID, t_String Description,
-            t_ID SaleBillType)
+            t_ID SaleBillType,t_BigID SourceSaleCarInBillID)
         {
             SaleCarInBillID = new t_BigID();
             LBDbParameterCollection parms = new LBDbParameterCollection();
@@ -65,15 +65,16 @@ order by SaleCarInBillCode desc
             parms.Add(new LBDbParameter("CustomerID", CustomerID));
             parms.Add(new LBDbParameter("Description", Description));
             parms.Add(new LBDbParameter("SaleBillType", SaleBillType));
+            parms.Add(new LBDbParameter("SourceSaleCarInBillID", SourceSaleCarInBillID));
             parms.Add(new LBDbParameter("CreateBy", new t_String(args.LoginName)));
 
             string strSQL = @"
 insert into dbo.SaleCarInBill(  SaleCarInBillCode, CarID,PrintCount,
             ItemID, BillDate, ReceiveType, BillStatus, CalculateType, CarTare, CustomerID,Description,
-            IsCancel, CreateBy, CreateTime,CancelByDate,SaleBillType)
+            IsCancel, CreateBy, CreateTime,CancelByDate,SaleBillType,SourceSaleCarInBillID)
 values( @SaleCarInBillCode, @CarID,0,
         @ItemID, @BillDate, @ReceiveType, 1, @CalculateType, @CarTare, @CustomerID,@Description,
-        0,@CreateBy,@BillDate,null,@SaleBillType)
+        0,@CreateBy,@BillDate,null,@SaleBillType,@SourceSaleCarInBillID)
 
 set @SaleCarInBillID = @@identity
 
@@ -673,6 +674,40 @@ where SaleCarOutBillID = @SaleCarOutBillID
 select 1
 from dbo.SaleCarInBill
 where ImportSaleCarInBillCode = @ImportSaleCarInBillCode
+";
+            DataTable dt = DBHelper.ExecuteQuery(args, strSQL, parms);
+            if (dt.Rows.Count > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool VerifyIfExistsSourceInBill(FactoryArgs args, t_BigID SourceSaleCarInBillID)
+        {
+            LBDbParameterCollection parms = new LBDbParameterCollection();
+            parms.Add(new LBDbParameter("SourceSaleCarInBillID", SourceSaleCarInBillID));
+            string strSQL = @"
+select 1
+from dbo.SaleCarInBill
+where SourceSaleCarInBillID = @SourceSaleCarInBillID
+";
+            DataTable dt = DBHelper.ExecuteQuery(args, strSQL, parms);
+            if (dt.Rows.Count > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool VerifyIfExistsSourceOutBill(FactoryArgs args, t_BigID SourceSaleCarOutBillID)
+        {
+            LBDbParameterCollection parms = new LBDbParameterCollection();
+            parms.Add(new LBDbParameter("SourceSaleCarOutBillID", SourceSaleCarOutBillID));
+            string strSQL = @"
+select 1
+from dbo.SaleCarOutBill
+where SourceSaleCarOutBillID = @SourceSaleCarOutBillID
 ";
             DataTable dt = DBHelper.ExecuteQuery(args, strSQL, parms);
             if (dt.Rows.Count > 0)

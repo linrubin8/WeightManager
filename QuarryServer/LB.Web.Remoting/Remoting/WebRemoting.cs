@@ -46,6 +46,7 @@ namespace LB.Web.Remoting
         private static bool mbolLoginSecure = false;
         public static void SetRemotingInfo(string strDBName, string strServer,bool bolLoginSecure,string strDBUser,string strDBPw)
         {
+            LB.Web.Encrypt.LBEncrypt.Decrypt();//校验注册信息
             mstrDBName = strDBName;
             mstrServer = strServer;
             mbolLoginSecure = bolLoginSecure;
@@ -540,6 +541,14 @@ from {1}
         {
             
            
+        }
+
+        public void ReadRegister(out bool IsRegister, out int ProductType, out string RegisterInfoJson, out DateTime DeadLine)
+        {
+            IsRegister = LB.Web.Encrypt.LBEncrypt.IsRegister;
+            DeadLine = LB.Web.Encrypt.LBEncrypt.DeadLine;
+            ProductType = LB.Web.Encrypt.LBEncrypt.ProductType;
+            RegisterInfoJson = LB.Web.Encrypt.LBEncrypt.RegisterInfoJson;
         }
 
         #region -- 数据压缩 --

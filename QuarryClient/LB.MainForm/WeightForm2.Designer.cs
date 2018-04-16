@@ -28,19 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WeightForm2));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WeightForm2));
             this.pnlRight = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlBill = new System.Windows.Forms.Panel();
-            this.grdMain = new LB.Controls.LBDataGridView();
+            this.grdMain = new LB.Controls.LBDataGridView(this.components);
+            this.SaleCarInBillCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaleCarOutBillCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CarNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CarTare = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SuttleWeightT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillDateIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillDateOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsCancel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.SaleCarInBillID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillStatus = new LB.Controls.LBDataGridViewComboBoxColumn();
             this.panel5 = new System.Windows.Forms.Panel();
             this.lblAllCar = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,6 +70,10 @@
             this.cbFilterType = new System.Windows.Forms.ComboBox();
             this.pnlBaseInfo = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.pnlWebSteadyStatus = new System.Windows.Forms.Panel();
+            this.lblWebSteady = new CCWin.SkinControl.SkinLabel();
+            this.skinLabel6 = new CCWin.SkinControl.SkinLabel();
+            this.skinLabel4 = new CCWin.SkinControl.SkinLabel();
             this.txtDescription = new LB.Controls.LBTextBox.CoolTextBox();
             this.lblSteady = new CCWin.SkinControl.SkinLabel();
             this.pnlSteadyStatus = new System.Windows.Forms.Panel();
@@ -80,8 +101,8 @@
             this.skinLabel15 = new CCWin.SkinControl.SkinLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.skinLabel5 = new CCWin.SkinControl.SkinLabel();
-            this.txtCalculateType = new LB.Controls.LBMetroComboBox();
-            this.txtReceiveType = new LB.Controls.LBMetroComboBox();
+            this.txtCalculateType = new LB.Controls.LBMetroComboBox(this.components);
+            this.txtReceiveType = new LB.Controls.LBMetroComboBox(this.components);
             this.skinLabel7 = new CCWin.SkinControl.SkinLabel();
             this.txtCarID = new LB.Controls.LBTextBox.CoolTextBox();
             this.skinLabel8 = new CCWin.SkinControl.SkinLabel();
@@ -103,54 +124,38 @@
             this.btnReadTareWeight = new System.Windows.Forms.Button();
             this.btnTotalWeight = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnDDSystemManager = new LB.Controls.LBToolStripDropDownButton();
-            this.btnChangePassword = new LB.Controls.LBToolStripMenuItem();
+            this.btnDDSystemManager = new LB.Controls.LBToolStripDropDownButton(this.components);
+            this.btnChangePassword = new LB.Controls.LBToolStripMenuItem(this.components);
             this.btnCancel = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDeviceConfig = new LB.Controls.LBToolStripMenuItem();
-            this.btnCameraConfig = new LB.Controls.LBToolStripMenuItem();
-            this.btnInfraredDeviceConfig = new LB.Controls.LBToolStripMenuItem();
-            this.btnWeightReportSet = new LB.Controls.LBToolStripMenuItem();
-            this.btnWeightReportSetIn = new LB.Controls.LBToolStripMenuItem();
-            this.btnWeightReportSetOut = new LB.Controls.LBToolStripMenuItem();
-            this.lbToolStripDropDownButton1 = new LB.Controls.LBToolStripDropDownButton();
-            this.btnAddCustomer = new LB.Controls.LBToolStripMenuItem();
-            this.btnCustomerManager = new LB.Controls.LBToolStripMenuItem();
-            this.lbToolStripDropDownButton2 = new LB.Controls.LBToolStripDropDownButton();
-            this.btnAddCar = new LB.Controls.LBToolStripMenuItem();
-            this.btnCarQuery = new LB.Controls.LBToolStripMenuItem();
-            this.btnDropDownReceive = new LB.Controls.LBToolStripDropDownButton();
-            this.btnRPReceive = new LB.Controls.LBToolStripMenuItem();
-            this.btnRPReceiveList = new LB.Controls.LBToolStripMenuItem();
-            this.btnDDBaseManager = new LB.Controls.LBToolStripDropDownButton();
-            this.btnItemBaseManager = new LB.Controls.LBToolStripMenuItem();
-            this.lbToolStripDropDownButton3 = new LB.Controls.LBToolStripDropDownButton();
-            this.btnAddChangePriceBill = new LB.Controls.LBToolStripMenuItem();
-            this.btnChangePriceManager = new LB.Controls.LBToolStripMenuItem();
+            this.btnDeviceConfig = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.btnCameraConfig = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.btnInfraredDeviceConfig = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.btnWeightReportSet = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.btnWeightReportSetIn = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.btnWeightReportSetOut = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.lbToolStripDropDownButton1 = new LB.Controls.LBToolStripDropDownButton(this.components);
+            this.btnAddCustomer = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.btnCustomerManager = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.lbToolStripDropDownButton2 = new LB.Controls.LBToolStripDropDownButton(this.components);
+            this.btnAddCar = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.btnCarQuery = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.btnDropDownReceive = new LB.Controls.LBToolStripDropDownButton(this.components);
+            this.btnRPReceive = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.btnRPReceiveList = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.btnDDBaseManager = new LB.Controls.LBToolStripDropDownButton(this.components);
+            this.btnItemBaseManager = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.lbToolStripDropDownButton3 = new LB.Controls.LBToolStripDropDownButton(this.components);
+            this.btnAddChangePriceBill = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.btnChangePriceManager = new LB.Controls.LBToolStripMenuItem(this.components);
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
-            this.tsmCancel = new LB.Controls.LBToolStripMenuItem();
-            this.tsmUnCancel = new LB.Controls.LBToolStripMenuItem();
-            this.tsmRePrintInBill = new LB.Controls.LBToolStripMenuItem();
-            this.tsmRePrintOutBill = new LB.Controls.LBToolStripMenuItem();
-            this.tsmPreviewInBill = new LB.Controls.LBToolStripMenuItem();
-            this.tsmPreviewOutBill = new LB.Controls.LBToolStripMenuItem();
-            this.tsmChangeBill = new LB.Controls.LBToolStripMenuItem();
-            this.SaleCarInBillCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SaleCarOutBillCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CarNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CarTare = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SuttleWeightT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillDateIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillDateOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsCancel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.SaleCarInBillID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillStatus = new LB.Controls.LBDataGridViewComboBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmCancel = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.tsmUnCancel = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.tsmRePrintInBill = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.tsmRePrintOutBill = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.tsmPreviewInBill = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.tsmPreviewOutBill = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.tsmChangeBill = new LB.Controls.LBToolStripMenuItem(this.components);
             this.panel2.SuspendLayout();
             this.pnlBill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).BeginInit();
@@ -256,6 +261,149 @@
             this.grdMain.TitleBack = null;
             this.grdMain.TitleBackColorBegin = System.Drawing.Color.White;
             this.grdMain.TitleBackColorEnd = System.Drawing.SystemColors.ActiveBorder;
+            // 
+            // SaleCarInBillCode
+            // 
+            this.SaleCarInBillCode.DataPropertyName = "SaleCarInBillCode";
+            this.SaleCarInBillCode.HeaderText = "入场单号";
+            this.SaleCarInBillCode.Name = "SaleCarInBillCode";
+            this.SaleCarInBillCode.ReadOnly = true;
+            this.SaleCarInBillCode.Width = 140;
+            // 
+            // SaleCarOutBillCode
+            // 
+            this.SaleCarOutBillCode.DataPropertyName = "SaleCarOutBillCode";
+            this.SaleCarOutBillCode.HeaderText = "出场单号";
+            this.SaleCarOutBillCode.Name = "SaleCarOutBillCode";
+            this.SaleCarOutBillCode.ReadOnly = true;
+            this.SaleCarOutBillCode.Width = 120;
+            // 
+            // CustomerName
+            // 
+            this.CustomerName.DataPropertyName = "CustomerName";
+            this.CustomerName.HeaderText = "客户名称";
+            this.CustomerName.Name = "CustomerName";
+            this.CustomerName.ReadOnly = true;
+            this.CustomerName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CustomerName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.CustomerName.Width = 180;
+            // 
+            // CarNum
+            // 
+            this.CarNum.DataPropertyName = "CarNum";
+            this.CarNum.HeaderText = "车号";
+            this.CarNum.Name = "CarNum";
+            this.CarNum.ReadOnly = true;
+            this.CarNum.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ItemName
+            // 
+            this.ItemName.DataPropertyName = "ItemName";
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.ItemName.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ItemName.HeaderText = "货物名称";
+            this.ItemName.Name = "ItemName";
+            this.ItemName.ReadOnly = true;
+            this.ItemName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ItemName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TotalWeight
+            // 
+            this.TotalWeight.DataPropertyName = "TotalWeight";
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
+            this.TotalWeight.DefaultCellStyle = dataGridViewCellStyle4;
+            this.TotalWeight.HeaderText = "毛重";
+            this.TotalWeight.Name = "TotalWeight";
+            this.TotalWeight.ReadOnly = true;
+            this.TotalWeight.Width = 90;
+            // 
+            // CarTare
+            // 
+            this.CarTare.DataPropertyName = "CarTare";
+            dataGridViewCellStyle5.Format = "N0";
+            dataGridViewCellStyle5.NullValue = null;
+            this.CarTare.DefaultCellStyle = dataGridViewCellStyle5;
+            this.CarTare.HeaderText = "皮重";
+            this.CarTare.Name = "CarTare";
+            this.CarTare.ReadOnly = true;
+            this.CarTare.Width = 90;
+            // 
+            // SuttleWeightT
+            // 
+            this.SuttleWeightT.DataPropertyName = "SuttleWeightT";
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.SuttleWeightT.DefaultCellStyle = dataGridViewCellStyle6;
+            this.SuttleWeightT.HeaderText = "净重(吨)";
+            this.SuttleWeightT.Name = "SuttleWeightT";
+            this.SuttleWeightT.ReadOnly = true;
+            this.SuttleWeightT.Width = 90;
+            // 
+            // Price
+            // 
+            this.Price.DataPropertyName = "Price";
+            this.Price.HeaderText = "单价";
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            // 
+            // Amount
+            // 
+            this.Amount.DataPropertyName = "Amount";
+            this.Amount.HeaderText = "金额";
+            this.Amount.Name = "Amount";
+            this.Amount.ReadOnly = true;
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "备注";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            // 
+            // BillDateIn
+            // 
+            this.BillDateIn.DataPropertyName = "BillDateIn";
+            this.BillDateIn.HeaderText = "第一次过磅";
+            this.BillDateIn.Name = "BillDateIn";
+            this.BillDateIn.ReadOnly = true;
+            this.BillDateIn.Width = 150;
+            // 
+            // BillDateOut
+            // 
+            this.BillDateOut.DataPropertyName = "BillDateOut";
+            this.BillDateOut.HeaderText = "第二次过磅";
+            this.BillDateOut.Name = "BillDateOut";
+            this.BillDateOut.ReadOnly = true;
+            this.BillDateOut.Width = 150;
+            // 
+            // IsCancel
+            // 
+            this.IsCancel.DataPropertyName = "IsCancel";
+            this.IsCancel.HeaderText = "作废";
+            this.IsCancel.Name = "IsCancel";
+            this.IsCancel.ReadOnly = true;
+            this.IsCancel.Width = 60;
+            // 
+            // SaleCarInBillID
+            // 
+            this.SaleCarInBillID.DataPropertyName = "SaleCarInBillID";
+            this.SaleCarInBillID.HeaderText = "SaleCarInBillID";
+            this.SaleCarInBillID.Name = "SaleCarInBillID";
+            this.SaleCarInBillID.Visible = false;
+            // 
+            // BillStatus
+            // 
+            this.BillStatus.DataPropertyName = "BillStatus";
+            this.BillStatus.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.BillStatus.FieldName = "BillStatus";
+            this.BillStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BillStatus.HeaderText = "单据状态";
+            this.BillStatus.Name = "BillStatus";
+            this.BillStatus.ReadOnly = true;
+            this.BillStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.BillStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // panel5
             // 
@@ -381,6 +529,10 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.pnlWebSteadyStatus);
+            this.panel4.Controls.Add(this.lblWebSteady);
+            this.panel4.Controls.Add(this.skinLabel6);
+            this.panel4.Controls.Add(this.skinLabel4);
             this.panel4.Controls.Add(this.txtDescription);
             this.panel4.Controls.Add(this.lblSteady);
             this.panel4.Controls.Add(this.pnlSteadyStatus);
@@ -415,6 +567,49 @@
             this.panel4.Size = new System.Drawing.Size(882, 297);
             this.panel4.TabIndex = 52;
             // 
+            // pnlWebSteadyStatus
+            // 
+            this.pnlWebSteadyStatus.Location = new System.Drawing.Point(125, 39);
+            this.pnlWebSteadyStatus.Name = "pnlWebSteadyStatus";
+            this.pnlWebSteadyStatus.Size = new System.Drawing.Size(30, 30);
+            this.pnlWebSteadyStatus.TabIndex = 68;
+            // 
+            // lblWebSteady
+            // 
+            this.lblWebSteady.BackColor = System.Drawing.Color.Transparent;
+            this.lblWebSteady.BorderColor = System.Drawing.Color.White;
+            this.lblWebSteady.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.lblWebSteady.Location = new System.Drawing.Point(58, 36);
+            this.lblWebSteady.Name = "lblWebSteady";
+            this.lblWebSteady.Size = new System.Drawing.Size(65, 30);
+            this.lblWebSteady.TabIndex = 67;
+            this.lblWebSteady.Text = "稳定";
+            this.lblWebSteady.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // skinLabel6
+            // 
+            this.skinLabel6.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel6.BorderColor = System.Drawing.Color.White;
+            this.skinLabel6.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.skinLabel6.Location = new System.Drawing.Point(3, 36);
+            this.skinLabel6.Name = "skinLabel6";
+            this.skinLabel6.Size = new System.Drawing.Size(49, 30);
+            this.skinLabel6.TabIndex = 66;
+            this.skinLabel6.Text = "网络:";
+            this.skinLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // skinLabel4
+            // 
+            this.skinLabel4.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel4.BorderColor = System.Drawing.Color.White;
+            this.skinLabel4.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.skinLabel4.Location = new System.Drawing.Point(3, 6);
+            this.skinLabel4.Name = "skinLabel4";
+            this.skinLabel4.Size = new System.Drawing.Size(49, 30);
+            this.skinLabel4.TabIndex = 65;
+            this.skinLabel4.Text = "地磅:";
+            this.skinLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // txtDescription
             // 
             this.txtDescription.BackColor = System.Drawing.Color.Transparent;
@@ -437,17 +632,17 @@
             // 
             this.lblSteady.BackColor = System.Drawing.Color.Transparent;
             this.lblSteady.BorderColor = System.Drawing.Color.White;
-            this.lblSteady.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.lblSteady.Location = new System.Drawing.Point(46, 12);
+            this.lblSteady.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.lblSteady.Location = new System.Drawing.Point(58, 6);
             this.lblSteady.Name = "lblSteady";
-            this.lblSteady.Size = new System.Drawing.Size(64, 30);
+            this.lblSteady.Size = new System.Drawing.Size(65, 30);
             this.lblSteady.TabIndex = 63;
             this.lblSteady.Text = "稳定";
             this.lblSteady.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlSteadyStatus
             // 
-            this.pnlSteadyStatus.Location = new System.Drawing.Point(12, 13);
+            this.pnlSteadyStatus.Location = new System.Drawing.Point(125, 6);
             this.pnlSteadyStatus.Name = "pnlSteadyStatus";
             this.pnlSteadyStatus.Size = new System.Drawing.Size(30, 30);
             this.pnlSteadyStatus.TabIndex = 62;
@@ -572,12 +767,13 @@
             this.lblWeight.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblWeight.Font = new System.Drawing.Font("黑体", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblWeight.ForeColor = System.Drawing.Color.Red;
-            this.lblWeight.Location = new System.Drawing.Point(113, 10);
+            this.lblWeight.Location = new System.Drawing.Point(161, 10);
             this.lblWeight.Name = "lblWeight";
-            this.lblWeight.Size = new System.Drawing.Size(261, 57);
+            this.lblWeight.Size = new System.Drawing.Size(243, 57);
             this.lblWeight.TabIndex = 32;
             this.lblWeight.Text = "-------";
             this.lblWeight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblWeight.Click += new System.EventHandler(this.lblWeight_Click);
             // 
             // groupBox1
             // 
@@ -718,7 +914,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 30F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(380, 19);
+            this.label1.Location = new System.Drawing.Point(410, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 40);
             this.label1.TabIndex = 33;
@@ -1356,149 +1552,6 @@
             this.tsmChangeBill.Text = "变更单据";
             this.tsmChangeBill.Click += new System.EventHandler(this.tsmChangeBill_Click);
             // 
-            // SaleCarInBillCode
-            // 
-            this.SaleCarInBillCode.DataPropertyName = "SaleCarInBillCode";
-            this.SaleCarInBillCode.HeaderText = "入场单号";
-            this.SaleCarInBillCode.Name = "SaleCarInBillCode";
-            this.SaleCarInBillCode.ReadOnly = true;
-            this.SaleCarInBillCode.Width = 140;
-            // 
-            // SaleCarOutBillCode
-            // 
-            this.SaleCarOutBillCode.DataPropertyName = "SaleCarOutBillCode";
-            this.SaleCarOutBillCode.HeaderText = "出场单号";
-            this.SaleCarOutBillCode.Name = "SaleCarOutBillCode";
-            this.SaleCarOutBillCode.ReadOnly = true;
-            this.SaleCarOutBillCode.Width = 120;
-            // 
-            // CustomerName
-            // 
-            this.CustomerName.DataPropertyName = "CustomerName";
-            this.CustomerName.HeaderText = "客户名称";
-            this.CustomerName.Name = "CustomerName";
-            this.CustomerName.ReadOnly = true;
-            this.CustomerName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CustomerName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.CustomerName.Width = 180;
-            // 
-            // CarNum
-            // 
-            this.CarNum.DataPropertyName = "CarNum";
-            this.CarNum.HeaderText = "车号";
-            this.CarNum.Name = "CarNum";
-            this.CarNum.ReadOnly = true;
-            this.CarNum.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ItemName
-            // 
-            this.ItemName.DataPropertyName = "ItemName";
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.ItemName.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ItemName.HeaderText = "货物名称";
-            this.ItemName.Name = "ItemName";
-            this.ItemName.ReadOnly = true;
-            this.ItemName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ItemName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TotalWeight
-            // 
-            this.TotalWeight.DataPropertyName = "TotalWeight";
-            dataGridViewCellStyle4.Format = "N0";
-            dataGridViewCellStyle4.NullValue = null;
-            this.TotalWeight.DefaultCellStyle = dataGridViewCellStyle4;
-            this.TotalWeight.HeaderText = "毛重";
-            this.TotalWeight.Name = "TotalWeight";
-            this.TotalWeight.ReadOnly = true;
-            this.TotalWeight.Width = 90;
-            // 
-            // CarTare
-            // 
-            this.CarTare.DataPropertyName = "CarTare";
-            dataGridViewCellStyle5.Format = "N0";
-            dataGridViewCellStyle5.NullValue = null;
-            this.CarTare.DefaultCellStyle = dataGridViewCellStyle5;
-            this.CarTare.HeaderText = "皮重";
-            this.CarTare.Name = "CarTare";
-            this.CarTare.ReadOnly = true;
-            this.CarTare.Width = 90;
-            // 
-            // SuttleWeightT
-            // 
-            this.SuttleWeightT.DataPropertyName = "SuttleWeightT";
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.SuttleWeightT.DefaultCellStyle = dataGridViewCellStyle6;
-            this.SuttleWeightT.HeaderText = "净重(吨)";
-            this.SuttleWeightT.Name = "SuttleWeightT";
-            this.SuttleWeightT.ReadOnly = true;
-            this.SuttleWeightT.Width = 90;
-            // 
-            // Price
-            // 
-            this.Price.DataPropertyName = "Price";
-            this.Price.HeaderText = "单价";
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            // 
-            // Amount
-            // 
-            this.Amount.DataPropertyName = "Amount";
-            this.Amount.HeaderText = "金额";
-            this.Amount.Name = "Amount";
-            this.Amount.ReadOnly = true;
-            // 
-            // Description
-            // 
-            this.Description.DataPropertyName = "Description";
-            this.Description.HeaderText = "备注";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            // 
-            // BillDateIn
-            // 
-            this.BillDateIn.DataPropertyName = "BillDateIn";
-            this.BillDateIn.HeaderText = "第一次过磅";
-            this.BillDateIn.Name = "BillDateIn";
-            this.BillDateIn.ReadOnly = true;
-            this.BillDateIn.Width = 150;
-            // 
-            // BillDateOut
-            // 
-            this.BillDateOut.DataPropertyName = "BillDateOut";
-            this.BillDateOut.HeaderText = "第二次过磅";
-            this.BillDateOut.Name = "BillDateOut";
-            this.BillDateOut.ReadOnly = true;
-            this.BillDateOut.Width = 150;
-            // 
-            // IsCancel
-            // 
-            this.IsCancel.DataPropertyName = "IsCancel";
-            this.IsCancel.HeaderText = "作废";
-            this.IsCancel.Name = "IsCancel";
-            this.IsCancel.ReadOnly = true;
-            this.IsCancel.Width = 60;
-            // 
-            // SaleCarInBillID
-            // 
-            this.SaleCarInBillID.DataPropertyName = "SaleCarInBillID";
-            this.SaleCarInBillID.HeaderText = "SaleCarInBillID";
-            this.SaleCarInBillID.Name = "SaleCarInBillID";
-            this.SaleCarInBillID.Visible = false;
-            // 
-            // BillStatus
-            // 
-            this.BillStatus.DataPropertyName = "BillStatus";
-            this.BillStatus.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.BillStatus.FieldName = "BillStatus";
-            this.BillStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BillStatus.HeaderText = "单据状态";
-            this.BillStatus.Name = "BillStatus";
-            this.BillStatus.ReadOnly = true;
-            this.BillStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.BillStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // WeightForm2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1644,5 +1697,9 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsCancel;
         private System.Windows.Forms.DataGridViewTextBoxColumn SaleCarInBillID;
         private Controls.LBDataGridViewComboBoxColumn BillStatus;
+        private CCWin.SkinControl.SkinLabel skinLabel4;
+        private CCWin.SkinControl.SkinLabel skinLabel6;
+        private CCWin.SkinControl.SkinLabel lblWebSteady;
+        private System.Windows.Forms.Panel pnlWebSteadyStatus;
     }
 }

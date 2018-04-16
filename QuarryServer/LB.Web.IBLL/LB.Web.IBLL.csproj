@@ -30,12 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LB.Web.Base">
-      <HintPath>..\LB.Web.ServerMonitor\bin\Debug\LB.Web.Base.dll</HintPath>
-    </Reference>
-    <Reference Include="LB.Web.Contants">
-      <HintPath>..\LB.Web.ServerMonitor\bin\Debug\LB.Web.Contants.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,13 +40,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IBLL\IBLLDB\IBLLDbErrorLog.cs" />
+    <Compile Include="IBLL\IBLLDB\IBLLDbSysConfig.cs" />
     <Compile Include="IBLL\IBLLDB\IBLLDbSystemConst.cs" />
     <Compile Include="IBLL\IBLLMI\IBLLDbCarWeight.cs" />
     <Compile Include="IBLL\IBLLRP\IBLLRPReceiveBillHeader.cs" />
     <Compile Include="IBLL\IBLLSM\IBLLSaleCarInOutBill.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\LB.Web.Base\LB.Web.Base.csproj">
+      <Project>{2dcbbc87-24b2-42d4-b680-21ea0245fe01}</Project>
+      <Name>LB.Web.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.Web.Contants\LB.Web.Contants.csproj">
+      <Project>{dad2cbf3-e516-412b-8350-e4e0e717b09e}</Project>
+      <Name>LB.Web.Contants</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

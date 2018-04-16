@@ -25,5 +25,8 @@ G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\obj\Debug\LB.Web.S
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\obj\Debug\LB.Web.ServiceMonitor.frmServerForm.resources
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\obj\Debug\LB.Web.ServiceMonitor.frmWebLinkConfig.resources
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\obj\Debug\LB.Web.ServiceMonitor.csproj.GenerateResource.Cache
+G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\LB.Web.Encrypt.dll
+G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\LB.Web.Encrypt.pdb
+G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\obj\Debug\LB.Web.ServiceMonitor.frmDisk.resources
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\LB.RMT.Base.pdb
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\LB.Web.ServiceTool.pdb

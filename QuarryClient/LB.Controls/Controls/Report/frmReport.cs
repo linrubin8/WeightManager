@@ -52,9 +52,10 @@ namespace LB.Controls.Report
         {
             try
             {
-                if (this.grdMain.SelectedRows.Count > 0)
+                if (this.grdMain.SelectedCells.Count > 0)
                 {
-                    long lReportTemplateID = Convert.ToInt64(this.grdMain.SelectedRows[0].Cells["ReportTemplateID"].Value);
+                    DataGridViewRow dgSelected = this.grdMain.SelectedRows[this.grdMain.SelectedCells[0].RowIndex];
+                    long lReportTemplateID = Convert.ToInt64(dgSelected.Cells["ReportTemplateID"].Value);
                     mReportArgs.ReportTemplateID = lReportTemplateID;
                     frmEditReport frm = new frmEditReport( mReportArgs);
                     LBShowForm.ShowDialog(frm);
@@ -76,9 +77,10 @@ namespace LB.Controls.Report
         {
             try
             {
-                if (this.grdMain.SelectedRows.Count > 0)
+                if (this.grdMain.SelectedCells.Count > 0)
                 {
-                    long lReportTemplateID = Convert.ToInt64(this.grdMain.SelectedRows[0].Cells["ReportTemplateID"].Value);
+                    DataGridViewRow dgSelected = this.grdMain.SelectedRows[this.grdMain.SelectedCells[0].RowIndex];
+                    long lReportTemplateID = Convert.ToInt64(dgSelected.Cells["ReportTemplateID"].Value);
                     mReportArgs.ReportTemplateID = lReportTemplateID;
                     ReportHelper.OpenReportDesign( mReportArgs);
                 }

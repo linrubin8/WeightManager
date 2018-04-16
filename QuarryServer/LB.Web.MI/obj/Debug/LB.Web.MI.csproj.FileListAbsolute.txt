@@ -13,6 +13,6 @@ H:\MyProject\WeightManager\QuarryServer\LB.Web.MI\obj\Debug\LB.Web.MI.dll
 H:\MyProject\WeightManager\QuarryServer\LB.Web.MI\obj\Debug\LB.Web.MI.pdb
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\LB.Web.MI.dll
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\LB.Web.MI.pdb
-G:\MyProject\WeightManager\QuarryServer\LB.Web.MI\obj\Debug\LB.Web.MI.csprojResolveAssemblyReference.cache
 G:\MyProject\WeightManager\QuarryServer\LB.Web.MI\obj\Debug\LB.Web.MI.dll
 G:\MyProject\WeightManager\QuarryServer\LB.Web.MI\obj\Debug\LB.Web.MI.pdb
+G:\MyProject\WeightManager\QuarryServer\LB.Web.MI\obj\Debug\LB.Web.MI.csprojResolveAssemblyReference.cache

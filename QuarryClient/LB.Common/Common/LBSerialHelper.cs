@@ -1,16 +1,20 @@
-﻿using LB.WinFunction;
+﻿using LB.Common.Args;
+using LB.WinFunction;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using static LB.Common.Args.LBSerialDataArgs;
 
 namespace LB.Common
 {
     public class LBSerialHelper
     {
+        public static event LBSerialDataEventHandle LBSerialDataEvent;
         private static Timer mTimer = null;
         private static SerialPort _comm;
         private static bool Listening;
@@ -19,6 +23,7 @@ namespace LB.Common
         private static int _DeviceZhenChuLiFangShi = 0;
         private static int _DeviceShuJuWei = 0;
         private static int _DeviceZhenQiShiBiaoShi = 0;
+        private static int _WeightDeviceType = 0;//设备类型
 
         public static int WeightValue = 0;
         public static bool IsSteady = true;
@@ -106,7 +111,7 @@ namespace LB.Common
 
             if (!_comm.IsOpen)
             {
-                GetSerialInfo(out _SerialName, out _DeviceBoTeLv, out _DeviceZhenChuLiFangShi, out _DeviceShuJuWei, out _DeviceZhenQiShiBiaoShi);
+                GetSerialInfo(out _SerialName, out _DeviceBoTeLv, out _DeviceZhenChuLiFangShi, out _DeviceShuJuWei, out _DeviceZhenQiShiBiaoShi,out _WeightDeviceType);
 
                 if (_SerialName != "")
                 {
@@ -237,78 +242,142 @@ namespace LB.Common
                 //received_count += n;//增加接收计数  
                 _comm.Read(buf, 0, n);//读取缓冲数据  
 
-                ///////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-
                 //解析>
                 bool data_1_catched = false;//缓存记录数据是否捕获到  
                 //缓存数据  
                 buffer.AddRange(buf);
                 //完整性判断
-                while (buffer.Count >= 12)
+                string strNumData = "";
+
+                #region -- 柯力 --
+                if (_WeightDeviceType == 0 || _WeightDeviceType == 1)
                 {
-                    if (buffer[0].ToString("X2") == "02" && buffer[11].ToString("X2") == "03")
+                    while (buffer.Count >= 12)
                     {
-                        //异或校验，逐个字节异或得到校验码  
-                        byte checksum = 0;
-                        for (int i = 1; i < 9; i++)
+                        if (buffer[0].ToString("X2") == "02" && buffer[11].ToString("X2") == "03")
                         {
-                            checksum ^= buffer[i];
+                            //异或校验，逐个字节异或得到校验码  
+                            byte checksum = 0;
+                            for (int i = 1; i < 9; i++)
+                            {
+                                checksum ^= buffer[i];
+                            }
+                            //String ch = ((checksum >> 4) & 0x0F).ToString("X");  //高；
+                            //String  cl = (checksum & 0x0F).ToString("X");  //低；
+                            String verify = checksum.ToString("X2");
+                            String verify1 = Encoding.ASCII.GetString(new byte[] { buffer[9], buffer[10] });
+                            if (verify != verify1)
+                            {
+                                buffer.RemoveRange(0, 12);
+                                continue;
+                            }
+
+                            buffer.CopyTo(0, binary_data_1, 0, 12);//复制一条完整数据到具体的数据缓存  
+                            data_1_catched = true;
+                            buffer.RemoveRange(0, 12);//正确分析一条数据，从缓存中移除数据。  
                         }
-                        //String ch = ((checksum >> 4) & 0x0F).ToString("X");  //高；
-                        //String  cl = (checksum & 0x0F).ToString("X");  //低；
-                        String verify = checksum.ToString("X2");
-                        String verify1 = Encoding.ASCII.GetString(new byte[] { buffer[9], buffer[10] });
-                        if (verify != verify1)
+                        else
                         {
-                            buffer.RemoveRange(0, 12);
-                            continue;
+                            //这里是很重要的，如果数据开始不是头，则删除数据  
+                            buffer.RemoveAt(0);
+                        }
+                    }
+
+                    //分析数据  
+                    if (data_1_catched)
+                    {
+                        string data = (Convert.ToInt32(binary_data_1[2].ToString("X2")) - 30) + ""
+                            + (Convert.ToInt32(binary_data_1[3].ToString("X2")) - 30) + ""
+                            + (Convert.ToInt32(binary_data_1[4].ToString("X2")) - 30) + ""
+                            + (Convert.ToInt32(binary_data_1[5].ToString("X2")) - 30) + ""
+                            + (Convert.ToInt32(binary_data_1[6].ToString("X2")) - 30) + ""
+                            + (Convert.ToInt32(binary_data_1[7].ToString("X2")) - 30) + "";
+
+                        string strData = "";
+                        int.TryParse(data, out WeightValue);
+
+                        if (WeightValue == PreWeightValue)
+                        {
+                            WeightCount++;
+                        }
+                        else
+                        {
+                            WeightCount = 0;
+                            PreWeightValue = WeightValue;
                         }
 
-                        buffer.CopyTo(0, binary_data_1, 0, 12);//复制一条完整数据到具体的数据缓存  
-                        data_1_catched = true;
-                        buffer.RemoveRange(0, 12);//正确分析一条数据，从缓存中移除数据。  
-                    }
-                    else
-                    {
-                        //这里是很重要的，如果数据开始不是头，则删除数据  
-                        buffer.RemoveAt(0);
+                        if (WeightCount > 3)
+                        {
+                            IsSteady = true;
+                        }
+                        else
+                        {
+                            IsSteady = false;
+                        }
                     }
                 }
+                #endregion
 
-                //分析数据  
-                if (data_1_catched)
+                #region -- 衡天 --
+                if (_WeightDeviceType == 2)
                 {
-                    string data = (Convert.ToInt32(binary_data_1[2].ToString("X2")) - 30) + ""
-                        + (Convert.ToInt32(binary_data_1[3].ToString("X2")) - 30) + ""
-                        + (Convert.ToInt32(binary_data_1[4].ToString("X2")) - 30) + ""
-                        + (Convert.ToInt32(binary_data_1[5].ToString("X2")) - 30) + ""
-                        + (Convert.ToInt32(binary_data_1[6].ToString("X2")) - 30) + ""
-                        + (Convert.ToInt32(binary_data_1[7].ToString("X2")) - 30) + "";
+                    while (buffer.Count >= 10)
+                    {
+                        if (buffer[0].ToString("X2") == "FF")
+                        {
+                            string Num2 = buffer[2].ToString("X2");
+                            string Num3 = buffer[3].ToString("X2");
+                            string Num4 = buffer[4].ToString("X2");
+                            int iNum2;
+                            int iNum3;
+                            int iNum4;
+                            if (int.TryParse(Num2, out iNum2) && int.TryParse(Num3, out iNum3) && int.TryParse(Num4, out iNum4))
+                            {
+                                strNumData = Num4 + Num3 + Num2;
+                                data_1_catched = true;
+                                buffer.Clear();
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            //这里是很重要的，如果数据开始不是头，则删除数据  
+                            buffer.RemoveAt(0);
+                        }
 
-                    string strData = "";
-                    int.TryParse(data, out WeightValue);
+                    }
+                    //分析数据  
+                    if (data_1_catched)
+                    {
+                        string data = strNumData;
 
-                    if (WeightValue== PreWeightValue)
-                    {
-                        WeightCount ++;
-                    }
-                    else
-                    {
-                        WeightCount = 0;
-                        PreWeightValue = WeightValue;
+                        string strData = "";
+                        int.TryParse(data, out WeightValue);
+
+                        if (WeightValue == PreWeightValue)
+                        {
+                            WeightCount++;
+                        }
+                        else
+                        {
+                            WeightCount = 0;
+                            PreWeightValue = WeightValue;
+                        }
+
+                        if (WeightCount > 3)
+                        {
+                            IsSteady = true;
+                        }
+                        else
+                        {
+                            IsSteady = false;
+                        }
                     }
 
-                    if (WeightCount > 3)
-                    {
-                        IsSteady = true;
-                    }
-                    else
-                    {
-                        IsSteady = false;
-                    }
                 }
+                #endregion -- 衡天 --
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LBErrorLog.InsertErrorLog("_comm_DataReceived:" + ex.Message);
             }
@@ -354,13 +423,15 @@ namespace LB.Common
             out int DeviceBoTeLv,
             out int DeviceZhenChuLiFangShi,
             out int DeviceShuJuWei,
-            out int DeviceZhenQiShiBiaoShi)
+            out int DeviceZhenQiShiBiaoShi,
+            out int iWeightDeviceType)
         {
             strSerialName = "";
             DeviceBoTeLv = 0;
             DeviceZhenChuLiFangShi = 0;
             DeviceShuJuWei = 0;
             DeviceZhenQiShiBiaoShi = 0;
+            iWeightDeviceType = 0;
 
             string strMathineName = LoginInfo.MachineName;
             DataTable dtSerial = ExecuteSQL.CallView(120, "", "MachineName='" + strMathineName + "'", "");
@@ -369,7 +440,7 @@ namespace LB.Common
                 DataRow dr = dtSerial.Rows[0];
                 long lWeightDeviceUserTypeID = LBConverter.ToInt64(dr["WeightDeviceUserTypeID"]);
                 strSerialName = dr["SerialName"].ToString();
-                int iWeightDeviceType = LBConverter.ToInt32(dr["WeightDeviceType"]);
+                iWeightDeviceType = LBConverter.ToInt32(dr["WeightDeviceType"]);
 
                 if (iWeightDeviceType == 0)//自定义
                 {

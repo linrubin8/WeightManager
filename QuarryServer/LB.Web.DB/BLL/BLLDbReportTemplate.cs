@@ -32,6 +32,9 @@ namespace LB.Web.DB.BLL
                 case 12002:
                     strFunName = "Delete";
                     break;
+                case 12003:
+                    strFunName = "UpdateReportTemplate";
+                    break;
             }
             return strFunName;
         }
@@ -61,8 +64,8 @@ namespace LB.Web.DB.BLL
         }
 
         public void Update(FactoryArgs args,
-           t_BigID ReportTemplateID, t_String ReportTemplateName, t_DTSmall TemplateFileTime, t_ID TemplateSeq,
-           t_String Description, t_Image TemplateData, t_BigID ReportTypeID,
+           t_BigID ReportTemplateID, t_String ReportTemplateName, t_ID TemplateSeq,
+           t_String Description, t_BigID ReportTypeID,
             t_String PrinterName, t_String MachineName, t_Bool IsManualPaperType, t_String PaperType, t_Bool IsManualPaperSize,
             t_ID PaperSizeHeight, t_ID PaperSizeWidth, t_Bool IsPaperTransverse, t_ID PrintCount)
         {
@@ -73,7 +76,7 @@ namespace LB.Web.DB.BLL
                     dtExistsName.DefaultView.RowFilter = "ReportTemplateID<>" + ReportTemplateID.Value;
                     if (dtExistsName.DefaultView.Count == 0)
                     {
-                        _DALDbReportTemplate.Update(args, ReportTemplateID, ReportTemplateName, TemplateFileTime, TemplateSeq, Description, TemplateData,
+                        _DALDbReportTemplate.Update(args, ReportTemplateID, ReportTemplateName, TemplateSeq, Description, 
                         PrinterName, MachineName, IsManualPaperType, PaperType, IsManualPaperSize,
                         PaperSizeHeight, PaperSizeWidth, IsPaperTransverse, PrintCount);
                     }
@@ -85,7 +88,7 @@ namespace LB.Web.DB.BLL
                 }
                 else
                 {
-                    _DALDbReportTemplate.Update(args, ReportTemplateID, ReportTemplateName, TemplateFileTime, TemplateSeq, Description, TemplateData,
+                    _DALDbReportTemplate.Update(args, ReportTemplateID, ReportTemplateName, TemplateSeq, Description, 
                         PrinterName, MachineName, IsManualPaperType, PaperType, IsManualPaperSize,
                         PaperSizeHeight, PaperSizeWidth, IsPaperTransverse, PrintCount);
                 }
@@ -96,6 +99,12 @@ namespace LB.Web.DB.BLL
            t_BigID ReportTemplateID)
         {
             _DALDbReportTemplate.Delete(args, ReportTemplateID);
+        }
+
+        public void UpdateReportTemplate(FactoryArgs args,
+           t_BigID ReportTemplateID, t_DTSmall TemplateFileTime,t_Image TemplateData)
+        {
+            _DALDbReportTemplate.UpdateReportTemplate(args, ReportTemplateID, TemplateFileTime, TemplateData);
         }
     }
 }

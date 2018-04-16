@@ -20,3 +20,5 @@ G:\MyProject\WeightManager\QuarryServer\LB.Web.Remoting\bin\Release\LB.Web.Conta
 G:\MyProject\WeightManager\QuarryServer\LB.Web.Remoting\obj\Release\LB.Web.Remoting.csprojResolveAssemblyReference.cache
 G:\MyProject\WeightManager\QuarryServer\LB.Web.Remoting\obj\Release\LB.Web.Remoting.dll
 G:\MyProject\WeightManager\QuarryServer\LB.Web.Remoting\obj\Release\LB.Web.Remoting.pdb
+G:\MyProject\WeightManager\QuarryServer\LB.Web.Remoting\bin\Release\LB.Web.Encrypt.dll
+G:\MyProject\WeightManager\QuarryServer\LB.Web.Remoting\bin\Release\LB.Web.Encrypt.pdb

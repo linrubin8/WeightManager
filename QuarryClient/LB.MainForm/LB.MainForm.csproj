@@ -76,6 +76,12 @@
     <Compile Include="frmShowMaxCameral.Designer.cs">
       <DependentUpon>frmShowMaxCameral.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForm\frmReceiveSerialData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\frmReceiveSerialData.Designer.cs">
+      <DependentUpon>frmReceiveSerialData.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm\Temp\frmImportCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +152,9 @@
     </Compile>
     <EmbeddedResource Include="frmShowMaxCameral.resx">
       <DependentUpon>frmShowMaxCameral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\frmReceiveSerialData.resx">
+      <DependentUpon>frmReceiveSerialData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm\Temp\frmImportCustomer.resx">
       <DependentUpon>frmImportCustomer.cs</DependentUpon>

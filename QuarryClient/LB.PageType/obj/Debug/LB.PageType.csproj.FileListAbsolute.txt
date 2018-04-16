@@ -9,4 +9,3 @@ G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug\LB.PageType.dll
 G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug\LB.PageType.pdb
 G:\MyProject\WeightManager\QuarryClient\LB.PageType\obj\Debug\LB.PageType.dll
 G:\MyProject\WeightManager\QuarryClient\LB.PageType\obj\Debug\LB.PageType.pdb
-G:\MyProject\WeightManager\QuarryClient\LB.PageType\obj\Debug\LB.PageType.csprojResolveAssemblyReference.cache

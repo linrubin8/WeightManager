@@ -271,13 +271,13 @@ namespace LB.MI
             //parmCol.Add(new LBParameter("CarIsLimit", enLBDbType.Boolean, this.txtLicenceNum.te));
             //parmCol.Add(new LBParameter("IsForbid", enLBDbType.Boolean, this.chkIsForbid.Checked));
             parmCol.Add(new LBParameter("ReceiveType", enLBDbType.Int32, this.txtReceiveType.SelectedValue));
-            parmCol.Add(new LBParameter("CreditAmount", enLBDbType.Decimal, this.txtCreditAmount.Text));
+            parmCol.Add(new LBParameter("CreditAmount", enLBDbType.Decimal, this.txtCreditAmount.Text==""?"0": this.txtCreditAmount.Text));
             parmCol.Add(new LBParameter("IsDisplayPrice", enLBDbType.Boolean, this.chkIsDisplayPrice.Checked));
             parmCol.Add(new LBParameter("IsDisplayAmount", enLBDbType.Boolean, this.chkIsDisplayAmount.Checked));
             parmCol.Add(new LBParameter("IsPrintAmount", enLBDbType.Boolean, this.chkIsPrintAmount.Checked));
             parmCol.Add(new LBParameter("IsAllowOverFul", enLBDbType.Boolean, this.chkIsAllowOverFul.Checked));
             parmCol.Add(new LBParameter("IsAllowEmptyIn", enLBDbType.Boolean, this.chkIsAllowEmptyIn.Checked));
-            parmCol.Add(new LBParameter("AmountNotEnough", enLBDbType.Decimal, this.txtAmountNotEnough.Text));
+            parmCol.Add(new LBParameter("AmountNotEnough", enLBDbType.Decimal, this.txtAmountNotEnough.Text == "" ? "0" : this.txtAmountNotEnough.Text));
             DataSet dsReturn;
             Dictionary<string, object> dictValue;
             ExecuteSQL.CallSP(iSPType, parmCol, out dsReturn, out dictValue);

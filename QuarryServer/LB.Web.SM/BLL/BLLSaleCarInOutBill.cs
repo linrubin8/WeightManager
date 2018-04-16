@@ -22,12 +22,14 @@ namespace LB.Web.SM.BLL
         private IBLLDbCarWeight _IBLLDbCarWeight = null;
         private IBLLRPReceiveBillHeader _IBLLRPReceiveBillHeader = null;
         private IBLLDbErrorLog _IBLLDbErrorLog = null;
+        private IBLLDbSysConfig _IBLLDbSysConfig = null;
         public BLLSaleCarInOutBill()
         {
             _DALSaleCarInOutBill = new DAL.DALSaleCarInOutBill();
             _IBLLDbCarWeight = (IBLLDbCarWeight)DBHelper.GetFunctionMethod(20400);
             _IBLLRPReceiveBillHeader = (IBLLRPReceiveBillHeader)DBHelper.GetFunctionMethod(13300);
             _IBLLDbErrorLog = (IBLLDbErrorLog)DBHelper.GetFunctionMethod(20000);
+            _IBLLDbSysConfig=(IBLLDbSysConfig)DBHelper.GetFunctionMethod(14300);
         }
 
         public override string GetFunctionName(int iFunctionType)
@@ -124,7 +126,7 @@ namespace LB.Web.SM.BLL
         //InBillFrom入场单据来源：0手工单 1系统自动生成单
         public void InsertInBill(FactoryArgs args, out t_BigID SaleCarInBillID, out t_String SaleCarInBillCode, ref t_DTSmall BillDate, t_BigID CarID,
             t_BigID ItemID, t_ID ReceiveType, t_ID CalculateType, t_Float CarTare, t_BigID CustomerID, t_String Description,
-            t_ID InBillFrom, t_ID SaleBillType)
+            t_ID InBillFrom, t_ID SaleBillType,t_BigID SourceSaleCarInBillID)
         {
             SaleBillType.IsNullToZero();
             InBillFrom.IsNullToZero();
@@ -160,8 +162,28 @@ namespace LB.Web.SM.BLL
                 }
             }
 
+            //判断原单号是否已存在
+            SourceSaleCarInBillID.NullIfZero();
+            if (SourceSaleCarInBillID.Value != null)
+            {
+                bool bolExists = _DALSaleCarInOutBill.VerifyIfExistsSourceInBill(args, SourceSaleCarInBillID);
+                if (bolExists)
+                {
+                    throw new Exception("该入场单已同步，无法再次执行同步！");
+                }
+            }
+
+            //读取入场单号前缀
+            t_String SysConfigFieldName = new t_String("SaleInBillCode");
+            t_String SysConfigValue;
+            _IBLLDbSysConfig.GetConfigValue(args, SysConfigFieldName, out SysConfigValue);
+            if (SysConfigValue.Value == "")
+            {
+                SysConfigValue.Value = "JC";
+            }
+
             //生成编码
-            string strBillFont = "JC" + DateTime.Now.ToString("yyyyMM") + "-";
+            string strBillFont = SysConfigValue.Value + DateTime.Now.ToString("yyyyMM") + "-";
             using (DataTable dtBillCode = _DALSaleCarInOutBill.GetMaxInBillCode(args, strBillFont))
             {
                 if (dtBillCode.Rows.Count > 0)
@@ -212,7 +234,7 @@ namespace LB.Web.SM.BLL
             DBHelper.ExecInTransDelegate exec = delegate (FactoryArgs argsInTrans)
             {
                 _DALSaleCarInOutBill.InsertInBill(argsInTrans, out SaleCarInBillID_temp, SaleCarInBillCode_temp, CarID, ItemID,
-                    BillDate_temp, ReceiveType, CalculateType, CarTare, CustomerID, Description, SaleBillType);
+                    BillDate_temp, ReceiveType, CalculateType, CarTare, CustomerID, Description, SaleBillType, SourceSaleCarInBillID);
 
                 if (InBillFrom.Value == 1)
                 {
@@ -299,7 +321,7 @@ namespace LB.Web.SM.BLL
             DBHelper.ExecInTransDelegate exec = delegate (FactoryArgs argsInTrans)
             {
                 this.InsertInBill(argsInTrans, out SaleCarInBillID, out SaleCarInBillCode, ref BillDate_temp, CarID, ItemID, ReceiveType, CalculateType,
-                    CarTare, CustomerID, Description, new t_ID(1),new t_ID());
+                    CarTare, CustomerID, Description, new t_ID(1),new t_ID(),new t_BigID());
 
                 //自动审核出场订单
                 this.InsertOutBill(argsInTrans, out SaleCarOutBillID_temp, out SaleCarOutBillCode, ref BillDate_temp, SaleCarInBillID,
@@ -380,8 +402,17 @@ namespace LB.Web.SM.BLL
                 }
             }
 
+            //读取出场单号前缀
+            t_String SysConfigFieldName = new t_String("SaleOutBillCode");
+            t_String SysConfigValue;
+            _IBLLDbSysConfig.GetConfigValue(args, SysConfigFieldName, out SysConfigValue);
+            if (SysConfigValue.Value == "")
+            {
+                SysConfigValue.Value = "XS";
+            }
+
             //生成编码
-            string strBillFont = "XS" + DateTime.Now.ToString("yyyyMM") + "-";
+            string strBillFont = SysConfigValue.Value.TrimEnd() + DateTime.Now.ToString("yyyyMM") + "-";
             using (DataTable dtBillCode = _DALSaleCarInOutBill.GetMaxOutBillCode(args, strBillFont))
             {
                 if (dtBillCode.Rows.Count > 0)
@@ -1037,7 +1068,7 @@ namespace LB.Web.SM.BLL
                     this.InsertInBill(argsInTrans, out NewSaleCarInBillID, out NewSaleCarInBillCode, ref NewBillDate,
                         NewCarID, NewItemID, NewReceiveType,
                         NewCalculateType, new t_Float(drBill["CarTare"]), NewCustomerID,
-                        NewDescription, new t_ID(), new t_ID());
+                        NewDescription, new t_ID(), new t_ID(),new t_BigID());
 
                     if (SaleCarOutBillID.Value > 0)//有出场磅单
                     {
@@ -1094,7 +1125,7 @@ namespace LB.Web.SM.BLL
                     this.InsertInBill(argsInTrans, out NewSaleCarInBillID_temp, out NewSaleCarInBillCode_temp, ref NewBillDate,
                         new t_BigID(drBill["CarID"]), new t_BigID(drBill["ItemID"]), new t_ID(drBill["ReceiveType"]),
                         new t_ID(drBill["CalculateType"]), new t_Float(drBill["CarTare"]), new t_BigID(drBill["CustomerID"]),
-                        new t_String(drBill["Description"]), new t_ID(), new t_ID());
+                        new t_String(drBill["Description"]), new t_ID(), new t_ID(),new t_BigID());
 
                     #region -- 复制原单的入场图片 --
                     string strDatePath = GetPicturePath(enImagePathType.InBillPath, (DateTime)BillDateIn.Value);
@@ -1398,7 +1429,7 @@ namespace LB.Web.SM.BLL
                     t_String SaleCarInBillCodeNew;
                     t_DTSmall BillDateNew = new t_DTSmall();
                     this.InsertInBill(argsInTrans, out SaleCarInBillIDNew, out SaleCarInBillCodeNew, ref BillDateNew, CarID, ItemID, ReceiveType,
-                        CalculateType, CarTare, CustomerID, Description, new t_ID(0), new t_ID());
+                        CalculateType, CarTare, CustomerID, Description, new t_ID(0), new t_ID(),new t_BigID());
 
                     dtOutBill.DefaultView.RowFilter = "SaleCarInBillID=" + SaleCarInBillID.Value;
                     if (dtOutBill.DefaultView.Count > 0)
@@ -1479,7 +1510,7 @@ namespace LB.Web.SM.BLL
         #region -- 汽油采购磅单 --
 
         public void InsertPurchaseInBill(FactoryArgs args, out t_BigID SaleCarInBillID, out t_String SaleCarInBillCode, ref t_DTSmall BillDate, t_BigID CarID,
-            t_BigID ItemID, t_ID CalculateType, t_Decimal TotalWeight, t_BigID CustomerID, t_String Description)
+            t_BigID ItemID, t_ID CalculateType, t_Decimal TotalWeight, t_BigID CustomerID, t_String Description,t_BigID SourceSaleCarInBillID)
         {
             SaleCarInBillID = new t_BigID();
             SaleCarInBillCode = new t_String();
@@ -1492,7 +1523,7 @@ namespace LB.Web.SM.BLL
             {
                 t_ID ReceiveType = new t_ID(3);
                 this.InsertInBill(argsInTrans, out SaleCarInBillIDTemp, out SaleCarInBillCodeTemp, ref BillDateTemp, CarID, ItemID, ReceiveType, CalculateType, new t_Float(0),
-                    CustomerID, Description, new t_ID(), new t_ID(1));
+                    CustomerID, Description, new t_ID(), new t_ID(1), SourceSaleCarInBillID);
 
                 t_BigID SaleCarOutBillID;
                 t_String SaleCarOutBillCode;

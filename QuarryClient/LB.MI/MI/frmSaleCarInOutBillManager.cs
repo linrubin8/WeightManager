@@ -537,9 +537,17 @@ namespace LB.MI.MI
                     //查询出场单
                     DataTable dtOutBill = ExecuteSQL.CallView(124, "", "SaleCarInBillID in (" + strSaleCarInBillID.ToString() + ")", "SaleCarInBillID asc");
                     dtOutBill.TableName = "OutBill";
+                    //客户资料
+                    DataTable dtCustomer = ExecuteSQL.CallView(110, "", "", "");
+                    dtCustomer.TableName = "Customer";
+                    //车牌号码
+                    DataTable dtCar = ExecuteSQL.CallView(113, "", "", "");
+                    dtCar.TableName = "Car";
 
                     dsBill.Tables.Add(dtInBill);
                     dsBill.Tables.Add(dtOutBill);
+                    dsBill.Tables.Add(dtCustomer);
+                    dsBill.Tables.Add(dtCar);
 
                     string localFilePath = "";
                     //string localFilePath, fileNameExt, newFileName, FilePath; 
