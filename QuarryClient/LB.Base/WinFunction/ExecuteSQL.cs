@@ -347,6 +347,96 @@ namespace LB.WinFunction
 
         #endregion
 
+        #region -- 网络接口 --
+
+        public static void CallSP_Service(int iSPType, DataTable dtInput, out DataSet dsReturn, out DataTable dtOut)
+        {
+            if (string.IsNullOrEmpty(dtInput.TableName))
+            {
+                dtInput.TableName = "SPIN";
+            }
+
+            IFaxBusiness.IMyFaxBusiness webservice = GetWebService();
+            string strErrorMsg = "";
+            bool bolIsError = false;
+            dsReturn = null;
+            dtOut = null;
+            List<Dictionary<object, object>> lstDictValue = new List<Dictionary<object, object>>();
+            Dictionary<object, object> dictDataType = new Dictionary<object, object>();
+            foreach (DataRow dr in dtInput.Rows)
+            {
+                Dictionary<object, object> dict = new Dictionary<object, object>();
+                foreach (DataColumn dc in dtInput.Columns)
+                {
+                    dict.Add(dc.ColumnName, dr[dc.ColumnName]);
+                    if (!dictDataType.ContainsKey(dc.ColumnName))
+                    {
+                        dictDataType.Add(dc.ColumnName, dc.DataType.ToString());
+                    }
+                }
+                lstDictValue.Add(dict);
+            }
+
+            byte[] bSerialValue = SerializeObject(lstDictValue);
+            byte[] bSerialDataType = SerializeObject(dictDataType);
+
+            string strdtOut;
+            dsReturn = UnRarDataSet(webservice.RunProcedure_Service(iSPType, LoginInfo.LoginName, bSerialValue, bSerialDataType, out strdtOut, out strErrorMsg, out bolIsError));
+            dtOut = UnRarDataTable(strdtOut);
+            if (bolIsError)
+            {
+                throw new Exception(strErrorMsg);
+            }
+            if (CallSPEvent != null)
+            {
+                CallSPArgs args = new Args.CallSPArgs(iSPType, dtInput);
+                CallSPEvent(args);
+            }
+        }
+
+        public static DataTable CallView_Service(int iViewType)
+        {
+            return CallView_Service(iViewType, "", "", "");
+        }
+
+        public static DataTable CallView_Service(int iViewType, string strFieldNames, string strWhere, string strOrderBy)
+        {
+            DataTable dtResult = null;
+            IFaxBusiness.IMyFaxBusiness webservice = GetWebService();
+            string strErrorMsg = "";
+            bool bolIsError = false;
+            try
+            {
+                dtResult = UnRarDataTable(webservice.RunView_Service(iViewType, LoginInfo.LoginName, strFieldNames, strWhere, strOrderBy, out strErrorMsg, out bolIsError));
+                if (bolIsError)
+                {
+                    throw new Exception(strErrorMsg);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return dtResult;
+        }
+
+        public static DataTable CallDirectSQL_Service(string strSQL)
+        {
+            DataTable dtResult = null;
+            IFaxBusiness.IMyFaxBusiness webservice = GetWebService();
+            //LBWebService.LBWebService webservice = GetLBWebService();
+            string strErrorMsg = "";
+            bool bolIsError = false;
+            dtResult = UnRarDataTable(webservice.RunDirectSQL_Service(LoginInfo.LoginName, strSQL, out strErrorMsg, out bolIsError));
+            if (bolIsError)
+            {
+                throw new Exception(strErrorMsg);
+            }
+            return dtResult;
+        }
+
+        #endregion -- 网络接口 --
+
         //校验软件权限
         public static void ReadRegister(out bool IsRegister,out int ProductType, out string RegisterInfoJson, out DateTime DeadLine)
         {

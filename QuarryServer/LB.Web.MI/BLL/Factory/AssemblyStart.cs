@@ -44,6 +44,7 @@ namespace LB.Web.MI.BLL.Factory
                 case 13400:
                 case 13401:
                 case 13402:
+                case 13403:
                     args.BLLFunction = new BLLDbCustomer();
                     break;
 

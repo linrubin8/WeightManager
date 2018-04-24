@@ -22,6 +22,5 @@ H:\MyProject\WeightManager\QuarryServer\LB.Web.SM\obj\Debug\LB.Web.SM.dll
 H:\MyProject\WeightManager\QuarryServer\LB.Web.SM\obj\Debug\LB.Web.SM.pdb
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\LB.Web.SM.dll
 G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\LB.Web.SM.pdb
-G:\MyProject\WeightManager\QuarryServer\LB.Web.SM\obj\Debug\LB.Web.SM.csprojResolveAssemblyReference.cache
 G:\MyProject\WeightManager\QuarryServer\LB.Web.SM\obj\Debug\LB.Web.SM.dll
 G:\MyProject\WeightManager\QuarryServer\LB.Web.SM\obj\Debug\LB.Web.SM.pdb

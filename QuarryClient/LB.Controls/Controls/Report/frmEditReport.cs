@@ -128,19 +128,35 @@ namespace LB.Controls.Report
                 }
                 else
                 {
-                    string strReportFile;
-                    bool bolExists = ReportHelper.RefleshClientReport(mReportArgs.ReportTemplateID, out strReportFile);
-
                     byte[] bReport = null;
                     DateTime dtTemplateFileTime = DateTime.Now;
-                    if (bolExists)
+                    string strReportPath = this.txtReportPath.Text;
+                    if (strReportPath!="" )
                     {
-                        bReport = ReportHelper.ConvertToByte(strReportFile);
-                        dtTemplateFileTime = File.GetLastWriteTime(strReportFile);
+                        if (File.Exists(strReportPath))
+                        {
+                            bReport = ReportHelper.ConvertToByte(strReportPath);
+                            //dtTemplateFileTime = File.GetLastWriteTime(strReportPath);
+                        }
+                        else
+                        {
+                            throw new Exception("报表文件不存在，无法保存！");
+                        }
                     }
                     else
                     {
-                        throw new Exception("报表文件不存在，无法保存！");
+                        string strReportFile;
+                        bool bolExists = ReportHelper.RefleshClientReport(mReportArgs.ReportTemplateID, out strReportFile);
+                        
+                        if (bolExists)
+                        {
+                            bReport = ReportHelper.ConvertToByte(strReportFile);
+                            dtTemplateFileTime = File.GetLastWriteTime(strReportFile);
+                        }
+                        else
+                        {
+                            throw new Exception("报表文件不存在，无法保存！");
+                        }
                     }
 
                     LBDbParameterCollection parms = new LBDbParameterCollection();

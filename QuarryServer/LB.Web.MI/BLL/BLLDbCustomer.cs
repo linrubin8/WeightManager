@@ -35,6 +35,10 @@ namespace LB.Web.MI.BLL
                 case 13402:
                     strFunName = "Customer_Delete";
                     break;
+
+                case 13403:
+                    strFunName = "Customer_InsertFromService";
+                    break;
             }
             return strFunName;
         }
@@ -108,6 +112,40 @@ namespace LB.Web.MI.BLL
             };
             DBHelper.ExecInTrans(args, exec);
             
+        }
+
+        public void Customer_InsertFromService(FactoryArgs args, out t_BigID CustomerID, out t_String CustomerCode, t_String CustomerName, t_String Contact, t_String Phone, t_String Address,
+            t_Bool CarIsLimit, t_ID AmountType, t_String LicenceNum, t_String Description, t_Bool IsForbid, t_ID ReceiveType,
+            t_Decimal CreditAmount, t_Bool IsDisplayPrice, t_Bool IsDisplayAmount, t_Bool IsPrintAmount, t_Bool IsAllowOverFul,
+            t_Bool IsAllowEmptyIn, t_Decimal AmountNotEnough)
+        {
+            CustomerCode = new t_String();
+            CustomerID = new t_BigID();
+            IsAllowEmptyIn.IsNullToZero();
+
+            using (DataTable dtCustomer = _DALDbCustomer.GetCustomerByName(args, CustomerName))
+            {
+                if (dtCustomer.Rows.Count > 0)
+                {
+                    throw new Exception("该客户名称已存在,无需同步！");
+                }
+            }
+            
+            t_String MaxCode;
+            _DALDbCustomer.GetMaxCode(args, out MaxCode);
+            int CodeIndex = MaxCode.Value == null ? 0 : LBConverter.ToInt32(MaxCode.Value.Replace("K", ""));
+            CodeIndex++;
+            if (CodeIndex < 10)
+                CustomerCode.SetValueWithObject("K000" + CodeIndex.ToString());
+            else if (CodeIndex < 100)
+                CustomerCode.SetValueWithObject("K00" + CodeIndex.ToString());
+            else if (CodeIndex < 1000)
+                CustomerCode.SetValueWithObject("K0" + CodeIndex.ToString());
+            else
+                CustomerCode.SetValueWithObject("K" + CodeIndex.ToString());
+
+            _DALDbCustomer.Customer_Insert(args, out CustomerID, CustomerCode, CustomerName, Contact, Phone, Address, CarIsLimit, AmountType, LicenceNum, Description,
+                IsForbid, ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, IsAllowEmptyIn, AmountNotEnough);
         }
     }
 }

@@ -44,7 +44,8 @@ namespace LB.Web.Remoting
         private static string mstrDBUser = "";
         private static string mstrDBPw = "";
         private static bool mbolLoginSecure = false;
-        public static void SetRemotingInfo(string strDBName, string strServer,bool bolLoginSecure,string strDBUser,string strDBPw)
+        private static string mstrWebServiceAddress = "";
+        public static void SetRemotingInfo(string strDBName, string strServer,bool bolLoginSecure,string strDBUser,string strDBPw,string strWebServiceAddress)
         {
             LB.Web.Encrypt.LBEncrypt.Decrypt();//校验注册信息
             mstrDBName = strDBName;
@@ -52,6 +53,7 @@ namespace LB.Web.Remoting
             mbolLoginSecure = bolLoginSecure;
             mstrDBUser = strDBUser;
             mstrDBPw = strDBPw;
+            mstrWebServiceAddress = strWebServiceAddress;
 
             DBHelper.DBName = strDBName;
             DBHelper.DBServer = strServer;
@@ -549,6 +551,92 @@ from {1}
             DeadLine = LB.Web.Encrypt.LBEncrypt.DeadLine;
             ProductType = LB.Web.Encrypt.LBEncrypt.ProductType;
             RegisterInfoJson = LB.Web.Encrypt.LBEncrypt.RegisterInfoJson;
+        }
+
+        //调用网络接口
+        public string RunProcedure_Service(int ProcedureType, string strLoginName, byte[] bSerializeValue, byte[] bSerializeDataType,
+            out string strOut, out string ErrorMsg, out bool bolIsError)
+        {
+            strOut = "";
+            ErrorMsg = "";
+            bolIsError = false;
+            DataSet dsReturn = null;
+
+            WebSerivce.BaseInfoService service = new WebSerivce.BaseInfoService();
+            service.Url = mstrWebServiceAddress;
+            try
+            {
+                DataTable dtParmValue = new DataTable("SPIN");
+                List<Dictionary<object, object>> lstDictValue = DeserializeObject(bSerializeValue) as List<Dictionary<object, object>>;
+                Dictionary<object, object> dictDataType = DeserializeObject(bSerializeDataType) as Dictionary<object, object>;
+
+                foreach (KeyValuePair<object, object> keyvalue in dictDataType)
+                {
+                    dtParmValue.Columns.Add(keyvalue.Key.ToString(), GetType(keyvalue.Value.ToString()));
+                }
+
+                foreach (Dictionary<object, object> dictValue in lstDictValue)
+                {
+                    DataRow drNew = dtParmValue.NewRow();
+                    foreach (KeyValuePair<object, object> keyvalue in dictValue)
+                    {
+                        drNew[keyvalue.Key.ToString()] = keyvalue.Value;
+                    }
+                    dtParmValue.Rows.Add(drNew);
+                }
+                dtParmValue.AcceptChanges();
+
+
+                DataTable dtOut;
+                dsReturn = service.CallSP(strLoginName, ProcedureType, dtParmValue, out dtOut);
+                strOut = RarDataTable(dtOut);
+            }
+            catch (Exception ex)
+            {
+                ErrorMsg = ex.InnerException.Message;
+                bolIsError = true;
+            }
+            return RarDataSet(dsReturn);
+        }
+
+        public string RunView_Service(int iViewType, string strLoginName, string strFieldNames, string strWhere, string strOrderBy,
+            out string ErrorMsg, out bool bolIsError)
+        {
+            ErrorMsg = "";
+            bolIsError = false;
+            WebSerivce.BaseInfoService service = new WebSerivce.BaseInfoService();
+            service.Url = mstrWebServiceAddress;
+            DataTable dtReturn = null;
+            try
+            {
+                dtReturn = service.CallView(strLoginName, iViewType, strFieldNames, strWhere, strOrderBy);
+            }
+            catch (Exception ex)
+            {
+                ErrorMsg = ex.InnerException.Message;
+                bolIsError = true;
+            }
+            return RarDataTable(dtReturn);
+        }
+
+        public string RunDirectSQL_Service(string strLoginName, string strSQL,
+           out string ErrorMsg, out bool bolIsError)
+        {
+            ErrorMsg = "";
+            bolIsError = false;
+            WebSerivce.BaseInfoService service = new WebSerivce.BaseInfoService();
+            service.Url = mstrWebServiceAddress;
+            DataTable dtReturn = null;
+            try
+            {
+                dtReturn = service.CallDirectSQL(strLoginName, strSQL);
+            }
+            catch (Exception ex)
+            {
+                ErrorMsg = ex.InnerException.Message;
+                bolIsError = true;
+            }
+            return RarDataTable(dtReturn);
         }
 
         #region -- 数据压缩 --

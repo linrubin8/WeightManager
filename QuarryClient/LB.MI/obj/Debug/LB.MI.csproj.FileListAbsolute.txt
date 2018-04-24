@@ -107,3 +107,6 @@ G:\MyProject\WeightManager\QuarryClient\LB.MI\obj\Debug\LB.MI.MI.frmChargeTypeMa
 G:\MyProject\WeightManager\QuarryClient\LB.MI\obj\Debug\LB.MI.MI.frmPurchaseBill.resources
 G:\MyProject\WeightManager\QuarryClient\LB.MI\bin\Debug\FastReport.pdb
 G:\MyProject\WeightManager\QuarryClient\LB.MI\bin\Debug\FastReport.xml
+G:\MyProject\WeightManager\QuarryClient\LB.MI\obj\Debug\LB.MI.MI.frmCustomerImport.resources
+G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug\LB.MI.dll
+G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug\LB.MI.pdb

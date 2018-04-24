@@ -174,6 +174,18 @@ end
             return DBHelper.ExecuteQuery(args, strSQL, parms);
         }
 
+        public DataTable GetCustomerByName(FactoryArgs args,  t_String CustomerName)
+        {
+            LBDbParameterCollection parms = new LBDbParameterCollection();
+            parms.Add(new LBDbParameter("CustomerName", CustomerName));
+            string strSQL = @"
+    select CustomerName
+    from dbo.DbCustomer
+    where CustomerName=@CustomerName
+";
+            return DBHelper.ExecuteQuery(args, strSQL, parms);
+        }
+
         public DataTable GetCarByCustomer(FactoryArgs args, t_BigID CustomerID)
         {
             LBDbParameterCollection parms = new LBDbParameterCollection();

@@ -37,6 +37,7 @@ namespace LB.Web.Server
             bool bolLoginSecure = iniClass.ReadValue("Remoting", "LoginSecure") == "1" ? true : false;
             string strDBUser = iniClass.ReadValue("Remoting", "DBUser");
             string strDBPW = iniClass.ReadValue("Remoting", "DBPW");
+            string strWebServiceAddress = iniClass.ReadValue("Remoting", "WebServiceAddress");
             //WriteLog("读取数据库名称："+ strDBName+" 地址："+ strAddress);
             int.TryParse(strPort,out mPort);
             strServerName = "LRB";
@@ -45,7 +46,7 @@ namespace LB.Web.Server
             RemotingConfiguration.RegisterWellKnownServiceType(
              typeof(WebRemoting), strServerName, WellKnownObjectMode.Singleton);
 
-            WebRemoting.SetRemotingInfo(strDBName, strDBServer,bolLoginSecure,strDBUser,strDBPW);
+            WebRemoting.SetRemotingInfo(strDBName, strDBServer,bolLoginSecure,strDBUser,strDBPW, strWebServiceAddress);
             WebRemoting.LoadAllBLLFunction();
             WriteLog("调用结束OnStart,strServerName="+ strServerName + ",Port=" + mPort.ToString());
 

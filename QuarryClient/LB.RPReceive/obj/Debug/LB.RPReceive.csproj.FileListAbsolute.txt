@@ -50,3 +50,5 @@ G:\MyProject\WeightManager\QuarryClient\LB.RPReceive\obj\Debug\LB.RPReceive.dll
 G:\MyProject\WeightManager\QuarryClient\LB.RPReceive\obj\Debug\LB.RPReceive.pdb
 G:\MyProject\WeightManager\QuarryClient\LB.RPReceive\bin\Debug\FastReport.pdb
 G:\MyProject\WeightManager\QuarryClient\LB.RPReceive\bin\Debug\FastReport.xml
+G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug\LB.RPReceive.dll
+G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug\LB.RPReceive.pdb

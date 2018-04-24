@@ -24,4 +24,3 @@ G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug\LB.Base.dll
 G:\MyProject\WeightManager\QuarryClient\LB.MainForm\bin\Debug\LB.Base.pdb
 G:\MyProject\WeightManager\QuarryClient\LB.Base\obj\Debug\LB.Base.dll
 G:\MyProject\WeightManager\QuarryClient\LB.Base\obj\Debug\LB.Base.pdb
-G:\MyProject\WeightManager\QuarryClient\LB.Base\obj\Debug\LB.Base.csprojResolveAssemblyReference.cache

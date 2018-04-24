@@ -94,6 +94,7 @@
     <Compile Include="Common\LBPortHelper.cs" />
     <Compile Include="Common\LBSerialHelper.cs" />
     <Compile Include="Common\Serial\SerialObject.cs" />
+    <Compile Include="Common\Synchronous\SynchronousCustomer.cs" />
     <Compile Include="Common\SysConfigValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -108,6 +109,7 @@
       <DependentUpon>ViewCamera.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

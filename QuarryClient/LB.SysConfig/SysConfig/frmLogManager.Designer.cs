@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogManager));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -37,20 +38,20 @@
             this.skinLabel2 = new CCWin.SkinControl.SkinLabel();
             this.txtLogModule = new CCWin.SkinControl.SkinTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSearch = new LB.Controls.LBSkinButton(this.components);
+            this.txtLogTimeTo = new DMSkin.Metro.Controls.MetroDateTime();
+            this.skinLabel5 = new CCWin.SkinControl.SkinLabel();
+            this.txtLogTimeFrom = new DMSkin.Metro.Controls.MetroDateTime();
+            this.skinLabel4 = new CCWin.SkinControl.SkinLabel();
+            this.txtLoginName = new CCWin.SkinControl.SkinTextBox();
+            this.skinLabel3 = new CCWin.SkinControl.SkinLabel();
+            this.txtLogStatusName = new DMSkin.Metro.Controls.MetroComboBox();
             this.skinLabel1 = new CCWin.SkinControl.SkinLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnDelete = new LB.Controls.LBToolStripButton();
-            this.btnClose = new LB.Controls.LBToolStripButton();
+            this.btnDelete = new LB.Controls.LBToolStripButton(this.components);
+            this.btnClose = new LB.Controls.LBToolStripButton(this.components);
             this.skinToolStrip1 = new CCWin.SkinControl.SkinToolStrip();
-            this.grdMain = new LB.Controls.LBDataGridView();
-            this.txtLogStatusName = new DMSkin.Metro.Controls.MetroComboBox();
-            this.skinLabel3 = new CCWin.SkinControl.SkinLabel();
-            this.txtLoginName = new CCWin.SkinControl.SkinTextBox();
-            this.skinLabel4 = new CCWin.SkinControl.SkinLabel();
-            this.txtLogTimeFrom = new DMSkin.Metro.Controls.MetroDateTime();
-            this.skinLabel5 = new CCWin.SkinControl.SkinLabel();
-            this.txtLogTimeTo = new DMSkin.Metro.Controls.MetroDateTime();
-            this.btnSearch = new LB.Controls.LBSkinButton();
+            this.grdMain = new LB.Controls.LBDataGridView(this.components);
             this.SysLogID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LogModule = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LogStatusName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -141,6 +142,140 @@
             this.panel1.Size = new System.Drawing.Size(1317, 45);
             this.panel1.TabIndex = 5;
             // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.Transparent;
+            this.btnSearch.BaseColor = System.Drawing.Color.LightGray;
+            this.btnSearch.BorderColor = System.Drawing.Color.Gray;
+            this.btnSearch.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.btnSearch.DownBack = null;
+            this.btnSearch.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.btnSearch.LBPermissionCode = "";
+            this.btnSearch.Location = new System.Drawing.Point(1024, 10);
+            this.btnSearch.MouseBack = null;
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.NormlBack = null;
+            this.btnSearch.Size = new System.Drawing.Size(75, 31);
+            this.btnSearch.TabIndex = 19;
+            this.btnSearch.Text = "查询";
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtLogTimeTo
+            // 
+            this.txtLogTimeTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.txtLogTimeTo.Location = new System.Drawing.Point(875, 10);
+            this.txtLogTimeTo.MinimumSize = new System.Drawing.Size(0, 30);
+            this.txtLogTimeTo.Name = "txtLogTimeTo";
+            this.txtLogTimeTo.Size = new System.Drawing.Size(127, 30);
+            this.txtLogTimeTo.TabIndex = 18;
+            // 
+            // skinLabel5
+            // 
+            this.skinLabel5.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel5.BorderColor = System.Drawing.Color.White;
+            this.skinLabel5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel5.Location = new System.Drawing.Point(832, 10);
+            this.skinLabel5.Name = "skinLabel5";
+            this.skinLabel5.Size = new System.Drawing.Size(37, 32);
+            this.skinLabel5.TabIndex = 17;
+            this.skinLabel5.Text = "至";
+            this.skinLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtLogTimeFrom
+            // 
+            this.txtLogTimeFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.txtLogTimeFrom.Location = new System.Drawing.Point(699, 10);
+            this.txtLogTimeFrom.MinimumSize = new System.Drawing.Size(0, 30);
+            this.txtLogTimeFrom.Name = "txtLogTimeFrom";
+            this.txtLogTimeFrom.Size = new System.Drawing.Size(127, 30);
+            this.txtLogTimeFrom.TabIndex = 16;
+            // 
+            // skinLabel4
+            // 
+            this.skinLabel4.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel4.BorderColor = System.Drawing.Color.White;
+            this.skinLabel4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel4.Location = new System.Drawing.Point(618, 9);
+            this.skinLabel4.Name = "skinLabel4";
+            this.skinLabel4.Size = new System.Drawing.Size(75, 32);
+            this.skinLabel4.TabIndex = 15;
+            this.skinLabel4.Text = "操作时间";
+            this.skinLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtLoginName
+            // 
+            this.txtLoginName.BackColor = System.Drawing.Color.Transparent;
+            this.txtLoginName.DownBack = null;
+            this.txtLoginName.Icon = null;
+            this.txtLoginName.IconIsButton = false;
+            this.txtLoginName.IconMouseState = CCWin.SkinClass.ControlState.Normal;
+            this.txtLoginName.IsPasswordChat = '\0';
+            this.txtLoginName.IsSystemPasswordChar = false;
+            this.txtLoginName.Lines = new string[0];
+            this.txtLoginName.Location = new System.Drawing.Point(478, 10);
+            this.txtLoginName.Margin = new System.Windows.Forms.Padding(0);
+            this.txtLoginName.MaxLength = 32767;
+            this.txtLoginName.MinimumSize = new System.Drawing.Size(28, 28);
+            this.txtLoginName.MouseBack = null;
+            this.txtLoginName.MouseState = CCWin.SkinClass.ControlState.Normal;
+            this.txtLoginName.Multiline = false;
+            this.txtLoginName.Name = "txtLoginName";
+            this.txtLoginName.NormlBack = null;
+            this.txtLoginName.Padding = new System.Windows.Forms.Padding(5);
+            this.txtLoginName.ReadOnly = false;
+            this.txtLoginName.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtLoginName.Size = new System.Drawing.Size(137, 28);
+            // 
+            // 
+            // 
+            this.txtLoginName.SkinTxt.AccessibleName = "";
+            this.txtLoginName.SkinTxt.AutoCompleteCustomSource.AddRange(new string[] {
+            "asdfasdf",
+            "adsfasdf"});
+            this.txtLoginName.SkinTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.txtLoginName.SkinTxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtLoginName.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtLoginName.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtLoginName.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
+            this.txtLoginName.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.txtLoginName.SkinTxt.Name = "BaseText";
+            this.txtLoginName.SkinTxt.Size = new System.Drawing.Size(127, 18);
+            this.txtLoginName.SkinTxt.TabIndex = 0;
+            this.txtLoginName.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.txtLoginName.SkinTxt.WaterText = "";
+            this.txtLoginName.TabIndex = 14;
+            this.txtLoginName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtLoginName.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.txtLoginName.WaterText = "";
+            this.txtLoginName.WordWrap = true;
+            // 
+            // skinLabel3
+            // 
+            this.skinLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel3.BorderColor = System.Drawing.Color.White;
+            this.skinLabel3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel3.Location = new System.Drawing.Point(417, 10);
+            this.skinLabel3.Name = "skinLabel3";
+            this.skinLabel3.Size = new System.Drawing.Size(58, 32);
+            this.skinLabel3.TabIndex = 13;
+            this.skinLabel3.Text = "操作人";
+            this.skinLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtLogStatusName
+            // 
+            this.txtLogStatusName.DM_UseSelectable = true;
+            this.txtLogStatusName.FormattingEnabled = true;
+            this.txtLogStatusName.ItemHeight = 24;
+            this.txtLogStatusName.Items.AddRange(new object[] {
+            "",
+            "操作",
+            "查询"});
+            this.txtLogStatusName.Location = new System.Drawing.Point(319, 10);
+            this.txtLogStatusName.Name = "txtLogStatusName";
+            this.txtLogStatusName.Size = new System.Drawing.Size(92, 30);
+            this.txtLogStatusName.TabIndex = 12;
+            // 
             // skinLabel1
             // 
             this.skinLabel1.BackColor = System.Drawing.Color.Transparent;
@@ -167,6 +302,7 @@
             this.btnDelete.Size = new System.Drawing.Size(72, 37);
             this.btnDelete.Text = "删除选中行";
             this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDelete.Visible = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnClose
@@ -241,7 +377,13 @@
             this.grdMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.grdMain.ColumnFont = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.grdMain.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            //this.grdMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(246)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Empty;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Empty;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Empty;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.grdMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SysLogID,
@@ -285,140 +427,6 @@
             this.grdMain.TitleBack = null;
             this.grdMain.TitleBackColorBegin = System.Drawing.Color.White;
             this.grdMain.TitleBackColorEnd = System.Drawing.SystemColors.ActiveBorder;
-            // 
-            // txtLogStatusName
-            // 
-            this.txtLogStatusName.DM_UseSelectable = true;
-            this.txtLogStatusName.FormattingEnabled = true;
-            this.txtLogStatusName.ItemHeight = 24;
-            this.txtLogStatusName.Items.AddRange(new object[] {
-            "",
-            "操作",
-            "查询"});
-            this.txtLogStatusName.Location = new System.Drawing.Point(319, 10);
-            this.txtLogStatusName.Name = "txtLogStatusName";
-            this.txtLogStatusName.Size = new System.Drawing.Size(92, 30);
-            this.txtLogStatusName.TabIndex = 12;
-            // 
-            // skinLabel3
-            // 
-            this.skinLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.skinLabel3.BorderColor = System.Drawing.Color.White;
-            this.skinLabel3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel3.Location = new System.Drawing.Point(417, 10);
-            this.skinLabel3.Name = "skinLabel3";
-            this.skinLabel3.Size = new System.Drawing.Size(58, 32);
-            this.skinLabel3.TabIndex = 13;
-            this.skinLabel3.Text = "操作人";
-            this.skinLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtLoginName
-            // 
-            this.txtLoginName.BackColor = System.Drawing.Color.Transparent;
-            this.txtLoginName.DownBack = null;
-            this.txtLoginName.Icon = null;
-            this.txtLoginName.IconIsButton = false;
-            this.txtLoginName.IconMouseState = CCWin.SkinClass.ControlState.Normal;
-            this.txtLoginName.IsPasswordChat = '\0';
-            this.txtLoginName.IsSystemPasswordChar = false;
-            this.txtLoginName.Lines = new string[0];
-            this.txtLoginName.Location = new System.Drawing.Point(478, 10);
-            this.txtLoginName.Margin = new System.Windows.Forms.Padding(0);
-            this.txtLoginName.MaxLength = 32767;
-            this.txtLoginName.MinimumSize = new System.Drawing.Size(28, 28);
-            this.txtLoginName.MouseBack = null;
-            this.txtLoginName.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.txtLoginName.Multiline = false;
-            this.txtLoginName.Name = "txtLoginName";
-            this.txtLoginName.NormlBack = null;
-            this.txtLoginName.Padding = new System.Windows.Forms.Padding(5);
-            this.txtLoginName.ReadOnly = false;
-            this.txtLoginName.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtLoginName.Size = new System.Drawing.Size(137, 28);
-            // 
-            // 
-            // 
-            this.txtLoginName.SkinTxt.AccessibleName = "";
-            this.txtLoginName.SkinTxt.AutoCompleteCustomSource.AddRange(new string[] {
-            "asdfasdf",
-            "adsfasdf"});
-            this.txtLoginName.SkinTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.txtLoginName.SkinTxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtLoginName.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtLoginName.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtLoginName.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
-            this.txtLoginName.SkinTxt.Location = new System.Drawing.Point(5, 5);
-            this.txtLoginName.SkinTxt.Name = "BaseText";
-            this.txtLoginName.SkinTxt.Size = new System.Drawing.Size(127, 18);
-            this.txtLoginName.SkinTxt.TabIndex = 0;
-            this.txtLoginName.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
-            this.txtLoginName.SkinTxt.WaterText = "";
-            this.txtLoginName.TabIndex = 14;
-            this.txtLoginName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtLoginName.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
-            this.txtLoginName.WaterText = "";
-            this.txtLoginName.WordWrap = true;
-            // 
-            // skinLabel4
-            // 
-            this.skinLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.skinLabel4.BorderColor = System.Drawing.Color.White;
-            this.skinLabel4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel4.Location = new System.Drawing.Point(618, 9);
-            this.skinLabel4.Name = "skinLabel4";
-            this.skinLabel4.Size = new System.Drawing.Size(75, 32);
-            this.skinLabel4.TabIndex = 15;
-            this.skinLabel4.Text = "操作时间";
-            this.skinLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtLogTimeFrom
-            // 
-            this.txtLogTimeFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.txtLogTimeFrom.Location = new System.Drawing.Point(699, 10);
-            this.txtLogTimeFrom.MinimumSize = new System.Drawing.Size(0, 30);
-            this.txtLogTimeFrom.Name = "txtLogTimeFrom";
-            this.txtLogTimeFrom.Size = new System.Drawing.Size(127, 30);
-            this.txtLogTimeFrom.TabIndex = 16;
-            // 
-            // skinLabel5
-            // 
-            this.skinLabel5.BackColor = System.Drawing.Color.Transparent;
-            this.skinLabel5.BorderColor = System.Drawing.Color.White;
-            this.skinLabel5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel5.Location = new System.Drawing.Point(832, 10);
-            this.skinLabel5.Name = "skinLabel5";
-            this.skinLabel5.Size = new System.Drawing.Size(37, 32);
-            this.skinLabel5.TabIndex = 17;
-            this.skinLabel5.Text = "至";
-            this.skinLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtLogTimeTo
-            // 
-            this.txtLogTimeTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.txtLogTimeTo.Location = new System.Drawing.Point(875, 10);
-            this.txtLogTimeTo.MinimumSize = new System.Drawing.Size(0, 30);
-            this.txtLogTimeTo.Name = "txtLogTimeTo";
-            this.txtLogTimeTo.Size = new System.Drawing.Size(127, 30);
-            this.txtLogTimeTo.TabIndex = 18;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.Transparent;
-            this.btnSearch.BaseColor = System.Drawing.Color.LightGray;
-            this.btnSearch.BorderColor = System.Drawing.Color.Gray;
-            this.btnSearch.ControlState = CCWin.SkinClass.ControlState.Normal;
-            this.btnSearch.DownBack = null;
-            this.btnSearch.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.btnSearch.LBPermissionCode = "";
-            this.btnSearch.Location = new System.Drawing.Point(1024, 10);
-            this.btnSearch.MouseBack = null;
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.NormlBack = null;
-            this.btnSearch.Size = new System.Drawing.Size(75, 31);
-            this.btnSearch.TabIndex = 19;
-            this.btnSearch.Text = "查询";
-            this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // SysLogID
             // 

@@ -64,8 +64,8 @@ namespace LB.Web.DB.BLL
         }
 
         public void Update(FactoryArgs args,
-           t_BigID ReportTemplateID, t_String ReportTemplateName, t_ID TemplateSeq,
-           t_String Description, t_BigID ReportTypeID,
+           t_BigID ReportTemplateID, t_String ReportTemplateName, t_DTSmall TemplateFileTime, t_ID TemplateSeq,
+           t_String Description, t_Image TemplateData, t_BigID ReportTypeID,
             t_String PrinterName, t_String MachineName, t_Bool IsManualPaperType, t_String PaperType, t_Bool IsManualPaperSize,
             t_ID PaperSizeHeight, t_ID PaperSizeWidth, t_Bool IsPaperTransverse, t_ID PrintCount)
         {
@@ -76,8 +76,8 @@ namespace LB.Web.DB.BLL
                     dtExistsName.DefaultView.RowFilter = "ReportTemplateID<>" + ReportTemplateID.Value;
                     if (dtExistsName.DefaultView.Count == 0)
                     {
-                        _DALDbReportTemplate.Update(args, ReportTemplateID, ReportTemplateName, TemplateSeq, Description, 
-                        PrinterName, MachineName, IsManualPaperType, PaperType, IsManualPaperSize,
+                        _DALDbReportTemplate.Update(args, ReportTemplateID, ReportTemplateName,TemplateFileTime, TemplateSeq, Description, TemplateData,
+                        ReportTypeID,PrinterName, MachineName, IsManualPaperType, PaperType, IsManualPaperSize,
                         PaperSizeHeight, PaperSizeWidth, IsPaperTransverse, PrintCount);
                     }
                     else
@@ -88,8 +88,8 @@ namespace LB.Web.DB.BLL
                 }
                 else
                 {
-                    _DALDbReportTemplate.Update(args, ReportTemplateID, ReportTemplateName, TemplateSeq, Description, 
-                        PrinterName, MachineName, IsManualPaperType, PaperType, IsManualPaperSize,
+                    _DALDbReportTemplate.Update(args, ReportTemplateID, ReportTemplateName, TemplateFileTime, TemplateSeq, Description, TemplateData,
+                        ReportTypeID,PrinterName, MachineName, IsManualPaperType, PaperType, IsManualPaperSize,
                         PaperSizeHeight, PaperSizeWidth, IsPaperTransverse, PrintCount);
                 }
             }

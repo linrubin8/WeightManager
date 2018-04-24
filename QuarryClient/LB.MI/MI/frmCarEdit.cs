@@ -101,7 +101,13 @@ namespace LB.MI
             try
             {
                 this.VerifyTextBoxIsEmpty();//校验控件是否为空
-                
+
+                //判断车牌号码是否大于等于6位
+                if (this.txtCarNum.Text.TrimEnd().Length < 6)
+                {
+                    throw new Exception("车牌号码必须大于等于6位数！");
+                }
+
                 int iSPType = 13500;
                 if (mlCarID > 0)
                 {

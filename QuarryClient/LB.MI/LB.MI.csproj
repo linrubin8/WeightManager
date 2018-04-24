@@ -24,10 +24,11 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\LB.MainForm\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -96,6 +97,12 @@
     </Compile>
     <Compile Include="MI\frmChargeTypeManager.Designer.cs">
       <DependentUpon>frmChargeTypeManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmCustomerImport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmCustomerImport.Designer.cs">
+      <DependentUpon>frmCustomerImport.cs</DependentUpon>
     </Compile>
     <Compile Include="MI\frmSaleCarInOutCancel.cs">
       <SubType>UserControl</SubType>
@@ -276,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MI\frmChargeTypeManager.resx">
       <DependentUpon>frmChargeTypeManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmCustomerImport.resx">
+      <DependentUpon>frmCustomerImport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MI\frmSaleCarInOutCancel.resx">
       <DependentUpon>frmSaleCarInOutCancel.cs</DependentUpon>

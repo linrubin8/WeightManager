@@ -54,7 +54,7 @@ namespace LB.Controls.Report
             {
                 if (this.grdMain.SelectedCells.Count > 0)
                 {
-                    DataGridViewRow dgSelected = this.grdMain.SelectedRows[this.grdMain.SelectedCells[0].RowIndex];
+                    DataGridViewRow dgSelected = this.grdMain.Rows[this.grdMain.SelectedCells[0].RowIndex];
                     long lReportTemplateID = Convert.ToInt64(dgSelected.Cells["ReportTemplateID"].Value);
                     mReportArgs.ReportTemplateID = lReportTemplateID;
                     frmEditReport frm = new frmEditReport( mReportArgs);
@@ -79,7 +79,7 @@ namespace LB.Controls.Report
             {
                 if (this.grdMain.SelectedCells.Count > 0)
                 {
-                    DataGridViewRow dgSelected = this.grdMain.SelectedRows[this.grdMain.SelectedCells[0].RowIndex];
+                    DataGridViewRow dgSelected = this.grdMain.Rows[this.grdMain.SelectedCells[0].RowIndex];
                     long lReportTemplateID = Convert.ToInt64(dgSelected.Cells["ReportTemplateID"].Value);
                     mReportArgs.ReportTemplateID = lReportTemplateID;
                     ReportHelper.OpenReportDesign( mReportArgs);
@@ -99,9 +99,10 @@ namespace LB.Controls.Report
         {
             try
             {
-                if (this.grdMain.SelectedRows.Count > 0)
+                if (this.grdMain.SelectedCells.Count > 0)
                 {
-                    long lReportTemplateID = Convert.ToInt64(this.grdMain.SelectedRows[0].Cells["ReportTemplateID"].Value);
+                    DataGridViewRow dgSelected = this.grdMain.Rows[this.grdMain.SelectedCells[0].RowIndex];
+                    long lReportTemplateID = Convert.ToInt64(dgSelected.Cells["ReportTemplateID"].Value);
                     ReportHelper.ResetLocalReport(lReportTemplateID, mReportArgs.DSDataSource, mReportArgs.RecordDR);
                     LB.WinFunction.LBCommonHelper.ShowCommonMessage("报表数据源更新完毕！");
                 }

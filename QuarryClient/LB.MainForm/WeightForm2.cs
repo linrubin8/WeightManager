@@ -1048,6 +1048,7 @@ namespace LB.MainForm
                     if (lSaleCarInBillID>0)
                     {
                         this.ClearAllBillInfo();
+                        _WeightType = enWeightType.None;
                     }
                 }
                 else if (_WeightType == enWeightType.WeightOut)
@@ -1056,6 +1057,7 @@ namespace LB.MainForm
                     this.txtTotalWeight.Text = decWeight.ToString("0");
 
                     SaveOutBill(mlSaleCarInBillID);
+                    _WeightType = enWeightType.None;
                     mlSaleCarInBillID = 0;
                 }
                 else if(_WeightType== enWeightType.WeightOutNull)//空车出场
@@ -1070,7 +1072,7 @@ namespace LB.MainForm
 
                     SaveOutBill(mlSaleCarInBillID);
                     mlSaleCarInBillID = 0;
-
+                    _WeightType = enWeightType.None;
                     LB.WinFunction.LBCommonHelper.ShowCommonMessage("空车磅单生成成功！");
                 }
 
@@ -1622,7 +1624,6 @@ namespace LB.MainForm
             if (dictValue.ContainsKey("SaleCarOutBillID"))
             {
                 lSaleCarOutBillID = LBConverter.ToInt64(dictValue["SaleCarOutBillID"].ToString());
-
                 Thread threadSavePic = new Thread(SaveOutSalesPicture);
                 threadSavePic.Start(lSaleCarOutBillID);
             }

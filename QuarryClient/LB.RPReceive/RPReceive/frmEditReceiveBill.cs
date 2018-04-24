@@ -441,7 +441,7 @@ namespace LB.RPReceive
             try
             {
                 decimal decReceiveAmount = LBConverter.ToDecimal(this.txtReceiveAmount.Text);
-                this.txtReceiveAmount.Text = decReceiveAmount.ToString("N0");
+                this.txtReceiveAmount.Text = String.Format("{0:N}", decReceiveAmount);
             }
             catch (Exception ex)
             {

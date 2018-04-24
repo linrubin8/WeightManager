@@ -66,8 +66,8 @@ values(@ReportTemplateID, @PrinterName, @MachineName, @IsManualPaperType,
         }
 
         public void Update(FactoryArgs args,
-           t_BigID ReportTemplateID, t_String ReportTemplateName, t_ID TemplateSeq,
-           t_String Description,
+           t_BigID ReportTemplateID, t_String ReportTemplateName, t_DTSmall TemplateFileTime, t_ID TemplateSeq,
+           t_String Description, t_Image TemplateData, t_BigID ReportTypeID,
             t_String PrinterName, t_String MachineName, t_Bool IsManualPaperType, t_String PaperType, t_Bool IsManualPaperSize,
             t_ID PaperSizeHeight, t_ID PaperSizeWidth, t_Bool IsPaperTransverse, t_ID PrintCount)
         {
@@ -86,11 +86,15 @@ values(@ReportTemplateID, @PrinterName, @MachineName, @IsManualPaperType,
             parms.Add(new LBDbParameter("PaperSizeWidth", PaperSizeWidth));
             parms.Add(new LBDbParameter("IsPaperTransverse", IsPaperTransverse));
             parms.Add(new LBDbParameter("PrintCount", PrintCount));
+            parms.Add(new LBDbParameter("TemplateData", TemplateData));
+            parms.Add(new LBDbParameter("TemplateFileTime", TemplateFileTime));
             string strSQL = @"
 update dbo.DbReportTemplate
 set ReportTemplateName = @ReportTemplateName, 
     TemplateSeq=@TemplateSeq,
-    Description=@Description
+    Description=@Description,
+    TemplateData = isnull(@TemplateData,TemplateData),
+    TemplateFileTime = (case when @TemplateData is null then TemplateFileTime else @TemplateFileTime end)
 where ReportTemplateID = @ReportTemplateID
 
 if not exists(select 1 from dbo.DbPrinterConfig where ReportTemplateID = @ReportTemplateID)

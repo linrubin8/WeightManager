@@ -18,4 +18,3 @@ G:\MyProject\WeightManager\QuarryClient\LB.StyleResource\obj\Debug\LB.StyleResou
 G:\MyProject\WeightManager\QuarryClient\LB.StyleResource\obj\Debug\LB.StyleResource.csproj.GenerateResource.Cache
 G:\MyProject\WeightManager\QuarryClient\LB.StyleResource\obj\Debug\LB.StyleResource.dll
 G:\MyProject\WeightManager\QuarryClient\LB.StyleResource\obj\Debug\LB.StyleResource.pdb
-G:\MyProject\WeightManager\QuarryClient\LB.StyleResource\obj\Debug\LB.StyleResource.csprojResolveAssemblyReference.cache

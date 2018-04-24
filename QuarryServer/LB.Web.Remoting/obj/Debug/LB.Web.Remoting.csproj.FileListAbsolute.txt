@@ -16,3 +16,4 @@ G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\LB.Web.R
 G:\MyProject\WeightManager\QuarryServer\LB.Web.Remoting\obj\Debug\LB.Web.Remoting.csprojResolveAssemblyReference.cache
 G:\MyProject\WeightManager\QuarryServer\LB.Web.Remoting\obj\Debug\LB.Web.Remoting.dll
 G:\MyProject\WeightManager\QuarryServer\LB.Web.Remoting\obj\Debug\LB.Web.Remoting.pdb
+G:\MyProject\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug\LB.Web.Remoting.dll.config

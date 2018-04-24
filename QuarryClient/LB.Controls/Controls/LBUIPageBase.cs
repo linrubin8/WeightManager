@@ -135,7 +135,7 @@ namespace LB.Controls
             {
                 strMsg.AppendLine("控件<"+txtBox.Caption+">值不能为空！");
             }
-
+            
             if (strMsg.ToString() != "")
                 throw new Exception(strMsg.ToString());
         }

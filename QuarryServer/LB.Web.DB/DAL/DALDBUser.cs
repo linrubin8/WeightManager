@@ -69,6 +69,12 @@ where UserID = @UserID
             parms.Add(new LBDbParameter("UserID", UserID));
 
             string strSQL = @"
+delete dbo.DbUserPermissionData
+where UserID = @UserID
+
+delete dbo.DbUserPermission
+where UserID = @UserID
+
 delete dbo.DBUser
 where UserID = @UserID
 ";
