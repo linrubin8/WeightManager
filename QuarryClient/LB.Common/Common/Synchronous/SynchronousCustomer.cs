@@ -27,6 +27,8 @@ namespace LB.Common.Synchronous
             CompareClientAndServer(out dtAddCustomer, out dtEditCustomer);
 
             UpdateClientCustomerData(dtAddCustomer, dtEditCustomer);
+
+            SysConfigValue.SaveSysConfig("CustomerSynchronousTime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
         }
 
         /// <summary>
@@ -36,7 +38,7 @@ namespace LB.Common.Synchronous
         public static void CompareClientAndServer(out DataTable dtAddCustomer,out DataTable dtEditCustomer)
         {
             //读取上次同步数据时间
-            DateTime dtCustomerSynchronousTime = DateTime.MinValue;
+            DateTime dtCustomerSynchronousTime = Convert.ToDateTime("1990-01-01");
             string strCustomerSynchronousTime;
             SysConfigValue.GetSysConfig("CustomerSynchronousTime", out strCustomerSynchronousTime);
             if (strCustomerSynchronousTime != "")
@@ -68,9 +70,11 @@ namespace LB.Common.Synchronous
                     dictClient.Add(strKey, dr);
                 }
             }
-            
-            dtAddCustomer = new DataTable("SP");
-            dtEditCustomer = new DataTable("SP");
+
+            dtAddCustomer = dtClient.Clone();
+            dtAddCustomer.TableName = "SP";
+            dtEditCustomer = dtClient.Clone();
+            dtEditCustomer.TableName = "SP";
             foreach (KeyValuePair<string,DataRow> kvServer in dictServer)
             {
                 if (!dictClient.ContainsKey(kvServer.Key))
@@ -82,7 +86,7 @@ namespace LB.Common.Synchronous
                     DataRow drClient = dictClient[kvServer.Key];
                     foreach (DataColumn dc in dtServer.Columns)
                     {
-                        if (dc.ColumnName!="CustomerID" && dtClient.Columns.Contains(dc.ColumnName))
+                        if (!dc.ColumnName.Contains("Time") && dc.ColumnName!="CustomerID" && dtClient.Columns.Contains(dc.ColumnName))
                         {
                             if(kvServer.Value[dc.ColumnName].ToString().TrimEnd() != drClient[dc.ColumnName].ToString().TrimEnd())
                             {
@@ -92,8 +96,6 @@ namespace LB.Common.Synchronous
                     }
                 }
             }
-
-            SysConfigValue.SaveSysConfig("CustomerSynchronousTime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
         }
 
         /// <summary>
@@ -106,10 +108,17 @@ namespace LB.Common.Synchronous
             //添加客户
             DataSet dsReturn;
             DataTable dtOut;
-            ExecuteSQL.CallSP(13400, dtAddCustomer, out dsReturn, out dtOut);
+            if (dtAddCustomer != null)
+            {
+                ExecuteSQL.CallSP(13400, dtAddCustomer, out dsReturn, out dtOut);
+            }
 
             //更新本地客户
-            ExecuteSQL.CallSP(13401, dtEditCustomer, out dsReturn, out dtOut);
+            if (dtEditCustomer != null)
+            {
+                ExecuteSQL.CallSP(13401, dtEditCustomer, out dsReturn, out dtOut);
+            }
+            
         }
     }
 }

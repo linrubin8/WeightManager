@@ -119,6 +119,10 @@ namespace LB.Web.SM.BLL
                 case 14120:
                     strFunName = "InsertPurchaseOutBill";
                     break;
+
+                case 14121:
+                    strFunName = "SaveScreenImage";
+                    break;
             }
             return strFunName;
         }
@@ -378,6 +382,7 @@ namespace LB.Web.SM.BLL
                 {
                     DataRow drInBill = dtInBill.Rows[0];
                     long InCarID = LBConverter.ToInt64(drInBill["CarID"]);
+                    decimal decCarTare = LBConverter.ToDecimal(drInBill["CarTare"]);
                     CustomerID.SetValueWithObject(drInBill["CustomerID"]);
                     CarNum.SetValueWithObject(drInBill["CarNum"]);
                     SaleBillType.SetValueWithObject(drInBill["SaleBillType"]);
@@ -389,6 +394,14 @@ namespace LB.Web.SM.BLL
                     if (SaleBillType.Value == 1)
                     {
                         throw new Exception("该车辆为油车，请点击【汽油采购】模块进行操作！");
+                    }
+
+                    if (CalculateType.Value==0 && SaleBillType.Value==1 && TotalWeight.Value - decCarTare != SuttleWeight.Value)//重车时出现皮重-毛重！=净重的异常情况，需要临时纠正净重值，同时写入日志
+                    {
+                        this._IBLLDbErrorLog.Insert(args,
+                            new t_String("服务器重车异常：TotalWeight=" + TotalWeight.Value.ToString() + " CarTare=" + decCarTare.ToString() + " SuttleWeight=" + SuttleWeight.Value.ToString() + " SaleCarInBillID=" + SaleCarInBillID.Value.ToString()));
+                        SuttleWeight.Value = TotalWeight.Value - decCarTare;
+                        Amount.Value = Price.Value * SuttleWeight.Value;
                     }
                 }
             }
@@ -591,6 +604,36 @@ namespace LB.Web.SM.BLL
             {
                 this._IBLLDbErrorLog.Insert(args,
                     new t_String("服务器端，保存出场图片时报错，出场单号：" + SaleCarOutBillID.Value.ToString() + "\n错误信息：" + ex.Message));
+                throw ex;
+            }
+        }
+
+        public void SaveScreenImage(FactoryArgs args, t_BigID SaleCarOutBillID,t_Image ScreenPicture)
+        {
+            try
+            {
+                string strPath = AppDomain.CurrentDomain.BaseDirectory;
+                string strCameraPath = Path.Combine(strPath, "LBCameraPicture");
+                if (!Directory.Exists(strCameraPath))
+                {
+                    Directory.CreateDirectory(strCameraPath);
+                }
+                string strInBillPath = Path.Combine(strCameraPath, "ScreenImage");
+                if (!Directory.Exists(strInBillPath))
+                {
+                    Directory.CreateDirectory(strInBillPath);
+                }
+                
+                if (ScreenPicture.Value != null)
+                {
+                    string strImagePath = Path.Combine(strInBillPath, SaleCarOutBillID.Value.ToString() + "_Image.jpg");
+                    CommonHelper.SaveFile(strImagePath, ScreenPicture.Value);
+                }
+            }
+            catch (Exception ex)
+            {
+                this._IBLLDbErrorLog.Insert(args,
+                    new t_String("服务器端，保存截屏图时报错，出场单号：" + SaleCarOutBillID.Value.ToString() + "\n错误信息：" + ex.Message));
                 throw ex;
             }
         }

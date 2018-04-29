@@ -2,7 +2,7 @@
 <!DOCTYPE dotfuscatorMap SYSTEM "http://www.preemptive.com/dotfuscator/dtd/dotfuscatorMap_v1.2.dtd">
 <dotfuscatorMap version="1.1">
     <header>
-        <timestamp>2018-04-22T20:49:14</timestamp>
+        <timestamp>2018-04-29T20:41:39</timestamp>
         <product version="4.9.6005.29054" user="firefly " serial="124576-PRO-AC6AB7C5-7A50E312-F0BBEBCC-829D98D7">Dotfuscator Professional Edition</product>
     </header>
     <mapping>
@@ -4808,6 +4808,10 @@
                         <name>Customer_Insert</name>
                     </method>
                     <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal)</signature>
+                        <name>Customer_InsertFromService</name>
+                    </method>
+                    <method>
                         <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal)</signature>
                         <name>Customer_Update</name>
                     </method>
@@ -5138,6 +5142,10 @@
                     </method>
                     <method>
                         <signature>System.Data.DataTable(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String)</signature>
+                        <name>GetCustomerByName</name>
+                    </method>
+                    <method>
+                        <signature>System.Data.DataTable(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_String)</signature>
                         <name>GetCustomerByName</name>
                     </method>
                     <method>
@@ -7535,6 +7543,10 @@
                         <name>SaveOutSalesCameraImage</name>
                     </method>
                     <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_Image)</signature>
+                        <name>SaveScreenImage</name>
+                    </method>
+                    <method>
                         <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
                         <name>UnApprove</name>
                     </method>
@@ -7771,7 +7783,7 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass17_0</name>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass18_0</name>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -7808,7 +7820,7 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass18_0</name>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass19_0</name>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -7841,7 +7853,7 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass26_0</name>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass27_0</name>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -7926,7 +7938,7 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass27_0</name>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass28_0</name>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -7971,7 +7983,7 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass28_0</name>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass29_0</name>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -8016,7 +8028,7 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass30_0</name>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass31_0</name>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -8077,7 +8089,7 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass31_0</name>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass32_0</name>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -8714,7 +8726,7 @@
         </statisticline>
         <statisticline>
             <description>Total Methods</description>
-            <statistic>1028</statistic>
+            <statistic>1031</statistic>
         </statisticline>
         <statisticline>
             <description>Total Fields</description>

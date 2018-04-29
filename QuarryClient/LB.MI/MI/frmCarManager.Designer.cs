@@ -38,6 +38,9 @@
             this.txtCarNum = new LB.Controls.LBSkinTextBox(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.grdMain = new LB.Controls.LBDataGridView(this.components);
+            this.CarCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CarNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.skinToolStrip1 = new CCWin.SkinControl.SkinToolStrip();
             this.btnClose = new LB.Controls.LBToolStripButton(this.components);
             this.btnReflesh = new LB.Controls.LBToolStripButton(this.components);
@@ -46,9 +49,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCarWeightManager = new LB.Controls.LBToolStripButton(this.components);
             this.btnAddCarWeight = new LB.Controls.LBToolStripButton(this.components);
-            this.CarCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CarNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSynCarFromWeb = new LB.Controls.LBToolStripButton(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).BeginInit();
             this.skinToolStrip1.SuspendLayout();
@@ -173,6 +174,30 @@
             this.grdMain.TitleBackColorBegin = System.Drawing.Color.White;
             this.grdMain.TitleBackColorEnd = System.Drawing.SystemColors.ActiveBorder;
             // 
+            // CarCode
+            // 
+            this.CarCode.DataPropertyName = "CarCode";
+            this.CarCode.HeaderText = "编码";
+            this.CarCode.Name = "CarCode";
+            this.CarCode.ReadOnly = true;
+            this.CarCode.Width = 80;
+            // 
+            // CarNum
+            // 
+            this.CarNum.DataPropertyName = "CarNum";
+            this.CarNum.HeaderText = "车牌号码";
+            this.CarNum.Name = "CarNum";
+            this.CarNum.ReadOnly = true;
+            this.CarNum.Width = 150;
+            // 
+            // CustomerName
+            // 
+            this.CustomerName.DataPropertyName = "CustomerName";
+            this.CustomerName.HeaderText = "关联客户名称";
+            this.CustomerName.Name = "CustomerName";
+            this.CustomerName.ReadOnly = true;
+            this.CustomerName.Width = 180;
+            // 
             // skinToolStrip1
             // 
             this.skinToolStrip1.Arrow = System.Drawing.Color.Black;
@@ -216,7 +241,8 @@
             this.btnAddCar,
             this.toolStripSeparator2,
             this.btnCarWeightManager,
-            this.btnAddCarWeight});
+            this.btnAddCarWeight,
+            this.btnSynCarFromWeb});
             this.skinToolStrip1.Location = new System.Drawing.Point(0, 0);
             this.skinToolStrip1.Name = "skinToolStrip1";
             this.skinToolStrip1.RadiusStyle = CCWin.SkinClass.RoundStyle.All;
@@ -294,29 +320,16 @@
             this.btnAddCarWeight.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAddCarWeight.Click += new System.EventHandler(this.btnAddCarWeight_Click);
             // 
-            // CarCode
+            // btnSynCarFromWeb
             // 
-            this.CarCode.DataPropertyName = "CarCode";
-            this.CarCode.HeaderText = "编码";
-            this.CarCode.Name = "CarCode";
-            this.CarCode.ReadOnly = true;
-            this.CarCode.Width = 80;
-            // 
-            // CarNum
-            // 
-            this.CarNum.DataPropertyName = "CarNum";
-            this.CarNum.HeaderText = "车牌号码";
-            this.CarNum.Name = "CarNum";
-            this.CarNum.ReadOnly = true;
-            this.CarNum.Width = 150;
-            // 
-            // CustomerName
-            // 
-            this.CustomerName.DataPropertyName = "CustomerName";
-            this.CustomerName.HeaderText = "关联客户名称";
-            this.CustomerName.Name = "CustomerName";
-            this.CustomerName.ReadOnly = true;
-            this.CustomerName.Width = 180;
+            this.btnSynCarFromWeb.Image = ((System.Drawing.Image)(resources.GetObject("btnSynCarFromWeb.Image")));
+            this.btnSynCarFromWeb.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSynCarFromWeb.LBPermissionCode = "";
+            this.btnSynCarFromWeb.Name = "btnSynCarFromWeb";
+            this.btnSynCarFromWeb.Size = new System.Drawing.Size(108, 37);
+            this.btnSynCarFromWeb.Text = "网络同步车辆资料";
+            this.btnSynCarFromWeb.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSynCarFromWeb.Click += new System.EventHandler(this.btnSynCarFromWeb_Click);
             // 
             // frmCarManager
             // 
@@ -355,5 +368,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CarCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn CarNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
+        private Controls.LBToolStripButton btnSynCarFromWeb;
     }
 }

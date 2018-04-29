@@ -1,6 +1,0 @@
-H:\MyProject\WeightManager\QuarryServer\LB.Web.Server\bin\Debug\LB.Web.IRemoting.dll
-H:\MyProject\WeightManager\QuarryServer\LB.Web.Server\bin\Debug\LB.Web.IRemoting.pdb
-H:\MyProject\WeightManager\QuarryServer\LB.Web.IRemoting\obj\Debug\LB.Web.IRemoting.dll
-H:\MyProject\WeightManager\QuarryServer\LB.Web.IRemoting\obj\Debug\LB.Web.IRemoting.pdb
-H:\MyProject\WeightManager\QuarryServer\LB.Web.ServerMonitor\bin\Debug\LB.Web.IRemoting.dll
-H:\MyProject\WeightManager\QuarryServer\LB.Web.ServerMonitor\bin\Debug\LB.Web.IRemoting.pdb

@@ -10,6 +10,7 @@ using LB.Controls;
 using LB.Common;
 using LB.WinFunction;
 using LB.Page.Helper;
+using LB.Common.Synchronous;
 
 namespace LB.MI.MI
 {
@@ -181,6 +182,19 @@ namespace LB.MI.MI
 
                 frmAddCarWeight frm = new frmAddCarWeight(lCarID);
                 LBShowForm.ShowDialog(frm);
+            }
+            catch (Exception ex)
+            {
+                LB.WinFunction.LBCommonHelper.DealWithErrorMessage(ex);
+            }
+        }
+
+        private void btnSynCarFromWeb_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //DataTable dt = ExecuteSQL.CallView_Service(112);
+                SynchronousCar.SynchronousCarFromServer();
             }
             catch (Exception ex)
             {

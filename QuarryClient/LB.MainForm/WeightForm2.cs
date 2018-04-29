@@ -16,6 +16,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -266,7 +268,9 @@ namespace LB.MainForm
                 {
                     if (CientVersion_SaleBill != ServerVersion_SaleBill)
                     {
-                        LoadAllSalesBill();
+                        Thread thread = new Thread(LoadAllSalesBill);
+                        thread.Start();
+                        //LoadAllSalesBill();
                         CientVersion_SaleBill = ServerVersion_SaleBill;
                     }
                 }
@@ -283,36 +287,91 @@ namespace LB.MainForm
         {
             string strFilter = "";
             string strSort = "";
-            if (this.cbFilterType.SelectedIndex == 0)
+
+            int FilterTypeSelectedIndex = 0;
+            if (this.cbFilterType.InvokeRequired)
+            {
+                this.cbFilterType.Invoke((MethodInvoker)delegate {
+                    FilterTypeSelectedIndex = this.cbFilterType.SelectedIndex;
+                });
+            }
+            else
+            {
+                FilterTypeSelectedIndex = this.cbFilterType.SelectedIndex;
+            }
+
+            if (FilterTypeSelectedIndex == 0)
             {
                 strFilter = "SaleCarOutBillID is null and isnull(IsCancel,0) = 0";
-                this.grdMain.Columns["SaleCarOutBillCode"].Visible = false;
-                this.grdMain.Columns["SaleCarInBillCode"].Visible = true;
+                if (this.grdMain.InvokeRequired)
+                {
+                    this.grdMain.Invoke((MethodInvoker)delegate {
+                        this.grdMain.Columns["SaleCarOutBillCode"].Visible = false;
+                        this.grdMain.Columns["SaleCarInBillCode"].Visible = true;
+                    });
+                }
+                else
+                {
+                    this.grdMain.Columns["SaleCarOutBillCode"].Visible = false;
+                    this.grdMain.Columns["SaleCarInBillCode"].Visible = true;
+                }
+                
                 strSort = "SaleCarInBillCode asc";
             }
-            else if (this.cbFilterType.SelectedIndex == 1)
+            else if (FilterTypeSelectedIndex == 1)
             {
                 strFilter = "SaleCarOutBillID is not null and isnull(IsCancel,0) = 0 and BillDateOut>='" + DateTime.Now.ToString("yyyy-MM-dd") + "'";
-
-                this.grdMain.Columns["SaleCarOutBillCode"].Visible = true;
-                this.grdMain.Columns["SaleCarInBillCode"].Visible = false;
+                if (this.grdMain.InvokeRequired)
+                {
+                    this.grdMain.Invoke((MethodInvoker)delegate {
+                        this.grdMain.Columns["SaleCarOutBillCode"].Visible = true;
+                        this.grdMain.Columns["SaleCarInBillCode"].Visible = false;
+                    });
+                }
+                else
+                {
+                    this.grdMain.Columns["SaleCarOutBillCode"].Visible = true;
+                    this.grdMain.Columns["SaleCarInBillCode"].Visible = false;
+                }
                 strSort = "SaleCarOutBillCode asc";
             }
-            else if (this.cbFilterType.SelectedIndex == 2)
+            else if (FilterTypeSelectedIndex == 2)
             {
                 strFilter = "isnull(IsCancel,0) = 1 and BillDateIn>='" + DateTime.Now.AddHours(-12).ToString("yyyy-MM-dd HH:mm") + "'";
                 //strFilter = "SaleCarOutBillID is null and isnull(IsCancel,0) = 1";
-
-                this.grdMain.Columns["SaleCarOutBillCode"].Visible = true;
-                this.grdMain.Columns["SaleCarInBillCode"].Visible = true;
+                if (this.grdMain.InvokeRequired)
+                {
+                    this.grdMain.Invoke((MethodInvoker)delegate
+                    {
+                        this.grdMain.Columns["SaleCarOutBillCode"].Visible = true;
+                        this.grdMain.Columns["SaleCarInBillCode"].Visible = true;
+                    });
+                }
+                else
+                {
+                    this.grdMain.Columns["SaleCarOutBillCode"].Visible = true;
+                    this.grdMain.Columns["SaleCarInBillCode"].Visible = true;
+                }
             }
 
-            if (this.txtFilter.Text.TrimEnd() != "")
+            string strFilterText = "";
+            if (this.txtFilter.InvokeRequired)
+            {
+                this.txtFilter.Invoke((MethodInvoker)delegate {
+                    strFilterText = this.txtFilter.Text.TrimEnd();
+                });
+            }
+            else
+            {
+                strFilterText = this.txtFilter.Text.TrimEnd();
+            }
+
+            if (strFilterText != "")
             {
                 strFilter += " and ";
-                strFilter += "(CarNum like '%" + this.txtFilter.Text.TrimEnd() + "%' or ";
-                strFilter += "ItemName like '%" + this.txtFilter.Text.TrimEnd() + "%' or ";
-                strFilter += "CustomerName like '%" + this.txtFilter.Text.TrimEnd() + "%' ) ";
+                strFilter += "(CarNum like '%" + strFilterText + "%' or ";
+                strFilter += "ItemName like '%" + strFilterText + "%' or ";
+                strFilter += "CustomerName like '%" + strFilterText + "%' ) ";
             }
             DataTable dtBill = ExecuteSQL.CallView(125, "", strFilter, strSort);
 
@@ -329,8 +388,17 @@ namespace LB.MainForm
                     }
                 }
             }
-
-            this.grdMain.DataSource = dtBill.DefaultView;
+            if (this.grdMain.InvokeRequired)
+            {
+                this.grdMain.Invoke((MethodInvoker)delegate
+                {
+                    this.grdMain.DataSource = dtBill.DefaultView;
+                });
+            }
+            else
+            {
+                this.grdMain.DataSource = dtBill.DefaultView;
+            }
         }
 
         #endregion
@@ -1538,6 +1606,13 @@ namespace LB.MainForm
             decimal decPrice = LBConverter.ToDecimal(this.txtPrice.Text);
             decimal decAmount = LBConverter.ToDecimal(this.txtAmount.Text);
 
+            if (decSuttleWeight < 0 || decAmount < 0)//重车保存时出现异常，记录日志
+            {
+                Thread thread = new Thread(SaveScreenPicture);
+                thread.Start(lSaleCarInBillID);
+                LBErrorLog.InsertErrorLog("客户端重车异常：TotalWeight="+ decTotalWeight.ToString()+ " CarTare="+ decCarTare.ToString()+ " SuttleWeight="+ decSuttleWeight.ToString()+ " SaleCarInBillID="+ lSaleCarInBillID);
+            }
+
             //if (iReceiveType == 3)//收款方式：免费
             //{
             //    throw new Exception("当前【毛重】值为0，无法保存！");
@@ -1547,9 +1622,9 @@ namespace LB.MainForm
             {
                 throw new Exception("当前【毛重】值为0，无法保存！");
             }
-            if (_WeightType != enWeightType.WeightOutNull && decSuttleWeight == 0)//空车出场时不校验净重
+            if (_WeightType != enWeightType.WeightOutNull && decSuttleWeight <= 0)//空车出场时不校验净重
             {
-                throw new Exception("当前【净重】值为0，无法保存！");
+                throw new Exception("当前【净重】值为零或者负数，无法保存！");
             }
             if (iCalculateType==1 && decCarTare == 0)
             {
@@ -1684,6 +1759,49 @@ namespace LB.MainForm
             }
         }
 
+        private void SaveScreenPicture(object objSaleCarOutBillID)
+        {
+            try
+            {
+                long lSaleCarOutBillID = LBConverter.ToInt64(objSaleCarOutBillID);
+                byte[] bImg3 = null;
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    Bitmap map = GetCurrentScreenImg();
+                    map.Save(ms, ImageFormat.Jpeg);
+                    if (ms != null)
+                    {
+                        bImg3 = new byte[ms.Length];
+                        ms.Seek(0, SeekOrigin.Begin);
+                        ms.Read(bImg3, 0, bImg3.Length);
+                    }
+                }
+
+                LBDbParameterCollection parmCol = new LBDbParameterCollection();
+                parmCol.Add(new LBParameter("SaleCarOutBillID", enLBDbType.Int64, lSaleCarOutBillID));
+                parmCol.Add(new LBParameter("ScreenPicture", enLBDbType.Bytes, bImg3));
+                DataSet dsReturn;
+                Dictionary<string, object> dictValue;
+                ExecuteSQL.CallSP(14121, parmCol, out dsReturn, out dictValue);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        //读取当前电脑截屏
+        private Bitmap GetCurrentScreenImg()
+        {
+            //创建图象，保存将来截取的图象
+            Bitmap image = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            Graphics imgGraphics = Graphics.FromImage(image);
+            //设置截屏区域 柯乐义
+            imgGraphics.CopyFromScreen(0, 0, 0, 0, new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height));
+            image.Save( Path.Combine(Application.StartupPath, "ooo.jpg"), ImageFormat.Jpeg);
+            //imgGraphics.Dispose();
+            return image;
+        }
         #endregion-- 保存出磅记录 --
 
         #region -- 预览磅单 --
@@ -2276,11 +2394,24 @@ namespace LB.MainForm
         {
             try
             {
+                Thread thread = new Thread(AutoComputeThread);
+                thread.Start();
+            }
+            catch (Exception ex)
+            {
+                //LB.WinFunction.LBCommonHelper.DealWithErrorMessage(ex);
+            }
+        }
+
+        private void AutoComputeThread()
+        {
+            try
+            {
                 int iCarCount = 0;
                 decimal decWeight = 0;
                 int iTotalCarCount = 0;
                 LBDbParameterCollection parmCol = new LBDbParameterCollection();
-                parmCol.Add(new LBParameter("InsideCarCount", enLBDbType.Int32, 0,true));
+                parmCol.Add(new LBParameter("InsideCarCount", enLBDbType.Int32, 0, true));
                 parmCol.Add(new LBParameter("SalesTotalWeight", enLBDbType.Decimal, true));
                 parmCol.Add(new LBParameter("TotalCar", enLBDbType.Int32, true));
 
@@ -2302,9 +2433,40 @@ namespace LB.MainForm
                         iTotalCarCount = LBConverter.ToInt32(dictValue["TotalCar"]);
                     }
                 }
-                this.lblCarIn.Text = iCarCount.ToString();
-                this.lblSalesWeight.Text = decWeight.ToString("0.00");
-                this.lblAllCar.Text = iTotalCarCount.ToString();
+
+                if (this.lblCarIn.InvokeRequired)
+                {
+                    this.lblCarIn.Invoke((MethodInvoker)delegate {
+                        this.lblCarIn.Text = iCarCount.ToString();
+                    });
+                }
+                else
+                {
+                    this.lblCarIn.Text = iCarCount.ToString();
+                }
+                if (this.lblSalesWeight.InvokeRequired)
+                {
+                    this.lblSalesWeight.Invoke((MethodInvoker)delegate {
+                        this.lblSalesWeight.Text = decWeight.ToString("0.00");
+                    });
+                }
+                else
+                {
+                    this.lblSalesWeight.Text = decWeight.ToString("0.00");
+                }
+                if (this.lblAllCar.InvokeRequired)
+                {
+                    this.lblAllCar.Invoke((MethodInvoker)delegate {
+                        this.lblAllCar.Text = iTotalCarCount.ToString();
+                    });
+                }
+                else
+                {
+                    this.lblAllCar.Text = iTotalCarCount.ToString();
+                }
+                //this.lblCarIn.Text = iCarCount.ToString();
+                //this.lblSalesWeight.Text = decWeight.ToString("0.00");
+                //this.lblAllCar.Text = iTotalCarCount.ToString();
             }
             catch (Exception ex)
             {

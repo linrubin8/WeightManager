@@ -94,6 +94,8 @@
     <Compile Include="Common\LBPortHelper.cs" />
     <Compile Include="Common\LBSerialHelper.cs" />
     <Compile Include="Common\Serial\SerialObject.cs" />
+    <Compile Include="Common\Synchronous\SynchronousBill.cs" />
+    <Compile Include="Common\Synchronous\SynchronousCar.cs" />
     <Compile Include="Common\Synchronous\SynchronousCustomer.cs" />
     <Compile Include="Common\SysConfigValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

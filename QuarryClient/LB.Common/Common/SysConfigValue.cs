@@ -13,7 +13,7 @@ namespace LB.Common
         {
             LBDbParameterCollection parmCol = new LBDbParameterCollection();
             parmCol.Add(new LBParameter("SysConfigFieldName", enLBDbType.String, SysConfigFieldName));
-            parmCol.Add(new LBParameter("ConfigValue", enLBDbType.String, ConfigValue));
+            parmCol.Add(new LBParameter("SysConfigValue", enLBDbType.String, ConfigValue));
             DataSet dsReturn;
             Dictionary<string, object> dictValue;
             ExecuteSQL.CallSP(14300, parmCol, out dsReturn, out dictValue);

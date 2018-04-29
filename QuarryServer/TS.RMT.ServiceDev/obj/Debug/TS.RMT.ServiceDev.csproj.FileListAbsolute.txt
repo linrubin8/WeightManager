@@ -1,6 +1,0 @@
-P:\Dev\WorkFolder\M3v80\DotNet\TS.RMT\bin\Debug\TS.RMT.ServiceDev.exe.config
-P:\Dev\WorkFolder\M3v80\DotNet\TS.RMT\TS.RMT.ServiceDev\obj\Debug\TS.RMT.ServiceDev.csprojResolveAssemblyReference.cache
-P:\Dev\WorkFolder\M3v80\DotNet\TS.RMT\TS.RMT.ServiceDev\obj\Debug\TS.RMT.ServiceDev.ServerForm.resources
-P:\Dev\WorkFolder\M3v80\DotNet\TS.RMT\TS.RMT.ServiceDev\obj\Debug\TS.RMT.Properties.Resources.resources
-P:\Dev\WorkFolder\M3v80\DotNet\TS.RMT\TS.RMT.ServiceDev\obj\Debug\TS.RMT.ServiceDev.TSErrorShower.resources
-P:\Dev\WorkFolder\M3v80\DotNet\TS.RMT\TS.RMT.ServiceDev\obj\Debug\TS.RMT.ServiceDev.csproj.GenerateResource.Cache
