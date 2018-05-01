@@ -50,7 +50,7 @@ order by SaleCarInBillCode desc
 
         public void InsertInBill(FactoryArgs args, out t_BigID SaleCarInBillID, t_String SaleCarInBillCode, t_BigID CarID,
             t_BigID ItemID, t_DTSmall BillDate, t_ID ReceiveType, t_ID CalculateType, t_Float CarTare, t_BigID CustomerID, t_String Description,
-            t_ID SaleBillType,t_BigID SourceSaleCarInBillID)
+            t_ID SaleBillType,t_BigID SaleCarInBillIDFromClient, t_String CreateBy)
         {
             SaleCarInBillID = new t_BigID();
             LBDbParameterCollection parms = new LBDbParameterCollection();
@@ -65,16 +65,16 @@ order by SaleCarInBillCode desc
             parms.Add(new LBDbParameter("CustomerID", CustomerID));
             parms.Add(new LBDbParameter("Description", Description));
             parms.Add(new LBDbParameter("SaleBillType", SaleBillType));
-            parms.Add(new LBDbParameter("SourceSaleCarInBillID", SourceSaleCarInBillID));
-            parms.Add(new LBDbParameter("CreateBy", new t_String(args.LoginName)));
+            parms.Add(new LBDbParameter("SaleCarInBillIDFromClient", SaleCarInBillIDFromClient));
+            parms.Add(new LBDbParameter("CreateBy", CreateBy));
 
             string strSQL = @"
 insert into dbo.SaleCarInBill(  SaleCarInBillCode, CarID,PrintCount,
             ItemID, BillDate, ReceiveType, BillStatus, CalculateType, CarTare, CustomerID,Description,
-            IsCancel, CreateBy, CreateTime,CancelByDate,SaleBillType,SourceSaleCarInBillID)
+            IsCancel, CreateBy, CreateTime,CancelByDate,SaleBillType,SaleCarInBillIDFromClient)
 values( @SaleCarInBillCode, @CarID,0,
         @ItemID, @BillDate, @ReceiveType, 1, @CalculateType, @CarTare, @CustomerID,@Description,
-        0,@CreateBy,@BillDate,null,@SaleBillType,@SourceSaleCarInBillID)
+        0,@CreateBy,@BillDate,null,@SaleBillType,@SaleCarInBillIDFromClient)
 
 set @SaleCarInBillID = @@identity
 
@@ -150,7 +150,8 @@ where SaleCarInBillID = @SaleCarInBillID
         }
 
         public void InsertOutBill(FactoryArgs args, out t_BigID SaleCarOutBillID,t_String SaleCarOutBillCode, t_BigID SaleCarInBillID, t_BigID CarID, t_DTSmall BillDate,
-            t_Decimal TotalWeight, t_Decimal SuttleWeight, t_Decimal Price, t_Decimal Amount, t_ID ReceiveType, t_ID CalculateType, t_String Description)
+            t_Decimal TotalWeight, t_Decimal SuttleWeight, t_Decimal Price, t_Decimal Amount, t_ID ReceiveType, t_ID CalculateType, t_String Description,
+            t_String CreateBy,t_BigID SaleCarOutBillIDFromClient)
         {
             SaleCarOutBillID = new t_BigID();
             LBDbParameterCollection parms = new LBDbParameterCollection();
@@ -166,13 +167,14 @@ where SaleCarInBillID = @SaleCarInBillID
             parms.Add(new LBDbParameter("Description", Description));
             parms.Add(new LBDbParameter("ReceiveType", ReceiveType));
             parms.Add(new LBDbParameter("CalculateType", CalculateType));
-            parms.Add(new LBDbParameter("CreateBy", new t_String(args.LoginName)));
+            parms.Add(new LBDbParameter("CreateBy", CreateBy));
+            parms.Add(new LBDbParameter("SaleCarOutBillIDFromClient", SaleCarOutBillIDFromClient));
 
             string strSQL = @"
 insert into dbo.SaleCarOutBill(  SaleCarInBillID,SaleCarOutBillCode, BillDate, CarID,TotalWeight,
-            SuttleWeight, Price, Amount, Description,CreateBy, CreateTime)
+            SuttleWeight, Price, Amount, Description,CreateBy, CreateTime,SaleCarOutBillIDFromClient)
 values( @SaleCarInBillID,@SaleCarOutBillCode, @BillDate, @CarID, @TotalWeight,
-        @SuttleWeight, @Price, @Amount, @Description,@CreateBy,@BillDate)
+        @SuttleWeight, @Price, @Amount, @Description,@CreateBy,@BillDate,@SaleCarOutBillIDFromClient)
 
 set @SaleCarOutBillID = @@identity
 
@@ -683,14 +685,14 @@ where ImportSaleCarInBillCode = @ImportSaleCarInBillCode
             return false;
         }
 
-        public bool VerifyIfExistsSourceInBill(FactoryArgs args, t_BigID SourceSaleCarInBillID)
+        public bool VerifyIfExistsSourceInBill(FactoryArgs args, t_BigID SaleCarInBillIDFromClient)
         {
             LBDbParameterCollection parms = new LBDbParameterCollection();
-            parms.Add(new LBDbParameter("SourceSaleCarInBillID", SourceSaleCarInBillID));
+            parms.Add(new LBDbParameter("SaleCarInBillIDFromClient", SaleCarInBillIDFromClient));
             string strSQL = @"
 select 1
 from dbo.SaleCarInBill
-where SourceSaleCarInBillID = @SourceSaleCarInBillID
+where SaleCarInBillIDFromClient = @SaleCarInBillIDFromClient
 ";
             DataTable dt = DBHelper.ExecuteQuery(args, strSQL, parms);
             if (dt.Rows.Count > 0)

@@ -6,8 +6,8 @@ SELECT     i.SaleCarInBillID, i.BillTypeID, o.SaleCarOutBillCode, i.SaleCarInBil
                       i.CreateBy AS CreateByIn, i.CreateTime AS CreateTimeIn, i.CancelBy, i.CancelTime, o.SaleCarOutBillID, o.BillDate AS BillDateOut, o.TotalWeight, o.SuttleWeight, 
                       o.SuttleWeight / 1000.0 AS SuttleWeightT, o.Price, o.Price * 1000 AS PriceT, o.Amount, o.Description, o.CreateBy AS CreateByOut, CAST(CONVERT(char, o.CreateTime, 
                       120) AS datetime) AS CreateTimeOut, CAST((CASE WHEN isnull(i.IsCancel, 0) = 1 THEN 2 WHEN isnull(i.BillStatus, 0) = 2 THEN 1 ELSE 0 END) AS tinyint) AS BillType, 
-                      i.CancelDesc, o.OutPrintCount, y.ItemTypeName, ISNULL(i.SaleBillType, 0) AS SaleBillType, ISNULL(IsSynchronousToServer, 0) AS IsSynchronousToServer, 
-                      SynchronousToServerTime
+                      i.CancelDesc, o.OutPrintCount, y.ItemTypeName, ISNULL(i.SaleBillType, 0) AS SaleBillType, ISNULL(i.IsSynchronousToServer, 0) AS IsSynchronousToServer, 
+                      i.SynchronousToServerTime, s.AmountType
 FROM         dbo.SaleCarInBill AS i INNER JOIN
                       dbo.DbCar AS c ON c.CarID = i.CarID LEFT OUTER JOIN
                       dbo.DbCustomer AS s ON s.CustomerID = i.CustomerID INNER JOIN

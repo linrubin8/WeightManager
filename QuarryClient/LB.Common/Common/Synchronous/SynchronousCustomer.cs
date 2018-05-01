@@ -118,7 +118,20 @@ namespace LB.Common.Synchronous
             {
                 ExecuteSQL.CallSP(13401, dtEditCustomer, out dsReturn, out dtOut);
             }
-            
+        }
+
+        /// <summary>
+        /// 将本地客户资料添加至服务器
+        /// </summary>
+        public static void AddServerCustomerData(DataTable dtCustomer,out DataSet dsReturn,out DataTable dtOut)
+        {
+            //添加客户
+            dsReturn = null;
+            dtOut = null;
+            if (dtCustomer != null)
+            {
+                ExecuteSQL.CallSP_Service(13400, dtCustomer, out dsReturn, out dtOut);
+            }
         }
     }
 }

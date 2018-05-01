@@ -13,6 +13,7 @@ using LB.Page.Helper;
 using LB.Controls.Args;
 using LB.Controls.Report;
 using System.IO;
+using LB.Common.Synchronous;
 
 namespace LB.MI.MI
 {
@@ -581,80 +582,82 @@ namespace LB.MI.MI
         {
             try
             {
-                OpenFileDialog fileDialog = new OpenFileDialog();
-                fileDialog.Multiselect = true;
-                fileDialog.Title = "请选择文件";
-                fileDialog.Filter = "BAK文件（*.bak）|*.bak";
-                if (fileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string file = fileDialog.FileName;
-                    DataSet ds = new DataSet();
-                    ds.ReadXml(file);
+                //OpenFileDialog fileDialog = new OpenFileDialog();
+                //fileDialog.Multiselect = true;
+                //fileDialog.Title = "请选择文件";
+                //fileDialog.Filter = "BAK文件（*.bak）|*.bak";
+                //if (fileDialog.ShowDialog() == DialogResult.OK)
+                //{
+                //    string file = fileDialog.FileName;
+                //    DataSet ds = new DataSet();
+                //    ds.ReadXml(file);
 
-                    DataTable dtInBill = null;
-                    DataTable dtOutBill = null;
+                //    DataTable dtInBill = null;
+                //    DataTable dtOutBill = null;
 
-                    if (ds.Tables.Contains("InBill"))
-                    {
-                        dtInBill = ds.Tables["InBill"].Copy();
-                    }
-                    if (ds.Tables.Contains("OutBill"))
-                    {
-                        dtOutBill = ds.Tables["OutBill"].Copy();
-                    }
+                //    if (ds.Tables.Contains("InBill"))
+                //    {
+                //        dtInBill = ds.Tables["InBill"].Copy();
+                //    }
+                //    if (ds.Tables.Contains("OutBill"))
+                //    {
+                //        dtOutBill = ds.Tables["OutBill"].Copy();
+                //    }
 
-                    LBDbParameterCollection parmCol = new LBDbParameterCollection();
-                    parmCol.Add(new LBParameter("DTInBill", enLBDbType.Object, dtInBill));
-                    parmCol.Add(new LBParameter("DTOutBill", enLBDbType.Object, dtOutBill));
+                //    LBDbParameterCollection parmCol = new LBDbParameterCollection();
+                //    parmCol.Add(new LBParameter("DTInBill", enLBDbType.Object, dtInBill));
+                //    parmCol.Add(new LBParameter("DTOutBill", enLBDbType.Object, dtOutBill));
 
-                    DataSet dsReturn;
-                    Dictionary<string, object> dictValue;
-                    ExecuteSQL.CallSP(14117, parmCol, out dsReturn, out dictValue);
-                    string strMsg = "";
-                    if (dictValue.ContainsKey("ErrorExistsBillCode"))
-                    {
-                        if (dictValue["ErrorExistsBillCode"].ToString() != "")
-                        {
-                            strMsg += "\n以下单据已存在于系统，不能重复导入：\n"+ dictValue["ErrorExistsBillCode"].ToString();
-                        }
-                    }
-                    if (dictValue.ContainsKey("ErrorUnFinishBillCode"))
-                    {
-                        if (dictValue["ErrorUnFinishBillCode"].ToString() != "")
-                        {
-                            strMsg += "\n以下单据未完成，不能导入：\n" + dictValue["ErrorUnFinishBillCode"].ToString();
-                        }
-                    }
-                    if (dictValue.ContainsKey("ErrorCount"))
-                    {
-                        string strErrorCount = dictValue["ErrorCount"].ToString();
-                        int iErrorCount = LBConverter.ToInt32(strErrorCount);
-                        if (iErrorCount > 0)
-                        {
-                            LB.WinFunction.LBCommonHelper.ShowCommonMessage("导入完毕，导入失败的单据数为："+ iErrorCount.ToString()+"张！想知道失败单据的单号，请留意打开的文本文件。");
+                //    DataSet dsReturn;
+                //    Dictionary<string, object> dictValue;
+                //    ExecuteSQL.CallSP(14117, parmCol, out dsReturn, out dictValue);
+                //    string strMsg = "";
+                //    if (dictValue.ContainsKey("ErrorExistsBillCode"))
+                //    {
+                //        if (dictValue["ErrorExistsBillCode"].ToString() != "")
+                //        {
+                //            strMsg += "\n以下单据已存在于系统，不能重复导入：\n"+ dictValue["ErrorExistsBillCode"].ToString();
+                //        }
+                //    }
+                //    if (dictValue.ContainsKey("ErrorUnFinishBillCode"))
+                //    {
+                //        if (dictValue["ErrorUnFinishBillCode"].ToString() != "")
+                //        {
+                //            strMsg += "\n以下单据未完成，不能导入：\n" + dictValue["ErrorUnFinishBillCode"].ToString();
+                //        }
+                //    }
+                //    if (dictValue.ContainsKey("ErrorCount"))
+                //    {
+                //        string strErrorCount = dictValue["ErrorCount"].ToString();
+                //        int iErrorCount = LBConverter.ToInt32(strErrorCount);
+                //        if (iErrorCount > 0)
+                //        {
+                //            LB.WinFunction.LBCommonHelper.ShowCommonMessage("导入完毕，导入失败的单据数为："+ iErrorCount.ToString()+"张！想知道失败单据的单号，请留意打开的文本文件。");
 
-                        }else
-                        {
-                            LB.WinFunction.LBCommonHelper.ShowCommonMessage("全部数据导入完毕！");
-                        }
-                    }
+                //        }else
+                //        {
+                //            LB.WinFunction.LBCommonHelper.ShowCommonMessage("全部数据导入完毕！");
+                //        }
+                //    }
 
-                    if (strMsg != "")
-                    {
-                        string strFile=Path.Combine( Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory),DateTime.Now.ToString("yyMMddHHmmss")+ ".txt");
-                        FileStream fs = new FileStream(strFile, FileMode.Create);
-                        //获得字节数组
-                        byte[] data = System.Text.Encoding.Default.GetBytes(strMsg);
-                        //开始写入
-                        fs.Write(data, 0, data.Length);
-                        //清空缓冲区、关闭流
-                        fs.Flush();
-                        fs.Close();
+                //    if (strMsg != "")
+                //    {
+                //        string strFile=Path.Combine( Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory),DateTime.Now.ToString("yyMMddHHmmss")+ ".txt");
+                //        FileStream fs = new FileStream(strFile, FileMode.Create);
+                //        //获得字节数组
+                //        byte[] data = System.Text.Encoding.Default.GetBytes(strMsg);
+                //        //开始写入
+                //        fs.Write(data, 0, data.Length);
+                //        //清空缓冲区、关闭流
+                //        fs.Flush();
+                //        fs.Close();
 
-                        System.Diagnostics.Process.Start(strFile);
-                    }
-                    
-                }
+                //        System.Diagnostics.Process.Start(strFile);
+                //    }
+
+                //}
+                DataTable dtBill = SynchronousBill.ReadUnSynchronousBill();
+                SynchronousBill.SynchronousBillToServer(dtBill);
             }
             catch (Exception ex)
             {

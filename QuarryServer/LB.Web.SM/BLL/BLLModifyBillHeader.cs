@@ -1,6 +1,7 @@
 ﻿using LB.Web.Base.Factory;
 using LB.Web.Base.Helper;
 using LB.Web.Contants.DBType;
+using LB.Web.IBLL.IBLL.IBLLSM;
 using LB.Web.SM.DAL;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Text;
 
 namespace LB.Web.SM.BLL
 {
-    public class BLLModifyBillHeader : IBLLFunction
+    public class BLLModifyBillHeader : IBLLFunction, IBLLModifyBillHeader
     {
         private DALModifyBillHeader _DALModifyBillHeader = null;
         private DALModifyBillDetail _DALModifyBillDetail = null;

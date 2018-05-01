@@ -44,6 +44,7 @@
     <Compile Include="IBLL\IBLLDB\IBLLDbSystemConst.cs" />
     <Compile Include="IBLL\IBLLMI\IBLLDbCarWeight.cs" />
     <Compile Include="IBLL\IBLLRP\IBLLRPReceiveBillHeader.cs" />
+    <Compile Include="IBLL\IBLLSM\IBLLModifyBillHeader.cs" />
     <Compile Include="IBLL\IBLLSM\IBLLSaleCarInOutBill.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

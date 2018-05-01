@@ -113,5 +113,19 @@ namespace LB.Common.Synchronous
 
             SysConfigValue.SaveSysConfig("CarSynchronousTime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
         }
+
+        /// <summary>
+        /// 将本地车辆资料添加至服务器
+        /// </summary>
+        public static void AddServerCarData(DataTable dtCar, out DataSet dsReturn, out DataTable dtOut)
+        {
+            //添加客户
+            dsReturn = null;
+            dtOut = null;
+            if (dtCar != null)
+            {
+                ExecuteSQL.CallSP_Service(13500, dtCar, out dsReturn, out dtOut);
+            }
+        }
     }
 }

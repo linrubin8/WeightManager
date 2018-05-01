@@ -23,6 +23,7 @@ namespace LB.Web.SM.BLL
         private IBLLRPReceiveBillHeader _IBLLRPReceiveBillHeader = null;
         private IBLLDbErrorLog _IBLLDbErrorLog = null;
         private IBLLDbSysConfig _IBLLDbSysConfig = null;
+        private IBLLModifyBillHeader _IBLLModifyBillHeader = null;
         public BLLSaleCarInOutBill()
         {
             _DALSaleCarInOutBill = new DAL.DALSaleCarInOutBill();
@@ -30,6 +31,7 @@ namespace LB.Web.SM.BLL
             _IBLLRPReceiveBillHeader = (IBLLRPReceiveBillHeader)DBHelper.GetFunctionMethod(13300);
             _IBLLDbErrorLog = (IBLLDbErrorLog)DBHelper.GetFunctionMethod(20000);
             _IBLLDbSysConfig=(IBLLDbSysConfig)DBHelper.GetFunctionMethod(14300);
+            _IBLLModifyBillHeader = (IBLLModifyBillHeader)DBHelper.GetFunctionMethod(13608);
         }
 
         public override string GetFunctionName(int iFunctionType)
@@ -123,19 +125,23 @@ namespace LB.Web.SM.BLL
                 case 14121:
                     strFunName = "SaveScreenImage";
                     break;
+
+                case 14122:
+                    strFunName = "SynchronousBillFromClient";
+                    break;
             }
             return strFunName;
         }
 
         //InBillFrom入场单据来源：0手工单 1系统自动生成单
-        public void InsertInBill(FactoryArgs args, out t_BigID SaleCarInBillID, out t_String SaleCarInBillCode, ref t_DTSmall BillDate, t_BigID CarID,
+        public void InsertInBill(FactoryArgs args, out t_BigID SaleCarInBillID, ref t_String SaleCarInBillCode, ref t_DTSmall BillDate, t_BigID CarID,
             t_BigID ItemID, t_ID ReceiveType, t_ID CalculateType, t_Float CarTare, t_BigID CustomerID, t_String Description,
-            t_ID InBillFrom, t_ID SaleBillType,t_BigID SourceSaleCarInBillID)
+            t_ID InBillFrom, t_ID SaleBillType,t_BigID SaleCarInBillIDFromClient, t_String CreateBy)
         {
             SaleBillType.IsNullToZero();
             InBillFrom.IsNullToZero();
             SaleCarInBillID = new t_BigID();
-            SaleCarInBillCode = new t_String();
+
             if (BillDate.Value == null)
             {
                 BillDate = new t_DTSmall(DateTime.Now);
@@ -149,6 +155,10 @@ namespace LB.Web.SM.BLL
             if (ItemID.Value == 0)
             {
                 throw new Exception("货物名称不能为空！");
+            }
+            if (string.IsNullOrEmpty(CreateBy.Value))
+            {
+                CreateBy.Value = args.LoginName;
             }
             //linrubin 1226 允许客户名称为空
             /*if (CustomerID.Value == 0)
@@ -167,10 +177,10 @@ namespace LB.Web.SM.BLL
             }
 
             //判断原单号是否已存在
-            SourceSaleCarInBillID.NullIfZero();
-            if (SourceSaleCarInBillID.Value != null)
+            SaleCarInBillIDFromClient.NullIfZero();
+            if (SaleCarInBillIDFromClient.Value != null)
             {
-                bool bolExists = _DALSaleCarInOutBill.VerifyIfExistsSourceInBill(args, SourceSaleCarInBillID);
+                bool bolExists = _DALSaleCarInOutBill.VerifyIfExistsSourceInBill(args, SaleCarInBillIDFromClient);
                 if (bolExists)
                 {
                     throw new Exception("该入场单已同步，无法再次执行同步！");
@@ -187,48 +197,51 @@ namespace LB.Web.SM.BLL
             }
 
             //生成编码
-            string strBillFont = SysConfigValue.Value + DateTime.Now.ToString("yyyyMM") + "-";
-            using (DataTable dtBillCode = _DALSaleCarInOutBill.GetMaxInBillCode(args, strBillFont))
+            if (SaleCarInBillCode.Value == null)
             {
-                if (dtBillCode.Rows.Count > 0)
+                string strBillFont = SysConfigValue.Value + DateTime.Now.ToString("yyyyMM") + "-";
+                using (DataTable dtBillCode = _DALSaleCarInOutBill.GetMaxInBillCode(args, strBillFont))
                 {
-                    DataRow drBillCode = dtBillCode.Rows[0];
-                    int iIndex = 1;
-                    string strIndex = "";
-                    if (drBillCode["SaleCarInBillCode"].ToString().TrimEnd().Contains(strBillFont))
+                    if (dtBillCode.Rows.Count > 0)
                     {
-                        iIndex = Convert.ToInt32(drBillCode["SaleCarInBillCode"].ToString().TrimEnd().Replace(strBillFont, ""));
-                        iIndex += 1;
-                        if (iIndex < 10)
+                        DataRow drBillCode = dtBillCode.Rows[0];
+                        int iIndex = 1;
+                        string strIndex = "";
+                        if (drBillCode["SaleCarInBillCode"].ToString().TrimEnd().Contains(strBillFont))
                         {
-                            strIndex = "0000" + iIndex.ToString();
-                        }
-                        else if (iIndex < 100)
-                        {
-                            strIndex = "000" + iIndex.ToString();
-                        }
-                        else if (iIndex < 1000)
-                        {
-                            strIndex = "00" + iIndex.ToString();
-                        }
-                        else if (iIndex < 10000)
-                        {
-                            strIndex = "0" + iIndex.ToString();
+                            iIndex = Convert.ToInt32(drBillCode["SaleCarInBillCode"].ToString().TrimEnd().Replace(strBillFont, ""));
+                            iIndex += 1;
+                            if (iIndex < 10)
+                            {
+                                strIndex = "0000" + iIndex.ToString();
+                            }
+                            else if (iIndex < 100)
+                            {
+                                strIndex = "000" + iIndex.ToString();
+                            }
+                            else if (iIndex < 1000)
+                            {
+                                strIndex = "00" + iIndex.ToString();
+                            }
+                            else if (iIndex < 10000)
+                            {
+                                strIndex = "0" + iIndex.ToString();
+                            }
+                            else
+                            {
+                                strIndex = iIndex.ToString();
+                            }
+                            SaleCarInBillCode.SetValueWithObject(strBillFont + strIndex);
                         }
                         else
                         {
-                            strIndex = iIndex.ToString();
+                            SaleCarInBillCode.SetValueWithObject(strBillFont + "-00001");
                         }
-                        SaleCarInBillCode.SetValueWithObject(strBillFont + strIndex);
                     }
                     else
                     {
-                        SaleCarInBillCode.SetValueWithObject(strBillFont + "-00001");
+                        SaleCarInBillCode.SetValueWithObject(strBillFont + "00001");
                     }
-                }
-                else
-                {
-                    SaleCarInBillCode.SetValueWithObject(strBillFont + "00001");
                 }
             }
 
@@ -238,7 +251,7 @@ namespace LB.Web.SM.BLL
             DBHelper.ExecInTransDelegate exec = delegate (FactoryArgs argsInTrans)
             {
                 _DALSaleCarInOutBill.InsertInBill(argsInTrans, out SaleCarInBillID_temp, SaleCarInBillCode_temp, CarID, ItemID,
-                    BillDate_temp, ReceiveType, CalculateType, CarTare, CustomerID, Description, SaleBillType, SourceSaleCarInBillID);
+                    BillDate_temp, ReceiveType, CalculateType, CarTare, CustomerID, Description, SaleBillType, SaleCarInBillIDFromClient, CreateBy);
 
                 if (InBillFrom.Value == 1)
                 {
@@ -313,7 +326,7 @@ namespace LB.Web.SM.BLL
         public void InsertOnlyOutBill(FactoryArgs args, out t_BigID SaleCarOutBillID, out t_DTSmall BillDate, t_BigID CarID,
             t_BigID ItemID, t_BigID CustomerID, t_Float CarTare,
             t_ID ReceiveType, t_ID CalculateType, t_Decimal Price, t_Decimal Amount, t_Decimal TotalWeight,
-            t_Decimal SuttleWeight, t_Decimal CustomerPayAmount, t_String Description)
+            t_Decimal SuttleWeight, t_Decimal CustomerPayAmount, t_String Description,t_String CreateBy)
         {
             BillDate = new t_DTSmall();
             t_DTSmall BillDate_temp = new t_DTSmall(DateTime.Now);
@@ -324,21 +337,23 @@ namespace LB.Web.SM.BLL
             SaleCarOutBillID = new t_BigID();
             DBHelper.ExecInTransDelegate exec = delegate (FactoryArgs argsInTrans)
             {
-                this.InsertInBill(argsInTrans, out SaleCarInBillID, out SaleCarInBillCode, ref BillDate_temp, CarID, ItemID, ReceiveType, CalculateType,
-                    CarTare, CustomerID, Description, new t_ID(1),new t_ID(),new t_BigID());
+                this.InsertInBill(argsInTrans, out SaleCarInBillID, ref SaleCarInBillCode, ref BillDate_temp, CarID, ItemID, ReceiveType, CalculateType,
+                    CarTare, CustomerID, Description, new t_ID(1),new t_ID(),new t_BigID(),new t_String());
 
                 //自动审核出场订单
-                this.InsertOutBill(argsInTrans, out SaleCarOutBillID_temp, out SaleCarOutBillCode, ref BillDate_temp, SaleCarInBillID,
-                    CarID, ReceiveType, CalculateType, Price, Amount, TotalWeight, SuttleWeight, CustomerPayAmount, Description, new t_ID(0), new t_ID());
+                this.InsertOutBill(argsInTrans, out SaleCarOutBillID_temp, ref SaleCarOutBillCode, ref BillDate_temp, SaleCarInBillID,
+                    CarID, ReceiveType, CalculateType, Price, Amount, TotalWeight, SuttleWeight, CustomerPayAmount, Description, new t_ID(0), new t_ID(),
+                    CreateBy, new t_BigID());
             };
             DBHelper.ExecInTrans(args, exec);
             BillDate.Value = BillDate_temp.Value;
             SaleCarOutBillID.Value = SaleCarOutBillID_temp.Value;
         }
 
-        public void InsertOutBill(FactoryArgs args, out t_BigID SaleCarOutBillID, out t_String SaleCarOutBillCode, ref t_DTSmall BillDate, t_BigID SaleCarInBillID, t_BigID CarID,
+        public void InsertOutBill(FactoryArgs args, out t_BigID SaleCarOutBillID, ref t_String SaleCarOutBillCode, ref t_DTSmall BillDate, t_BigID SaleCarInBillID, t_BigID CarID,
             t_ID ReceiveType, t_ID CalculateType, t_Decimal Price, t_Decimal Amount, t_Decimal TotalWeight,
-            t_Decimal SuttleWeight, t_Decimal CustomerPayAmount, t_String Description, t_ID IsEmptyOut, t_ID UnAutoApprove)
+            t_Decimal SuttleWeight, t_Decimal CustomerPayAmount, t_String Description, t_ID IsEmptyOut, t_ID UnAutoApprove,
+            t_String CreateBy,t_BigID SaleCarOutBillIDFromClient)
         {
             UnAutoApprove.IsNullToZero();//无需自动审核
             IsEmptyOut.IsNullToZero();//是否空车出
@@ -348,7 +363,7 @@ namespace LB.Web.SM.BLL
                 bolIsNeedCancel = true;
                 Amount.Value = 0;
             }
-            SaleCarOutBillCode = new t_String();
+            //SaleCarOutBillCode = new t_String();
             t_BigID CustomerID = new t_BigID();
             t_String CarNum = new t_String();
             t_ID SaleBillType = new t_ID();
@@ -356,6 +371,10 @@ namespace LB.Web.SM.BLL
             if (BillDate.Value == null)
             {
                 BillDate = new t_DTSmall(DateTime.Now);
+            }
+            if (string.IsNullOrEmpty(CreateBy.Value))
+            {
+                CreateBy.Value = args.LoginName;
             }
             if (SaleCarInBillID.Value == null && SaleCarInBillID.Value == 0)
             {
@@ -415,58 +434,61 @@ namespace LB.Web.SM.BLL
                 }
             }
 
-            //读取出场单号前缀
-            t_String SysConfigFieldName = new t_String("SaleOutBillCode");
-            t_String SysConfigValue;
-            _IBLLDbSysConfig.GetConfigValue(args, SysConfigFieldName, out SysConfigValue);
-            if (SysConfigValue.Value == "")
+            if (string.IsNullOrEmpty(SaleCarOutBillCode.Value))
             {
-                SysConfigValue.Value = "XS";
-            }
-
-            //生成编码
-            string strBillFont = SysConfigValue.Value.TrimEnd() + DateTime.Now.ToString("yyyyMM") + "-";
-            using (DataTable dtBillCode = _DALSaleCarInOutBill.GetMaxOutBillCode(args, strBillFont))
-            {
-                if (dtBillCode.Rows.Count > 0)
+                //读取出场单号前缀
+                t_String SysConfigFieldName = new t_String("SaleOutBillCode");
+                t_String SysConfigValue;
+                _IBLLDbSysConfig.GetConfigValue(args, SysConfigFieldName, out SysConfigValue);
+                if (SysConfigValue.Value == "")
                 {
-                    DataRow drBillCode = dtBillCode.Rows[0];
-                    int iIndex = 1;
-                    string strIndex = "";
-                    if (drBillCode["SaleCarOutBillCode"].ToString().TrimEnd().Contains(strBillFont))
+                    SysConfigValue.Value = "XS";
+                }
+
+                //生成编码
+                string strBillFont = SysConfigValue.Value.TrimEnd() + DateTime.Now.ToString("yyyyMM") + "-";
+                using (DataTable dtBillCode = _DALSaleCarInOutBill.GetMaxOutBillCode(args, strBillFont))
+                {
+                    if (dtBillCode.Rows.Count > 0)
                     {
-                        iIndex = Convert.ToInt32(drBillCode["SaleCarOutBillCode"].ToString().TrimEnd().Replace(strBillFont, ""));
-                        iIndex += 1;
-                        if (iIndex < 10)
+                        DataRow drBillCode = dtBillCode.Rows[0];
+                        int iIndex = 1;
+                        string strIndex = "";
+                        if (drBillCode["SaleCarOutBillCode"].ToString().TrimEnd().Contains(strBillFont))
                         {
-                            strIndex = "0000" + iIndex.ToString();
-                        }
-                        else if (iIndex < 100)
-                        {
-                            strIndex = "000" + iIndex.ToString();
-                        }
-                        else if (iIndex < 1000)
-                        {
-                            strIndex = "00" + iIndex.ToString();
-                        }
-                        else if (iIndex < 10000)
-                        {
-                            strIndex = "0" + iIndex.ToString();
+                            iIndex = Convert.ToInt32(drBillCode["SaleCarOutBillCode"].ToString().TrimEnd().Replace(strBillFont, ""));
+                            iIndex += 1;
+                            if (iIndex < 10)
+                            {
+                                strIndex = "0000" + iIndex.ToString();
+                            }
+                            else if (iIndex < 100)
+                            {
+                                strIndex = "000" + iIndex.ToString();
+                            }
+                            else if (iIndex < 1000)
+                            {
+                                strIndex = "00" + iIndex.ToString();
+                            }
+                            else if (iIndex < 10000)
+                            {
+                                strIndex = "0" + iIndex.ToString();
+                            }
+                            else
+                            {
+                                strIndex = iIndex.ToString();
+                            }
+                            SaleCarOutBillCode.SetValueWithObject(strBillFont + strIndex);
                         }
                         else
                         {
-                            strIndex = iIndex.ToString();
+                            SaleCarOutBillCode.SetValueWithObject(strBillFont + "-00001");
                         }
-                        SaleCarOutBillCode.SetValueWithObject(strBillFont + strIndex);
                     }
                     else
                     {
-                        SaleCarOutBillCode.SetValueWithObject(strBillFont + "-00001");
+                        SaleCarOutBillCode.SetValueWithObject(strBillFont + "00001");
                     }
-                }
-                else
-                {
-                    SaleCarOutBillCode.SetValueWithObject(strBillFont + "00001");
                 }
             }
 
@@ -476,7 +498,7 @@ namespace LB.Web.SM.BLL
             DBHelper.ExecInTransDelegate exec = delegate (FactoryArgs argsInTrans)
             {
                 _DALSaleCarInOutBill.InsertOutBill(argsInTrans, out SaleCarOutBillID_temp, SaleCarOutBillCode_temp, SaleCarInBillID, CarID, BillDate_temp,
-                    TotalWeight, SuttleWeight, Price, Amount, ReceiveType, CalculateType, Description);
+                    TotalWeight, SuttleWeight, Price, Amount, ReceiveType, CalculateType, Description, CreateBy, SaleCarOutBillIDFromClient);
 
                 if (CustomerPayAmount.Value > 0)
                 {
@@ -1108,10 +1130,10 @@ namespace LB.Web.SM.BLL
                     t_String NewSaleCarInBillCode;
                     t_String NewSaleCarOutBillCode;
                     t_DTSmall NewBillDate = new t_DTSmall(drBill["BillDateIn"]);
-                    this.InsertInBill(argsInTrans, out NewSaleCarInBillID, out NewSaleCarInBillCode, ref NewBillDate,
+                    this.InsertInBill(argsInTrans, out NewSaleCarInBillID, ref NewSaleCarInBillCode, ref NewBillDate,
                         NewCarID, NewItemID, NewReceiveType,
                         NewCalculateType, new t_Float(drBill["CarTare"]), NewCustomerID,
-                        NewDescription, new t_ID(), new t_ID(),new t_BigID());
+                        NewDescription, new t_ID(), new t_ID(),new t_BigID(),new t_String());
 
                     if (SaleCarOutBillID.Value > 0)//有出场磅单
                     {
@@ -1127,9 +1149,9 @@ namespace LB.Web.SM.BLL
                         }
 
                         //生成出场记录
-                        this.InsertOutBill(argsInTrans, out NewSaleCarOutBillID, out NewSaleCarOutBillCode, ref NewBillDate, NewSaleCarInBillID, new t_BigID(drBill["CarID"]),
+                        this.InsertOutBill(argsInTrans, out NewSaleCarOutBillID, ref NewSaleCarOutBillCode, ref NewBillDate, NewSaleCarInBillID, new t_BigID(drBill["CarID"]),
                            NewReceiveType, NewCalculateType, NewPrice, NewAmount, new t_Decimal(drBill["TotalWeight"]), new t_Decimal(drBill["SuttleWeight"]),
-                           CustomerPayAmount, NewDescription, new t_ID(0), new t_ID());
+                           CustomerPayAmount, NewDescription, new t_ID(0), new t_ID(),new t_String(), new t_BigID());
                     }
                 }
 
@@ -1165,10 +1187,10 @@ namespace LB.Web.SM.BLL
                     //生成新的入场记录
 
                     t_DTSmall NewBillDate = new t_DTSmall();
-                    this.InsertInBill(argsInTrans, out NewSaleCarInBillID_temp, out NewSaleCarInBillCode_temp, ref NewBillDate,
+                    this.InsertInBill(argsInTrans, out NewSaleCarInBillID_temp, ref NewSaleCarInBillCode_temp, ref NewBillDate,
                         new t_BigID(drBill["CarID"]), new t_BigID(drBill["ItemID"]), new t_ID(drBill["ReceiveType"]),
                         new t_ID(drBill["CalculateType"]), new t_Float(drBill["CarTare"]), new t_BigID(drBill["CustomerID"]),
-                        new t_String(drBill["Description"]), new t_ID(), new t_ID(),new t_BigID());
+                        new t_String(drBill["Description"]), new t_ID(), new t_ID(),new t_BigID(),new t_String());
 
                     #region -- 复制原单的入场图片 --
                     string strDatePath = GetPicturePath(enImagePathType.InBillPath, (DateTime)BillDateIn.Value);
@@ -1209,9 +1231,9 @@ namespace LB.Web.SM.BLL
                         decimal decSuttleWeight = (decimal)NewTotalWeight.Value - decTare;
                         decimal decNewAmount = decPrice * decSuttleWeight;
                         //生成出场记录
-                        this.InsertOutBill(argsInTrans, out NewSaleCarOutBillID_temp, out NewSaleCarOutBillCode_temp, ref NewBillDate, NewSaleCarInBillID_temp, new t_BigID(drBill["CarID"]),
+                        this.InsertOutBill(argsInTrans, out NewSaleCarOutBillID_temp, ref NewSaleCarOutBillCode_temp, ref NewBillDate, NewSaleCarInBillID_temp, new t_BigID(drBill["CarID"]),
                            new t_ID(drBill["ReceiveType"]), new t_ID(drBill["CalculateType"]), new t_Decimal(drBill["Price"]), new t_Decimal(decNewAmount), NewTotalWeight, new t_Decimal(decSuttleWeight),
-                           CustomerPayAmount, new t_String(drBill["Description"]), new t_ID(0), new t_ID());
+                           CustomerPayAmount, new t_String(drBill["Description"]), new t_ID(0), new t_ID(),new t_String(), new t_BigID());
 
                         #region -- 复制原单的入场图片 --
                         string strDateOutPath = GetPicturePath(enImagePathType.OutBillPath, (DateTime)BillDateOut.Value);
@@ -1471,8 +1493,8 @@ namespace LB.Web.SM.BLL
                     t_BigID SaleCarInBillIDNew;
                     t_String SaleCarInBillCodeNew;
                     t_DTSmall BillDateNew = new t_DTSmall();
-                    this.InsertInBill(argsInTrans, out SaleCarInBillIDNew, out SaleCarInBillCodeNew, ref BillDateNew, CarID, ItemID, ReceiveType,
-                        CalculateType, CarTare, CustomerID, Description, new t_ID(0), new t_ID(),new t_BigID());
+                    this.InsertInBill(argsInTrans, out SaleCarInBillIDNew, ref SaleCarInBillCodeNew, ref BillDateNew, CarID, ItemID, ReceiveType,
+                        CalculateType, CarTare, CustomerID, Description, new t_ID(0), new t_ID(),new t_BigID(), CreateBy);
 
                     dtOutBill.DefaultView.RowFilter = "SaleCarInBillID=" + SaleCarInBillID.Value;
                     if (dtOutBill.DefaultView.Count > 0)
@@ -1501,10 +1523,10 @@ namespace LB.Web.SM.BLL
                         }
 
                         t_BigID SaleCarOutBillIDNew;
-                        t_String SaleCarOutBillCodeNew;
-                        this.InsertOutBill(argsInTrans, out SaleCarOutBillIDNew, out SaleCarOutBillCodeNew, ref BillDateNew, SaleCarInBillIDNew,
+                        t_String SaleCarOutBillCodeNew = new t_String();
+                        this.InsertOutBill(argsInTrans, out SaleCarOutBillIDNew, ref SaleCarOutBillCodeNew, ref BillDateNew, SaleCarInBillIDNew,
                             CarID, ReceiveType, CalculateType, Price_Out, Amount_Out, TotalWeight_Out, SuttleWeight_Out, new t_Decimal(0),
-                            new t_String("导入数据"), new t_ID(), UnAutoApprove);
+                            new t_String("导入数据"), new t_ID(), UnAutoApprove, CreateBy, new t_BigID());
 
                         using (DataTable dtBill = _DALSaleCarInOutBill.GetGetSaleCarInOutBill(argsInTrans, SaleCarInBillIDNew))
                         {
@@ -1552,11 +1574,10 @@ namespace LB.Web.SM.BLL
 
         #region -- 汽油采购磅单 --
 
-        public void InsertPurchaseInBill(FactoryArgs args, out t_BigID SaleCarInBillID, out t_String SaleCarInBillCode, ref t_DTSmall BillDate, t_BigID CarID,
+        public void InsertPurchaseInBill(FactoryArgs args, out t_BigID SaleCarInBillID, ref t_String SaleCarInBillCode, ref t_DTSmall BillDate, t_BigID CarID,
             t_BigID ItemID, t_ID CalculateType, t_Decimal TotalWeight, t_BigID CustomerID, t_String Description,t_BigID SourceSaleCarInBillID)
         {
             SaleCarInBillID = new t_BigID();
-            SaleCarInBillCode = new t_String();
             t_BigID SaleCarInBillIDTemp = new t_BigID();
             t_DTSmall BillDateTemp = new t_DTSmall(DateTime.Now);
             t_String SaleCarInBillCodeTemp = new t_String();
@@ -1565,14 +1586,14 @@ namespace LB.Web.SM.BLL
             DBHelper.ExecInTransDelegate exec = delegate (FactoryArgs argsInTrans)
             {
                 t_ID ReceiveType = new t_ID(3);
-                this.InsertInBill(argsInTrans, out SaleCarInBillIDTemp, out SaleCarInBillCodeTemp, ref BillDateTemp, CarID, ItemID, ReceiveType, CalculateType, new t_Float(0),
-                    CustomerID, Description, new t_ID(), new t_ID(1), SourceSaleCarInBillID);
+                this.InsertInBill(argsInTrans, out SaleCarInBillIDTemp, ref SaleCarInBillCodeTemp, ref BillDateTemp, CarID, ItemID, ReceiveType, CalculateType, new t_Float(0),
+                    CustomerID, Description, new t_ID(), new t_ID(1), SourceSaleCarInBillID,new t_String());
 
                 t_BigID SaleCarOutBillID;
                 t_String SaleCarOutBillCode;
 
                 _DALSaleCarInOutBill.InsertOutBill(argsInTrans, out SaleCarOutBillID, new t_String(""), SaleCarInBillIDTemp, CarID, BillDateTemp,
-                    TotalWeight, new t_Decimal(0), new t_Decimal(0), new t_Decimal(0), ReceiveType, CalculateType, Description);
+                    TotalWeight, new t_Decimal(0), new t_Decimal(0), new t_Decimal(0), ReceiveType, CalculateType, Description,new t_String(0), new t_BigID());
 
             };
             DBHelper.ExecInTrans(args, exec);
@@ -1655,6 +1676,119 @@ namespace LB.Web.SM.BLL
         }
 
         #endregion -- 汽油采购磅单 --
+
+        #region -- 远程同步订单至服务器 --
+
+        public void SynchronousBillFromClient(FactoryArgs args, t_Table DTInOutBill)
+        {
+
+            foreach (DataRow dr in DTInOutBill.Value.Rows)
+            {
+                //SaleCarInBillID, BillTypeID, SaleCarOutBillCode, SaleCarInBillCode, CarID, CarNum, ItemID, ItemName, 
+                //ItemRate, ItemMode, BillDateIn, ReceiveType, BillStatus, CustomerID, CustomerName, CalculateType, 
+                //CarTare, PrintCount, IsCancel, ApproveBy, ApproveTime, CreateByIn, CreateTimeIn, CancelBy, CancelTime, 
+                //SaleCarOutBillID, BillDateOut, TotalWeight, SuttleWeight, SuttleWeightT, Price, PriceT, Amount, 
+                //Description, CreateByOut, CreateTimeOut, BillType, CancelDesc, OutPrintCount, ItemTypeName, SaleBillType, 
+                //IsSynchronousToServer, SynchronousToServerTime
+                t_BigID SaleCarInBillID = new t_BigID(dr["SaleCarInBillID"]);
+                t_BigID SaleCarOutBillID = new t_BigID(dr["SaleCarOutBillID"]);
+                t_ID BillTypeID = new t_ID(dr["BillTypeID"]);
+                t_String SaleCarInBillCode = new t_String(dr["SaleCarInBillCode"].ToString());
+                t_String SaleCarOutBillCode = new t_String(dr["SaleCarOutBillCode"].ToString());
+                t_BigID ItemID = new t_BigID(dr["ItemID"]);
+                t_BigID CarID = new t_BigID(dr["CarID"]);
+                t_BigID CustomerID = new t_BigID(dr["CustomerID"]);
+                t_DTSmall BillDateIn = new t_DTSmall(dr["BillDateIn"]);
+                t_DTSmall BillDateOut = new t_DTSmall(dr["BillDateOut"]);
+                t_ID ReceiveType = new t_ID(dr["ReceiveType"]);
+                t_ID AmountType = new t_ID(dr["AmountType"]);
+                t_ID BillStatus = new t_ID(dr["BillStatus"]);
+                t_ID CalculateType = new t_ID(dr["CalculateType"]);
+                t_Decimal TotalWeight = new t_Decimal(dr["TotalWeight"]);
+                t_Decimal CarTare = new t_Decimal(dr["CarTare"]);
+                t_Decimal SuttleWeight = new t_Decimal(dr["SuttleWeight"]);
+                t_Decimal Price = new t_Decimal(dr["Price"]);
+                t_Decimal Amount = new t_Decimal(dr["Amount"]);
+                t_ID PrintCount = new t_ID(dr["PrintCount"]);
+                t_ID OutPrintCount = new t_ID(dr["OutPrintCount"]);
+                t_ID SaleBillType = new t_ID(dr["SaleBillType"]);
+                t_ID IsCancel = new t_ID(dr["IsCancel"]);
+                t_String CancelBy = new t_String(dr["CancelBy"]);
+                t_DTSmall CancelTime = new t_DTSmall(dr["CancelTime"]);
+                t_String ApproveBy = new t_String(dr["ApproveBy"]);
+                t_DTSmall ApproveTime = new t_DTSmall(dr["ApproveTime"]);
+                t_String CreateByIn = new t_String(dr["CreateByIn"].ToString());
+                t_DTSmall CreateTimeIn = new t_DTSmall(dr["CreateTimeIn"]);
+                t_String CreateByOut = new t_String(dr["CreateByOut"].ToString());
+                t_DTSmall CreateTimeOut = new t_DTSmall(dr["CreateTimeOut"]);
+                t_String Description = new t_String(dr["Description"]);
+                t_String CancelDesc = new t_String(dr["CancelDesc"]);
+
+                //读取服务器单价
+                _IBLLModifyBillHeader.GetCustomerItemPrice(args, ItemID, CarID, CustomerID, CalculateType, out Price);
+
+                using (DataTable dtCustomer = _DALSaleCarInOutBill.GetCustomer(args, CustomerID))
+                {
+                    if (dtCustomer.Rows.Count > 0)
+                    {
+                        int iAmountType = LBConverter.ToInt32(dtCustomer.Rows[0]["AmountType"]);//金额格式：0整数 1一位小数 2两位小数
+                        string strFormat = "0";
+                        if (iAmountType == 1)
+                            strFormat = "0.0";
+                        else if (iAmountType == 2)
+                            strFormat = "0.00";
+
+                        if (CalculateType.Value == 0)
+                            Amount.Value = LBConverter.ToDecimal(((decimal)(SuttleWeight.Value * Price.Value)).ToString(strFormat));
+                        else
+                            Amount.Value = LBConverter.ToDecimal(((decimal)(Price.Value)).ToString(strFormat));
+                    }
+                }
+
+
+                DBHelper.ExecInTransDelegate exec = delegate (FactoryArgs argsInTrans)
+                {
+                    this.InsertInBill(argsInTrans, out SaleCarInBillID, ref SaleCarInBillCode, ref BillDateIn, CarID, ItemID, ReceiveType, CalculateType,
+                        new t_Float(CarTare.Value), CustomerID, Description, new t_ID(), SaleBillType, SaleCarInBillID, CreateByIn);
+
+                    if (SaleCarOutBillID.Value > 0)//添加入场单
+                    {
+                        t_ID IsEmptyOut = new t_ID(0);
+                        t_ID UnAutoApprove = new t_ID(0);
+                        //是否空车出场
+                        if (IsCancel.Value == 1 && Math.Abs((decimal)SuttleWeight.Value) < 1000)
+                        {
+                            IsEmptyOut = new t_ID(1);
+                            UnAutoApprove.Value = 1;
+                        }
+                        if (IsCancel.Value == 1)
+                        {
+                            UnAutoApprove.Value = 1;
+                        }
+
+                        this.InsertOutBill(argsInTrans, out SaleCarOutBillID, ref SaleCarOutBillCode, ref BillDateOut, SaleCarInBillID,
+                            CarID, ReceiveType, CalculateType, Price, Amount, TotalWeight, SuttleWeight, new t_Decimal(0), Description,
+                            IsEmptyOut, UnAutoApprove, CreateByOut, SaleCarOutBillID);
+
+                        if (IsEmptyOut.Value == 0 && IsCancel.Value == 1)//自动作废
+                        {
+                            this.Cancel(argsInTrans, SaleCarInBillID, CancelDesc);
+                        }
+                    }
+                    else
+                    {
+                        if (IsCancel.Value == 1)//自动作废
+                        {
+                            this.Cancel(argsInTrans, SaleCarInBillID, CancelDesc);
+                        }
+                    }
+                };
+                DBHelper.ExecInTrans(args, exec);
+            }
+
+        }
+
+        #endregion
     }
 
     public enum enImagePathType
