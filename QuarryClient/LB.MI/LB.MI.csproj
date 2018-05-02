@@ -104,6 +104,12 @@
     <Compile Include="MI\frmCustomerImport.Designer.cs">
       <DependentUpon>frmCustomerImport.cs</DependentUpon>
     </Compile>
+    <Compile Include="MI\frmSaleCarInOutBillSynchornous.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmSaleCarInOutBillSynchornous.Designer.cs">
+      <DependentUpon>frmSaleCarInOutBillSynchornous.cs</DependentUpon>
+    </Compile>
     <Compile Include="MI\frmSaleCarInOutCancel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -287,6 +293,9 @@
     <EmbeddedResource Include="MI\frmCustomerImport.resx">
       <DependentUpon>frmCustomerImport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmSaleCarInOutBillSynchornous.resx">
+      <DependentUpon>frmSaleCarInOutBillSynchornous.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MI\frmSaleCarInOutCancel.resx">
       <DependentUpon>frmSaleCarInOutCancel.cs</DependentUpon>
     </EmbeddedResource>
@@ -424,6 +433,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MI\IFaxBusiness - 副本 %282%29.dll" />
+    <None Include="Resources\btnVersionDone.gif" />
+    <None Include="Resources\Bool_uncheck.bmp" />
+    <None Include="Resources\Bool_checked.bmp" />
     <None Include="Resources\btnRefSource.gif" />
     <None Include="Resources\btnMultiPrompt.gif" />
   </ItemGroup>

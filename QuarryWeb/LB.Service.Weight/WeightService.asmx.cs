@@ -64,12 +64,13 @@ namespace LB.Service
             byte[] bSerialDataType = SerializeObject(dictDataType);
 
             string strdtOut;
-            dsReturn = UnRarDataSet(webservice.RunProcedure(iSPType, LoginName, bSerialValue, bSerialDataType, out strdtOut, out strErrorMsg, out bolIsError));
-            dtOut = UnRarDataTable(strdtOut);
+            string strReturn = webservice.RunProcedure(iSPType, LoginName, bSerialValue, bSerialDataType, out strdtOut, out strErrorMsg, out bolIsError);
             if (bolIsError)
             {
                 throw new Exception(strErrorMsg);
             }
+            dsReturn = UnRarDataSet(strReturn);
+            dtOut = UnRarDataTable(strdtOut);
         }
 
         [WebMethod]
@@ -80,11 +81,12 @@ namespace LB.Service
             //LBWebService.LBWebService webservice = GetLBWebService();
             string strErrorMsg = "";
             bool bolIsError = false;
-            dtResult = UnRarDataTable(webservice.RunDirectSQL(LoginName, strSQL, out strErrorMsg, out bolIsError));
+            string strReturn = webservice.RunDirectSQL(LoginName, strSQL, out strErrorMsg, out bolIsError);
             if (bolIsError)
             {
                 throw new Exception(strErrorMsg);
             }
+            dtResult = UnRarDataTable(strReturn);
             return dtResult;
         }
 

@@ -656,8 +656,11 @@ namespace LB.MI.MI
                 //    }
 
                 //}
-                DataTable dtBill = SynchronousBill.ReadUnSynchronousBill();
-                SynchronousBill.SynchronousBillToServer(dtBill);
+                //DataTable dtBill = SynchronousBill.ReadUnSynchronousBill();
+                //SynchronousBill.SynchronousBillToServer(dtBill);
+
+                frmSaleCarInOutBillSynchornous frm = new frmSaleCarInOutBillSynchornous();
+                LBShowForm.ShowMainPage(frm);
             }
             catch (Exception ex)
             {

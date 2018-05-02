@@ -15,7 +15,7 @@ namespace LB.Common.Synchronous
         /// <returns></returns>
         public static DataTable ReadUnSynchronousBill()
         {
-            string strFilter = "IsSynchronousToServer = 0 and (IsCancel =1 or SaleCarOutBillID is not null)";
+            string strFilter = "isnull(IsSynchronousToServer,0) = 0 and (IsCancel =1 or SaleCarOutBillID is not null)";
             DataTable dtBill = ExecuteSQL.CallView(125, "", strFilter, "SaleCarOutBillID desc,SaleCarInBillID desc");
             return dtBill;
         }
@@ -40,6 +40,7 @@ namespace LB.Common.Synchronous
                 string strItemTypeName = dr["ItemTypeName"].ToString().TrimEnd();
                 //入场单号
                 string strSaleCarInBillCode = dr["SaleCarInBillCode"].ToString().TrimEnd();
+                long lSaleCarInBillID = LBConverter.ToInt32(dr["SaleCarInBillID"]);
 
                 //判断服务器是否存在该客户
                 DataTable dtCustomerServer = ExecuteSQL.CallView_Service(112,"CustomerID", "CustomerName='"+ strCustomerName + "'","");
@@ -153,10 +154,30 @@ namespace LB.Common.Synchronous
                     dtSP.Rows.Add(dtData);
                     dtSP.AcceptChanges();
                     ExecuteSQL.CallSP_Service(14122, dtSP, out dsReturn, out dtOut);
+
+                    //同步成功后将当前单据的同步状态改为已同步
+                    dtSP = new DataTable("SPIN");
+                    dtSP.Columns.Add("SaleCarInBillID", typeof(long));
+                    dtSP.Rows.Add(lSaleCarInBillID);
+                    dtSP.AcceptChanges();
+                    ExecuteSQL.CallSP(14123, dtSP, out dsReturn, out dtOut);
                 }
                 else
                 {
-                    throw new Exception("入场订单["+ strSaleCarInBillCode + "]同步失败！");
+                    string strMsg = "";
+                    if (lCustomerID == 0)
+                    {
+                        strMsg +="[客户资料]";
+                    }
+                    if (lCarID == 0)
+                    {
+                        strMsg += "[车辆资料]";
+                    }
+                    if (lItemID == 0)
+                    {
+                        strMsg += "[物料资料]";
+                    }
+                    throw new Exception("入场订单["+ strSaleCarInBillCode + "]同步失败！无法同步"+ strMsg);
                 }
             }
         }

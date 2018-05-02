@@ -322,8 +322,12 @@ namespace LB.Web.Remoting
             }
             catch (Exception ex)
             {
-                ErrorMsg = ex.InnerException.Message;
+                if (ex.InnerException != null)
+                    ErrorMsg = ex.InnerException.Message;
+                else
+                    ErrorMsg = ex.Message;
                 bolIsError = true;
+                return "";
             }
             return RarDataSet(dsReturn);
         }
@@ -379,9 +383,13 @@ from {1}
             }
             catch (Exception ex)
             {
-                ErrorMsg = ex.InnerException.Message;
+                if (ex.InnerException != null)
+                    ErrorMsg = ex.InnerException.Message;
+                else
+                    ErrorMsg = ex.Message;
                 //LogHelper.WriteLog(ErrorMsg);
                 bolIsError = true;
+                return "";
             }
             return RarDataTable(dtReturn);
         }
@@ -402,8 +410,12 @@ from {1}
             }
             catch (Exception ex)
             {
-                ErrorMsg = ex.InnerException.Message;
+                if (ex.InnerException != null)
+                    ErrorMsg = ex.InnerException.Message;
+                else
+                    ErrorMsg = ex.Message;
                 bolIsError = true;
+                return "";
             }
             return RarDataTable(dtReturn);
         }
@@ -593,8 +605,12 @@ from {1}
             }
             catch (Exception ex)
             {
-                ErrorMsg = ex.InnerException.Message;
+                if (ex.InnerException != null)
+                    ErrorMsg = ex.InnerException.Message;
+                else
+                    ErrorMsg = ex.Message;
                 bolIsError = true;
+                return "";
             }
             return RarDataSet(dsReturn);
         }
@@ -613,8 +629,12 @@ from {1}
             }
             catch (Exception ex)
             {
-                ErrorMsg = ex.InnerException.Message;
+                if (ex.InnerException != null)
+                    ErrorMsg = ex.InnerException.Message;
+                else
+                    ErrorMsg = ex.Message;
                 bolIsError = true;
+                return "";
             }
             return RarDataTable(dtReturn);
         }
@@ -633,8 +653,12 @@ from {1}
             }
             catch (Exception ex)
             {
-                ErrorMsg = ex.InnerException.Message;
+                if (ex.InnerException != null)
+                    ErrorMsg = ex.InnerException.Message;
+                else
+                    ErrorMsg = ex.Message;
                 bolIsError = true;
+                return "";
             }
             return RarDataTable(dtReturn);
         }

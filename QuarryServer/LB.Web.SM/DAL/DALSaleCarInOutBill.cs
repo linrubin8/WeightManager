@@ -764,5 +764,19 @@ where SaleCarInBillID = @SaleCarInBillID
             DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);
         }
         #endregion
+
+        public void SynchronousFinish(FactoryArgs args, t_BigID SaleCarInBillID)
+        {
+            LBDbParameterCollection parms = new LBDbParameterCollection();
+            parms.Add(new LBDbParameter("SaleCarInBillID", SaleCarInBillID));
+
+            string strSQL = @"
+update dbo.SaleCarInBill
+set IsSynchronousToServer = 1,
+    SynchronousToServerTime=getdate()
+where SaleCarInBillID = @SaleCarInBillID
+";
+            DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);
+        }
     }
 }

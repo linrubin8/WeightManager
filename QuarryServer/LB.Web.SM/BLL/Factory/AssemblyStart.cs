@@ -90,6 +90,7 @@ namespace LB.Web.SM.BLL.Factory
                 case 14120:
                 case 14121:
                 case 14122:
+                case 14123:
                     args.BLLFunction = new BLLSaleCarInOutBill();
                     break;
 

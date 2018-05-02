@@ -129,6 +129,10 @@ namespace LB.Web.SM.BLL
                 case 14122:
                     strFunName = "SynchronousBillFromClient";
                     break;
+
+                case 14123:
+                    strFunName = "SynchronousFinish";
+                    break;
             }
             return strFunName;
         }
@@ -1786,6 +1790,11 @@ namespace LB.Web.SM.BLL
                 DBHelper.ExecInTrans(args, exec);
             }
 
+        }
+
+        public void SynchronousFinish(FactoryArgs args, t_BigID SaleCarInBillID)
+        {
+            _DALSaleCarInOutBill.SynchronousFinish(args, SaleCarInBillID);
         }
 
         #endregion

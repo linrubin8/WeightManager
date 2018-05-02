@@ -58,12 +58,14 @@ namespace LB.WinFunction
             byte[] bSerialDataType = SerializeObject(dictDataType);
 
             string strdtOut;
-            dsReturn =UnRarDataSet( webservice.RunProcedure(iSPType, LoginInfo.LoginName, bSerialValue,bSerialDataType, out strdtOut, out strErrorMsg, out bolIsError));
-            dtOut = UnRarDataTable(strdtOut);
+            string strReturn = webservice.RunProcedure(iSPType, LoginInfo.LoginName, bSerialValue, bSerialDataType, out strdtOut, out strErrorMsg, out bolIsError);
             if (bolIsError)
             {
                 throw new Exception(strErrorMsg);
             }
+            dsReturn =UnRarDataSet(strReturn);
+            dtOut = UnRarDataTable(strdtOut);
+            
             if (CallSPEvent != null)
             {
                 CallSPArgs args = new Args.CallSPArgs(iSPType, dtInput);
@@ -181,11 +183,12 @@ namespace LB.WinFunction
             bool bolIsError=false;
             try
             {
-                dtResult = UnRarDataTable( webservice.RunView(iViewType, LoginInfo.LoginName, strFieldNames, strWhere, strOrderBy, out strErrorMsg, out bolIsError));
+                string strReturn = webservice.RunView(iViewType, LoginInfo.LoginName, strFieldNames, strWhere, strOrderBy, out strErrorMsg, out bolIsError);
                 if (bolIsError)
                 {
                     throw new Exception(strErrorMsg);
                 }
+                dtResult = UnRarDataTable(strReturn);
             }
             catch(Exception ex)
             {
@@ -215,11 +218,13 @@ namespace LB.WinFunction
             //LBWebService.LBWebService webservice = GetLBWebService();
             string strErrorMsg="";
             bool bolIsError=false;
-            dtResult = UnRarDataTable(webservice.RunDirectSQL(LoginInfo.LoginName, strSQL, out strErrorMsg, out bolIsError));
+
+            string strReturn = webservice.RunDirectSQL(LoginInfo.LoginName, strSQL, out strErrorMsg, out bolIsError);
             if (bolIsError)
             {
                 throw new Exception(strErrorMsg);
             }
+            dtResult = UnRarDataTable(strReturn);
             return dtResult;
         }
 
@@ -381,12 +386,14 @@ namespace LB.WinFunction
             byte[] bSerialDataType = SerializeObject(dictDataType);
 
             string strdtOut;
-            dsReturn = UnRarDataSet(webservice.RunProcedure_Service(iSPType, LoginInfo.LoginName, bSerialValue, bSerialDataType, out strdtOut, out strErrorMsg, out bolIsError));
-            dtOut = UnRarDataTable(strdtOut);
+            string strReturn = webservice.RunProcedure_Service(iSPType, LoginInfo.LoginName, bSerialValue, bSerialDataType, out strdtOut, out strErrorMsg, out bolIsError);
             if (bolIsError)
             {
                 throw new Exception(strErrorMsg);
             }
+            dsReturn = UnRarDataSet(strReturn);
+            dtOut = UnRarDataTable(strdtOut);
+            
             if (CallSPEvent != null)
             {
                 CallSPArgs args = new Args.CallSPArgs(iSPType, dtInput);
@@ -407,11 +414,14 @@ namespace LB.WinFunction
             bool bolIsError = false;
             try
             {
-                dtResult = UnRarDataTable(webservice.RunView_Service(iViewType, LoginInfo.LoginName, strFieldNames, strWhere, strOrderBy, out strErrorMsg, out bolIsError));
+                string strReturn = webservice.RunView_Service(iViewType, LoginInfo.LoginName, strFieldNames, strWhere, strOrderBy, out strErrorMsg, out bolIsError);
+
                 if (bolIsError)
                 {
                     throw new Exception(strErrorMsg);
                 }
+                dtResult = UnRarDataTable(strReturn);
+                
             }
             catch (Exception ex)
             {
@@ -427,11 +437,13 @@ namespace LB.WinFunction
             //LBWebService.LBWebService webservice = GetLBWebService();
             string strErrorMsg = "";
             bool bolIsError = false;
-            dtResult = UnRarDataTable(webservice.RunDirectSQL_Service(LoginInfo.LoginName, strSQL, out strErrorMsg, out bolIsError));
+            string strReturn = webservice.RunDirectSQL_Service(LoginInfo.LoginName, strSQL, out strErrorMsg, out bolIsError);
+
             if (bolIsError)
             {
                 throw new Exception(strErrorMsg);
             }
+            dtResult = UnRarDataTable(strReturn);
             return dtResult;
         }
 

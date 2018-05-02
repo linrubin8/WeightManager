@@ -63,6 +63,26 @@ namespace LB.MI.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap Bool_checked {
+            get {
+                object obj = ResourceManager.GetObject("Bool_checked", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Bool_uncheck {
+            get {
+                object obj = ResourceManager.GetObject("Bool_uncheck", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap btnApprove {
             get {
                 object obj = ResourceManager.GetObject("btnApprove", resourceCulture);
@@ -186,6 +206,16 @@ namespace LB.MI.Properties {
         internal static System.Drawing.Bitmap btnUnPostInUse {
             get {
                 object obj = ResourceManager.GetObject("btnUnPostInUse", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap btnVersionDone {
+            get {
+                object obj = ResourceManager.GetObject("btnVersionDone", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
