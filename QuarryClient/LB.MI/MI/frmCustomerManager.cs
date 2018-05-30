@@ -13,6 +13,7 @@ using LB.Controls.Report;
 using LB.Page.Helper;
 using LB.Common;
 using LB.Common.Synchronous;
+using LB.MI.MI;
 
 namespace LB.MI
 {
@@ -255,18 +256,6 @@ namespace LB.MI
                 LB.WinFunction.LBCommonHelper.DealWithErrorMessage(ex);
             }
         }
-
-        private void btnSynCustomerFromWeb_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //DataTable dt = ExecuteSQL.CallView_Service(112);
-                SynchronousCustomer.SynchronousCustomerFromServer();
-            }
-            catch (Exception ex)
-            {
-                LB.WinFunction.LBCommonHelper.DealWithErrorMessage(ex);
-            }
-        }
+        
     }
 }

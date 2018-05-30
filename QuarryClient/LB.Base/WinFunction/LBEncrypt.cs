@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
@@ -76,6 +78,23 @@ namespace LB.WinFunction
         public string DESEncrypt(object strPassword, string v)
         {
             throw new NotImplementedException();
+        }
+
+        public static Dictionary<string,object> GetRegisterModelInfo(string strRegisterJson)
+        {
+            Dictionary<string, object> dictModel = new Dictionary<string, object>();
+            //JObject jo = (JObject)JsonConvert.DeserializeObject(strRegisterJson);
+            var o = JObject.Parse(strRegisterJson);
+
+            foreach (JToken child in o.Children())
+            {
+                var property1 = child as JProperty;
+                if (!dictModel.ContainsKey(property1.Name))
+                {
+                    dictModel.Add(property1.Name, property1.Value);
+                }
+            }
+            return dictModel;
         }
     }
 

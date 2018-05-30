@@ -36,6 +36,12 @@ namespace LB.MainForm
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+
+            if (!LBRegisterPermission.Permission_ModelSynchorToServer)
+            {
+                btnSynchornousData.Visible = false;
+            }
+
             InitData();
 
             mThreadStatus = new Thread(TestServerConnectStatus);
@@ -461,6 +467,25 @@ namespace LB.MainForm
             }
         }
 
+
+        //同步车辆信息
+        private void btnSynCar_Click(object sender, EventArgs e)
+        {
+            frmSynchornousCarData frm = new frmSynchornousCarData();
+            LBShowForm.ShowMainPage(frm);
+        }
+        //同步客户信息
+        private void btnSynCustomer_Click(object sender, EventArgs e)
+        {
+            frmSynchornousCustomerData frm = new frmSynchornousCustomerData();
+            LBShowForm.ShowMainPage(frm);
+        }
+        //同步单据信息
+        private void btnSynSalesBill_Click(object sender, EventArgs e)
+        {
+            frmSaleCarInOutBillSynchornous frm = new MI.MI.frmSaleCarInOutBillSynchornous();
+            LBShowForm.ShowMainPage(frm);
+        }
         #endregion -- 按钮事件  --
 
         #region -- ShowMainPage --
@@ -650,6 +675,5 @@ namespace LB.MainForm
         {
 
         }
-
     }
 }

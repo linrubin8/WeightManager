@@ -205,7 +205,8 @@ where ReceiveBillHeaderID = @ReceiveBillHeaderID
             string strSQL = @"
 update dbo.DbCustomer
 set TotalReceivedAmount = isnull(TotalReceivedAmount,0)+isnull(@ReceiveAmount,0),
-    SalesReceivedAmount= isnull(SalesReceivedAmount,0)+@SalesReceiveAmountAdd-@SalesReceiveAmountReduce
+    SalesReceivedAmount= isnull(SalesReceivedAmount,0)+@SalesReceiveAmountAdd-@SalesReceiveAmountReduce,
+    ChangeBy = getdate()
 where CustomerID = @CustomerID
 ";
             DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);

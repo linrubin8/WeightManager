@@ -450,10 +450,17 @@ namespace LB.WinFunction
         #endregion -- 网络接口 --
 
         //校验软件权限
-        public static void ReadRegister(out bool IsRegister,out int ProductType, out string RegisterInfoJson, out DateTime DeadLine)
+        public static void ReadRegister(out bool IsRegister,out int ProductType, out DateTime DeadLine ,
+            out Dictionary<string, object> dictModel)
         {
+            dictModel = new Dictionary<string, object>();
+            string RegisterInfoJson;
             IFaxBusiness.IMyFaxBusiness webservice = GetWebService();
             webservice.ReadRegister(out IsRegister,out ProductType,out RegisterInfoJson, out DeadLine);
+            if (RegisterInfoJson != "")
+            {
+                dictModel = LBEncrypt.GetRegisterModelInfo(RegisterInfoJson);
+            }
         }
     }
 }

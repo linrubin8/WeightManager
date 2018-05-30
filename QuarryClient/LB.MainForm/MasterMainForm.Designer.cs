@@ -71,6 +71,10 @@ namespace LB.MainForm
             this.btnDropDownReceive = new LB.Controls.LBToolStripDropDownButton(this.components);
             this.btnRPReceive = new LB.Controls.LBToolStripMenuItem(this.components);
             this.btnRPReceiveList = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.btnSynchornousData = new LB.Controls.LBToolStripDropDownButton(this.components);
+            this.btnSynCustomer = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.btnSynCar = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.btnSynSalesBill = new LB.Controls.LBToolStripMenuItem(this.components);
             this.btnReportManager = new LB.Controls.LBToolStripButton(this.components);
             this.btnAbort = new LB.Controls.LBToolStripDropDownButton(this.components);
             this.版本信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,6 +103,7 @@ namespace LB.MainForm
             this.lbToolStripDropDownButton1,
             this.lbToolStripDropDownButton2,
             this.btnDropDownReceive,
+            this.btnSynchornousData,
             this.btnReportManager,
             this.btnAbort});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -273,7 +278,7 @@ namespace LB.MainForm
             // 
             this.btnItemBaseManager.LBPermissionCode = "ItemManager_Query";
             this.btnItemBaseManager.Name = "btnItemBaseManager";
-            this.btnItemBaseManager.Size = new System.Drawing.Size(152, 22);
+            this.btnItemBaseManager.Size = new System.Drawing.Size(148, 22);
             this.btnItemBaseManager.Text = "物料管理";
             this.btnItemBaseManager.Click += new System.EventHandler(this.btnItemBaseManager_Click);
             // 
@@ -281,7 +286,7 @@ namespace LB.MainForm
             // 
             this.btnUOMManager.LBPermissionCode = "DBUOM_Query";
             this.btnUOMManager.Name = "btnUOMManager";
-            this.btnUOMManager.Size = new System.Drawing.Size(152, 22);
+            this.btnUOMManager.Size = new System.Drawing.Size(148, 22);
             this.btnUOMManager.Text = "计量单位管理";
             this.btnUOMManager.Click += new System.EventHandler(this.btnUOMManager_Click);
             // 
@@ -289,7 +294,7 @@ namespace LB.MainForm
             // 
             this.btnDescriptionManager.LBPermissionCode = "DBDescription_Query";
             this.btnDescriptionManager.Name = "btnDescriptionManager";
-            this.btnDescriptionManager.Size = new System.Drawing.Size(152, 22);
+            this.btnDescriptionManager.Size = new System.Drawing.Size(148, 22);
             this.btnDescriptionManager.Text = "备注管理";
             this.btnDescriptionManager.Click += new System.EventHandler(this.btnDescriptionManager_Click);
             // 
@@ -297,20 +302,20 @@ namespace LB.MainForm
             // 
             this.btnCarWeightManager.LBPermissionCode = "DBCarWeight_Manager";
             this.btnCarWeightManager.Name = "btnCarWeightManager";
-            this.btnCarWeightManager.Size = new System.Drawing.Size(152, 22);
+            this.btnCarWeightManager.Size = new System.Drawing.Size(148, 22);
             this.btnCarWeightManager.Text = "车辆皮重管理";
             this.btnCarWeightManager.Click += new System.EventHandler(this.btnCarWeightManager_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(145, 6);
             // 
             // btnBankManager
             // 
             this.btnBankManager.LBPermissionCode = "ReceiveBank_Query";
             this.btnBankManager.Name = "btnBankManager";
-            this.btnBankManager.Size = new System.Drawing.Size(152, 22);
+            this.btnBankManager.Size = new System.Drawing.Size(148, 22);
             this.btnBankManager.Text = "收款银行管理";
             this.btnBankManager.Click += new System.EventHandler(this.btnBankManager_Click);
             // 
@@ -318,7 +323,7 @@ namespace LB.MainForm
             // 
             this.btnChargeManager.LBPermissionCode = "ChargeType_Query";
             this.btnChargeManager.Name = "btnChargeManager";
-            this.btnChargeManager.Size = new System.Drawing.Size(152, 22);
+            this.btnChargeManager.Size = new System.Drawing.Size(148, 22);
             this.btnChargeManager.Text = "充值方式管理";
             this.btnChargeManager.Click += new System.EventHandler(this.btnChargeManager_Click);
             // 
@@ -444,6 +449,43 @@ namespace LB.MainForm
             this.btnRPReceiveList.Size = new System.Drawing.Size(124, 22);
             this.btnRPReceiveList.Text = "充值记录";
             this.btnRPReceiveList.Click += new System.EventHandler(this.btnRPReceiveList_Click);
+            // 
+            // btnSynchornousData
+            // 
+            this.btnSynchornousData.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnSynCustomer,
+            this.btnSynCar,
+            this.btnSynSalesBill});
+            this.btnSynchornousData.Image = ((System.Drawing.Image)(resources.GetObject("btnSynchornousData.Image")));
+            this.btnSynchornousData.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSynchornousData.LBPermissionCode = "";
+            this.btnSynchornousData.Name = "btnSynchornousData";
+            this.btnSynchornousData.Size = new System.Drawing.Size(85, 22);
+            this.btnSynchornousData.Text = "数据同步";
+            // 
+            // btnSynCustomer
+            // 
+            this.btnSynCustomer.LBPermissionCode = "Customer_Synchornous";
+            this.btnSynCustomer.Name = "btnSynCustomer";
+            this.btnSynCustomer.Size = new System.Drawing.Size(152, 22);
+            this.btnSynCustomer.Text = "客户资料同步";
+            this.btnSynCustomer.Click += new System.EventHandler(this.btnSynCustomer_Click);
+            // 
+            // btnSynCar
+            // 
+            this.btnSynCar.LBPermissionCode = "Car_Synchornous";
+            this.btnSynCar.Name = "btnSynCar";
+            this.btnSynCar.Size = new System.Drawing.Size(152, 22);
+            this.btnSynCar.Text = "车辆资料同步";
+            this.btnSynCar.Click += new System.EventHandler(this.btnSynCar_Click);
+            // 
+            // btnSynSalesBill
+            // 
+            this.btnSynSalesBill.LBPermissionCode = "SalesBill_Synchornous";
+            this.btnSynSalesBill.Name = "btnSynSalesBill";
+            this.btnSynSalesBill.Size = new System.Drawing.Size(152, 22);
+            this.btnSynSalesBill.Text = "单据信息同步";
+            this.btnSynSalesBill.Click += new System.EventHandler(this.btnSynSalesBill_Click);
             // 
             // btnReportManager
             // 
@@ -657,6 +699,10 @@ namespace LB.MainForm
         private LBToolStripMenuItem btnBankManager;
         private LBToolStripMenuItem btnChargeManager;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private LBToolStripDropDownButton btnSynchornousData;
+        private LBToolStripMenuItem btnSynCustomer;
+        private LBToolStripMenuItem btnSynCar;
+        private LBToolStripMenuItem btnSynSalesBill;
     }
 }
 

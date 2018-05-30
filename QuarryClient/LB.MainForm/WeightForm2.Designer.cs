@@ -147,6 +147,10 @@
             this.lbToolStripDropDownButton3 = new LB.Controls.LBToolStripDropDownButton(this.components);
             this.btnAddChangePriceBill = new LB.Controls.LBToolStripMenuItem(this.components);
             this.btnChangePriceManager = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.btnSynchornousData = new LB.Controls.LBToolStripDropDownButton(this.components);
+            this.btnSynCustomer = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.btnSynCar = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.btnSynSalesBill = new LB.Controls.LBToolStripMenuItem(this.components);
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmCancel = new LB.Controls.LBToolStripMenuItem(this.components);
@@ -1254,7 +1258,8 @@
             this.lbToolStripDropDownButton2,
             this.btnDropDownReceive,
             this.btnDDBaseManager,
-            this.lbToolStripDropDownButton3});
+            this.lbToolStripDropDownButton3,
+            this.btnSynchornousData});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(882, 25);
@@ -1473,6 +1478,43 @@
             this.btnChangePriceManager.Size = new System.Drawing.Size(136, 22);
             this.btnChangePriceManager.Text = "调价单管理";
             this.btnChangePriceManager.Click += new System.EventHandler(this.btnChangePriceManager_Click);
+            // 
+            // btnSynchornousData
+            // 
+            this.btnSynchornousData.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnSynCustomer,
+            this.btnSynCar,
+            this.btnSynSalesBill});
+            this.btnSynchornousData.Image = ((System.Drawing.Image)(resources.GetObject("btnSynchornousData.Image")));
+            this.btnSynchornousData.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSynchornousData.LBPermissionCode = "";
+            this.btnSynchornousData.Name = "btnSynchornousData";
+            this.btnSynchornousData.Size = new System.Drawing.Size(85, 22);
+            this.btnSynchornousData.Text = "数据同步";
+            // 
+            // btnSynCustomer
+            // 
+            this.btnSynCustomer.LBPermissionCode = "Customer_Synchornous";
+            this.btnSynCustomer.Name = "btnSynCustomer";
+            this.btnSynCustomer.Size = new System.Drawing.Size(152, 22);
+            this.btnSynCustomer.Text = "客户资料同步";
+            this.btnSynCustomer.Click += new System.EventHandler(this.btnSynCustomer_Click);
+            // 
+            // btnSynCar
+            // 
+            this.btnSynCar.LBPermissionCode = "Car_Synchornous";
+            this.btnSynCar.Name = "btnSynCar";
+            this.btnSynCar.Size = new System.Drawing.Size(152, 22);
+            this.btnSynCar.Text = "车辆资料同步";
+            this.btnSynCar.Click += new System.EventHandler(this.btnSynCar_Click);
+            // 
+            // btnSynSalesBill
+            // 
+            this.btnSynSalesBill.LBPermissionCode = "SalesBill_Synchornous";
+            this.btnSynSalesBill.Name = "btnSynSalesBill";
+            this.btnSynSalesBill.Size = new System.Drawing.Size(152, 22);
+            this.btnSynSalesBill.Text = "单据信息同步";
+            this.btnSynSalesBill.Click += new System.EventHandler(this.btnSynSalesBill_Click);
             // 
             // splitter1
             // 
@@ -1701,5 +1743,9 @@
         private CCWin.SkinControl.SkinLabel skinLabel6;
         private CCWin.SkinControl.SkinLabel lblWebSteady;
         private System.Windows.Forms.Panel pnlWebSteadyStatus;
+        private Controls.LBToolStripDropDownButton btnSynchornousData;
+        private Controls.LBToolStripMenuItem btnSynCustomer;
+        private Controls.LBToolStripMenuItem btnSynCar;
+        private Controls.LBToolStripMenuItem btnSynSalesBill;
     }
 }

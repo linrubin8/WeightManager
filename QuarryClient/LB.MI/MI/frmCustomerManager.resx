@@ -291,16 +291,6 @@
         3JhBtpiZgS5lsBf9mKXRtNoH0dPV1UVepPnRin6e5aN/OjM4s2b9Dx5/UOOg8j7bAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="btnSynCustomerFromWeb.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADySURBVDhPYxjGIH+p7f/sxeb/k+cb/o+erfk/cLrif6gU
-        cSAXqHnDuWn/156d8n/lqQn/PSdKk2ZA+kJjsOa+Xfn/l57o/e/cL0qaAYlz9f+vOj3xf+eO7P8Lj3X9
-        t+7mJ84AmL9r1of+X3F6wv/WbWn/5x3t+B833+q/djPjf8VaBvwGpQI1N26OAts+YU/J/4bNiUBDsv5P
-        O9jwP36h83+5ambCLgmfofG/ZLX//4XHu/43bU3/P/1Q0/+kxW7/5asJ2I4MXPvF/2csdfs/41Dz/7Sl
-        Hv/lCTkdGzBtZ/8fs8CGsL/xAdV6CjQPBcDAAACVioBChXnT3QAAAABJRU5ErkJggg==
-</value>
-  </data>
   <metadata name="CustomerCode.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

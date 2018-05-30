@@ -49,7 +49,6 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCarWeightManager = new LB.Controls.LBToolStripButton(this.components);
             this.btnAddCarWeight = new LB.Controls.LBToolStripButton(this.components);
-            this.btnSynCarFromWeb = new LB.Controls.LBToolStripButton(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).BeginInit();
             this.skinToolStrip1.SuspendLayout();
@@ -241,8 +240,7 @@
             this.btnAddCar,
             this.toolStripSeparator2,
             this.btnCarWeightManager,
-            this.btnAddCarWeight,
-            this.btnSynCarFromWeb});
+            this.btnAddCarWeight});
             this.skinToolStrip1.Location = new System.Drawing.Point(0, 0);
             this.skinToolStrip1.Name = "skinToolStrip1";
             this.skinToolStrip1.RadiusStyle = CCWin.SkinClass.RoundStyle.All;
@@ -320,17 +318,6 @@
             this.btnAddCarWeight.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAddCarWeight.Click += new System.EventHandler(this.btnAddCarWeight_Click);
             // 
-            // btnSynCarFromWeb
-            // 
-            this.btnSynCarFromWeb.Image = ((System.Drawing.Image)(resources.GetObject("btnSynCarFromWeb.Image")));
-            this.btnSynCarFromWeb.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSynCarFromWeb.LBPermissionCode = "";
-            this.btnSynCarFromWeb.Name = "btnSynCarFromWeb";
-            this.btnSynCarFromWeb.Size = new System.Drawing.Size(108, 37);
-            this.btnSynCarFromWeb.Text = "网络同步车辆资料";
-            this.btnSynCarFromWeb.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnSynCarFromWeb.Click += new System.EventHandler(this.btnSynCarFromWeb_Click);
-            // 
             // frmCarManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -368,6 +355,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CarCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn CarNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
-        private Controls.LBToolStripButton btnSynCarFromWeb;
     }
 }

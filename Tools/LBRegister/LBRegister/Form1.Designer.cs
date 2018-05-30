@@ -38,6 +38,9 @@
             this.rbWeight = new System.Windows.Forms.RadioButton();
             this.rbGrooveWeight = new System.Windows.Forms.RadioButton();
             this.rbGrooveCount = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbSynToServer = new System.Windows.Forms.CheckBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -59,7 +62,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 81);
+            this.label2.Location = new System.Drawing.Point(20, 127);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 2;
@@ -67,7 +70,7 @@
             // 
             // txtDeadLine
             // 
-            this.txtDeadLine.Location = new System.Drawing.Point(67, 77);
+            this.txtDeadLine.Location = new System.Drawing.Point(67, 123);
             this.txtDeadLine.Name = "txtDeadLine";
             this.txtDeadLine.Size = new System.Drawing.Size(304, 21);
             this.txtDeadLine.TabIndex = 3;
@@ -75,7 +78,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(147, 131);
+            this.button1.Location = new System.Drawing.Point(147, 177);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(102, 23);
             this.button1.TabIndex = 4;
@@ -86,7 +89,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 107);
+            this.label3.Location = new System.Drawing.Point(20, 153);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 12);
             this.label3.TabIndex = 5;
@@ -94,7 +97,7 @@
             // 
             // txtRegister
             // 
-            this.txtRegister.Location = new System.Drawing.Point(67, 104);
+            this.txtRegister.Location = new System.Drawing.Point(67, 150);
             this.txtRegister.Name = "txtRegister";
             this.txtRegister.ReadOnly = true;
             this.txtRegister.Size = new System.Drawing.Size(304, 21);
@@ -106,16 +109,16 @@
             this.rbWeight.Checked = true;
             this.rbWeight.Location = new System.Drawing.Point(22, 46);
             this.rbWeight.Name = "rbWeight";
-            this.rbWeight.Size = new System.Drawing.Size(71, 16);
+            this.rbWeight.Size = new System.Drawing.Size(95, 16);
             this.rbWeight.TabIndex = 7;
             this.rbWeight.TabStop = true;
-            this.rbWeight.Text = "称重软件";
+            this.rbWeight.Text = "销售称重系统";
             this.rbWeight.UseVisualStyleBackColor = true;
             // 
             // rbGrooveWeight
             // 
             this.rbGrooveWeight.AutoSize = true;
-            this.rbGrooveWeight.Location = new System.Drawing.Point(110, 46);
+            this.rbGrooveWeight.Location = new System.Drawing.Point(161, 46);
             this.rbGrooveWeight.Name = "rbGrooveWeight";
             this.rbGrooveWeight.Size = new System.Drawing.Size(71, 16);
             this.rbGrooveWeight.TabIndex = 8;
@@ -126,7 +129,7 @@
             // rbGrooveCount
             // 
             this.rbGrooveCount.AutoSize = true;
-            this.rbGrooveCount.Location = new System.Drawing.Point(200, 46);
+            this.rbGrooveCount.Location = new System.Drawing.Point(276, 46);
             this.rbGrooveCount.Name = "rbGrooveCount";
             this.rbGrooveCount.Size = new System.Drawing.Size(95, 16);
             this.rbGrooveCount.TabIndex = 9;
@@ -134,11 +137,32 @@
             this.rbGrooveCount.Text = "车辆计数软件";
             this.rbGrooveCount.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cbSynToServer);
+            this.groupBox1.Location = new System.Drawing.Point(22, 69);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(349, 48);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "功能模块";
+            // 
+            // cbSynToServer
+            // 
+            this.cbSynToServer.AutoSize = true;
+            this.cbSynToServer.Location = new System.Drawing.Point(7, 21);
+            this.cbSynToServer.Name = "cbSynToServer";
+            this.cbSynToServer.Size = new System.Drawing.Size(144, 16);
+            this.cbSynToServer.TabIndex = 0;
+            this.cbSynToServer.Text = "数据同步至服务器功能";
+            this.cbSynToServer.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(383, 166);
+            this.ClientSize = new System.Drawing.Size(383, 207);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.rbGrooveCount);
             this.Controls.Add(this.rbGrooveWeight);
             this.Controls.Add(this.rbWeight);
@@ -152,6 +176,8 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,6 +195,8 @@
         private System.Windows.Forms.RadioButton rbWeight;
         private System.Windows.Forms.RadioButton rbGrooveWeight;
         private System.Windows.Forms.RadioButton rbGrooveCount;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox cbSynToServer;
     }
 }
 

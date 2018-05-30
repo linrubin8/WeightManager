@@ -45,7 +45,6 @@
             this.btnExportExcel = new LB.Controls.LBToolStripButton(this.components);
             this.btnImportExcel = new LB.Controls.LBToolStripButton(this.components);
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnSynCustomerFromWeb = new LB.Controls.LBToolStripButton(this.components);
             this.grdMain = new LB.Controls.LBDataGridView(this.components);
             this.CustomerCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -129,8 +128,7 @@
             this.toolStripSeparator1,
             this.btnExportExcel,
             this.btnImportExcel,
-            this.toolStripSeparator2,
-            this.btnSynCustomerFromWeb});
+            this.toolStripSeparator2});
             this.skinToolStrip1.Location = new System.Drawing.Point(0, 0);
             this.skinToolStrip1.Name = "skinToolStrip1";
             this.skinToolStrip1.RadiusStyle = CCWin.SkinClass.RoundStyle.All;
@@ -230,17 +228,6 @@
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 40);
-            // 
-            // btnSynCustomerFromWeb
-            // 
-            this.btnSynCustomerFromWeb.Image = ((System.Drawing.Image)(resources.GetObject("btnSynCustomerFromWeb.Image")));
-            this.btnSynCustomerFromWeb.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSynCustomerFromWeb.LBPermissionCode = "";
-            this.btnSynCustomerFromWeb.Name = "btnSynCustomerFromWeb";
-            this.btnSynCustomerFromWeb.Size = new System.Drawing.Size(108, 37);
-            this.btnSynCustomerFromWeb.Text = "网络同步客户资料";
-            this.btnSynCustomerFromWeb.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnSynCustomerFromWeb.Click += new System.EventHandler(this.btnSynCustomerFromWeb_Click);
             // 
             // grdMain
             // 
@@ -730,7 +717,6 @@
         private Controls.LBToolStripButton btnExportExcel;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private Controls.LBToolStripButton btnImportExcel;
-        private Controls.LBToolStripButton btnSynCustomerFromWeb;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn RemainReceivedAmount;

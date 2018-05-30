@@ -23,13 +23,25 @@ namespace LBRegister
         private void button1_Click(object sender, EventArgs e)
         {
             int iProductType = 0;
-            if(this.rbWeight.Checked)
+            string strModel = "";
+            if (this.rbWeight.Checked)
+            {
                 iProductType = 0;
-            else if(this.rbGrooveWeight.Checked)
+                if (this.cbSynToServer.Checked)
+                {
+                    strModel = "RegisterInfoJson={\"SynToServer\":\"1\"}";
+                }
+            }
+            else if (this.rbGrooveWeight.Checked)
                 iProductType = 1;
             else if (this.rbGrooveCount.Checked)
                 iProductType = 2;
-            string str = "Register=1;ProductType="+ iProductType + ";DeadLine=" + this.txtDeadLine.Text;
+            string str = "Register=1;ProductType=" + iProductType + ";DeadLine=" + this.txtDeadLine.Text ;
+            if (strModel != "")
+            {
+                str += ";";
+                str += strModel;
+            }
             this.txtRegister.Text = EncryptAes(str, "linrubin"+this.txtSeries.Text);
         }
 

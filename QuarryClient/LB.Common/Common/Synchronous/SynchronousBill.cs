@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace LB.Common.Synchronous
 {
@@ -28,8 +29,7 @@ namespace LB.Common.Synchronous
                 long lCarID = 0;
                 long lItemID = 0;
                 long lItemTypeID = 0;
-
-
+                
                 //客户名称
                 string strCustomerName = dr["CustomerName"].ToString().TrimEnd();
                 //车辆名称
@@ -151,9 +151,22 @@ namespace LB.Common.Synchronous
 
                     DataTable dtSP = new DataTable("SPIN");
                     dtSP.Columns.Add("DTInOutBill", typeof(DataTable));
+                    dtSP.Columns.Add("IsSynchronousBefore", typeof(bool));
                     dtSP.Rows.Add(dtData);
                     dtSP.AcceptChanges();
                     ExecuteSQL.CallSP_Service(14122, dtSP, out dsReturn, out dtOut);
+                    bool bolIsSynchronousBefore = false;
+                    if (dtOut != null && dtOut.Rows.Count > 0)
+                    {
+                        foreach (DataColumn dc in dtOut.Columns)
+                        {
+                            if (dc.ColumnName.Contains("IsSynchronousBefore"))
+                            {
+                                bolIsSynchronousBefore = LBConverter.ToBoolean(dtOut.Rows[0]["IsSynchronousBefore"]);
+                                break;
+                            }
+                        }
+                    }
 
                     //同步成功后将当前单据的同步状态改为已同步
                     dtSP = new DataTable("SPIN");
@@ -161,6 +174,13 @@ namespace LB.Common.Synchronous
                     dtSP.Rows.Add(lSaleCarInBillID);
                     dtSP.AcceptChanges();
                     ExecuteSQL.CallSP(14123, dtSP, out dsReturn, out dtOut);
+                    
+                    if (bolIsSynchronousBefore)
+                    {
+                        throw new Exception("["+ strSaleCarInBillCode + "]已同步过!");
+                    }
+                    
+                    Application.DoEvents();
                 }
                 else
                 {

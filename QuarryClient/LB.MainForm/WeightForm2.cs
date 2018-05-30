@@ -145,6 +145,10 @@ namespace LB.MainForm
             mVersionThread = new Thread(VerifyRefleshVersion);
             mVersionThread.Start();
 
+            if (!LBRegisterPermission.Permission_ModelSynchorToServer)
+            {
+                btnSynchornousData.Visible = false;
+            }
             //LBSerialHelper.LBSerialDataEvent += LBSerialHelper_LBSerialDataEvent;
         }
 
@@ -752,12 +756,13 @@ namespace LB.MainForm
         }
 
         //判断该车辆是否存在场内
-        private bool VerifyCarIsInside(long lCarID,out long lSaleCarInBillID)
+        private bool VerifyCarIsInside(long lCarID,string strCarNum,out long lSaleCarInBillID)
         {
             lSaleCarInBillID = 0;
             bool bolExists = false;
             LBDbParameterCollection parmCol = new LBDbParameterCollection();
             parmCol.Add(new LBParameter("CarID", enLBDbType.Int64, lCarID));
+            parmCol.Add(new LBParameter("CarNum", enLBDbType.String, strCarNum));
 
             DataSet dsReturn;
             Dictionary<string, object> dictValue;
@@ -987,6 +992,7 @@ namespace LB.MainForm
                 VerifyDeviceIsSteady();//校验地磅数值是否稳定以及红外线对射是否正常
                 VerifyTextBoxIsEmpty();//判断相关控件值是否为空
                 long lCarID = LBConverter.ToInt64(this.txtCarID.TextBox.SelectedItemID);
+                string strCarNum = this.txtCarID.TextBox.Text;
                 long lItemID = LBConverter.ToInt64(this.txtItemID.TextBox.SelectedItemID);
                 long lCustomerID = LBConverter.ToInt64(this.txtCustomerID.TextBox.SelectedItemID);
                 int iReceiveType = 0;
@@ -996,7 +1002,7 @@ namespace LB.MainForm
                 }
                 //判断该车辆是否存在入场记录，如果不存在则报错
                 long lSaleCarInBillID;
-                bool bolCarIsInside = VerifyCarIsInside(lCarID,out lSaleCarInBillID);
+                bool bolCarIsInside = VerifyCarIsInside(lCarID, strCarNum, out lSaleCarInBillID);
 
                 if (!bolCarIsInside)//保存
                 {
@@ -1051,12 +1057,13 @@ namespace LB.MainForm
                 VerifyDeviceIsSteady();//校验地磅数值是否稳定以及红外线对射是否正常
                 VerifyTextBoxIsEmpty();//判断相关控件值是否为空
                 long lCarID = LBConverter.ToInt64(this.txtCarID.TextBox.SelectedItemID);
+                string strCarNum = this.txtCarID.TextBox.Text;
                 long lItemID = LBConverter.ToInt64(this.txtItemID.TextBox.SelectedItemID);
                 long lCustomerID = LBConverter.ToInt64(this.txtCustomerID.TextBox.SelectedItemID);
 
                 //判断该车辆是否存在入场记录，如果存在则报错
                 long lSaleCarInBillID;
-                bool bolCarIsInside = VerifyCarIsInside(lCarID,out lSaleCarInBillID);
+                bool bolCarIsInside = VerifyCarIsInside(lCarID, strCarNum,out lSaleCarInBillID);
 
                 if (bolCarIsInside)//保存
                 {
@@ -1081,8 +1088,9 @@ namespace LB.MainForm
                     {
                         throw new Exception("当前【皮重】值为0！");
                     }
-
                     this.txtTotalWeight.Text = "0";
+                    this.txtSaleCarInBillCode.Text = "";
+                    mlSaleCarInBillID = 0;
                     _WeightType = enWeightType.WeightIn;
                 }
                 
@@ -1606,11 +1614,13 @@ namespace LB.MainForm
             decimal decPrice = LBConverter.ToDecimal(this.txtPrice.Text);
             decimal decAmount = LBConverter.ToDecimal(this.txtAmount.Text);
 
-            if (decSuttleWeight < 0 || decAmount < 0)//重车保存时出现异常，记录日志
+            if (_WeightType != enWeightType.WeightOutNull && decPrice > 0 && ( decSuttleWeight < 100 || decAmount < 1))//重车保存时出现异常，记录日志
             {
                 Thread thread = new Thread(SaveScreenPicture);
                 thread.Start(lSaleCarInBillID);
-                LBErrorLog.InsertErrorLog("客户端重车异常：TotalWeight="+ decTotalWeight.ToString()+ " CarTare="+ decCarTare.ToString()+ " SuttleWeight="+ decSuttleWeight.ToString()+ " SaleCarInBillID="+ lSaleCarInBillID);
+                LBErrorLog.InsertErrorLog("客户端重车异常：TotalWeight=" + decTotalWeight.ToString() + " CarTare=" + decCarTare.ToString() + " SuttleWeight=" + decSuttleWeight.ToString() + " SaleCarInBillID=" + lSaleCarInBillID);
+
+                throw new Exception("净重值计算异常，请先[清空内容]，然后重新选择车牌号码进行重车出场操作！");
             }
 
             //if (iReceiveType == 3)//收款方式：免费
@@ -2993,6 +3003,24 @@ namespace LB.MainForm
             }
         }
 
+        //同步车辆信息
+        private void btnSynCar_Click(object sender, EventArgs e)
+        {
+            frmSynchornousCarData frm = new frmSynchornousCarData();
+            LBShowForm.ShowDialog(frm);
+        }
+        //同步客户信息
+        private void btnSynCustomer_Click(object sender, EventArgs e)
+        {
+            frmSynchornousCustomerData frm = new frmSynchornousCustomerData();
+            LBShowForm.ShowDialog(frm);
+        }
+        //同步单据信息
+        private void btnSynSalesBill_Click(object sender, EventArgs e)
+        {
+            frmSaleCarInOutBillSynchornous frm = new MI.MI.frmSaleCarInOutBillSynchornous();
+            LBShowForm.ShowDialog(frm);
+        }
     }
 
     internal class CameraConfig

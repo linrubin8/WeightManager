@@ -201,7 +201,7 @@ namespace LB.Web.SM.BLL
             }
 
             //生成编码
-            if (SaleCarInBillCode.Value == null)
+            if (string.IsNullOrEmpty( SaleCarInBillCode.Value))
             {
                 string strBillFont = SysConfigValue.Value + DateTime.Now.ToString("yyyyMM") + "-";
                 using (DataTable dtBillCode = _DALSaleCarInOutBill.GetMaxInBillCode(args, strBillFont))
@@ -291,7 +291,7 @@ namespace LB.Web.SM.BLL
             mServerVersion = Convert.ToInt64(DateTime.Now.ToString("hhmmss"));
         }
 
-        public void GetCarNotOutBill(FactoryArgs args, t_BigID CarID,
+        public void GetCarNotOutBill(FactoryArgs args, t_BigID CarID,t_String CarNum,
             out t_DTSmall BillDateIn, out t_ID CalculateType, out t_BigID ItemID, out t_BigID CustomerID,
             out t_Decimal CarTare, out t_String Description, out t_ID ReceiveType, out t_String SaleCarInBillCode,
             out t_BigID SaleCarInBillID, out t_ID BillStatus, out t_Bool IsReaded)
@@ -307,7 +307,7 @@ namespace LB.Web.SM.BLL
             SaleCarInBillCode = new t_String();
             SaleCarInBillID = new t_BigID();
             BillStatus = new t_ID();
-            using (DataTable dtInBill = _DALSaleCarInOutBill.GetCarNotOutBill(args, CarID))
+            using (DataTable dtInBill = _DALSaleCarInOutBill.GetCarNotOutBill(args, CarID,CarNum))
             {
                 if (dtInBill.Rows.Count > 0)
                 {
@@ -419,7 +419,7 @@ namespace LB.Web.SM.BLL
                         throw new Exception("该车辆为油车，请点击【汽油采购】模块进行操作！");
                     }
 
-                    if (CalculateType.Value==0 && SaleBillType.Value==1 && TotalWeight.Value - decCarTare != SuttleWeight.Value)//重车时出现皮重-毛重！=净重的异常情况，需要临时纠正净重值，同时写入日志
+                    if (CalculateType.Value==0 && SaleBillType.Value==0 && TotalWeight.Value - decCarTare != SuttleWeight.Value)//重车时出现皮重-毛重！=净重的异常情况，需要临时纠正净重值，同时写入日志
                     {
                         this._IBLLDbErrorLog.Insert(args,
                             new t_String("服务器重车异常：TotalWeight=" + TotalWeight.Value.ToString() + " CarTare=" + decCarTare.ToString() + " SuttleWeight=" + SuttleWeight.Value.ToString() + " SaleCarInBillID=" + SaleCarInBillID.Value.ToString()));
@@ -852,6 +852,7 @@ namespace LB.Web.SM.BLL
                     ReceiveType.SetValueWithObject(drBill["ReceiveType"]);
                     int iBillStatus = LBConverter.ToInt32(drBill["BillStatus"]);
                     bool bolIsCancel = LBConverter.ToBoolean(drBill["IsCancel"]);
+                    bool bolIsSynchronousToServer = LBConverter.ToBoolean(drBill["IsSynchronousToServer"]);
                     if (iBillStatus == 1)
                     {
                         throw new Exception("该订单未审核，无法取消审核！");
@@ -859,6 +860,10 @@ namespace LB.Web.SM.BLL
                     if (bolIsCancel)
                     {
                         throw new Exception("该订单已作废，无法取消审核！");
+                    }
+                    if (bolIsSynchronousToServer)
+                    {
+                        throw new Exception("该订单数据已同步至服务器，无法取消审核！");
                     }
                 }
             }
@@ -1597,7 +1602,7 @@ namespace LB.Web.SM.BLL
                 t_String SaleCarOutBillCode;
 
                 _DALSaleCarInOutBill.InsertOutBill(argsInTrans, out SaleCarOutBillID, new t_String(""), SaleCarInBillIDTemp, CarID, BillDateTemp,
-                    TotalWeight, new t_Decimal(0), new t_Decimal(0), new t_Decimal(0), ReceiveType, CalculateType, Description,new t_String(0), new t_BigID());
+                    TotalWeight, new t_Decimal(0), new t_Decimal(0), new t_Decimal(0), ReceiveType, CalculateType, Description,new t_String(""), new t_BigID());
 
             };
             DBHelper.ExecInTrans(args, exec);
@@ -1612,8 +1617,17 @@ namespace LB.Web.SM.BLL
         {
             SaleCarOutBillCode = new t_String();
             SaleCarOutBillID = new t_BigID();
+            
+            //读取出场单号前缀
+            t_String SysConfigFieldName = new t_String("SaleOutBillCode");
+            t_String SysConfigValue;
+            _IBLLDbSysConfig.GetConfigValue(args, SysConfigFieldName, out SysConfigValue);
+            if (SysConfigValue.Value == "")
+            {
+                SysConfigValue.Value = "XS";
+            }
             //生成编码
-            string strBillFont = "XS" + DateTime.Now.ToString("yyyyMM") + "-";
+            string strBillFont = SysConfigValue.Value.TrimEnd()+ DateTime.Now.ToString("yyyyMM") + "-";
             using (DataTable dtBillCode = _DALSaleCarInOutBill.GetMaxOutBillCode(args, strBillFont))
             {
                 if (dtBillCode.Rows.Count > 0)
@@ -1683,9 +1697,9 @@ namespace LB.Web.SM.BLL
 
         #region -- 远程同步订单至服务器 --
 
-        public void SynchronousBillFromClient(FactoryArgs args, t_Table DTInOutBill)
+        public void SynchronousBillFromClient(FactoryArgs args, t_Table DTInOutBill, out t_Bool IsSynchronousBefore)
         {
-
+            IsSynchronousBefore = new t_Bool(0);
             foreach (DataRow dr in DTInOutBill.Value.Rows)
             {
                 //SaleCarInBillID, BillTypeID, SaleCarOutBillCode, SaleCarInBillCode, CarID, CarNum, ItemID, ItemName, 
@@ -1749,6 +1763,12 @@ namespace LB.Web.SM.BLL
                     }
                 }
 
+                bool bolExists = _DALSaleCarInOutBill.VerifyIfExistsSourceInBill(args, SaleCarInBillID);
+                if (bolExists)
+                {
+                    IsSynchronousBefore.Value = 1;
+                    return;
+                }
 
                 DBHelper.ExecInTransDelegate exec = delegate (FactoryArgs argsInTrans)
                 {

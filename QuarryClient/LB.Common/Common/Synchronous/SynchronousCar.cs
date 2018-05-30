@@ -84,7 +84,7 @@ namespace LB.Common.Synchronous
                     DataRow drClient = dictClient[kvServer.Key];
                     foreach (DataColumn dc in dtServer.Columns)
                     {
-                        if (!dc.ColumnName.Contains("Time") && dc.ColumnName!= "CarID" && dtClient.Columns.Contains(dc.ColumnName))
+                        if (dc.ColumnName.Contains("CarNum") || dc.ColumnName.Contains("CustomerName"))
                         {
                             if(kvServer.Value[dc.ColumnName].ToString().TrimEnd() != drClient[dc.ColumnName].ToString().TrimEnd())
                             {
@@ -106,9 +106,19 @@ namespace LB.Common.Synchronous
             //添加客户
             DataSet dsReturn;
             DataTable dtOut;
+            //将客户清空
+            foreach (DataRow dr in dtAddCar.Rows)
+            {
+                dr["CustomerID"] = DBNull.Value;
+            }
             ExecuteSQL.CallSP(13500, dtAddCar, out dsReturn, out dtOut);
 
             //更新本地客户
+            //将客户清空
+            foreach (DataRow dr in dtEditCar.Rows)
+            {
+                dr["CustomerID"] = DBNull.Value;
+            }
             ExecuteSQL.CallSP(13501, dtEditCar, out dsReturn, out dtOut);
 
             SysConfigValue.SaveSysConfig("CarSynchronousTime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
@@ -124,7 +134,54 @@ namespace LB.Common.Synchronous
             dtOut = null;
             if (dtCar != null)
             {
+                //将客户清空
+                foreach(DataRow dr in dtCar.Rows)
+                {
+                    dr["CustomerID"] = DBNull.Value;
+                }
                 ExecuteSQL.CallSP_Service(13500, dtCar, out dsReturn, out dtOut);
+            }
+        }
+
+        /// <summary>
+        /// 比较本地与服务器客户名称的差异，返回需要同步至服务器的客户数据
+        /// </summary>
+        /// <param name="dtAddCar"></param>
+        public static void CompareClientDiffServer(out DataTable dtAddCar)
+        {
+            //先读取服务器客户资料
+            DataTable dtServer = ExecuteSQL.CallView_Service(117, "CarNum", "", "CarID");
+            //读取本地客户资料
+            DataTable dtClient = ExecuteSQL.CallView(117);
+
+            Dictionary<string, DataRow> dictServer = new Dictionary<string, DataRow>();
+            Dictionary<string, DataRow> dictClient = new Dictionary<string, DataRow>();
+            foreach (DataRow dr in dtServer.Rows)
+            {
+                string strKey = dr["CarNum"].ToString().TrimEnd();
+                if (!dictServer.ContainsKey(strKey))
+                {
+                    dictServer.Add(strKey, dr);
+                }
+            }
+
+            foreach (DataRow dr in dtClient.Rows)
+            {
+                string strKey = dr["CarNum"].ToString().TrimEnd();
+                if (!dictClient.ContainsKey(strKey))
+                {
+                    dictClient.Add(strKey, dr);
+                }
+            }
+
+            dtAddCar = dtClient.Clone();
+            dtAddCar.TableName = "SP";
+            foreach (KeyValuePair<string, DataRow> kvClient in dictClient)
+            {
+                if (!dictServer.ContainsKey(kvClient.Key))
+                {
+                    dtAddCar.ImportRow(kvClient.Value);
+                }
             }
         }
     }

@@ -197,5 +197,24 @@ where CustomerID = @CustomerID
 ";
             return DBHelper.ExecuteQuery(args, strSQL, parms);
         }
+
+        public void UpdateAmount(FactoryArgs args, t_BigID CustomerID, t_Decimal TotalReceivedAmount, t_Decimal SalesReceivedAmount)
+        {
+            TotalReceivedAmount.IsNullToZero();
+            SalesReceivedAmount.IsNullToZero();
+
+            LBDbParameterCollection parms = new LBDbParameterCollection();
+            parms.Add(new LBDbParameter("CustomerID", CustomerID));
+            parms.Add(new LBDbParameter("TotalReceivedAmount", TotalReceivedAmount));
+            parms.Add(new LBDbParameter("SalesReceivedAmount", SalesReceivedAmount));
+
+            string strSQL = @"
+update dbo.DbCustomer
+set TotalReceivedAmount = @TotalReceivedAmount, 
+    SalesReceivedAmount=@SalesReceivedAmount
+where CustomerID =  @CustomerID
+";
+            DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);
+        }
     }
 }

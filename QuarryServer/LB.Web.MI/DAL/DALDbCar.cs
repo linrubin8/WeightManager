@@ -69,6 +69,7 @@ where CarID = @CarID
 
         public DataTable GetCarByName(FactoryArgs args, t_BigID CarID, t_String CarNum)
         {
+            CarID.IsNullToZero();
             LBDbParameterCollection parms = new LBDbParameterCollection();
             parms.Add(new LBDbParameter("CarID", CarID));
             parms.Add(new LBDbParameter("CarNum", CarNum));

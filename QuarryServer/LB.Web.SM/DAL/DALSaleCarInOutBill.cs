@@ -90,21 +90,41 @@ where CustomerID = @CustomerID
             SaleCarInBillID.Value = Convert.ToInt64(parms["SaleCarInBillID"].Value);
         }
 
-        public DataTable GetCarNotOutBill(FactoryArgs args, t_BigID CarID)
+        public DataTable GetCarNotOutBill(FactoryArgs args, t_BigID CarID,t_String CarNum)
         {
+            CarID.IsNullToZero();
             LBDbParameterCollection parms = new LBDbParameterCollection();
             parms.Add(new LBDbParameter("CarID", CarID));
+            parms.Add(new LBDbParameter("CarNum", CarNum));
 
             string strSQL = @"
-select *
-from dbo.SaleCarInBill
-where CarID = @CarID and
-    SaleCarInBillID not in (
+
+select b.*
+from dbo.SaleCarInBill b
+    inner join DbCar c on
+        c.CarID = b.CarID
+where b.CarID = @CarID and
+    b.SaleCarInBillID not in (
     select SaleCarInBillID
     from dbo.SaleCarOutBill
     ) and isnull(BillStatus,0)=1 and isnull(IsCancel,0)=0
-order by BillDate desc
+order by b.BillDate desc
 ";
+            if (CarID.Value == 0&& CarNum.Value!="")
+            {
+                strSQL = @"
+select b.*
+from dbo.SaleCarInBill b
+    inner join DbCar c on
+        c.CarID = b.CarID
+where c.CarNum = rtrim(@CarNum) and
+    b.SaleCarInBillID not in (
+    select SaleCarInBillID
+    from dbo.SaleCarOutBill
+    ) and isnull(BillStatus,0)=1 and isnull(IsCancel,0)=0
+order by b.BillDate desc
+";
+            }
             return DBHelper.ExecuteQuery(args, strSQL, parms);
         }
 

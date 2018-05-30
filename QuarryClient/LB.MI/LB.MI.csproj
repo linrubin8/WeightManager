@@ -134,6 +134,18 @@
     <Compile Include="MI\frmSalesReturnBill.Designer.cs">
       <DependentUpon>frmSalesReturnBill.cs</DependentUpon>
     </Compile>
+    <Compile Include="MI\frmSynchornousCarData.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmSynchornousCarData.Designer.cs">
+      <DependentUpon>frmSynchornousCarData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmSynchornousCustomerData.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmSynchornousCustomerData.Designer.cs">
+      <DependentUpon>frmSynchornousCustomerData.cs</DependentUpon>
+    </Compile>
     <Compile Include="MI\LBPreviceReport.cs" />
     <Compile Include="MI\MIControls\SaleChangeItem.cs">
       <SubType>UserControl</SubType>
@@ -308,6 +320,12 @@
     <EmbeddedResource Include="MI\frmSalesReturnBill.resx">
       <DependentUpon>frmSalesReturnBill.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmSynchornousCarData.resx">
+      <DependentUpon>frmSynchornousCarData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmSynchornousCustomerData.resx">
+      <DependentUpon>frmSynchornousCustomerData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MI\MIControls\SaleChangeItem.resx">
       <DependentUpon>SaleChangeItem.cs</DependentUpon>
     </EmbeddedResource>
@@ -432,7 +450,6 @@
     <None Include="Resources\btnEnterEdit.gif" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MI\IFaxBusiness - 副本 %282%29.dll" />
     <None Include="Resources\btnVersionDone.gif" />
     <None Include="Resources\Bool_uncheck.bmp" />
     <None Include="Resources\Bool_checked.bmp" />

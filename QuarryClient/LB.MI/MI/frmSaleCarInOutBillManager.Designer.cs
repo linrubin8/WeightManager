@@ -146,8 +146,6 @@
             this.btnAddInBill = new LB.Controls.LBToolStripButton(this.components);
             this.btnAddOutBill = new LB.Controls.LBToolStripButton(this.components);
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnExportXML = new LB.Controls.LBToolStripButton(this.components);
-            this.btnImportXML = new LB.Controls.LBToolStripButton(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -1616,9 +1614,7 @@
             this.toolStripSeparator2,
             this.btnAddInBill,
             this.btnAddOutBill,
-            this.toolStripSeparator3,
-            this.btnExportXML,
-            this.btnImportXML});
+            this.toolStripSeparator3});
             this.skinToolStrip1.Location = new System.Drawing.Point(0, 0);
             this.skinToolStrip1.Name = "skinToolStrip1";
             this.skinToolStrip1.RadiusStyle = CCWin.SkinClass.RoundStyle.All;
@@ -1734,28 +1730,6 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 40);
             // 
-            // btnExportXML
-            // 
-            this.btnExportXML.Image = global::LB.MI.Properties.Resources.btnMultiPrompt;
-            this.btnExportXML.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnExportXML.LBPermissionCode = "";
-            this.btnExportXML.Name = "btnExportXML";
-            this.btnExportXML.Size = new System.Drawing.Size(72, 37);
-            this.btnExportXML.Text = "导出数据包";
-            this.btnExportXML.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnExportXML.Click += new System.EventHandler(this.btnExportXML_Click);
-            // 
-            // btnImportXML
-            // 
-            this.btnImportXML.Image = global::LB.MI.Properties.Resources.btnRefSource;
-            this.btnImportXML.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnImportXML.LBPermissionCode = "";
-            this.btnImportXML.Name = "btnImportXML";
-            this.btnImportXML.Size = new System.Drawing.Size(72, 37);
-            this.btnImportXML.Text = "导入数据包";
-            this.btnImportXML.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnImportXML.Click += new System.EventHandler(this.btnImportXML_Click);
-            // 
             // frmSaleCarInOutBillManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1868,8 +1842,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private Controls.LBToolStripButton btnExportXML;
-        private Controls.LBToolStripButton btnImportXML;
         private CCWin.SkinControl.SkinLabel skinLabel18;
         private Controls.LBSkinTextBox txtBillCodeOut;
         private System.Windows.Forms.DataGridViewTextBoxColumn SaleCarOutBillCode;

@@ -132,6 +132,7 @@ namespace LB.MI.MI
         {
             try
             {
+                this.grdMain.EndEdit();
                 bolIsSynFinish = false;
                 Thread thread = new Thread(SynchronousThread);
                 thread.Start();

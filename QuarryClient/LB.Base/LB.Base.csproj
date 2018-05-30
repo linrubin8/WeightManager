@@ -42,6 +42,10 @@
     <Reference Include="IFaxBusiness">
       <HintPath>..\LB.MainForm\bin\Release\IFaxBusiness.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LB.MainForm\bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -71,6 +75,7 @@
     <Compile Include="WinFunction\LBParameter.cs" />
     <Compile Include="WinFunction\LBParameterCollection.cs" />
     <Compile Include="WinFunction\LBEncrypt.cs" />
+    <Compile Include="WinFunction\LBRegisterPermission.cs" />
     <Compile Include="WinFunction\LogHelper.cs" />
     <Compile Include="WinFunction\LoginInfo.cs" />
     <Compile Include="WinFunction\ProcessStep.cs" />

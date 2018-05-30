@@ -2,7 +2,7 @@
 <!DOCTYPE dotfuscatorMap SYSTEM "http://www.preemptive.com/dotfuscator/dtd/dotfuscatorMap_v1.2.dtd">
 <dotfuscatorMap version="1.1">
     <header>
-        <timestamp>2018-04-29T20:41:39</timestamp>
+        <timestamp>2018-05-28T10:23:04</timestamp>
         <product version="4.9.6005.29054" user="firefly " serial="124576-PRO-AC6AB7C5-7A50E312-F0BBEBCC-829D98D7">Dotfuscator Professional Edition</product>
     </header>
     <mapping>
@@ -4409,6 +4409,18 @@
                 <eventlist />
             </type>
             <type>
+                <name>LB.Web.IBLL.IBLL.IBLLSM.IBLLModifyBillHeader</name>
+                <methodlist>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal&amp;)</signature>
+                        <name>GetCustomerItemPrice</name>
+                    </method>
+                </methodlist>
+                <fieldlist />
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
                 <name>LB.Web.IBLL.IBLL.IBLLSM.IBLLSaleCarInOutBill</name>
                 <methodlist>
                     <method>
@@ -4808,12 +4820,16 @@
                         <name>Customer_Insert</name>
                     </method>
                     <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal)</signature>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal)</signature>
                         <name>Customer_InsertFromService</name>
                     </method>
                     <method>
                         <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal)</signature>
                         <name>Customer_Update</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal)</signature>
+                        <name>Customer_UpdateFromService</name>
                     </method>
                     <method>
                         <signature>string(int32)</signature>
@@ -4857,6 +4873,212 @@
                     <field>
                         <signature>LB.Web.Contants.DBType.t_BigID</signature>
                         <name>CustomerID</name>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>LB.Web.MI.BLL.BLLDbCustomer/&lt;&gt;c__DisplayClass7_0</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs)</signature>
+                        <name>&lt;Customer_InsertFromService&gt;b__0</name>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>LB.Web.MI.BLL.BLLDbCustomer</signature>
+                        <name>&lt;&gt;4__this</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>Address</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Decimal</signature>
+                        <name>AmountNotEnough</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_ID</signature>
+                        <name>AmountType</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Bool</signature>
+                        <name>CarIsLimit</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>Contact</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Decimal</signature>
+                        <name>CreditAmount</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>CustomerCodeTemp</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_BigID</signature>
+                        <name>CustomerIDTemp</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>CustomerName</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>Description</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Bool</signature>
+                        <name>IsAllowEmptyIn</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Bool</signature>
+                        <name>IsAllowOverFul</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Bool</signature>
+                        <name>IsDisplayAmount</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Bool</signature>
+                        <name>IsDisplayPrice</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Bool</signature>
+                        <name>IsForbid</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Bool</signature>
+                        <name>IsPrintAmount</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>LicenceNum</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>Phone</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_ID</signature>
+                        <name>ReceiveType</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Decimal</signature>
+                        <name>SalesReceivedAmount</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Decimal</signature>
+                        <name>TotalReceivedAmount</name>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>LB.Web.MI.BLL.BLLDbCustomer/&lt;&gt;c__DisplayClass8_0</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs)</signature>
+                        <name>&lt;Customer_UpdateFromService&gt;b__0</name>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>LB.Web.MI.BLL.BLLDbCustomer</signature>
+                        <name>&lt;&gt;4__this</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>Address</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Decimal</signature>
+                        <name>AmountNotEnough</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_ID</signature>
+                        <name>AmountType</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Bool</signature>
+                        <name>CarIsLimit</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>Contact</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Decimal</signature>
+                        <name>CreditAmount</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_BigID</signature>
+                        <name>CustomerID</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>CustomerName</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>Description</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Bool</signature>
+                        <name>IsAllowEmptyIn</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Bool</signature>
+                        <name>IsAllowOverFul</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Bool</signature>
+                        <name>IsDisplayAmount</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Bool</signature>
+                        <name>IsDisplayPrice</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Bool</signature>
+                        <name>IsForbid</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Bool</signature>
+                        <name>IsPrintAmount</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>LicenceNum</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>Phone</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_ID</signature>
+                        <name>ReceiveType</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Decimal</signature>
+                        <name>SalesReceivedAmount</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Decimal</signature>
+                        <name>TotalReceivedAmount</name>
                     </field>
                 </fieldlist>
                 <propertylist />
@@ -5151,6 +5373,10 @@
                     <method>
                         <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_String&amp;)</signature>
                         <name>GetMaxCode</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal)</signature>
+                        <name>UpdateAmount</name>
                     </method>
                 </methodlist>
                 <fieldlist />
@@ -7487,7 +7713,7 @@
                         <name>GetCameraImage</name>
                     </method>
                     <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_DTSmall&amp;, LB.Web.Contants.DBType.t_ID&amp;, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_Decimal&amp;, LB.Web.Contants.DBType.t_String&amp;, LB.Web.Contants.DBType.t_ID&amp;, LB.Web.Contants.DBType.t_String&amp;, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_ID&amp;, LB.Web.Contants.DBType.t_Bool&amp;)</signature>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_DTSmall&amp;, LB.Web.Contants.DBType.t_ID&amp;, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_Decimal&amp;, LB.Web.Contants.DBType.t_String&amp;, LB.Web.Contants.DBType.t_ID&amp;, LB.Web.Contants.DBType.t_String&amp;, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_ID&amp;, LB.Web.Contants.DBType.t_Bool&amp;)</signature>
                         <name>GetCarNotOutBill</name>
                     </method>
                     <method>
@@ -7511,15 +7737,15 @@
                         <name>InsertChangeBill</name>
                     </method>
                     <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String&amp;, LB.Web.Contants.DBType.t_DTSmall&amp;, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Float, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_BigID)</signature>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String&amp;, LB.Web.Contants.DBType.t_DTSmall&amp;, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Float, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String)</signature>
                         <name>InsertInBill</name>
                     </method>
                     <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_DTSmall&amp;, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_Float, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String)</signature>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_DTSmall&amp;, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_Float, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String)</signature>
                         <name>InsertOnlyOutBill</name>
                     </method>
                     <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String&amp;, LB.Web.Contants.DBType.t_DTSmall&amp;, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_ID)</signature>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String&amp;, LB.Web.Contants.DBType.t_DTSmall&amp;, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_BigID)</signature>
                         <name>InsertOutBill</name>
                     </method>
                     <method>
@@ -7545,6 +7771,14 @@
                     <method>
                         <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_Image)</signature>
                         <name>SaveScreenImage</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_Table, LB.Web.Contants.DBType.t_Bool&amp;)</signature>
+                        <name>SynchronousBillFromClient</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
+                        <name>SynchronousFinish</name>
                     </method>
                     <method>
                         <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
@@ -7593,6 +7827,10 @@
                         <name>_IBLLDbSysConfig</name>
                     </field>
                     <field>
+                        <signature>LB.Web.IBLL.IBLL.IBLLSM.IBLLModifyBillHeader</signature>
+                        <name>_IBLLModifyBillHeader</name>
+                    </field>
+                    <field>
                         <signature>LB.Web.IBLL.IBLL.IBLLRP.IBLLRPReceiveBillHeader</signature>
                         <name>_IBLLRPReceiveBillHeader</name>
                     </field>
@@ -7605,7 +7843,7 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass10_0</name>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass11_0</name>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -7640,6 +7878,10 @@
                     <field>
                         <signature>LB.Web.Contants.DBType.t_Float</signature>
                         <name>CarTare</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>CreateBy</name>
                     </field>
                     <field>
                         <signature>LB.Web.Contants.DBType.t_BigID</signature>
@@ -7694,7 +7936,7 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass11_0</name>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass12_0</name>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -7735,6 +7977,10 @@
                         <name>CarNum</name>
                     </field>
                     <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>CreateBy</name>
+                    </field>
+                    <field>
                         <signature>LB.Web.Contants.DBType.t_BigID</signature>
                         <name>CustomerID</name>
                     </field>
@@ -7767,6 +8013,10 @@
                         <name>SaleCarOutBillID_temp</name>
                     </field>
                     <field>
+                        <signature>LB.Web.Contants.DBType.t_BigID</signature>
+                        <name>SaleCarOutBillIDFromClient</name>
+                    </field>
+                    <field>
                         <signature>LB.Web.Contants.DBType.t_Decimal</signature>
                         <name>SuttleWeight</name>
                     </field>
@@ -7783,7 +8033,7 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass18_0</name>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass19_0</name>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -7820,7 +8070,7 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass19_0</name>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass20_0</name>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -7853,7 +8103,7 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass27_0</name>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass28_0</name>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -7938,7 +8188,7 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass28_0</name>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass29_0</name>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -7983,7 +8233,7 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass29_0</name>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass30_0</name>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -8028,7 +8278,7 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass31_0</name>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass32_0</name>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -8089,7 +8339,7 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass32_0</name>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass33_0</name>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -8126,7 +8376,116 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass8_0</name>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass34_0</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs)</signature>
+                        <name>&lt;SynchronousBillFromClient&gt;b__0</name>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>LB.Web.SM.BLL.BLLSaleCarInOutBill</signature>
+                        <name>&lt;&gt;4__this</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Decimal</signature>
+                        <name>Amount</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_DTSmall</signature>
+                        <name>BillDateIn</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_DTSmall</signature>
+                        <name>BillDateOut</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_ID</signature>
+                        <name>CalculateType</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>CancelDesc</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_BigID</signature>
+                        <name>CarID</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Decimal</signature>
+                        <name>CarTare</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>CreateByIn</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>CreateByOut</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_BigID</signature>
+                        <name>CustomerID</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>Description</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_ID</signature>
+                        <name>IsCancel</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_BigID</signature>
+                        <name>ItemID</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Decimal</signature>
+                        <name>Price</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_ID</signature>
+                        <name>ReceiveType</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_ID</signature>
+                        <name>SaleBillType</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>SaleCarInBillCode</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_BigID</signature>
+                        <name>SaleCarInBillID</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>SaleCarOutBillCode</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_BigID</signature>
+                        <name>SaleCarOutBillID</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Decimal</signature>
+                        <name>SuttleWeight</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Decimal</signature>
+                        <name>TotalWeight</name>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass9_0</name>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -8157,6 +8516,10 @@
                     <field>
                         <signature>LB.Web.Contants.DBType.t_Float</signature>
                         <name>CarTare</name>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>CreateBy</name>
                     </field>
                     <field>
                         <signature>LB.Web.Contants.DBType.t_BigID</signature>
@@ -8192,7 +8555,7 @@
                     </field>
                     <field>
                         <signature>LB.Web.Contants.DBType.t_BigID</signature>
-                        <name>SourceSaleCarInBillID</name>
+                        <name>SaleCarInBillIDFromClient</name>
                     </field>
                 </fieldlist>
                 <propertylist />
@@ -8537,7 +8900,7 @@
                         <name>GetCarID</name>
                     </method>
                     <method>
-                        <signature>System.Data.DataTable(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
+                        <signature>System.Data.DataTable(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String)</signature>
                         <name>GetCarNotOutBill</name>
                     </method>
                     <method>
@@ -8589,11 +8952,11 @@
                         <name>InsertChangeBill</name>
                     </method>
                     <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_DTSmall, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Float, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_BigID)</signature>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_DTSmall, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Float, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String)</signature>
                         <name>InsertInBill</name>
                     </method>
                     <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_DTSmall, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String)</signature>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_DTSmall, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_BigID)</signature>
                         <name>InsertOutBill</name>
                     </method>
                     <method>
@@ -8623,6 +8986,10 @@
                     <method>
                         <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_ID&amp;)</signature>
                         <name>ReadReceiveType</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
+                        <name>SynchronousFinish</name>
                     </method>
                     <method>
                         <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
@@ -8722,15 +9089,15 @@
     <statistics>
         <statisticline>
             <description>Total Classes</description>
-            <statistic>186</statistic>
+            <statistic>190</statistic>
         </statisticline>
         <statisticline>
             <description>Total Methods</description>
-            <statistic>1031</statistic>
+            <statistic>1043</statistic>
         </statisticline>
         <statisticline>
             <description>Total Fields</description>
-            <statistic>630</statistic>
+            <statistic>701</statistic>
         </statisticline>
         <statisticline>
             <description>Total Properties</description>
@@ -8743,7 +9110,7 @@
         <statisticline>
             <description>Total Classes Renamed</description>
             <statistic>1</statistic>
-            <statistic>0.54%</statistic>
+            <statistic>0.53%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Methods Renamed</description>
@@ -8753,7 +9120,7 @@
         <statisticline>
             <description>Total Fields Renamed</description>
             <statistic>1</statistic>
-            <statistic>0.16%</statistic>
+            <statistic>0.14%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Properties Renamed</description>
