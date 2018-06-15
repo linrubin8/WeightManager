@@ -11,7 +11,8 @@ namespace LB.Web.SM.DAL
     public class DALModifyBillDetail
     {
         public void Insert(FactoryArgs args, out t_BigID ModifyBillDetailID, t_BigID ModifyBillHeaderID, t_BigID ItemID, t_BigID CarID,
-            t_Decimal Price, t_ID CalculateType, t_BigID UOMID, t_String Description)
+            t_Decimal Price, t_ID CalculateType, t_BigID UOMID, t_String Description, t_Decimal MaterialPrice, t_Decimal FarePrice,
+            t_Decimal TaxPrice, t_Decimal BrokerPrice)
         {
             ModifyBillDetailID = new t_BigID();
             LBDbParameterCollection parms = new LBDbParameterCollection();
@@ -27,12 +28,16 @@ namespace LB.Web.SM.DAL
             parms.Add(new LBDbParameter("CreateTime", new t_DTSmall(DateTime.Now)));
             parms.Add(new LBDbParameter("ChangeBy", new t_String(args.LoginName)));
             parms.Add(new LBDbParameter("ChangeTime", new t_DTSmall(DateTime.Now)));
+            parms.Add(new LBDbParameter("MaterialPrice", MaterialPrice));
+            parms.Add(new LBDbParameter("FarePrice", FarePrice));
+            parms.Add(new LBDbParameter("TaxPrice", TaxPrice));
+            parms.Add(new LBDbParameter("BrokerPrice", BrokerPrice));
 
             string strSQL = @"
 insert into dbo.ModifyBillDetail(ModifyBillHeaderID, ItemID, CarID, Price, CalculateType, UOMID, 
-    Description, CreateBy, CreateTime, ChangeBy, ChangeTime)
+    Description, CreateBy, CreateTime, ChangeBy, ChangeTime,MaterialPrice,FarePrice,TaxPrice,BrokerPrice)
 values( @ModifyBillHeaderID, @ItemID, @CarID, @Price, @CalculateType, @UOMID, 
-    @Description, @CreateBy, @CreateTime, @ChangeBy, @ChangeTime)
+    @Description, @CreateBy, @CreateTime, @ChangeBy, @ChangeTime,@MaterialPrice,@FarePrice,@TaxPrice,@BrokerPrice)
 
 set @ModifyBillDetailID = @@identity
 ";
@@ -41,7 +46,8 @@ set @ModifyBillDetailID = @@identity
         }
 
         public void Update(FactoryArgs args, t_BigID ModifyBillDetailID, t_BigID ItemID, t_BigID CarID,
-            t_Decimal Price, t_ID CalculateType, t_BigID UOMID, t_String Description)
+            t_Decimal Price, t_ID CalculateType, t_BigID UOMID, t_String Description, t_Decimal MaterialPrice, t_Decimal FarePrice,
+            t_Decimal TaxPrice, t_Decimal BrokerPrice)
         {
             LBDbParameterCollection parms = new LBDbParameterCollection();
             parms.Add(new LBDbParameter("ModifyBillDetailID", ModifyBillDetailID));
@@ -53,6 +59,10 @@ set @ModifyBillDetailID = @@identity
             parms.Add(new LBDbParameter("Description", Description));
             parms.Add(new LBDbParameter("ChangeBy", new t_String(args.LoginName)));
             parms.Add(new LBDbParameter("ChangeTime", new t_DTSmall(DateTime.Now)));
+            parms.Add(new LBDbParameter("MaterialPrice", MaterialPrice));
+            parms.Add(new LBDbParameter("FarePrice", FarePrice));
+            parms.Add(new LBDbParameter("TaxPrice", TaxPrice));
+            parms.Add(new LBDbParameter("BrokerPrice", BrokerPrice));
 
             string strSQL = @"
 update dbo.ModifyBillDetail
@@ -63,7 +73,11 @@ set ItemID = @ItemID,
     CalculateType = @CalculateType,
     UOMID = @UOMID,
     ChangeBy = @ChangeBy,
-    ChangeTime = @ChangeTime
+    ChangeTime = @ChangeTime,
+    MaterialPrice = @MaterialPrice,
+    FarePrice = @FarePrice,
+    TaxPrice = @TaxPrice,
+    BrokerPrice = @BrokerPrice
 where ModifyBillDetailID = @ModifyBillDetailID
 ";
             DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);

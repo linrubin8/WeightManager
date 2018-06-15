@@ -262,6 +262,7 @@ namespace LB.MI
             parmCol.Add(new LBParameter("CustomerID", enLBDbType.Int64, mlCustomerID));
             parmCol.Add(new LBParameter("CustomerName", enLBDbType.String, this.txtCustomerName.Text));
             parmCol.Add(new LBParameter("CustomerCode", enLBDbType.String, this.txtCustomerCode.Text));
+            parmCol.Add(new LBParameter("K3CustomerCode", enLBDbType.String, this.txtK3CustomerCode.Text));
             parmCol.Add(new LBParameter("Contact", enLBDbType.String, this.txtContact.Text));
             parmCol.Add(new LBParameter("Phone", enLBDbType.String, this.txtPhone.Text));
             parmCol.Add(new LBParameter("Address", enLBDbType.String, this.txtAddress.Text));
@@ -304,6 +305,7 @@ namespace LB.MI
                 {
                     DataRow drHeader = dtHeader.Rows[0];
 
+                    this.txtK3CustomerCode.Text = drHeader["K3CustomerCode"].ToString();
                     this.txtCustomerCode.Text = drHeader["CustomerCode"].ToString();
                     this.txtCustomerName.Text = drHeader["CustomerName"].ToString();
                     this.txtDescription.Text = drHeader["Description"].ToString();

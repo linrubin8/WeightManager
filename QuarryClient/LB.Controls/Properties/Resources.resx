@@ -130,4 +130,37 @@
   <data name="btnPrint" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnPrint.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="btnDropDownAdd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnDropDownAdd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnDropDownManager" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnDropDownManager.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Calendar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Calendar.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CalendarHot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CalendarHot.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Prompt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Prompt.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PromptHot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PromptHot.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SeparatorArrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SeparatorArrow.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SeparatorArrowClose" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SeparatorArrowClose.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TreeChecked" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TreeChecked.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TreeNotCheck" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TreeNotCheck.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ErrorInfo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ErrorInfo.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

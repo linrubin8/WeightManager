@@ -422,9 +422,14 @@ namespace LB.Web.SM.BLL
         /// <param name="CarID"></param>
         /// <param name="CalculateType"></param>
         /// <param name="Price"></param>
-        public void GetCustomerItemPrice(FactoryArgs args,t_BigID ItemID,t_BigID CarID,t_BigID CustomerID, t_ID CalculateType,out t_Decimal Price)
+        public void GetCustomerItemPrice(FactoryArgs args,t_BigID ItemID,t_BigID CarID,t_BigID CustomerID, t_ID CalculateType,out t_Decimal Price,
+            out t_Decimal MaterialPrice,out t_Decimal FarePrice, out t_Decimal TaxPrice, out t_Decimal BrokerPrice)
         {
             Price = new t_Decimal(0);
+            MaterialPrice = new t_Decimal(0);
+            FarePrice = new t_Decimal(0);
+            TaxPrice = new t_Decimal(0);
+            BrokerPrice = new t_Decimal(0);
             DataTable dtResult;
             Dictionary<string, DataRow> dictResult = new Dictionary<string, DataRow>();
             using (DataTable dtModify = _DALModifyBillHeader.GetCarItemPrice(args, ItemID, CarID, CustomerID, CalculateType))
@@ -444,6 +449,11 @@ namespace LB.Web.SM.BLL
                         {
                             dictResult.Add(strKey, dr);
                             Price.SetValueWithObject(dr["Price"]);
+                            MaterialPrice.SetValueWithObject(dr["MaterialPrice"]);
+                            FarePrice.SetValueWithObject(dr["FarePrice"]);
+                            TaxPrice.SetValueWithObject(dr["TaxPrice"]);
+                            BrokerPrice.SetValueWithObject(dr["BrokerPrice"]);
+
                         }
                         else
                         {
@@ -458,6 +468,10 @@ namespace LB.Web.SM.BLL
                                 if (dDiffDays > 0)//有更加新的生效日期，则将最新的记录替换旧的记录
                                 {
                                     Price.SetValueWithObject(dr["Price"]);
+                                    MaterialPrice.SetValueWithObject(dr["MaterialPrice"]);
+                                    FarePrice.SetValueWithObject(dr["FarePrice"]);
+                                    TaxPrice.SetValueWithObject(dr["TaxPrice"]);
+                                    BrokerPrice.SetValueWithObject(dr["BrokerPrice"]);
                                     dictResult[strKey] = dr;
                                 }
                                 else if (dDiffDays == 0)//如果两个日期一样，则对比审核时间，优先考虑最近的审核时间
@@ -468,6 +482,10 @@ namespace LB.Web.SM.BLL
                                     {
                                         dictResult[strKey] = dr;
                                         Price.SetValueWithObject(dr["Price"]);
+                                        MaterialPrice.SetValueWithObject(dr["MaterialPrice"]);
+                                        FarePrice.SetValueWithObject(dr["FarePrice"]);
+                                        TaxPrice.SetValueWithObject(dr["TaxPrice"]);
+                                        BrokerPrice.SetValueWithObject(dr["BrokerPrice"]);
                                     }
                                 }
                             }
@@ -484,6 +502,10 @@ namespace LB.Web.SM.BLL
                     {
                         DataRow drDetail = dtDetail.Rows[0];
                         Price.SetValueWithObject(drDetail["ItemPrice"]);
+                        MaterialPrice.SetValueWithObject(drDetail["MaterialPrice"]);
+                        FarePrice.SetValueWithObject(drDetail["FarePrice"]);
+                        TaxPrice.SetValueWithObject(drDetail["TaxPrice"]);
+                        BrokerPrice.SetValueWithObject(drDetail["BrokerPrice"]);
                     }
                 }
             }

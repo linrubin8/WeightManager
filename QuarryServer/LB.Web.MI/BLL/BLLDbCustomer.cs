@@ -50,7 +50,7 @@ namespace LB.Web.MI.BLL
         public void Customer_Insert(FactoryArgs args, out t_BigID CustomerID,out t_String CustomerCode, t_String CustomerName, t_String Contact, t_String Phone, t_String Address,
             t_Bool CarIsLimit, t_ID AmountType, t_String LicenceNum, t_String Description, t_Bool IsForbid, t_ID ReceiveType,
             t_Decimal CreditAmount, t_Bool IsDisplayPrice, t_Bool IsDisplayAmount, t_Bool IsPrintAmount, t_Bool IsAllowOverFul,
-            t_Bool IsAllowEmptyIn,t_Decimal AmountNotEnough)
+            t_Bool IsAllowEmptyIn,t_Decimal AmountNotEnough, t_String K3CustomerCode)
         {
             CustomerCode = new t_String();
             CustomerID = new t_BigID();
@@ -78,13 +78,14 @@ namespace LB.Web.MI.BLL
                 CustomerCode.SetValueWithObject("K"+CodeIndex.ToString());
 
             _DALDbCustomer.Customer_Insert(args, out CustomerID, CustomerCode, CustomerName, Contact, Phone, Address, CarIsLimit, AmountType, LicenceNum, Description,
-                IsForbid, ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, IsAllowEmptyIn, AmountNotEnough);
+                IsForbid, ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, IsAllowEmptyIn, AmountNotEnough,
+                K3CustomerCode);
         }
 
         public void Customer_Update(FactoryArgs args, t_BigID CustomerID, t_String CustomerName, t_String Contact, t_String Phone, t_String Address,
             t_Bool CarIsLimit, t_ID AmountType, t_String LicenceNum, t_String Description, t_Bool IsForbid, t_ID ReceiveType,
             t_Decimal CreditAmount, t_Bool IsDisplayPrice, t_Bool IsDisplayAmount, t_Bool IsPrintAmount, t_Bool IsAllowOverFul,
-            t_Bool IsAllowEmptyIn, t_Decimal AmountNotEnough)
+            t_Bool IsAllowEmptyIn, t_Decimal AmountNotEnough, t_String K3CustomerCode)
         {
             IsAllowEmptyIn.IsNullToZero();
             using (DataTable dtCustomer = _DALDbCustomer.GetCustomerByName(args, CustomerID, CustomerName))
@@ -96,7 +97,8 @@ namespace LB.Web.MI.BLL
             }
 
             _DALDbCustomer.Customer_Update(args, CustomerID, CustomerName, Contact, Phone, Address, CarIsLimit, AmountType, LicenceNum, Description,
-                IsForbid, ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, IsAllowEmptyIn, AmountNotEnough);
+                IsForbid, ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, IsAllowEmptyIn, AmountNotEnough,
+                K3CustomerCode);
         }
 
         public void Customer_Delete(FactoryArgs args, t_BigID CustomerID)
@@ -121,7 +123,7 @@ namespace LB.Web.MI.BLL
         public void Customer_InsertFromService(FactoryArgs args, out t_BigID CustomerID, out t_String CustomerCode, t_String CustomerName, t_String Contact, t_String Phone, t_String Address,
             t_Bool CarIsLimit, t_ID AmountType, t_String LicenceNum, t_String Description, t_Bool IsForbid, t_ID ReceiveType,
             t_Decimal CreditAmount, t_Bool IsDisplayPrice, t_Bool IsDisplayAmount, t_Bool IsPrintAmount, t_Bool IsAllowOverFul,
-            t_Bool IsAllowEmptyIn, t_Decimal AmountNotEnough, t_Decimal TotalReceivedAmount, t_Decimal SalesReceivedAmount)
+            t_Bool IsAllowEmptyIn, t_Decimal AmountNotEnough, t_Decimal TotalReceivedAmount, t_Decimal SalesReceivedAmount,t_String K3CustomerCode)
         {
             CustomerID = new t_BigID();
             CustomerCode = new t_String();
@@ -130,7 +132,7 @@ namespace LB.Web.MI.BLL
             DBHelper.ExecInTransDelegate exec = delegate (FactoryArgs argsInTrans)
             {
                 this.Customer_Insert(argsInTrans, out CustomerIDTemp, out CustomerCodeTemp, CustomerName, Contact, Phone, Address, CarIsLimit, AmountType, LicenceNum, Description,
-                IsForbid, ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, IsAllowEmptyIn, AmountNotEnough);
+                IsForbid, ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, IsAllowEmptyIn, AmountNotEnough, K3CustomerCode);
 
                 _DALDbCustomer.UpdateAmount(argsInTrans, CustomerIDTemp, TotalReceivedAmount, SalesReceivedAmount);
             };
@@ -142,12 +144,13 @@ namespace LB.Web.MI.BLL
         public void Customer_UpdateFromService(FactoryArgs args, t_BigID CustomerID, t_String CustomerName, t_String Contact, t_String Phone, t_String Address,
             t_Bool CarIsLimit, t_ID AmountType, t_String LicenceNum, t_String Description, t_Bool IsForbid, t_ID ReceiveType,
             t_Decimal CreditAmount, t_Bool IsDisplayPrice, t_Bool IsDisplayAmount, t_Bool IsPrintAmount, t_Bool IsAllowOverFul,
-            t_Bool IsAllowEmptyIn, t_Decimal AmountNotEnough, t_Decimal TotalReceivedAmount, t_Decimal SalesReceivedAmount)
+            t_Bool IsAllowEmptyIn, t_Decimal AmountNotEnough, t_Decimal TotalReceivedAmount, t_Decimal SalesReceivedAmount,t_String K3CustomerCode)
         {
             DBHelper.ExecInTransDelegate exec = delegate (FactoryArgs argsInTrans)
             {
                 this.Customer_Update(argsInTrans, CustomerID, CustomerName, Contact, Phone, Address, CarIsLimit, AmountType, LicenceNum, Description,
-                IsForbid, ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, IsAllowEmptyIn, AmountNotEnough);
+                IsForbid, ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, IsAllowEmptyIn, AmountNotEnough,
+                K3CustomerCode);
 
                 _DALDbCustomer.UpdateAmount(argsInTrans, CustomerID, TotalReceivedAmount, SalesReceivedAmount);
             };

@@ -63,6 +63,8 @@
             this.txtChangeBy = new LB.Controls.LBSkinTextBox(this.components);
             this.skinLabel14 = new CCWin.SkinControl.SkinLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtAmountNotEnough = new LB.Controls.LBSkinTextBox(this.components);
+            this.skinLabel21 = new CCWin.SkinControl.SkinLabel();
             this.lblRemainAmount = new CCWin.SkinControl.SkinLabel();
             this.skinLabel18 = new CCWin.SkinControl.SkinLabel();
             this.lblOverRangeAmount = new CCWin.SkinControl.SkinLabel();
@@ -110,8 +112,8 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CarID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.skinLabel21 = new CCWin.SkinControl.SkinLabel();
-            this.txtAmountNotEnough = new LB.Controls.LBSkinTextBox(this.components);
+            this.txtK3CustomerCode = new LB.Controls.LBSkinTextBox(this.components);
+            this.skinLabel22 = new CCWin.SkinControl.SkinLabel();
             this.skinToolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -286,6 +288,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.skinLabel22);
+            this.tabPage1.Controls.Add(this.txtK3CustomerCode);
             this.tabPage1.Controls.Add(this.txtCustomerCode);
             this.tabPage1.Controls.Add(this.skinLabel20);
             this.tabPage1.Controls.Add(this.chkIsAllowEmptyIn);
@@ -680,6 +684,68 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "控制参数";
             // 
+            // txtAmountNotEnough
+            // 
+            this.txtAmountNotEnough.BackColor = System.Drawing.Color.Transparent;
+            this.txtAmountNotEnough.CanBeEmpty = true;
+            this.txtAmountNotEnough.Caption = "";
+            this.txtAmountNotEnough.DownBack = null;
+            this.txtAmountNotEnough.Icon = null;
+            this.txtAmountNotEnough.IconIsButton = false;
+            this.txtAmountNotEnough.IconMouseState = CCWin.SkinClass.ControlState.Normal;
+            this.txtAmountNotEnough.IsPasswordChat = '\0';
+            this.txtAmountNotEnough.IsSystemPasswordChar = false;
+            this.txtAmountNotEnough.Lines = new string[0];
+            this.txtAmountNotEnough.Location = new System.Drawing.Point(209, 61);
+            this.txtAmountNotEnough.Margin = new System.Windows.Forms.Padding(0);
+            this.txtAmountNotEnough.MaxLength = 32767;
+            this.txtAmountNotEnough.MinimumSize = new System.Drawing.Size(28, 28);
+            this.txtAmountNotEnough.MouseBack = null;
+            this.txtAmountNotEnough.MouseState = CCWin.SkinClass.ControlState.Normal;
+            this.txtAmountNotEnough.Multiline = true;
+            this.txtAmountNotEnough.Name = "txtAmountNotEnough";
+            this.txtAmountNotEnough.NormlBack = null;
+            this.txtAmountNotEnough.Padding = new System.Windows.Forms.Padding(5);
+            this.txtAmountNotEnough.ReadOnly = false;
+            this.txtAmountNotEnough.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtAmountNotEnough.Size = new System.Drawing.Size(229, 32);
+            // 
+            // 
+            // 
+            this.txtAmountNotEnough.SkinTxt.AccessibleName = "";
+            this.txtAmountNotEnough.SkinTxt.AutoCompleteCustomSource.AddRange(new string[] {
+            "asdfasdf",
+            "adsfasdf"});
+            this.txtAmountNotEnough.SkinTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.txtAmountNotEnough.SkinTxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtAmountNotEnough.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAmountNotEnough.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtAmountNotEnough.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
+            this.txtAmountNotEnough.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.txtAmountNotEnough.SkinTxt.Multiline = true;
+            this.txtAmountNotEnough.SkinTxt.Name = "BaseText";
+            this.txtAmountNotEnough.SkinTxt.Size = new System.Drawing.Size(219, 22);
+            this.txtAmountNotEnough.SkinTxt.TabIndex = 0;
+            this.txtAmountNotEnough.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.txtAmountNotEnough.SkinTxt.WaterText = "";
+            this.txtAmountNotEnough.TabIndex = 29;
+            this.txtAmountNotEnough.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtAmountNotEnough.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.txtAmountNotEnough.WaterText = "";
+            this.txtAmountNotEnough.WordWrap = true;
+            // 
+            // skinLabel21
+            // 
+            this.skinLabel21.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel21.BorderColor = System.Drawing.Color.White;
+            this.skinLabel21.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel21.Location = new System.Drawing.Point(19, 61);
+            this.skinLabel21.Name = "skinLabel21";
+            this.skinLabel21.Size = new System.Drawing.Size(234, 32);
+            this.skinLabel21.TabIndex = 39;
+            this.skinLabel21.Text = "预付客户余额最低预警值";
+            this.skinLabel21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // lblRemainAmount
             // 
             this.lblRemainAmount.BackColor = System.Drawing.Color.Transparent;
@@ -1039,7 +1105,7 @@
             this.txtAddress.Padding = new System.Windows.Forms.Padding(5);
             this.txtAddress.ReadOnly = false;
             this.txtAddress.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtAddress.Size = new System.Drawing.Size(501, 28);
+            this.txtAddress.Size = new System.Drawing.Size(208, 28);
             // 
             // 
             // 
@@ -1054,7 +1120,7 @@
             this.txtAddress.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
             this.txtAddress.SkinTxt.Location = new System.Drawing.Point(5, 5);
             this.txtAddress.SkinTxt.Name = "BaseText";
-            this.txtAddress.SkinTxt.Size = new System.Drawing.Size(491, 18);
+            this.txtAddress.SkinTxt.Size = new System.Drawing.Size(198, 18);
             this.txtAddress.SkinTxt.TabIndex = 0;
             this.txtAddress.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.txtAddress.SkinTxt.WaterText = "";
@@ -1328,7 +1394,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 30);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(912, 451);
+            this.tabPage2.Size = new System.Drawing.Size(912, 502);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "调价单管理";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1339,7 +1405,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 30);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(912, 451);
+            this.tabPage3.Size = new System.Drawing.Size(912, 502);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "货物价格列表";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1397,7 +1463,7 @@
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.grdMain.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.grdMain.RowTemplate.Height = 23;
-            this.grdMain.Size = new System.Drawing.Size(906, 445);
+            this.grdMain.Size = new System.Drawing.Size(906, 496);
             this.grdMain.TabIndex = 10;
             this.grdMain.TitleBack = null;
             this.grdMain.TitleBackColorBegin = System.Drawing.Color.White;
@@ -1475,67 +1541,66 @@
             this.Price.HeaderText = "单价";
             this.Price.Name = "Price";
             // 
-            // skinLabel21
+            // txtK3CustomerCode
             // 
-            this.skinLabel21.BackColor = System.Drawing.Color.Transparent;
-            this.skinLabel21.BorderColor = System.Drawing.Color.White;
-            this.skinLabel21.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel21.Location = new System.Drawing.Point(19, 61);
-            this.skinLabel21.Name = "skinLabel21";
-            this.skinLabel21.Size = new System.Drawing.Size(234, 32);
-            this.skinLabel21.TabIndex = 39;
-            this.skinLabel21.Text = "预付客户余额最低预警值";
-            this.skinLabel21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtAmountNotEnough
-            // 
-            this.txtAmountNotEnough.BackColor = System.Drawing.Color.Transparent;
-            this.txtAmountNotEnough.CanBeEmpty = true;
-            this.txtAmountNotEnough.Caption = "";
-            this.txtAmountNotEnough.DownBack = null;
-            this.txtAmountNotEnough.Icon = null;
-            this.txtAmountNotEnough.IconIsButton = false;
-            this.txtAmountNotEnough.IconMouseState = CCWin.SkinClass.ControlState.Normal;
-            this.txtAmountNotEnough.IsPasswordChat = '\0';
-            this.txtAmountNotEnough.IsSystemPasswordChar = false;
-            this.txtAmountNotEnough.Lines = new string[0];
-            this.txtAmountNotEnough.Location = new System.Drawing.Point(209, 61);
-            this.txtAmountNotEnough.Margin = new System.Windows.Forms.Padding(0);
-            this.txtAmountNotEnough.MaxLength = 32767;
-            this.txtAmountNotEnough.MinimumSize = new System.Drawing.Size(28, 28);
-            this.txtAmountNotEnough.MouseBack = null;
-            this.txtAmountNotEnough.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.txtAmountNotEnough.Multiline = true;
-            this.txtAmountNotEnough.Name = "txtAmountNotEnough";
-            this.txtAmountNotEnough.NormlBack = null;
-            this.txtAmountNotEnough.Padding = new System.Windows.Forms.Padding(5);
-            this.txtAmountNotEnough.ReadOnly = false;
-            this.txtAmountNotEnough.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtAmountNotEnough.Size = new System.Drawing.Size(229, 32);
+            this.txtK3CustomerCode.BackColor = System.Drawing.Color.Transparent;
+            this.txtK3CustomerCode.CanBeEmpty = true;
+            this.txtK3CustomerCode.Caption = "";
+            this.txtK3CustomerCode.DownBack = null;
+            this.txtK3CustomerCode.Icon = null;
+            this.txtK3CustomerCode.IconIsButton = false;
+            this.txtK3CustomerCode.IconMouseState = CCWin.SkinClass.ControlState.Normal;
+            this.txtK3CustomerCode.IsPasswordChat = '\0';
+            this.txtK3CustomerCode.IsSystemPasswordChar = false;
+            this.txtK3CustomerCode.Lines = new string[0];
+            this.txtK3CustomerCode.Location = new System.Drawing.Point(435, 118);
+            this.txtK3CustomerCode.Margin = new System.Windows.Forms.Padding(0);
+            this.txtK3CustomerCode.MaxLength = 32767;
+            this.txtK3CustomerCode.MinimumSize = new System.Drawing.Size(28, 28);
+            this.txtK3CustomerCode.MouseBack = null;
+            this.txtK3CustomerCode.MouseState = CCWin.SkinClass.ControlState.Normal;
+            this.txtK3CustomerCode.Multiline = false;
+            this.txtK3CustomerCode.Name = "txtK3CustomerCode";
+            this.txtK3CustomerCode.NormlBack = null;
+            this.txtK3CustomerCode.Padding = new System.Windows.Forms.Padding(5);
+            this.txtK3CustomerCode.ReadOnly = false;
+            this.txtK3CustomerCode.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtK3CustomerCode.Size = new System.Drawing.Size(179, 28);
             // 
             // 
             // 
-            this.txtAmountNotEnough.SkinTxt.AccessibleName = "";
-            this.txtAmountNotEnough.SkinTxt.AutoCompleteCustomSource.AddRange(new string[] {
+            this.txtK3CustomerCode.SkinTxt.AccessibleName = "";
+            this.txtK3CustomerCode.SkinTxt.AutoCompleteCustomSource.AddRange(new string[] {
             "asdfasdf",
             "adsfasdf"});
-            this.txtAmountNotEnough.SkinTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.txtAmountNotEnough.SkinTxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtAmountNotEnough.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAmountNotEnough.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtAmountNotEnough.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
-            this.txtAmountNotEnough.SkinTxt.Location = new System.Drawing.Point(5, 5);
-            this.txtAmountNotEnough.SkinTxt.Multiline = true;
-            this.txtAmountNotEnough.SkinTxt.Name = "BaseText";
-            this.txtAmountNotEnough.SkinTxt.Size = new System.Drawing.Size(219, 22);
-            this.txtAmountNotEnough.SkinTxt.TabIndex = 0;
-            this.txtAmountNotEnough.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
-            this.txtAmountNotEnough.SkinTxt.WaterText = "";
-            this.txtAmountNotEnough.TabIndex = 29;
-            this.txtAmountNotEnough.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtAmountNotEnough.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
-            this.txtAmountNotEnough.WaterText = "";
-            this.txtAmountNotEnough.WordWrap = true;
+            this.txtK3CustomerCode.SkinTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.txtK3CustomerCode.SkinTxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtK3CustomerCode.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtK3CustomerCode.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtK3CustomerCode.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
+            this.txtK3CustomerCode.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.txtK3CustomerCode.SkinTxt.Name = "BaseText";
+            this.txtK3CustomerCode.SkinTxt.Size = new System.Drawing.Size(169, 18);
+            this.txtK3CustomerCode.SkinTxt.TabIndex = 0;
+            this.txtK3CustomerCode.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.txtK3CustomerCode.SkinTxt.WaterText = "";
+            this.txtK3CustomerCode.TabIndex = 37;
+            this.txtK3CustomerCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtK3CustomerCode.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.txtK3CustomerCode.WaterText = "";
+            this.txtK3CustomerCode.WordWrap = true;
+            // 
+            // skinLabel22
+            // 
+            this.skinLabel22.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel22.BorderColor = System.Drawing.Color.White;
+            this.skinLabel22.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel22.Location = new System.Drawing.Point(339, 114);
+            this.skinLabel22.Name = "skinLabel22";
+            this.skinLabel22.Size = new System.Drawing.Size(83, 32);
+            this.skinLabel22.TabIndex = 38;
+            this.skinLabel22.Text = "K3编码";
+            this.skinLabel22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmCustomerEdit
             // 
@@ -1636,5 +1701,7 @@
         private Controls.LBSkinTextBox txtCustomerCode;
         private CCWin.SkinControl.SkinLabel skinLabel21;
         private Controls.LBSkinTextBox txtAmountNotEnough;
+        private CCWin.SkinControl.SkinLabel skinLabel22;
+        private Controls.LBSkinTextBox txtK3CustomerCode;
     }
 }

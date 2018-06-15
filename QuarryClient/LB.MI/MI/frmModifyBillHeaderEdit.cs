@@ -467,6 +467,10 @@ namespace LB.MI.MI
                     decimal Price = LBConverter.ToDecimal(dr["Price"]);
                     long UOMID = LBConverter.ToInt64(dr["UOMID"]);
                     string Description = dr["Description"].ToString().TrimEnd();
+                    decimal MaterialPrice = LBConverter.ToDecimal(dr["MaterialPrice"]);
+                    decimal FarePrice = LBConverter.ToDecimal(dr["FarePrice"]);
+                    decimal TaxPrice = LBConverter.ToDecimal(dr["TaxPrice"]);
+                    decimal BrokerPrice = LBConverter.ToDecimal(dr["BrokerPrice"]);
 
                     iSPType = 13700;//Insert
 
@@ -486,6 +490,10 @@ namespace LB.MI.MI
                         parmCol.Add(new LBParameter("CarID", enLBDbType.Int64, CarID));
                     parmCol.Add(new LBParameter("CalculateType", enLBDbType.Int16, CalculateType));
                     parmCol.Add(new LBParameter("Price", enLBDbType.Decimal, Price));
+                    parmCol.Add(new LBParameter("MaterialPrice", enLBDbType.Decimal, MaterialPrice));
+                    parmCol.Add(new LBParameter("FarePrice", enLBDbType.Decimal, FarePrice));
+                    parmCol.Add(new LBParameter("TaxPrice", enLBDbType.Decimal, TaxPrice));
+                    parmCol.Add(new LBParameter("BrokerPrice", enLBDbType.Decimal, BrokerPrice));
                     parmCol.Add(new LBParameter("UOMID", enLBDbType.Int64, UOMID));
                     parmCol.Add(new LBParameter("Description", enLBDbType.String, Description));
 

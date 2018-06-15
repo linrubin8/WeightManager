@@ -279,7 +279,7 @@ order by h.ApproveTime desc
             parms.Add(new LBDbParameter("CalculateType", CalculateType));
             string strSQL = @"
 SELECT     h.CustomerID, c.CustomerName,h.EffectDate,h.ApproveTime,
-                       d.ModifyBillDetailID, d.ItemID,i.ItemCode,i.ItemRate,i.ItemMode ,i.ItemName, 
+                       d.ModifyBillDetailID, d.ItemID,i.ItemCode,i.ItemRate,i.ItemMode ,i.ItemName, d.MaterialPrice,d.FarePrice,d.TaxPrice,d.BrokerPrice,
                       d.CarID,  d.Price, d.CalculateType,
                           (SELECT     ConstText
                             FROM          dbo.DbSystemConst

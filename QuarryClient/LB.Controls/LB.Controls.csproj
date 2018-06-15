@@ -55,6 +55,22 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\LB.MainForm\bin\Debug\FastReport.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="NPOI, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LB.MainForm\bin\Debug\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LB.MainForm\bin\Debug\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LB.MainForm\bin\Debug\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LB.MainForm\bin\Debug\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Design" />
@@ -63,10 +79,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\Args\BeforeInputPromptEventArgs.cs" />
+    <Compile Include="Controls\Args\ImageBoxClickEventArgs.cs" />
     <Compile Include="Controls\Args\PageEventArgs.cs" />
+    <Compile Include="Controls\Args\PromptBizObjCreatedArgs.cs" />
+    <Compile Include="Controls\Args\PromptClickEventArgs.cs" />
+    <Compile Include="Controls\Args\PromptConstDataArgs.cs" />
+    <Compile Include="Controls\Args\PromptPageCreatedArgs.cs" />
+    <Compile Include="Controls\Args\PromptParmsNeedArgs.cs" />
+    <Compile Include="Controls\Args\PromptReturnArgs.cs" />
     <Compile Include="Controls\Args\SelectedRowArgs.cs" />
+    <Compile Include="Controls\Args\SetSelectedImageEventArgs.cs" />
+    <Compile Include="Controls\Args\TabKeyPressEventArgs.cs" />
     <Compile Include="Controls\Args\TabPageCloseEventArgs.cs" />
     <Compile Include="Controls\Args\ToolStripReportArgs.cs" />
+    <Compile Include="Controls\Args\TSDataGridViewAlternatingEventArgs.cs" />
+    <Compile Include="Controls\Args\TSDealErrorEventArgs.cs" />
+    <Compile Include="Controls\Args\TSEditorInputPromptGetDataEventArgs.cs" />
+    <Compile Include="Controls\Args\TSEditorSetValueEventArgs.cs" />
+    <Compile Include="Controls\Args\TSPagingEventArgs.cs" />
+    <Compile Include="Controls\Args\TSParseErrorEventArgs.cs" />
     <Compile Include="Controls\CtlFieldHeaderPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -103,6 +135,58 @@
     </Compile>
     <Compile Include="Controls\LBDateTimeTextBox.Designer.cs">
       <DependentUpon>LBDateTimeTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LBEditor\Base64.cs" />
+    <Compile Include="Controls\LBEditor\CommonFuntion.cs" />
+    <Compile Include="Controls\LBEditor\CommonFuntionPublic.cs" />
+    <Compile Include="Controls\LBEditor\frmFullPictureViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\LBEditor\frmFullPictureViewer.designer.cs">
+      <DependentUpon>frmFullPictureViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LBEditor\ICreatePromptPageControl.cs" />
+    <Compile Include="Controls\LBEditor\ITSEditor.cs" />
+    <Compile Include="Controls\LBEditor\ITSPromptForm.cs" />
+    <Compile Include="Controls\LBEditor\PublicDeclare.cs" />
+    <Compile Include="Controls\LBEditor\StringDict.cs" />
+    <Compile Include="Controls\LBEditor\TSEditor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\LBEditor\TSErrorShower.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\LBEditor\TSErrorShower.designer.cs">
+      <DependentUpon>TSErrorShower.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LBEditor\TSPictureZoomer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\LBEditor\TSPopupContainer.cs" />
+    <Compile Include="Controls\LBEditor\TSPopupWindowMessageFilter.cs" />
+    <Compile Include="Controls\LBEditor\TSSepLine.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\LBEditor\TSTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\LBEditor\TSTextBoxPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\LBEditor\TSTextBoxPopup.designer.cs">
+      <DependentUpon>TSTextBoxPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LBEditor\TSTextBoxPopup4Calendar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\LBEditor\TSTextBoxPopup4Calendar.designer.cs">
+      <DependentUpon>TSTextBoxPopup4Calendar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LBEditor\TSTextPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\LBEditor\TSTransparentControl.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\LBForm.cs">
       <SubType>Form</SubType>
@@ -239,6 +323,18 @@
     <EmbeddedResource Include="Controls\LBDateTime.resx">
       <DependentUpon>LBDateTime.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\LBEditor\frmFullPictureViewer.resx">
+      <DependentUpon>frmFullPictureViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\LBEditor\TSErrorShower.resx">
+      <DependentUpon>TSErrorShower.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\LBEditor\TSTextBoxPopup.resx">
+      <DependentUpon>TSTextBoxPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\LBEditor\TSTextBoxPopup4Calendar.resx">
+      <DependentUpon>TSTextBoxPopup4Calendar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\LBForm.resx">
       <DependentUpon>LBForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -294,6 +390,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon1.ico" />
+    <None Include="Resources\ErrorInfo.gif" />
+    <None Include="Resources\btnDropDownAdd.png" />
+    <None Include="Resources\btnDropDownManager.png" />
+    <None Include="Resources\SeparatorArrow.gif" />
+    <None Include="Resources\SeparatorArrowClose.gif" />
+    <None Include="Resources\TreeChecked.gif" />
+    <None Include="Resources\PromptHot.gif" />
+    <None Include="Resources\Prompt.gif" />
+    <None Include="Resources\CalendarHot.gif" />
+    <None Include="Resources\Calendar.gif" />
+    <None Include="Resources\TreeNotCheck.gif" />
     <None Include="Resources\btnPrint.gif" />
     <None Include="Resources\btnConfig.gif" />
     <None Include="Resources\btnPreview.gif" />

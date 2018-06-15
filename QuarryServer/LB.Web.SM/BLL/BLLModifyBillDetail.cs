@@ -36,15 +36,19 @@ namespace LB.Web.SM.BLL
         }
 
         public void Insert(FactoryArgs args,out t_BigID ModifyBillDetailID, t_BigID ModifyBillHeaderID, t_BigID ItemID, t_BigID CarID, 
-            t_Decimal Price,t_ID CalculateType, t_BigID UOMID,t_String Description)
+            t_Decimal Price,t_ID CalculateType, t_BigID UOMID,t_String Description, t_Decimal MaterialPrice, t_Decimal FarePrice, 
+            t_Decimal TaxPrice, t_Decimal BrokerPrice)
         {
-            _DALModifyBillDetail.Insert(args, out ModifyBillDetailID, ModifyBillHeaderID, ItemID, CarID, Price, CalculateType, UOMID, Description);
+            _DALModifyBillDetail.Insert(args, out ModifyBillDetailID, ModifyBillHeaderID, ItemID, CarID, Price, CalculateType, UOMID, Description,
+                MaterialPrice, FarePrice,TaxPrice,BrokerPrice);
         }
 
         public void Update(FactoryArgs args, t_BigID ModifyBillDetailID, t_BigID ItemID, t_BigID CarID,
-            t_Decimal Price, t_ID CalculateType, t_BigID UOMID, t_String Description)
+            t_Decimal Price, t_ID CalculateType, t_BigID UOMID, t_String Description, t_Decimal MaterialPrice, t_Decimal FarePrice,
+            t_Decimal TaxPrice, t_Decimal BrokerPrice)
         {
-            _DALModifyBillDetail.Update(args, ModifyBillDetailID, ItemID, CarID, Price, CalculateType, UOMID, Description);
+            _DALModifyBillDetail.Update(args, ModifyBillDetailID, ItemID, CarID, Price, CalculateType, UOMID, Description,
+                MaterialPrice, FarePrice, TaxPrice, BrokerPrice);
         }
 
         public void Delete(FactoryArgs args, t_BigID ModifyBillDetailID)

@@ -171,7 +171,8 @@ where SaleCarInBillID = @SaleCarInBillID
 
         public void InsertOutBill(FactoryArgs args, out t_BigID SaleCarOutBillID,t_String SaleCarOutBillCode, t_BigID SaleCarInBillID, t_BigID CarID, t_DTSmall BillDate,
             t_Decimal TotalWeight, t_Decimal SuttleWeight, t_Decimal Price, t_Decimal Amount, t_ID ReceiveType, t_ID CalculateType, t_String Description,
-            t_String CreateBy,t_BigID SaleCarOutBillIDFromClient)
+            t_String CreateBy,t_BigID SaleCarOutBillIDFromClient, t_Decimal MaterialPrice, t_Decimal FarePrice,
+                t_Decimal TaxPrice, t_Decimal BrokerPrice)
         {
             SaleCarOutBillID = new t_BigID();
             LBDbParameterCollection parms = new LBDbParameterCollection();
@@ -189,12 +190,18 @@ where SaleCarInBillID = @SaleCarInBillID
             parms.Add(new LBDbParameter("CalculateType", CalculateType));
             parms.Add(new LBDbParameter("CreateBy", CreateBy));
             parms.Add(new LBDbParameter("SaleCarOutBillIDFromClient", SaleCarOutBillIDFromClient));
+            parms.Add(new LBDbParameter("MaterialPrice", MaterialPrice));
+            parms.Add(new LBDbParameter("FarePrice", FarePrice));
+            parms.Add(new LBDbParameter("TaxPrice", TaxPrice));
+            parms.Add(new LBDbParameter("BrokerPrice", BrokerPrice));
 
             string strSQL = @"
 insert into dbo.SaleCarOutBill(  SaleCarInBillID,SaleCarOutBillCode, BillDate, CarID,TotalWeight,
-            SuttleWeight, Price, Amount, Description,CreateBy, CreateTime,SaleCarOutBillIDFromClient)
+            SuttleWeight, Price, Amount, Description,CreateBy, CreateTime,SaleCarOutBillIDFromClient,
+            MaterialPrice,FarePrice,TaxPrice,BrokerPrice,ChangedBy,ChangeTime)
 values( @SaleCarInBillID,@SaleCarOutBillCode, @BillDate, @CarID, @TotalWeight,
-        @SuttleWeight, @Price, @Amount, @Description,@CreateBy,@BillDate,@SaleCarOutBillIDFromClient)
+        @SuttleWeight, @Price, @Amount, @Description,@CreateBy,@BillDate,@SaleCarOutBillIDFromClient,
+        @MaterialPrice,@FarePrice,@TaxPrice,@BrokerPrice,@CreateBy,getdate())
 
 set @SaleCarOutBillID = @@identity
 
@@ -214,10 +221,13 @@ where SaleCarInBillID = @SaleCarInBillID
             parms.Add(new LBDbParameter("SaleCarInBillID", SaleCarInBillID));
             parms.Add(new LBDbParameter("Price", Price));
             parms.Add(new LBDbParameter("Amount", Amount));
+            parms.Add(new LBDbParameter("ChangedBy", new t_String(args.LoginName)));
             string strSQL = @"
 update  dbo.SaleCarOutBill
 set Price = @Price,
-    Amount = @Amount
+    Amount = @Amount,
+    ChangedBy = @ChangedBy,
+    ChangeTime=getdate()
 where SaleCarInBillID = @SaleCarInBillID";
 
         }
@@ -228,9 +238,12 @@ where SaleCarInBillID = @SaleCarInBillID";
             LBDbParameterCollection parms = new LBDbParameterCollection();
             parms.Add(new LBDbParameter("SaleCarInBillID", SaleCarInBillID));
             parms.Add(new LBDbParameter("CustomerID", CustomerID));
+            parms.Add(new LBDbParameter("ChangedBy", new t_String(args.LoginName)));
             string strSQL = @"
 update  dbo.SaleCarOutBill
-set CustomerID = @CustomerID
+set CustomerID = @CustomerID,
+    ChangedBy = @ChangedBy,
+    ChangeTime=getdate()
 where SaleCarInBillID = @SaleCarInBillID";
 
         }
@@ -564,7 +577,7 @@ where SaleCarInBillID = @SaleCarInBillID
         }
 
         public void UpdateInOutBill(FactoryArgs args, t_BigID SaleCarInBillID,t_BigID CarID, t_BigID ItemID, t_BigID CustomerID, t_Decimal Price,
-            t_Decimal Amount, t_String Description)
+            t_Decimal Amount, t_String Description,t_String ChangeDetail)
         {
             LBDbParameterCollection parms = new LBDbParameterCollection();
             parms.Add(new LBDbParameter("SaleCarInBillID", SaleCarInBillID));
@@ -574,6 +587,8 @@ where SaleCarInBillID = @SaleCarInBillID
             parms.Add(new LBDbParameter("Price", Price));
             parms.Add(new LBDbParameter("Amount", Amount));
             parms.Add(new LBDbParameter("Description", Description));
+            parms.Add(new LBDbParameter("ChangeDetail", ChangeDetail));
+            parms.Add(new LBDbParameter("ChangedBy", new t_String(args.LoginName)));
             string strSQL = @"
 update dbo.SaleCarInBill
 set ItemID = @ItemID,
@@ -584,7 +599,10 @@ where SaleCarInBillID = @SaleCarInBillID
 update dbo.SaleCarOutBill
 set Price = @Price,
     Amount = @Amount,
-    Description = @Description
+    Description = @Description,
+    ChangedBy = @ChangedBy,
+    ChangeTime = getdate(),
+    ChangeDetail = @ChangeDetail
 where SaleCarInBillID = @SaleCarInBillID
 ";
             DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);
@@ -633,6 +651,51 @@ where rtrim(CarNum) = rtrim(@CarNum)
 ";
             DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);
             CarID.SetValueWithObject(parms["CarID"].Value);
+        }
+
+        public void GetItemName(FactoryArgs args, t_BigID ItemID, out t_String ItemName)
+        {
+            ItemName = new t_String();
+            LBDbParameterCollection parms = new LBDbParameterCollection();
+            parms.Add(new LBDbParameter("ItemName", ItemName, true));
+            parms.Add(new LBDbParameter("ItemID", ItemID));
+            string strSQL = @"
+select @ItemName=ItemName
+from DbItemBase
+where ItemID=@ItemID
+";
+            DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);
+            ItemName.SetValueWithObject(parms["ItemName"].Value);
+        }
+
+        public void GetCustomerName(FactoryArgs args,  t_BigID CustomerID, out t_String CustomerName)
+        {
+            CustomerName = new t_String();
+            LBDbParameterCollection parms = new LBDbParameterCollection();
+            parms.Add(new LBDbParameter("CustomerName", CustomerName, true));
+            parms.Add(new LBDbParameter("CustomerID", CustomerID));
+            string strSQL = @"
+select @CustomerName=CustomerName
+from DbCustomer
+where CustomerID = @CustomerID
+";
+            DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);
+            CustomerName.SetValueWithObject(parms["CustomerName"].Value);
+        }
+
+        public void GetCarNum(FactoryArgs args, t_BigID CarID,out t_String CarNum)
+        {
+            CarNum = new t_String();
+            LBDbParameterCollection parms = new LBDbParameterCollection();
+            parms.Add(new LBDbParameter("CarNum", CarNum, true));
+            parms.Add(new LBDbParameter("CarID", CarID));
+            string strSQL = @"
+select @CarNum=CarNum
+from DbCar
+where CarID = @CarID
+";
+            DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);
+            CarNum.SetValueWithObject(parms["CarNum"].Value);
         }
 
         public void UpdateInBillDate(FactoryArgs args,t_BigID SaleCarInBillID,t_DTSmall BillDate,

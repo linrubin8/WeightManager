@@ -369,8 +369,15 @@ namespace LB.Web.SM.BLL
             }
             //SaleCarOutBillCode = new t_String();
             t_BigID CustomerID = new t_BigID();
+            t_BigID ItemID = new t_BigID();
             t_String CarNum = new t_String();
             t_ID SaleBillType = new t_ID();
+
+            t_Decimal MaterialPrice = new t_Decimal();
+            t_Decimal FarePrice = new t_Decimal();
+            t_Decimal TaxPrice = new t_Decimal();
+            t_Decimal BrokerPrice = new t_Decimal();
+
             SaleCarOutBillID = new t_BigID();
             if (BillDate.Value == null)
             {
@@ -405,6 +412,7 @@ namespace LB.Web.SM.BLL
                 {
                     DataRow drInBill = dtInBill.Rows[0];
                     long InCarID = LBConverter.ToInt64(drInBill["CarID"]);
+                    ItemID.SetValueWithObject(drInBill["ItemID"]);
                     decimal decCarTare = LBConverter.ToDecimal(drInBill["CarTare"]);
                     CustomerID.SetValueWithObject(drInBill["CustomerID"]);
                     CarNum.SetValueWithObject(drInBill["CarNum"]);
@@ -496,13 +504,19 @@ namespace LB.Web.SM.BLL
                 }
             }
 
+            //读取其他单价
+            t_Decimal PriceTemp = new t_Decimal();
+            _IBLLModifyBillHeader.GetCustomerItemPrice(args, ItemID, CarID, CustomerID, CalculateType, out PriceTemp, out MaterialPrice, out FarePrice,
+                out TaxPrice, out BrokerPrice);
+
             t_String SaleCarOutBillCode_temp = new t_String(SaleCarOutBillCode.Value);
             t_BigID SaleCarOutBillID_temp = new t_BigID();
             t_DTSmall BillDate_temp = new t_DTSmall(BillDate.Value);
             DBHelper.ExecInTransDelegate exec = delegate (FactoryArgs argsInTrans)
             {
                 _DALSaleCarInOutBill.InsertOutBill(argsInTrans, out SaleCarOutBillID_temp, SaleCarOutBillCode_temp, SaleCarInBillID, CarID, BillDate_temp,
-                    TotalWeight, SuttleWeight, Price, Amount, ReceiveType, CalculateType, Description, CreateBy, SaleCarOutBillIDFromClient);
+                    TotalWeight, SuttleWeight, Price, Amount, ReceiveType, CalculateType, Description, CreateBy, SaleCarOutBillIDFromClient,
+                    MaterialPrice, FarePrice, TaxPrice, BrokerPrice);
 
                 if (CustomerPayAmount.Value > 0)
                 {
@@ -542,12 +556,26 @@ namespace LB.Web.SM.BLL
         public void UpdateInOutBill(FactoryArgs args, t_BigID SaleCarInBillID, t_BigID CarID, t_BigID ItemID, t_BigID CustomerID, t_Decimal Price,
             t_Decimal Amount, t_String Description)
         {
+            //对比修改前后的差异
+            t_BigID Old_CarID = new t_BigID();
+            t_BigID Old_ItemID = new t_BigID();
+            t_BigID Old_CustomerID = new t_BigID();
+            t_Decimal Old_Price = new t_Decimal();
+            t_Decimal Old_Amount = new t_Decimal();
+            t_String ChangeDetail = new t_String();
+
             using (DataTable dtBill = _DALSaleCarInOutBill.GetGetSaleCarInOutBill(args, SaleCarInBillID))
             {
                 DataRow drBill = dtBill.Rows[0];
                 t_ID BillStatus = new t_ID(drBill["BillStatus"]);
                 t_ID IsCancel = new t_ID(drBill["IsCancel"]);
-
+                Old_CarID.SetValueWithObject(drBill["CarID"]);
+                Old_ItemID.SetValueWithObject(drBill["ItemID"]);
+                Old_CustomerID.SetValueWithObject(drBill["CustomerID"]);
+                Old_Price.SetValueWithObject(drBill["Price"]);
+                Old_Amount.SetValueWithObject(drBill["Amount"]);
+                ChangeDetail.SetValueWithObject(drBill["ChangeDetail"]);
+                ChangeDetail.IsNullToEmpty();
                 if (IsCancel.Value == 1)
                 {
                     throw new Exception("该榜单已作废，无法修改单据信息！如需修改，请先反作废后再修改！");
@@ -559,7 +587,60 @@ namespace LB.Web.SM.BLL
                 }
             }
 
-            _DALSaleCarInOutBill.UpdateInOutBill(args, SaleCarInBillID, CarID,ItemID, CustomerID, Price, Amount, Description);
+            bool bolIsChange = false;
+            string strChangeInfo = "";
+            if (Old_CarID.Value != CarID.Value)
+            {
+                t_String Old_CarNum;
+                t_String CarNum;
+                _DALSaleCarInOutBill.GetCarNum(args, CarID, out CarNum);
+                _DALSaleCarInOutBill.GetCarNum(args, Old_CarID, out Old_CarNum);
+
+                strChangeInfo = Old_CarNum.Value.TrimEnd() + "->" + CarNum.Value.TrimEnd();
+            }
+            if (Old_ItemID.Value != ItemID.Value)
+            {
+                t_String Old_ItemName;
+                t_String ItemName;
+                _DALSaleCarInOutBill.GetItemName(args, ItemID, out ItemName);
+                _DALSaleCarInOutBill.GetItemName(args, Old_ItemID, out Old_ItemName);
+
+                if (strChangeInfo != "")
+                    strChangeInfo += ",";
+                strChangeInfo += Old_ItemName.Value.TrimEnd() + "->" + ItemName.Value.TrimEnd();
+            }
+            if (Old_CustomerID.Value != CustomerID.Value)
+            {
+                t_String Old_CustomerName;
+                t_String CustomerName;
+                _DALSaleCarInOutBill.GetCustomerName(args, CustomerID, out CustomerName);
+                _DALSaleCarInOutBill.GetCustomerName(args, Old_CustomerID, out Old_CustomerName);
+
+                if (strChangeInfo != "")
+                    strChangeInfo += ",";
+                strChangeInfo += Old_CustomerName.Value.TrimEnd() + "->" + CustomerName.Value.TrimEnd();
+            }
+            if (Old_Price.Value != Price.Value)
+            {
+                if (strChangeInfo != "")
+                    strChangeInfo += ",";
+                strChangeInfo += Old_Price.Value.ToString().TrimEnd() + "->" + Price.Value.ToString().TrimEnd();
+            }
+            if (Old_Amount.Value != Amount.Value)
+            {
+                if (strChangeInfo != "")
+                    strChangeInfo += ",";
+                strChangeInfo += Old_Amount.Value.ToString().TrimEnd() + "->" + Amount.Value.ToString().TrimEnd();
+            }
+
+            if (strChangeInfo != "")
+            {
+                if (ChangeDetail.Value.ToString().TrimEnd() != "")
+                    ChangeDetail.Value = ChangeDetail.Value + Environment.NewLine;
+                ChangeDetail.Value += "[" + DateTime.Now.ToString("yy-MM-dd HH:mm") + "  " + args.LoginName + "  " + strChangeInfo + "]";
+            }
+
+            _DALSaleCarInOutBill.UpdateInOutBill(args, SaleCarInBillID, CarID,ItemID, CustomerID, Price, Amount, Description, ChangeDetail);
         }
 
         public void SaveInSalesCameraImage(FactoryArgs args, t_BigID SaleCarInBillID,
@@ -1602,7 +1683,8 @@ namespace LB.Web.SM.BLL
                 t_String SaleCarOutBillCode;
 
                 _DALSaleCarInOutBill.InsertOutBill(argsInTrans, out SaleCarOutBillID, new t_String(""), SaleCarInBillIDTemp, CarID, BillDateTemp,
-                    TotalWeight, new t_Decimal(0), new t_Decimal(0), new t_Decimal(0), ReceiveType, CalculateType, Description,new t_String(""), new t_BigID());
+                    TotalWeight, new t_Decimal(0), new t_Decimal(0), new t_Decimal(0), ReceiveType, CalculateType, Description,new t_String(""), new t_BigID(),
+                    new t_Decimal(),new t_Decimal(),new t_Decimal(),new t_Decimal());
 
             };
             DBHelper.ExecInTrans(args, exec);
@@ -1743,7 +1825,12 @@ namespace LB.Web.SM.BLL
                 t_String CancelDesc = new t_String(dr["CancelDesc"]);
 
                 //读取服务器单价
-                _IBLLModifyBillHeader.GetCustomerItemPrice(args, ItemID, CarID, CustomerID, CalculateType, out Price);
+                t_Decimal MaterialPrice = new t_Decimal();
+                t_Decimal FarePrice = new t_Decimal();
+                t_Decimal TaxPrice = new t_Decimal();
+                t_Decimal BrokerPrice = new t_Decimal();
+                _IBLLModifyBillHeader.GetCustomerItemPrice(args, ItemID, CarID, CustomerID, CalculateType, out Price,
+                    out MaterialPrice,out FarePrice, out TaxPrice, out BrokerPrice);
 
                 using (DataTable dtCustomer = _DALSaleCarInOutBill.GetCustomer(args, CustomerID))
                 {
