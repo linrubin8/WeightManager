@@ -502,10 +502,6 @@ namespace LB.Web.SM.BLL
                     {
                         DataRow drDetail = dtDetail.Rows[0];
                         Price.SetValueWithObject(drDetail["ItemPrice"]);
-                        MaterialPrice.SetValueWithObject(drDetail["MaterialPrice"]);
-                        FarePrice.SetValueWithObject(drDetail["FarePrice"]);
-                        TaxPrice.SetValueWithObject(drDetail["TaxPrice"]);
-                        BrokerPrice.SetValueWithObject(drDetail["BrokerPrice"]);
                     }
                 }
             }

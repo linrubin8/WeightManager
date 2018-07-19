@@ -11,7 +11,7 @@ namespace LB.Web.MI.DAL
     public class DALDBItemBase
     {
         public void Insert(FactoryArgs args, out t_BigID ItemID, t_BigID ItemTypeID,
-            t_String ItemCode, t_String ItemName, t_String ItemMode, t_Float ItemRate,
+            t_String ItemCode, t_String K3ItemCode, t_String ItemName, t_String ItemMode, t_Float ItemRate,
             t_BigID UOMID, t_String Description, t_Bool IsForbid,t_Decimal ItemPrice)
         {
             ItemID = new t_BigID();
@@ -19,6 +19,7 @@ namespace LB.Web.MI.DAL
             parms.Add(new LBDbParameter("ItemID", ItemID, true));
             parms.Add(new LBDbParameter("ItemTypeID", ItemTypeID));
             parms.Add(new LBDbParameter("ItemCode", ItemCode));
+            parms.Add(new LBDbParameter("K3ItemCode", K3ItemCode));
             parms.Add(new LBDbParameter("ItemName", ItemName));
             parms.Add(new LBDbParameter("ItemMode", ItemMode));
             parms.Add(new LBDbParameter("ItemRate", ItemRate));
@@ -30,9 +31,9 @@ namespace LB.Web.MI.DAL
             parms.Add(new LBDbParameter("ChangeTime", new t_DTSmall(DateTime.Now)));
 
             string strSQL = @"
-insert into dbo.DbItemBase( ItemTypeID, ItemCode, ItemName, ItemMode, ItemRate, UOMID, Description, 
+insert into dbo.DbItemBase( ItemTypeID, ItemCode,K3ItemCode, ItemName, ItemMode, ItemRate, UOMID, Description, 
 IsForbid, ChangeBy, ChangeTime,ItemPrice)
-values( @ItemTypeID, @ItemCode, @ItemName, @ItemMode, @ItemRate, @UOMID, @Description, 
+values( @ItemTypeID, @ItemCode,@K3ItemCode, @ItemName, @ItemMode, @ItemRate, @UOMID, @Description, 
 @IsForbid, @ChangeBy, @ChangeTime,@ItemPrice)
 
 set @ItemID = @@identity
@@ -42,12 +43,13 @@ set @ItemID = @@identity
         }
 
         public void Update(FactoryArgs args, t_BigID ItemID, t_BigID ItemTypeID,
-             t_String ItemName, t_String ItemMode, t_Float ItemRate,
+            t_String K3ItemCode, t_String ItemName, t_String ItemMode, t_Float ItemRate,
             t_BigID UOMID, t_String Description, t_Bool IsForbid, t_Decimal ItemPrice)
         {
             LBDbParameterCollection parms = new LBDbParameterCollection();
             parms.Add(new LBDbParameter("ItemID", ItemID));
             parms.Add(new LBDbParameter("ItemTypeID", ItemTypeID));
+            parms.Add(new LBDbParameter("K3ItemCode", K3ItemCode));
             parms.Add(new LBDbParameter("ItemName", ItemName));
             parms.Add(new LBDbParameter("ItemMode", ItemMode));
             parms.Add(new LBDbParameter("ItemRate", ItemRate));
@@ -61,6 +63,7 @@ set @ItemID = @@identity
             string strSQL = @"
 update dbo.DbItemBase
 set ItemTypeID=@ItemTypeID,
+    K3ItemCode = @K3ItemCode,
     ItemName=@ItemName,
     ItemMode=@ItemMode,
     ItemRate=@ItemRate,

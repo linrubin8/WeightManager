@@ -118,6 +118,7 @@
             this.btnChangeBillInfoSave = new LB.Controls.LBToolStripButton(this.components);
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnChangeBill = new LB.Controls.LBToolStripButton(this.components);
+            this.btnSynToK3 = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.gbCancel.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -1344,7 +1345,8 @@
             this.btnChangeBillInfoDirect,
             this.btnChangeBillInfoSave,
             this.toolStripSeparator3,
-            this.btnChangeBill});
+            this.btnChangeBill,
+            this.btnSynToK3});
             this.skinToolStrip1.Location = new System.Drawing.Point(0, 0);
             this.skinToolStrip1.Name = "skinToolStrip1";
             this.skinToolStrip1.RadiusStyle = CCWin.SkinClass.RoundStyle.All;
@@ -1499,6 +1501,16 @@
             this.btnChangeBill.Visible = false;
             this.btnChangeBill.Click += new System.EventHandler(this.btnChangeBill_Click);
             // 
+            // btnSynToK3
+            // 
+            this.btnSynToK3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnSynToK3.Image = ((System.Drawing.Image)(resources.GetObject("btnSynToK3.Image")));
+            this.btnSynToK3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSynToK3.Name = "btnSynToK3";
+            this.btnSynToK3.Size = new System.Drawing.Size(63, 37);
+            this.btnSynToK3.Text = "同步到K3";
+            this.btnSynToK3.Click += new System.EventHandler(this.btnSynToK3_Click);
+            // 
             // frmSaleCarInOutEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1639,5 +1651,6 @@
         private System.Windows.Forms.TextBox txtCancelTime;
         private System.Windows.Forms.TextBox txtCancelReasion;
         private Controls.LBTextBox.CoolTextBox txtCarID;
+        private System.Windows.Forms.ToolStripButton btnSynToK3;
     }
 }

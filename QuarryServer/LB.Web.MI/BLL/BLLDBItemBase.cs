@@ -39,7 +39,7 @@ namespace LB.Web.MI.BLL
         }
 
         public void DBItemBase_Insert(FactoryArgs args, out t_BigID ItemID, t_BigID ItemTypeID,
-            out t_String ItemCode, t_String ItemName, t_String ItemMode, t_Float ItemRate,
+            out t_String ItemCode,t_String K3ItemCode, t_String ItemName, t_String ItemMode, t_Float ItemRate,
             t_BigID UOMID, t_String Description, t_Bool IsForbid,t_Decimal ItemPrice)
         {
             ItemCode = new t_String();
@@ -56,15 +56,15 @@ namespace LB.Web.MI.BLL
                 ItemCode.SetValueWithObject("S"+CodeIndex.ToString());
 
 
-            _DALDBItemBase.Insert(args, out ItemID, ItemTypeID, ItemCode, ItemName, ItemMode,
+            _DALDBItemBase.Insert(args, out ItemID, ItemTypeID, ItemCode, K3ItemCode, ItemName, ItemMode,
                 ItemRate, UOMID, Description, IsForbid, ItemPrice);
         }
 
         public void DBItemBase_Update(FactoryArgs args, t_BigID ItemID, t_BigID ItemTypeID,
-             t_String ItemName, t_String ItemMode, t_Float ItemRate,
+             t_String K3ItemCode, t_String ItemName, t_String ItemMode, t_Float ItemRate,
             t_BigID UOMID, t_String Description, t_Bool IsForbid, t_Decimal ItemPrice)
         {
-            _DALDBItemBase.Update(args, ItemID, ItemTypeID, ItemName, ItemMode,
+            _DALDBItemBase.Update(args, ItemID, ItemTypeID, K3ItemCode, ItemName, ItemMode,
                 ItemRate, UOMID, Description, IsForbid, ItemPrice);
         }
 

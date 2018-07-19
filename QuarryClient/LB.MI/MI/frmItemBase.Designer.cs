@@ -55,6 +55,8 @@ namespace LB.MI
             this.skinLabel1 = new CCWin.SkinControl.SkinLabel();
             this.txtPrice = new LB.Controls.LBSkinTextBox(this.components);
             this.skinLabel2 = new CCWin.SkinControl.SkinLabel();
+            this.skinLabel3 = new CCWin.SkinControl.SkinLabel();
+            this.txtK3ItemCode = new LB.Controls.LBSkinTextBox(this.components);
             this.skinToolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -185,7 +187,7 @@ namespace LB.MI
             this.txtItemCode.Padding = new System.Windows.Forms.Padding(5);
             this.txtItemCode.ReadOnly = true;
             this.txtItemCode.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtItemCode.Size = new System.Drawing.Size(331, 28);
+            this.txtItemCode.Size = new System.Drawing.Size(150, 28);
             // 
             // 
             // 
@@ -201,7 +203,7 @@ namespace LB.MI
             this.txtItemCode.SkinTxt.Location = new System.Drawing.Point(5, 5);
             this.txtItemCode.SkinTxt.Name = "BaseText";
             this.txtItemCode.SkinTxt.ReadOnly = true;
-            this.txtItemCode.SkinTxt.Size = new System.Drawing.Size(321, 18);
+            this.txtItemCode.SkinTxt.Size = new System.Drawing.Size(140, 18);
             this.txtItemCode.SkinTxt.TabIndex = 0;
             this.txtItemCode.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.txtItemCode.SkinTxt.WaterText = "";
@@ -223,7 +225,7 @@ namespace LB.MI
             this.txtItemName.IsPasswordChat = '\0';
             this.txtItemName.IsSystemPasswordChar = false;
             this.txtItemName.Lines = new string[0];
-            this.txtItemName.Location = new System.Drawing.Point(115, 96);
+            this.txtItemName.Location = new System.Drawing.Point(376, 64);
             this.txtItemName.Margin = new System.Windows.Forms.Padding(0);
             this.txtItemName.MaxLength = 32767;
             this.txtItemName.MinimumSize = new System.Drawing.Size(28, 28);
@@ -235,7 +237,7 @@ namespace LB.MI
             this.txtItemName.Padding = new System.Windows.Forms.Padding(5);
             this.txtItemName.ReadOnly = false;
             this.txtItemName.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtItemName.Size = new System.Drawing.Size(331, 28);
+            this.txtItemName.Size = new System.Drawing.Size(161, 28);
             // 
             // 
             // 
@@ -250,7 +252,7 @@ namespace LB.MI
             this.txtItemName.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
             this.txtItemName.SkinTxt.Location = new System.Drawing.Point(5, 5);
             this.txtItemName.SkinTxt.Name = "BaseText";
-            this.txtItemName.SkinTxt.Size = new System.Drawing.Size(321, 18);
+            this.txtItemName.SkinTxt.Size = new System.Drawing.Size(151, 18);
             this.txtItemName.SkinTxt.TabIndex = 0;
             this.txtItemName.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.txtItemName.SkinTxt.WaterText = "";
@@ -265,7 +267,7 @@ namespace LB.MI
             this.lblItemName.BackColor = System.Drawing.Color.Transparent;
             this.lblItemName.BorderColor = System.Drawing.Color.White;
             this.lblItemName.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblItemName.Location = new System.Drawing.Point(15, 92);
+            this.lblItemName.Location = new System.Drawing.Point(276, 60);
             this.lblItemName.Name = "lblItemName";
             this.lblItemName.Size = new System.Drawing.Size(83, 32);
             this.lblItemName.TabIndex = 8;
@@ -507,7 +509,7 @@ namespace LB.MI
             // 
             this.chkIsForbid.AutoSize = true;
             this.chkIsForbid.DM_UseSelectable = true;
-            this.chkIsForbid.Location = new System.Drawing.Point(465, 64);
+            this.chkIsForbid.Location = new System.Drawing.Point(465, 204);
             this.chkIsForbid.Name = "chkIsForbid";
             this.chkIsForbid.Size = new System.Drawing.Size(72, 17);
             this.chkIsForbid.TabIndex = 15;
@@ -587,10 +589,73 @@ namespace LB.MI
             this.skinLabel2.Text = "元/KG";
             this.skinLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // skinLabel3
+            // 
+            this.skinLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel3.BorderColor = System.Drawing.Color.White;
+            this.skinLabel3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel3.Location = new System.Drawing.Point(15, 97);
+            this.skinLabel3.Name = "skinLabel3";
+            this.skinLabel3.Size = new System.Drawing.Size(83, 32);
+            this.skinLabel3.TabIndex = 18;
+            this.skinLabel3.Text = "K3编码";
+            this.skinLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtK3ItemCode
+            // 
+            this.txtK3ItemCode.BackColor = System.Drawing.Color.Transparent;
+            this.txtK3ItemCode.CanBeEmpty = false;
+            this.txtK3ItemCode.Caption = "规格";
+            this.txtK3ItemCode.DownBack = null;
+            this.txtK3ItemCode.Icon = null;
+            this.txtK3ItemCode.IconIsButton = false;
+            this.txtK3ItemCode.IconMouseState = CCWin.SkinClass.ControlState.Normal;
+            this.txtK3ItemCode.IsPasswordChat = '\0';
+            this.txtK3ItemCode.IsSystemPasswordChar = false;
+            this.txtK3ItemCode.Lines = new string[0];
+            this.txtK3ItemCode.Location = new System.Drawing.Point(115, 97);
+            this.txtK3ItemCode.Margin = new System.Windows.Forms.Padding(0);
+            this.txtK3ItemCode.MaxLength = 32767;
+            this.txtK3ItemCode.MinimumSize = new System.Drawing.Size(28, 28);
+            this.txtK3ItemCode.MouseBack = null;
+            this.txtK3ItemCode.MouseState = CCWin.SkinClass.ControlState.Normal;
+            this.txtK3ItemCode.Multiline = false;
+            this.txtK3ItemCode.Name = "txtK3ItemCode";
+            this.txtK3ItemCode.NormlBack = null;
+            this.txtK3ItemCode.Padding = new System.Windows.Forms.Padding(5);
+            this.txtK3ItemCode.ReadOnly = false;
+            this.txtK3ItemCode.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtK3ItemCode.Size = new System.Drawing.Size(422, 28);
+            // 
+            // 
+            // 
+            this.txtK3ItemCode.SkinTxt.AccessibleName = "";
+            this.txtK3ItemCode.SkinTxt.AutoCompleteCustomSource.AddRange(new string[] {
+            "asdfasdf",
+            "adsfasdf"});
+            this.txtK3ItemCode.SkinTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.txtK3ItemCode.SkinTxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtK3ItemCode.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtK3ItemCode.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtK3ItemCode.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
+            this.txtK3ItemCode.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.txtK3ItemCode.SkinTxt.Name = "BaseText";
+            this.txtK3ItemCode.SkinTxt.Size = new System.Drawing.Size(412, 18);
+            this.txtK3ItemCode.SkinTxt.TabIndex = 0;
+            this.txtK3ItemCode.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.txtK3ItemCode.SkinTxt.WaterText = "";
+            this.txtK3ItemCode.TabIndex = 9;
+            this.txtK3ItemCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtK3ItemCode.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.txtK3ItemCode.WaterText = "";
+            this.txtK3ItemCode.WordWrap = true;
+            // 
             // frmItemBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtK3ItemCode);
+            this.Controls.Add(this.skinLabel3);
             this.Controls.Add(this.skinLabel2);
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.skinLabel1);
@@ -645,5 +710,7 @@ namespace LB.MI
         private CCWin.SkinControl.SkinLabel skinLabel1;
         private LBSkinTextBox txtPrice;
         private CCWin.SkinControl.SkinLabel skinLabel2;
+        private CCWin.SkinControl.SkinLabel skinLabel3;
+        private LBSkinTextBox txtK3ItemCode;
     }
 }

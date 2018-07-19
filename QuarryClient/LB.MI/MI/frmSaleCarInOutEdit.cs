@@ -692,5 +692,55 @@ namespace LB.MI.MI
                 lblBillStatus.ForeColor = Color.DarkGreen;
             }
         }
+
+        private void btnSynToK3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string strCarNum = _drBillInfo["CarNum"].ToString();
+                string strItemName = this.txtItemID.TextBox.Text.ToString();
+                string strCustomerName = this.txtCustomerID.TextBox.Text.ToString();
+
+                long lCarID = 0;
+                long lItemID = 0;
+                long lCustomerID = 0;
+                lCarID = LBConverter.ToInt64(this.txtCarID.TextBox.SelectedItemID);
+                using (DataTable dtItem = ExecuteSQL.CallView(203, "ItemID", "ItemName='" + strItemName + "'", ""))
+                {
+                    if (dtItem.Rows.Count > 0)
+                    {
+                        lItemID = LBConverter.ToInt64(dtItem.Rows[0]["ItemID"]);
+                    }
+                }
+
+                using (DataTable dtCustomer = ExecuteSQL.CallView(112, "CustomerID,TotalReceivedAmount,SalesReceivedAmount", "CustomerName='" + strCustomerName + "'", ""))
+                {
+                    if (dtCustomer.Rows.Count > 0)
+                    {
+                        lCustomerID = LBConverter.ToInt64(dtCustomer.Rows[0]["CustomerID"]);
+
+                    }
+                }
+
+                decimal decTotalWeight;
+                decimal decCarTare;
+                decimal decSuttleWeight;
+                decimal decPrice;
+                decimal decAmount;
+                decimal.TryParse(this.txtTotalWeight.Text, out decTotalWeight);
+                decimal.TryParse(this.txtCarTare.Text, out decCarTare);
+                decimal.TryParse(this.txtSuttleWeight.Text, out decSuttleWeight);
+                decimal.TryParse(this.txtPrice.Text, out decPrice);
+                decimal.TryParse(this.txtAmount.Text, out decAmount);
+
+                K3Cloud.InsertK3Bill(this.txtSaleCarOutBillCode.Text, this.txtSaleCarInBillCode.Text,
+                    this.lblBillDateOut.Text, strCustomerName, strCarNum, strItemName, decTotalWeight,
+                    decCarTare, decSuttleWeight, decPrice, decAmount);
+            }
+            catch (Exception ex)
+            {
+                LB.WinFunction.LBCommonHelper.DealWithErrorMessage(ex);
+            }
+        }
     }
 }

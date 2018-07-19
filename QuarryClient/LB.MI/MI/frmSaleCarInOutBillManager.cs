@@ -667,5 +667,34 @@ namespace LB.MI.MI
                 LB.WinFunction.LBCommonHelper.DealWithErrorMessage(ex);
             }
         }
+
+        private void btnSynToK3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataView dvSource = this.grdMain.DataSource as DataView;
+                foreach (DataRowView drv in dvSource)
+                {
+                    long lSaleCarInBillID = LBConverter.ToInt64(drv["SaleCarInBillID"]);
+                    long lSaleCarOutBillID = LBConverter.ToInt64(drv["SaleCarOutBillID"]);
+                    bool IsCancel = LBConverter.ToBoolean(drv["IsCancel"]);
+                    string strSaleCarOutBillCode = drv["SaleCarOutBillCode"].ToString().TrimEnd();
+                    string strSaleCarInBillCode = drv["SaleCarInBillCode"].ToString().TrimEnd();
+                    string strCarNum = drv["CarNum"].ToString().TrimEnd();
+                    decimal CarTare = LBConverter.ToDecimal( drv["CarTare"].ToString().TrimEnd());
+                    decimal TotalWeight = LBConverter.ToDecimal(drv["TotalWeight"].ToString().TrimEnd());
+                    decimal SuttleWeight = LBConverter.ToDecimal(drv["SuttleWeight"].ToString().TrimEnd());
+                    decimal Price = LBConverter.ToDecimal(drv["Price"].ToString().TrimEnd());
+                    decimal Amount = LBConverter.ToDecimal(drv["Amount"].ToString().TrimEnd());
+                    K3Cloud.InsertK3Bill(strSaleCarOutBillCode, strSaleCarInBillCode,
+                       "", "", strCarNum, "", TotalWeight,
+                       CarTare, SuttleWeight, Price, Amount);
+                }
+            }
+            catch (Exception ex)
+            {
+                LB.WinFunction.LBCommonHelper.DealWithErrorMessage(ex);
+            }
+}
     }
 }

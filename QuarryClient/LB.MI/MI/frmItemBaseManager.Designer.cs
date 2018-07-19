@@ -41,19 +41,9 @@
             this.btnReflush = new LB.Controls.LBToolStripButton(this.components);
             this.btnTableSetting = new LB.Controls.LBToolStripButton(this.components);
             this.btnSort = new LB.Controls.LBToolStripButton(this.components);
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnReturn = new LB.Controls.LBToolStripButton(this.components);
             this.grdMain = new LB.Controls.LBDataGridView(this.components);
-            this.LBSelected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemMode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UOMName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ChangeBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ChangeTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSearch = new LB.Controls.LBSkinButton(this.components);
             this.txtFilter = new LB.Controls.LBTextBox.CoolTextBox();
@@ -63,7 +53,18 @@
             this.btnAddItemType = new LB.Controls.LBToolStripButton(this.components);
             this.btnDeleteItemType = new LB.Controls.LBToolStripButton(this.components);
             this.btnEditItemType = new LB.Controls.LBToolStripButton(this.components);
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.LBSelected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.K3ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemMode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UOMName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChangeBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChangeTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).BeginInit();
             this.panel1.SuspendLayout();
@@ -153,6 +154,11 @@
             this.btnSort.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSort.Visible = false;
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 40);
+            // 
             // btnReturn
             // 
             this.btnReturn.Image = ((System.Drawing.Image)(resources.GetObject("btnReturn.Image")));
@@ -186,6 +192,7 @@
             this.grdMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.LBSelected,
             this.ItemCode,
+            this.K3ItemCode,
             this.ItemName,
             this.ItemPrice,
             this.ItemMode,
@@ -226,89 +233,6 @@
             this.grdMain.TitleBack = null;
             this.grdMain.TitleBackColorBegin = System.Drawing.Color.White;
             this.grdMain.TitleBackColorEnd = System.Drawing.SystemColors.ActiveBorder;
-            // 
-            // LBSelected
-            // 
-            this.LBSelected.HeaderText = "选择";
-            this.LBSelected.Name = "LBSelected";
-            this.LBSelected.Width = 60;
-            // 
-            // ItemCode
-            // 
-            this.ItemCode.DataPropertyName = "ItemCode";
-            this.ItemCode.HeaderText = "货物编码";
-            this.ItemCode.Name = "ItemCode";
-            this.ItemCode.ReadOnly = true;
-            // 
-            // ItemName
-            // 
-            this.ItemName.DataPropertyName = "ItemName";
-            this.ItemName.HeaderText = "货物名称";
-            this.ItemName.Name = "ItemName";
-            this.ItemName.ReadOnly = true;
-            // 
-            // ItemPrice
-            // 
-            this.ItemPrice.DataPropertyName = "ItemPrice";
-            this.ItemPrice.HeaderText = "默认单价";
-            this.ItemPrice.Name = "ItemPrice";
-            this.ItemPrice.ReadOnly = true;
-            // 
-            // ItemMode
-            // 
-            this.ItemMode.DataPropertyName = "ItemMode";
-            this.ItemMode.HeaderText = "规格";
-            this.ItemMode.Name = "ItemMode";
-            this.ItemMode.ReadOnly = true;
-            this.ItemMode.Width = 50;
-            // 
-            // ItemRate
-            // 
-            this.ItemRate.DataPropertyName = "ItemRate";
-            this.ItemRate.HeaderText = "比重(kg/m3)";
-            this.ItemRate.Name = "ItemRate";
-            this.ItemRate.ReadOnly = true;
-            this.ItemRate.Width = 50;
-            // 
-            // UOMName
-            // 
-            this.UOMName.DataPropertyName = "UOMName";
-            this.UOMName.HeaderText = "单位";
-            this.UOMName.Name = "UOMName";
-            this.UOMName.ReadOnly = true;
-            this.UOMName.Width = 50;
-            // 
-            // ItemTypeName
-            // 
-            this.ItemTypeName.DataPropertyName = "ItemTypeName";
-            this.ItemTypeName.HeaderText = "物料分类";
-            this.ItemTypeName.Name = "ItemTypeName";
-            this.ItemTypeName.ReadOnly = true;
-            this.ItemTypeName.Width = 60;
-            // 
-            // ItemID
-            // 
-            this.ItemID.DataPropertyName = "ItemID";
-            this.ItemID.HeaderText = "流水号";
-            this.ItemID.Name = "ItemID";
-            this.ItemID.ReadOnly = true;
-            this.ItemID.Visible = false;
-            // 
-            // ChangeBy
-            // 
-            this.ChangeBy.DataPropertyName = "ChangeBy";
-            this.ChangeBy.HeaderText = "修改人";
-            this.ChangeBy.Name = "ChangeBy";
-            this.ChangeBy.ReadOnly = true;
-            this.ChangeBy.Width = 80;
-            // 
-            // ChangeTime
-            // 
-            this.ChangeTime.DataPropertyName = "ChangeTime";
-            this.ChangeTime.HeaderText = "修改时间";
-            this.ChangeTime.Name = "ChangeTime";
-            this.ChangeTime.ReadOnly = true;
-            this.ChangeTime.Width = 80;
             // 
             // panel1
             // 
@@ -426,10 +350,95 @@
             this.btnEditItemType.Text = "修改分类";
             this.btnEditItemType.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // toolStripSeparator1
+            // LBSelected
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 40);
+            this.LBSelected.HeaderText = "选择";
+            this.LBSelected.Name = "LBSelected";
+            this.LBSelected.Width = 60;
+            // 
+            // ItemCode
+            // 
+            this.ItemCode.DataPropertyName = "ItemCode";
+            this.ItemCode.HeaderText = "货物编码";
+            this.ItemCode.Name = "ItemCode";
+            this.ItemCode.ReadOnly = true;
+            // 
+            // K3ItemCode
+            // 
+            this.K3ItemCode.DataPropertyName = "K3ItemCode";
+            this.K3ItemCode.HeaderText = "K3编码";
+            this.K3ItemCode.Name = "K3ItemCode";
+            this.K3ItemCode.ReadOnly = true;
+            // 
+            // ItemName
+            // 
+            this.ItemName.DataPropertyName = "ItemName";
+            this.ItemName.HeaderText = "货物名称";
+            this.ItemName.Name = "ItemName";
+            this.ItemName.ReadOnly = true;
+            // 
+            // ItemPrice
+            // 
+            this.ItemPrice.DataPropertyName = "ItemPrice";
+            this.ItemPrice.HeaderText = "默认单价";
+            this.ItemPrice.Name = "ItemPrice";
+            this.ItemPrice.ReadOnly = true;
+            // 
+            // ItemMode
+            // 
+            this.ItemMode.DataPropertyName = "ItemMode";
+            this.ItemMode.HeaderText = "规格";
+            this.ItemMode.Name = "ItemMode";
+            this.ItemMode.ReadOnly = true;
+            this.ItemMode.Width = 50;
+            // 
+            // ItemRate
+            // 
+            this.ItemRate.DataPropertyName = "ItemRate";
+            this.ItemRate.HeaderText = "比重(kg/m3)";
+            this.ItemRate.Name = "ItemRate";
+            this.ItemRate.ReadOnly = true;
+            this.ItemRate.Width = 50;
+            // 
+            // UOMName
+            // 
+            this.UOMName.DataPropertyName = "UOMName";
+            this.UOMName.HeaderText = "单位";
+            this.UOMName.Name = "UOMName";
+            this.UOMName.ReadOnly = true;
+            this.UOMName.Width = 50;
+            // 
+            // ItemTypeName
+            // 
+            this.ItemTypeName.DataPropertyName = "ItemTypeName";
+            this.ItemTypeName.HeaderText = "物料分类";
+            this.ItemTypeName.Name = "ItemTypeName";
+            this.ItemTypeName.ReadOnly = true;
+            this.ItemTypeName.Width = 60;
+            // 
+            // ItemID
+            // 
+            this.ItemID.DataPropertyName = "ItemID";
+            this.ItemID.HeaderText = "流水号";
+            this.ItemID.Name = "ItemID";
+            this.ItemID.ReadOnly = true;
+            this.ItemID.Visible = false;
+            // 
+            // ChangeBy
+            // 
+            this.ChangeBy.DataPropertyName = "ChangeBy";
+            this.ChangeBy.HeaderText = "修改人";
+            this.ChangeBy.Name = "ChangeBy";
+            this.ChangeBy.ReadOnly = true;
+            this.ChangeBy.Width = 80;
+            // 
+            // ChangeTime
+            // 
+            this.ChangeTime.DataPropertyName = "ChangeTime";
+            this.ChangeTime.HeaderText = "修改时间";
+            this.ChangeTime.Name = "ChangeTime";
+            this.ChangeTime.ReadOnly = true;
+            this.ChangeTime.Width = 80;
             // 
             // frmItemBaseManager
             // 
@@ -475,8 +484,10 @@
         private Controls.LBToolStripButton btnDeleteItemType;
         private Controls.LBToolStripButton btnEditItemType;
         private Controls.LBToolStripButton btnReturn;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn LBSelected;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn K3ItemCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemMode;
@@ -486,6 +497,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChangeBy;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChangeTime;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

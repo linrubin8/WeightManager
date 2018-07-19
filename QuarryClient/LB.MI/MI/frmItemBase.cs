@@ -65,6 +65,7 @@ namespace LB.MI
                 parmCol.Add(new LBParameter("ItemID", enLBDbType.Int64, mlItemID));
                 parmCol.Add(new LBParameter("ItemTypeID", enLBDbType.Int64, this.txtItemTypeID.SelectedValue));
                 parmCol.Add(new LBParameter("ItemCode", enLBDbType.String, this.txtItemCode.Text));
+                parmCol.Add(new LBParameter("K3ItemCode", enLBDbType.String, this.txtK3ItemCode.Text));
                 parmCol.Add(new LBParameter("ItemName", enLBDbType.String, this.txtItemName.Text));
                 parmCol.Add(new LBParameter("ItemMode", enLBDbType.String, this.txtItemMode.Text));
                 parmCol.Add(new LBParameter("ItemRate", enLBDbType.Decimal, LBConverter.ToDecimal(this.txtItemRate.Text)));
@@ -128,6 +129,7 @@ namespace LB.MI
                 {
                     DataRow dr = dtBackUp.Rows[0];
                     string strItemCode = LBConverter.ToString(dr["ItemCode"]);
+                    string strK3ItemCode = LBConverter.ToString(dr["K3ItemCode"]);
                     string strItemName = LBConverter.ToString(dr["ItemName"]);
                     string strItemMode = LBConverter.ToString(dr["ItemMode"]);
                     decimal dItemRate = LBConverter.ToDecimal(dr["ItemRate"]);
@@ -137,6 +139,7 @@ namespace LB.MI
                     bool bIsForbid = LBConverter.ToBoolean(dr["IsForbid"]);
                     decimal decprice = LBConverter.ToDecimal(dr["ItemPrice"]);
 
+                    this.txtK3ItemCode.Text = strK3ItemCode;
                     this.txtItemCode.Text = strItemCode;
                     this.txtItemName.Text = strItemName;
                     this.txtItemMode.Text = strItemMode;
