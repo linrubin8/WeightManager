@@ -1,5 +1,6 @@
 ﻿using LB.Common;
 using LB.Common.Camera;
+using LB.Common.Synchronous;
 using LB.Controls;
 using LB.Controls.Report;
 using LB.Login;
@@ -3020,6 +3021,21 @@ namespace LB.MainForm
         {
             frmSaleCarInOutBillSynchornous frm = new MI.MI.frmSaleCarInOutBillSynchornous();
             LBShowForm.ShowDialog(frm);
+        }
+
+        private void btnSynPrice_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //SynchronousPrice.SynchronousClientFromServer();
+                //LB.WinFunction.LBCommonHelper.ShowCommonMessage("同步成功！");
+                frmWaistProcess frm = new frmWaistProcess();
+                LBShowForm.ShowDialog(frm);
+            }
+            catch (Exception ex)
+            {
+                LB.WinFunction.LBCommonHelper.DealWithErrorMessage(ex);
+            }
         }
     }
 

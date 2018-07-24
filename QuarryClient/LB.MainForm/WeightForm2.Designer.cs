@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WeightForm2));
             this.pnlRight = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -160,6 +160,7 @@
             this.tsmPreviewInBill = new LB.Controls.LBToolStripMenuItem(this.components);
             this.tsmPreviewOutBill = new LB.Controls.LBToolStripMenuItem(this.components);
             this.tsmChangeBill = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.btnSynPrice = new LB.Controls.LBToolStripMenuItem(this.components);
             this.panel2.SuspendLayout();
             this.pnlBill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).BeginInit();
@@ -204,14 +205,14 @@
             // 
             // grdMain
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(246)))), ((int)(((byte)(253)))));
-            this.grdMain.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(246)))), ((int)(((byte)(253)))));
+            this.grdMain.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.grdMain.BackgroundColor = System.Drawing.SystemColors.Window;
             this.grdMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.grdMain.ColumnFont = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.grdMain.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("新宋体", 13F, System.Drawing.FontStyle.Bold);
-            this.grdMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("新宋体", 13F, System.Drawing.FontStyle.Bold);
+            this.grdMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.grdMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SaleCarInBillCode,
@@ -231,14 +232,14 @@
             this.SaleCarInBillID,
             this.BillStatus});
             this.grdMain.ColumnSelectForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("新宋体", 13F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(188)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdMain.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("新宋体", 13F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(188)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdMain.DefaultCellStyle = dataGridViewCellStyle15;
             this.grdMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdMain.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.grdMain.EnableHeadersVisualStyles = false;
@@ -253,12 +254,12 @@
             this.grdMain.Name = "grdMain";
             this.grdMain.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.grdMain.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.grdMain.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.grdMain.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.grdMain.RowTemplate.Height = 23;
             this.grdMain.Size = new System.Drawing.Size(882, 108);
             this.grdMain.TabIndex = 3;
@@ -303,9 +304,9 @@
             // ItemName
             // 
             this.ItemName.DataPropertyName = "ItemName";
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.ItemName.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Format = "d";
+            dataGridViewCellStyle11.NullValue = null;
+            this.ItemName.DefaultCellStyle = dataGridViewCellStyle11;
             this.ItemName.HeaderText = "货物名称";
             this.ItemName.Name = "ItemName";
             this.ItemName.ReadOnly = true;
@@ -315,9 +316,9 @@
             // TotalWeight
             // 
             this.TotalWeight.DataPropertyName = "TotalWeight";
-            dataGridViewCellStyle4.Format = "N0";
-            dataGridViewCellStyle4.NullValue = null;
-            this.TotalWeight.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Format = "N0";
+            dataGridViewCellStyle12.NullValue = null;
+            this.TotalWeight.DefaultCellStyle = dataGridViewCellStyle12;
             this.TotalWeight.HeaderText = "毛重";
             this.TotalWeight.Name = "TotalWeight";
             this.TotalWeight.ReadOnly = true;
@@ -326,9 +327,9 @@
             // CarTare
             // 
             this.CarTare.DataPropertyName = "CarTare";
-            dataGridViewCellStyle5.Format = "N0";
-            dataGridViewCellStyle5.NullValue = null;
-            this.CarTare.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.Format = "N0";
+            dataGridViewCellStyle13.NullValue = null;
+            this.CarTare.DefaultCellStyle = dataGridViewCellStyle13;
             this.CarTare.HeaderText = "皮重";
             this.CarTare.Name = "CarTare";
             this.CarTare.ReadOnly = true;
@@ -337,9 +338,9 @@
             // SuttleWeightT
             // 
             this.SuttleWeightT.DataPropertyName = "SuttleWeightT";
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.SuttleWeightT.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle14.Format = "N2";
+            dataGridViewCellStyle14.NullValue = null;
+            this.SuttleWeightT.DefaultCellStyle = dataGridViewCellStyle14;
             this.SuttleWeightT.HeaderText = "净重(吨)";
             this.SuttleWeightT.Name = "SuttleWeightT";
             this.SuttleWeightT.ReadOnly = true;
@@ -1484,7 +1485,8 @@
             this.btnSynchornousData.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnSynCustomer,
             this.btnSynCar,
-            this.btnSynSalesBill});
+            this.btnSynSalesBill,
+            this.btnSynPrice});
             this.btnSynchornousData.Image = ((System.Drawing.Image)(resources.GetObject("btnSynchornousData.Image")));
             this.btnSynchornousData.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSynchornousData.LBPermissionCode = "";
@@ -1593,6 +1595,14 @@
             this.tsmChangeBill.Size = new System.Drawing.Size(144, 26);
             this.tsmChangeBill.Text = "变更单据";
             this.tsmChangeBill.Click += new System.EventHandler(this.tsmChangeBill_Click);
+            // 
+            // btnSynPrice
+            // 
+            this.btnSynPrice.LBPermissionCode = "ItemPrice_Synchornous";
+            this.btnSynPrice.Name = "btnSynPrice";
+            this.btnSynPrice.Size = new System.Drawing.Size(152, 22);
+            this.btnSynPrice.Text = "价格表同步";
+            this.btnSynPrice.Click += new System.EventHandler(this.btnSynPrice_Click);
             // 
             // WeightForm2
             // 
@@ -1747,5 +1757,6 @@
         private Controls.LBToolStripMenuItem btnSynCustomer;
         private Controls.LBToolStripMenuItem btnSynCar;
         private Controls.LBToolStripMenuItem btnSynSalesBill;
+        private Controls.LBToolStripMenuItem btnSynPrice;
     }
 }

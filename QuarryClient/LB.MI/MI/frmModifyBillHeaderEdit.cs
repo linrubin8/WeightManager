@@ -372,6 +372,7 @@ namespace LB.MI.MI
                 this.txtCreateBy.Text = "";
                 this.txtCreateTime.Text = "";
                 this.txtModifyBillCode.Text = "";
+                this.txtBillDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
 
                 ((DataView)this.grdMain.DataSource).Table.AcceptChanges();
                 foreach (DataGridViewRow dgvr in this.grdMain.Rows)
@@ -379,6 +380,7 @@ namespace LB.MI.MI
                     ((DataRowView)dgvr.DataBoundItem).Row.SetAdded();
                     ((DataRowView)dgvr.DataBoundItem)["ModifyBillDetailID"] = DBNull.Value;
                 }
+                ResetFieldControlStatus(null);
             }
             catch (Exception ex)
             {

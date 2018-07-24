@@ -2,7 +2,7 @@
 <!DOCTYPE dotfuscatorMap SYSTEM "http://www.preemptive.com/dotfuscator/dtd/dotfuscatorMap_v1.2.dtd">
 <dotfuscatorMap version="1.1">
     <header>
-        <timestamp>2018-07-24T23:37:17</timestamp>
+        <timestamp>2018-06-19T22:20:15</timestamp>
         <product version="4.9.6005.29054" user="firefly " serial="124576-PRO-AC6AB7C5-7A50E312-F0BBEBCC-829D98D7">Dotfuscator Professional Edition</product>
     </header>
     <mapping>
@@ -5313,11 +5313,11 @@
                         <name>DBItemBase_Delete</name>
                     </method>
                     <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Float, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal)</signature>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Float, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal)</signature>
                         <name>DBItemBase_Insert</name>
                     </method>
                     <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Float, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal)</signature>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Float, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal)</signature>
                         <name>DBItemBase_Update</name>
                     </method>
                     <method>
@@ -5620,11 +5620,11 @@
                         <name>GetMaxCode</name>
                     </method>
                     <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Float, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal)</signature>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Float, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal)</signature>
                         <name>Insert</name>
                     </method>
                     <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Float, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal)</signature>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Float, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal)</signature>
                         <name>Update</name>
                     </method>
                 </methodlist>

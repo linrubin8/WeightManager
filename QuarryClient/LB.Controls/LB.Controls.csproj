@@ -106,6 +106,12 @@
       <DependentUpon>CtlFieldHeaderPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\DataGridViewStyleSetting.cs" />
+    <Compile Include="Controls\frmWaistProcess.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\frmWaistProcess.Designer.cs">
+      <DependentUpon>frmWaistProcess.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Helper\LBEnum.cs" />
     <Compile Include="Controls\Helper\LBShowForm.cs" />
     <Compile Include="Controls\ILBTextBox.cs" />
@@ -316,6 +322,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Controls\CtlFieldHeaderPanel.resx">
       <DependentUpon>CtlFieldHeaderPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmWaistProcess.resx">
+      <DependentUpon>frmWaistProcess.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\LBBillForm.resx">
       <DependentUpon>LBBillForm.cs</DependentUpon>

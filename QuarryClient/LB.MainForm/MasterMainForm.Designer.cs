@@ -89,6 +89,7 @@ namespace LB.MainForm
             this.lblLoginTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblConnectStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnSynPrice = new LB.Controls.LBToolStripMenuItem(this.components);
             this.toolStrip1.SuspendLayout();
             this.tcMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -455,7 +456,8 @@ namespace LB.MainForm
             this.btnSynchornousData.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnSynCustomer,
             this.btnSynCar,
-            this.btnSynSalesBill});
+            this.btnSynSalesBill,
+            this.btnSynPrice});
             this.btnSynchornousData.Image = ((System.Drawing.Image)(resources.GetObject("btnSynchornousData.Image")));
             this.btnSynchornousData.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSynchornousData.LBPermissionCode = "";
@@ -623,6 +625,14 @@ namespace LB.MainForm
             this.lblConnectStatus.Size = new System.Drawing.Size(42, 22);
             this.lblConnectStatus.Text = "正常";
             // 
+            // btnSynPrice
+            // 
+            this.btnSynPrice.LBPermissionCode = "ItemPrice_Synchornous";
+            this.btnSynPrice.Name = "btnSynPrice";
+            this.btnSynPrice.Size = new System.Drawing.Size(152, 22);
+            this.btnSynPrice.Text = "价格表同步";
+            this.btnSynPrice.Click += new System.EventHandler(this.btnSynPrice_Click);
+            // 
             // MasterMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -703,6 +713,7 @@ namespace LB.MainForm
         private LBToolStripMenuItem btnSynCustomer;
         private LBToolStripMenuItem btnSynCar;
         private LBToolStripMenuItem btnSynSalesBill;
+        private LBToolStripMenuItem btnSynPrice;
     }
 }
 

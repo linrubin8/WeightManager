@@ -2,7 +2,7 @@
 <!DOCTYPE dotfuscatorMap SYSTEM "http://www.preemptive.com/dotfuscator/dtd/dotfuscatorMap_v1.2.dtd">
 <dotfuscatorMap version="1.1">
     <header>
-        <timestamp>2018-07-24T23:36:21</timestamp>
+        <timestamp>2018-07-19T20:27:01</timestamp>
         <product version="4.9.6005.29054" user="firefly " serial="124576-PRO-AC6AB7C5-7A50E312-F0BBEBCC-829D98D7">Dotfuscator Professional Edition</product>
     </header>
     <mapping>
@@ -38368,42 +38368,6 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Common.Synchronous.SynchronousPrice</name>
-                <methodlist>
-                    <method>
-                        <signature>void()</signature>
-                        <name>.ctor</name>
-                    </method>
-                    <method>
-                        <signature>bool(string, int64&amp;)</signature>
-                        <name>GetCarIDFromClient</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>bool(string, int64&amp;)</signature>
-                        <name>GetCustomerIDFromClient</name>
-                        <newname>c</newname>
-                    </method>
-                    <method>
-                        <signature>bool(string, int64&amp;)</signature>
-                        <name>GetItemIDFromClient</name>
-                        <newname>b</newname>
-                    </method>
-                    <method>
-                        <signature>void()</signature>
-                        <name>SynchronousClientFromServer</name>
-                    </method>
-                    <method>
-                        <signature>void(string&amp;, bool&amp;)</signature>
-                        <name>SynchronousClientFromServer</name>
-                        <newname>a</newname>
-                    </method>
-                </methodlist>
-                <fieldlist />
-                <propertylist />
-                <eventlist />
-            </type>
-            <type>
                 <name>LB.Common.SysConfigValue</name>
                 <methodlist>
                     <method>
@@ -40376,67 +40340,6 @@
                     <field>
                         <signature>int32</signature>
                         <name>SpanColumn</name>
-                    </field>
-                </fieldlist>
-                <propertylist />
-                <eventlist />
-            </type>
-            <type>
-                <name>LB.Controls.frmWaistProcess</name>
-                <methodlist>
-                    <method>
-                        <signature>void()</signature>
-                        <name>.ctor</name>
-                    </method>
-                    <method>
-                        <signature>void()</signature>
-                        <name>Action</name>
-                        <newname>b</newname>
-                    </method>
-                    <method>
-                        <signature>void(bool)</signature>
-                        <name>Dispose</name>
-                    </method>
-                    <method>
-                        <signature>void()</signature>
-                        <name>InitializeComponent</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void(System.EventArgs)</signature>
-                        <name>OnLoad</name>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>Timer_Tick</name>
-                        <newname>a</newname>
-                    </method>
-                </methodlist>
-                <fieldlist>
-                    <field>
-                        <signature>bool</signature>
-                        <name>bolFinish</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>System.ComponentModel.IContainer</signature>
-                        <name>components</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.Label</signature>
-                        <name>label1</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>string</signature>
-                        <name>strMsg</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.Timer</signature>
-                        <name>timer</name>
-                        <newname>a</newname>
                     </field>
                 </fieldlist>
                 <propertylist />
@@ -50160,178 +50063,173 @@
                     </method>
                     <method>
                         <signature>void()</signature>
-                        <name>&lt;TestServerConnectStatus&gt;b__47_0</name>
+                        <name>&lt;TestServerConnectStatus&gt;b__46_0</name>
                         <newname>c</newname>
                     </method>
                     <method>
                         <signature>void()</signature>
-                        <name>&lt;TestServerConnectStatus&gt;b__47_1</name>
+                        <name>&lt;TestServerConnectStatus&gt;b__46_1</name>
                         <newname>b</newname>
                     </method>
                     <method>
                         <signature>void()</signature>
-                        <name>&lt;TestServerConnectStatus&gt;b__47_2</name>
+                        <name>&lt;TestServerConnectStatus&gt;b__46_2</name>
                         <newname>a</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>btnAddCar_Click</name>
-                        <newname>t</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnAddChangePriceBill_Click</name>
-                        <newname>k</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnAddCustomer_Click</name>
-                        <newname>q</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnBankManager_Click</name>
-                        <newname>i</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnCameraDevice_Click</name>
-                        <newname>n</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnCancel_Click</name>
-                        <newname>ai</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnCarQuery_Click</name>
                         <newname>s</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnCarWeightManager_Click</name>
-                        <newname>m</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnChangePassword_Click</name>
-                        <newname>ah</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnChangePriceManager_Click</name>
-                        <newname>r</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnChargeManager_Click</name>
-                        <newname>h</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnCustomerManager_Click</name>
-                        <newname>u</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnDBBackUp_Click</name>
-                        <newname>z</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnDbSysConfig_Click</name>
-                        <newname>ac</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnDescriptionManager_Click</name>
-                        <newname>p</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnExportConfigSQL_Click</name>
-                        <newname>ae</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnItemBaseManager_Click</name>
-                        <newname>w</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnLogManager_Click</name>
-                        <newname>aa</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnPermissionConfig_Click</name>
-                        <newname>ad</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnReportManager_Click</name>
+                        <name>btnAddChangePriceBill_Click</name>
                         <newname>j</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnRPReceive_Click</name>
-                        <newname>y</newname>
+                        <name>btnAddCustomer_Click</name>
+                        <newname>p</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnRPReceiveList_Click</name>
-                        <newname>x</newname>
+                        <name>btnBankManager_Click</name>
+                        <newname>h</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSaleInOutManager_Click</name>
+                        <name>btnCameraDevice_Click</name>
+                        <newname>m</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnCancel_Click</name>
+                        <newname>ah</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnCarQuery_Click</name>
+                        <newname>r</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnCarWeightManager_Click</name>
                         <newname>l</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSQLBuilder_Click</name>
-                        <newname>ab</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSynCar_Click</name>
-                        <newname>g</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSynCustomer_Click</name>
-                        <newname>f</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSynPrice_Click</name>
-                        <newname>d</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSynSalesBill_Click</name>
-                        <newname>e</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnUOMManager_Click</name>
-                        <newname>v</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnUserManager_Click</name>
+                        <name>btnChangePassword_Click</name>
                         <newname>ag</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnViewConfig_Click</name>
+                        <name>btnChangePriceManager_Click</name>
+                        <newname>q</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnChargeManager_Click</name>
+                        <newname>g</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnCustomerManager_Click</name>
+                        <newname>t</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnDBBackUp_Click</name>
+                        <newname>y</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnDbSysConfig_Click</name>
+                        <newname>ab</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnDescriptionManager_Click</name>
+                        <newname>o</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnExportConfigSQL_Click</name>
+                        <newname>ad</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnItemBaseManager_Click</name>
+                        <newname>v</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnLogManager_Click</name>
+                        <newname>z</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnPermissionConfig_Click</name>
+                        <newname>ac</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnReportManager_Click</name>
+                        <newname>i</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnRPReceive_Click</name>
+                        <newname>x</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnRPReceiveList_Click</name>
+                        <newname>w</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSaleInOutManager_Click</name>
+                        <newname>k</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSQLBuilder_Click</name>
+                        <newname>aa</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSynCar_Click</name>
+                        <newname>f</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSynCustomer_Click</name>
+                        <newname>e</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSynSalesBill_Click</name>
+                        <newname>d</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnUOMManager_Click</name>
+                        <newname>u</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnUserManager_Click</name>
                         <newname>af</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
+                        <name>btnViewConfig_Click</name>
+                        <newname>ae</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
                         <name>btnWeightDevice_Click</name>
-                        <newname>o</newname>
+                        <newname>n</newname>
                     </method>
                     <method>
                         <signature>void(bool)</signature>
@@ -50569,11 +50467,6 @@
                         <signature>LB.Controls.LBToolStripMenuItem</signature>
                         <name>btnSynCustomer</name>
                         <newname>ac</newname>
-                    </field>
-                    <field>
-                        <signature>LB.Controls.LBToolStripMenuItem</signature>
-                        <name>btnSynPrice</name>
-                        <newname>af</newname>
                     </field>
                     <field>
                         <signature>LB.Controls.LBToolStripMenuItem</signature>
@@ -52224,177 +52117,172 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>BillCodeTextBox_TextChanged</name>
-                        <newname>az</newname>
+                        <newname>ay</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>btnAddCar_Click</name>
-                        <newname>l</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnAddChangePriceBill_Click</name>
-                        <newname>g</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnAddCustomer_Click</name>
-                        <newname>n</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnAddReceive_Click</name>
-                        <newname>q</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnCameraConfig_Click</name>
-                        <newname>w</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnCancel_Click</name>
-                        <newname>y</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnCarQuery_Click</name>
                         <newname>k</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnChangePassword_Click</name>
-                        <newname>z</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnChangePriceManager_Click</name>
+                        <name>btnAddChangePriceBill_Click</name>
                         <newname>f</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnClearValue_Click</name>
-                        <newname>al</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnCustomerManager_Click</name>
+                        <name>btnAddCustomer_Click</name>
                         <newname>m</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnDeviceConfig_Click</name>
-                        <newname>x</newname>
+                        <name>btnAddReceive_Click</name>
+                        <newname>p</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnFilter_Click</name>
-                        <newname>at</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnInfraredDeviceConfig_Click</name>
+                        <name>btnCameraConfig_Click</name>
                         <newname>v</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnItemBaseManager_Click</name>
-                        <newname>h</newname>
+                        <name>btnCancel_Click</name>
+                        <newname>x</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnLoadTareWeight_Click</name>
-                        <newname>am</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnPurchase_Click</name>
-                        <newname>ai</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnReadTareWeight_Click</name>
-                        <newname>ar</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnRePrintInReport_Click</name>
-                        <newname>ao</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnRePrintOutReport_Click</name>
-                        <newname>ap</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnReturnSaleBill_Click</name>
-                        <newname>aj</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnRPReceive_Click</name>
+                        <name>btnCarQuery_Click</name>
                         <newname>j</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnRPReceiveList_Click</name>
-                        <newname>i</newname>
+                        <name>btnChangePassword_Click</name>
+                        <newname>y</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSaveAndPrint_Click</name>
-                        <newname>aq</newname>
+                        <name>btnChangePriceManager_Click</name>
+                        <newname>e</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSaveTareWeight_Click</name>
-                        <newname>an</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSynCar_Click</name>
-                        <newname>d</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSynCustomer_Click</name>
-                        <newname>c</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSynPrice_Click</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSynSalesBill_Click</name>
-                        <newname>b</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnTotalWeight_Click</name>
-                        <newname>as</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnViewSalesBill_Click</name>
+                        <name>btnClearValue_Click</name>
                         <newname>ak</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnWeightReportSet_Click</name>
+                        <name>btnCustomerManager_Click</name>
+                        <newname>l</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnDeviceConfig_Click</name>
+                        <newname>w</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnFilter_Click</name>
+                        <newname>as</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnInfraredDeviceConfig_Click</name>
                         <newname>u</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnWeightReportSetIn_Click</name>
+                        <name>btnItemBaseManager_Click</name>
+                        <newname>g</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnLoadTareWeight_Click</name>
+                        <newname>al</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnPurchase_Click</name>
+                        <newname>ah</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnReadTareWeight_Click</name>
+                        <newname>aq</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnRePrintInReport_Click</name>
+                        <newname>an</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnRePrintOutReport_Click</name>
+                        <newname>ao</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnReturnSaleBill_Click</name>
+                        <newname>ai</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnRPReceive_Click</name>
+                        <newname>i</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnRPReceiveList_Click</name>
+                        <newname>h</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSaveAndPrint_Click</name>
+                        <newname>ap</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSaveTareWeight_Click</name>
+                        <newname>am</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSynCar_Click</name>
+                        <newname>c</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSynCustomer_Click</name>
+                        <newname>b</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSynSalesBill_Click</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnTotalWeight_Click</name>
+                        <newname>ar</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnViewSalesBill_Click</name>
+                        <newname>aj</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnWeightReportSet_Click</name>
                         <newname>t</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnWeightReportSetOut_Click</name>
+                        <name>btnWeightReportSetIn_Click</name>
                         <newname>s</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnWeightReportSetOut_Click</name>
+                        <newname>r</newname>
                     </method>
                     <method>
                         <signature>void()</signature>
@@ -52404,7 +52292,7 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>CarTextBox_TextChanged</name>
-                        <newname>ay</newname>
+                        <newname>ax</newname>
                     </method>
                     <method>
                         <signature>void()</signature>
@@ -52414,17 +52302,17 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>CoolText_GotFocus</name>
-                        <newname>a0</newname>
+                        <newname>az</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>CoolText_LostFocus</name>
-                        <newname>a1</newname>
+                        <newname>a0</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>CustomerTextBox_TextChanged</name>
-                        <newname>aw</newname>
+                        <newname>av</newname>
                     </method>
                     <method>
                         <signature>void(bool)</signature>
@@ -52483,12 +52371,12 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>ItemTextBox_TextChanged</name>
-                        <newname>ax</newname>
+                        <newname>aw</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>lblWeight_Click</name>
-                        <newname>e</newname>
+                        <newname>d</newname>
                     </method>
                     <method>
                         <signature>void(LB.Common.Args.LBSerialDataArgs)</signature>
@@ -52503,17 +52391,17 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>MAutoComputeTimer_Tick</name>
-                        <newname>r</newname>
+                        <newname>q</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>MTimer_Tick</name>
-                        <newname>a2</newname>
+                        <newname>a1</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>MTimerCamera_Tick</name>
-                        <newname>p</newname>
+                        <newname>o</newname>
                     </method>
                     <method>
                         <signature>void(System.ComponentModel.CancelEventArgs)</signature>
@@ -52551,7 +52439,7 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>ReportHelper_LBFinishReport</name>
-                        <newname>ah</newname>
+                        <newname>ag</newname>
                     </method>
                     <method>
                         <signature>void(object)</signature>
@@ -52591,47 +52479,47 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>tsmCancel_Click</name>
-                        <newname>ag</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>tsmChangeBill_Click</name>
-                        <newname>aa</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>tsmPreviewInBill_Click</name>
-                        <newname>ad</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>tsmPreviewOutBill_Click</name>
-                        <newname>ac</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>tsmRePrintInBill_Click</name>
                         <newname>af</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>tsmRePrintOutBill_Click</name>
-                        <newname>ae</newname>
+                        <name>tsmChangeBill_Click</name>
+                        <newname>z</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>tsmUnCancel_Click</name>
+                        <name>tsmPreviewInBill_Click</name>
+                        <newname>ac</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>tsmPreviewOutBill_Click</name>
                         <newname>ab</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
+                        <name>tsmRePrintInBill_Click</name>
+                        <newname>ae</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>tsmRePrintOutBill_Click</name>
+                        <newname>ad</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>tsmUnCancel_Click</name>
+                        <newname>aa</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
                         <name>TxtCalAmount_TextChanged</name>
-                        <newname>av</newname>
+                        <newname>au</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>TxtCalculateType_TextChanged</name>
-                        <newname>au</newname>
+                        <newname>at</newname>
                     </method>
                     <method>
                         <signature>void(object, System.Windows.Forms.MouseEventArgs)</signature>
@@ -52666,7 +52554,7 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>ViewCamera_MouseDoubleClick</name>
-                        <newname>o</newname>
+                        <newname>n</newname>
                     </method>
                     <method>
                         <signature>void(LB.Common.enWeightType)</signature>
@@ -52868,11 +52756,6 @@
                         <signature>LB.Controls.LBToolStripMenuItem</signature>
                         <name>btnSynCustomer</name>
                         <newname>x</newname>
-                    </field>
-                    <field>
-                        <signature>LB.Controls.LBToolStripMenuItem</signature>
-                        <name>btnSynPrice</name>
-                        <newname>aa</newname>
                     </field>
                     <field>
                         <signature>LB.Controls.LBToolStripMenuItem</signature>
@@ -69846,15 +69729,15 @@
     <statistics>
         <statisticline>
             <description>Total Classes</description>
-            <statistic>1192</statistic>
+            <statistic>1190</statistic>
         </statisticline>
         <statisticline>
             <description>Total Methods</description>
-            <statistic>3715</statistic>
+            <statistic>3701</statistic>
         </statisticline>
         <statisticline>
             <description>Total Fields</description>
-            <statistic>9401</statistic>
+            <statistic>9394</statistic>
         </statisticline>
         <statisticline>
             <description>Total Properties</description>
@@ -69871,13 +69754,13 @@
         </statisticline>
         <statisticline>
             <description>Total Methods Renamed</description>
-            <statistic>1081</statistic>
-            <statistic>29.10%</statistic>
+            <statistic>1072</statistic>
+            <statistic>28.97%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Fields Renamed</description>
-            <statistic>2524</statistic>
-            <statistic>26.85%</statistic>
+            <statistic>2517</statistic>
+            <statistic>26.79%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Properties Renamed</description>
@@ -69891,23 +69774,23 @@
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'a'</description>
-            <statistic>433</statistic>
-            <statistic>11.66%</statistic>
+            <statistic>429</statistic>
+            <statistic>11.59%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'b'</description>
-            <statistic>175</statistic>
-            <statistic>4.71%</statistic>
+            <statistic>173</statistic>
+            <statistic>4.67%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'c'</description>
-            <statistic>117</statistic>
-            <statistic>3.15%</statistic>
+            <statistic>116</statistic>
+            <statistic>3.13%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'd'</description>
             <statistic>74</statistic>
-            <statistic>1.99%</statistic>
+            <statistic>2.00%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'e'</description>
@@ -69917,7 +69800,7 @@
         <statisticline>
             <description>Methods Renamed to 'f'</description>
             <statistic>38</statistic>
-            <statistic>1.02%</statistic>
+            <statistic>1.03%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'g'</description>

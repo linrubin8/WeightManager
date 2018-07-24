@@ -13,13 +13,13 @@
       <publishTime>03/24/2018 14:55:08</publishTime>
     </File>
     <File Include="bin/LB.Service.Weight.dll">
-      <publishTime>05/11/2018 22:41:02</publishTime>
+      <publishTime>07/24/2018 12:56:11</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>10/02/2013 12:10:10</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/11/2018 22:41:02</publishTime>
+      <publishTime>07/24/2018 12:56:11</publishTime>
     </File>
     <File Include="WeightService.asmx">
       <publishTime>04/16/2018 23:09:12</publishTime>

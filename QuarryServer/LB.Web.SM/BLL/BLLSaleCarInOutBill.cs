@@ -171,12 +171,15 @@ namespace LB.Web.SM.BLL
             }*/
 
             //先校验该车辆是否存在入磅但是没有出磅的记录，如果存在则报错
-            using (DataTable dtExistsNotOut = _DALSaleCarInOutBill.ExistsNotOut(args, CarID))
+            if (SaleCarInBillIDFromClient.Value == null || SaleCarInBillIDFromClient.Value == 0)
             {
-                if (dtExistsNotOut.Rows.Count > 0)
+                using (DataTable dtExistsNotOut = _DALSaleCarInOutBill.ExistsNotOut(args, CarID))
                 {
-                    DateTime dtBillDate = Convert.ToDateTime(dtExistsNotOut.Rows[0]["BillDate"]);
-                    throw new Exception("该车辆在[" + dtBillDate.ToString("yyyy-MM-dd HH:mm") + "入场，但是没有出场记录，本次操作失败！");
+                    if (dtExistsNotOut.Rows.Count > 0)
+                    {
+                        DateTime dtBillDate = Convert.ToDateTime(dtExistsNotOut.Rows[0]["BillDate"]);
+                        throw new Exception("该车辆在[" + dtBillDate.ToString("yyyy-MM-dd HH:mm") + "入场，但是没有出场记录，本次操作失败！");
+                    }
                 }
             }
 

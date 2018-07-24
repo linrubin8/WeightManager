@@ -107,6 +107,7 @@
     <Compile Include="Common\Synchronous\SynchronousItem.cs" />
     <Compile Include="Common\Synchronous\SynchronousCar.cs" />
     <Compile Include="Common\Synchronous\SynchronousCustomer.cs" />
+    <Compile Include="Common\Synchronous\SynchronousPrice.cs" />
     <Compile Include="Common\SysConfigValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

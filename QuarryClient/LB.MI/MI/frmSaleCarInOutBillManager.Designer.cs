@@ -1789,6 +1789,7 @@
             this.btnSynToK3.Name = "btnSynToK3";
             this.btnSynToK3.Size = new System.Drawing.Size(51, 37);
             this.btnSynToK3.Text = "同步K3";
+            this.btnSynToK3.Visible = false;
             this.btnSynToK3.Click += new System.EventHandler(this.btnSynToK3_Click);
             // 
             // frmSaleCarInOutBillManager

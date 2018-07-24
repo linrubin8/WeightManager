@@ -107,6 +107,7 @@ namespace LB.Web.SM.BLL
 
             _DALModifyBillHeader.Insert(args, out ModifyBillHeaderID, BillTypeID, CustomerID, 
                 ModifyBillCode, BillDate, EffectDate, Description);
+           
         }
 
         public void Update(FactoryArgs args, t_BigID ModifyBillHeaderID, t_BigID CustomerID, 

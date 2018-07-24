@@ -486,6 +486,20 @@ namespace LB.MainForm
             frmSaleCarInOutBillSynchornous frm = new MI.MI.frmSaleCarInOutBillSynchornous();
             LBShowForm.ShowMainPage(frm);
         }
+
+
+        private void btnSynPrice_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmWaistProcess frm = new frmWaistProcess();
+                LBShowForm.ShowDialog(frm);
+            }
+            catch (Exception ex)
+            {
+                LB.WinFunction.LBCommonHelper.DealWithErrorMessage(ex);
+            }
+        }
         #endregion -- 按钮事件  --
 
         #region -- ShowMainPage --
@@ -675,5 +689,6 @@ namespace LB.MainForm
         {
 
         }
+
     }
 }
