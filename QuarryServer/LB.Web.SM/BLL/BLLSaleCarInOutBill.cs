@@ -1,4 +1,5 @@
-﻿using LB.Web.Base.Base.Helper;
+﻿using Kingdee.BOS.WebApi.Client;
+using LB.Web.Base.Base.Helper;
 using LB.Web.Base.Factory;
 using LB.Web.Base.Helper;
 using LB.Web.Contants.DBType;
@@ -7,6 +8,7 @@ using LB.Web.IBLL.IBLL.IBLLMI;
 using LB.Web.IBLL.IBLL.IBLLRP;
 using LB.Web.IBLL.IBLL.IBLLSM;
 using LB.Web.SM.DAL;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -24,6 +26,7 @@ namespace LB.Web.SM.BLL
         private IBLLDbErrorLog _IBLLDbErrorLog = null;
         private IBLLDbSysConfig _IBLLDbSysConfig = null;
         private IBLLModifyBillHeader _IBLLModifyBillHeader = null;
+        private IBLLDbSystemConst _IBLLDbSystemConst = null;
         public BLLSaleCarInOutBill()
         {
             _DALSaleCarInOutBill = new DAL.DALSaleCarInOutBill();
@@ -32,6 +35,7 @@ namespace LB.Web.SM.BLL
             _IBLLDbErrorLog = (IBLLDbErrorLog)DBHelper.GetFunctionMethod(20000);
             _IBLLDbSysConfig=(IBLLDbSysConfig)DBHelper.GetFunctionMethod(14300);
             _IBLLModifyBillHeader = (IBLLModifyBillHeader)DBHelper.GetFunctionMethod(13608);
+            _IBLLDbSystemConst= (IBLLDbSystemConst)DBHelper.GetFunctionMethod(20100);
         }
 
         public override string GetFunctionName(int iFunctionType)
@@ -132,6 +136,10 @@ namespace LB.Web.SM.BLL
 
                 case 14123:
                     strFunName = "SynchronousFinish";
+                    break;
+
+                case 14124:
+                    strFunName = "SynchronousBillToK3";
                     break;
             }
             return strFunName;
@@ -1905,6 +1913,489 @@ namespace LB.Web.SM.BLL
         public void SynchronousFinish(FactoryArgs args, t_BigID SaleCarInBillID)
         {
             _DALSaleCarInOutBill.SynchronousFinish(args, SaleCarInBillID);
+        }
+
+        #endregion
+
+        #region -- 将订单同步至K3系统 --
+
+        public void SynchronousBillToK3(FactoryArgs args, t_BigID SaleCarInBillID,t_ID SynType,
+            out t_Bool OutBillIsSuccess, out t_String OutBillSynError,
+            out t_Bool ReceiveIsSuccess, out t_String ReceiveSynError)
+        {
+            OutBillIsSuccess = new t_Bool(0);
+            OutBillSynError = new t_String();
+            ReceiveIsSuccess = new t_Bool(0);
+            ReceiveSynError = new t_String();
+            try
+            {
+                
+                string strPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "K3Cloud.ini");
+                IniClass iniClass = new IniClass(strPath);
+                string strFactoryID = iniClass.ReadValue("K3Config", "FactoryID");//企业标识
+                string strUrl = iniClass.ReadValue("K3Config", "cloudurl");
+                string strid = iniClass.ReadValue("K3Config", "id");
+                string strname = iniClass.ReadValue("K3Config", "name");
+                string strpassword = iniClass.ReadValue("K3Config", "password");
+                string stricid = iniClass.ReadValue("K3Config", "icid");
+
+                DataTable dtBill = _DALSaleCarInOutBill.GetGetSaleCarInOutBill(args, SaleCarInBillID);
+                K3CloudApiClient client = new K3CloudApiClient(strUrl);//测试地址
+                var ret = client.ValidateLogin(strid, strname, strpassword, LBConverter.ToInt32(stricid));
+                var result = JObject.Parse(ret)["LoginResultType"].Value<int>();
+                // 登陆成功
+                if (result == 1)
+                {
+                    foreach (DataRow dr in dtBill.Rows)
+                    {
+                        string strSalesInBillCode = dr["SaleCarInBillCode"].ToString().TrimEnd();
+                        string strSalesOutBillCode = dr["SaleCarOutBillCode"].ToString().TrimEnd();
+                        string strInBillDate = dr["BillDateIn"].ToString().TrimEnd();
+                        string strOutBillDate = dr["BillDateOut"].ToString().TrimEnd();
+                        string strCustomerName = dr["CustomerName"].ToString().TrimEnd();
+                        string strCarNum = dr["CarNum"].ToString().TrimEnd();
+                        string strOutCreateBy = dr["OutCreateBy"].ToString().TrimEnd();
+                        decimal decPrice = LBConverter.ToDecimal(dr["Price"]);
+                        decimal decAmount = LBConverter.ToDecimal(dr["Amount"]);
+                        decimal decSuttleWeight = LBConverter.ToDecimal(dr["SuttleWeight"]);
+                        decimal decTotalWeight = LBConverter.ToDecimal(dr["TotalWeight"]);
+                        decimal decCarTare = LBConverter.ToDecimal(dr["CarTare"]);
+                        decimal decMaterialPrice = LBConverter.ToDecimal(dr["MaterialPrice"]);
+                        decimal decFarePrice = LBConverter.ToDecimal(dr["FarePrice"]);
+                        decimal decTaxPrice = LBConverter.ToDecimal(dr["TaxPrice"]);
+                        decimal decBrokerPrice = LBConverter.ToDecimal(dr["BrokerPrice"]);
+                        bool IsSynchronousToK3OutBill = LBConverter.ToBoolean(dr["IsSynchronousToK3OutBill"]);
+                        bool IsSynchronousToK3Receive = LBConverter.ToBoolean(dr["IsSynchronousToK3Receive"]);
+
+                        if (strCustomerName.Contains("中转"))//中转暂不处理
+                        {
+                            continue;
+                        }
+
+                        int iReceiveType = LBConverter.ToInt32(dr["ReceiveType"]);
+                        t_String ReceiveTypeName = new t_String();
+                        _IBLLDbSystemConst.GetConstValue(args, new t_String("ReceiveType"), new t_String(iReceiveType.ToString()), out ReceiveTypeName);
+                        string strK3ItemCode = dr["K3ItemCode"].ToString().TrimEnd();
+                        string strK3CustomerCode = dr["K3CustomerCode"].ToString().TrimEnd();
+
+                        if (SynType.Value == 1)//出库单
+                        {
+                            if (!IsSynchronousToK3OutBill)//如果未同步出库单，则执行出库单同步
+                            {
+                                #region  -- 销售出库Json文本 --
+                                string strJson = @"
+{
+    \""Creator\"": \""\"",
+    \""NeedUpDateFields\"": [],
+    \""NeedReturnFields\"": [],
+    \""IsDeleteEntry\"": \""True\"",
+    \""SubSystemId\"": \""\"",
+    \""IsVerifyBaseDataField\"": \""false\"",
+    \""IsEntryBatchFill\"": \""True\"",
+    \""Model\"": {
+        \""FID\"": \""0\"",
+        \""FBillTypeID\"": {
+            \""FNumber\"": \""XSCKD01_SYS\""
+        },
+        \""FBillNo\"": \""" + strSalesOutBillCode + @"\"",
+        \""FDate\"": \""" + strOutBillDate + @"\"",
+        \""FSaleOrgId\"": {
+            \""FNumber\"": \"""+ strFactoryID + @"\""
+        },
+        \""FCustomerID\"": {
+            \""FNumber\"": \""" + strK3CustomerCode + @"\""
+        },
+        \""FStockOrgId\"": {
+            \""FNumber\"": \""" + strFactoryID + @"\""
+        },
+
+        \""FNote\"": \""\"",
+        \""FReceiverID\"": {
+            \""FNumber\"": \""" + strK3CustomerCode + @"\""
+        },
+        \""FSettleID\"": {
+            \""FNumber\"": \""" + strK3CustomerCode + @"\""
+        },
+
+        \""FPayerID\"": {
+            \""FNumber\"": \""" + strK3CustomerCode + @"\""
+        },
+        \""FOwnerTypeIdHead\"": \""BD_OwnerOrg\"",
+        \""FOwnerIdHead\"": {
+            \""FNumber\"": \""\""
+        },
+        \""FCDateOffsetValue\"": 0,
+        \""FIsTotalServiceOrCost\"": false,
+        \""F_PAEZ_CCNum\"": \""" + strSalesInBillCode + @"\"",
+        \""F_PAEZ_RCNum\"": \""" + strSalesOutBillCode + @"\"",
+        \""SubHeadEntity\"": {
+            \""FSettleCurrID\"": {
+                \""FNumber\"": \""PRE001\""
+            },
+            \""FThirdBillNo\"": \""\"",
+            \""FThirdBillId\"": \""\"",
+            \""FThirdSrcType\"": \"" \"",
+            \""FSettleOrgID\"": {
+                \""FNumber\"": \""" + strFactoryID + @"\""
+            },
+            \""FSettleTypeID\"": {
+                \""FNumber\"": \""\""
+            },
+            \""FReceiptConditionID\"": {
+                \""FNumber\"": \""\""
+            },
+            \""FPriceListId\"": {
+                \""FNumber\"": \""\""
+            },
+            \""FDiscountListId\"": {
+                \""FNumber\"": \""\""
+            },
+            \""FIsIncludedTax\"": true,
+            \""FLocalCurrID\"": {
+                \""FNumber\"": \""PRE001\""
+            },
+            \""FExchangeTypeID\"": {
+                \""FNumber\"": \""HLTX01_SYS\""
+            },
+            \""FExchangeRate\"": 1,
+            \""FIsPriceExcludeTax\"": true
+        },
+        \""FEntity\"": [
+            {
+                \""FENTRYID\"": 0,
+                \""FRowType\"": \""Standard\"",
+                \""FMaterialID\"": {
+                    \""FNumber\"": \""" + strK3ItemCode + @"\""
+                },
+                \""FUnitID\"": {
+                    \""FNumber\"": \""ton\""
+                },
+                \""FInventoryQty\"": 0,
+                \""FParentMatId\"": {
+                    \""FNumber\"": \""\""
+                },
+                \""FRealQty\"": 100,
+                \""FDisPriceQty\"": 0,
+                \""FPrice\"": " + decPrice * 1000 + @",
+                \""FTaxPrice\"": 0,
+                \""FIsFree\"": false,
+                \""FBomID\"": {
+                    \""FNumber\"": \""\""
+                },
+                \""FProduceDate\"": null,
+                \""FOwnerTypeID\"": \""BD_OwnerOrg\"",
+                \""FOwnerID\"": {
+                    \""FNumber\"": \""" + strFactoryID + @"\""
+                },
+                \""FEntryTaxRate\"": 17,
+                \""FAuxUnitQty\"": 0,
+                \""FExtAuxUnitId\"": {
+                    \""FNumber\"": \""\""
+                },
+                \""FExtAuxUnitQty\"": 0,
+                \""FStockID\"": {
+                    \""FNumber\"": \""10-CK100\""
+                },
+                \""FStockStatusID\"": {
+                    \""FNumber\"": \""KCZT01_SYS\""
+                },
+                \""FQualifyType\"": \""\"",
+                \""FMtoNo\"": null,
+                \""FEntrynote\"": null,
+                \""FDiscountRate\"": 0,
+                \""FActQty\"": 0,
+                \""FSalUnitID\"": {
+                    \""FNumber\"": \""ton\""
+                },
+                \""FSALUNITQTY\"": " + decSuttleWeight + @",
+                \""FSALBASEQTY\"": " + decSuttleWeight + @",
+                \""FPRICEBASEQTY\"": " + decSuttleWeight + @",
+                \""FOUTCONTROL\"": false,
+                \""FARNOTJOINQTY\"": " + decSuttleWeight + @",
+                \""FQmEntryID\"": 0,
+                \""FConvertEntryID\"": 0,
+                \""FSOEntryId\"": 0,
+                \""F_PAEZ_CheHao\"": \""" + strCarNum + @"\"",
+                \""F_PAEZ_Qty\"": " + decTotalWeight + @",
+                \""FThirdEntryId\"": null,
+                \""F_PAEZ_PiZhong\"": " + decCarTare + @",
+                \""F_PAEZ_JingZHong\"": " + decSuttleWeight + @",
+                \""FBeforeDisPriceQty\"": 0,
+                \""F_PAEZ_JingZhongDun\"": " + (decSuttleWeight / 1000) + @",
+                \""F_PAEZ_ShiJie\"": " + decMaterialPrice + @",
+                \""F_PAEZ_YunFei\"": " + decFarePrice + @",
+                \""FSignQty\"": 0,
+                \""F_PAEZ_ShuiJin\"": " + decTaxPrice + @",
+                \""F_PAEZ_YongJin\"": " + decBrokerPrice + @",
+                \""F_PAEZ_SKFangShi\"": \""" + ReceiveTypeName.Value + @"\""
+            }
+        ]
+    }
+}";
+                                #endregion  -- Json文本 --
+
+                                strJson = strJson.Replace("\r\n", "").Replace("\r", "").Replace("\t", "").Replace("\n", "").Replace("\\", "");
+
+                                SynBillToK3(args, SaleCarInBillID, client, "SAL_OUTSTOCK", strJson, ref OutBillIsSuccess, ref OutBillSynError);
+                                if (OutBillIsSuccess.Value == 1)
+                                {
+                                    OutBillSynError.Value = "";
+                                }
+                            }
+                            else
+                            {
+                                OutBillIsSuccess.Value = 1;
+                                OutBillSynError.Value = "该单已同步过！";
+                            }
+                        }
+                        else if (SynType.Value == 0)//应收单
+                        {
+                            if (!IsSynchronousToK3Receive)//如果未同步应收单，则执行应收单同步
+                            {
+                                #region  -- 应收Json文本 --
+                                string strJson = @"
+                    {
+                    	\""Creator\"": \""\"",
+                    	\""NeedUpDateFields\"": [],
+                    	\""NeedReturnFields\"": [],
+                    	\""IsDeleteEntry\"": \""True\"",
+                    	\""SubSystemId\"": \""\"",
+                    	\""IsVerifyBaseDataField\"": \""false\"",
+                    	\""IsEntryBatchFill\"": \""True\"",
+                    	\""Model\"": {
+                    		\""FID\"": \""0\"",
+                    		\""FBillTypeID\"": {
+                    			\""FNumber\"": \""YSD01_SYS\""
+
+                            },
+                    		\""FBillNo\"": \""" + strSalesOutBillCode + @"\"",
+                    		\""FDATE\"": \""" + strOutBillDate + @"\"",
+                    		\""FISINIT\"": false,
+                    		\""FENDDATE_H\"": \""" + strOutBillDate + @"\"",
+                    		\""FCUSTOMERID\"": {
+                    			\""FNumber\"": \""" + strK3CustomerCode + @"\""
+
+                            },
+                    		\""FCURRENCYID\"": {
+                    			\""FNumber\"": \""PRE001\""
+
+                            },
+                    		\""FISPRICEEXCLUDETAX\"": true,
+                    		\""FSETTLEORGID\"": {
+                    			\""FNumber\"": \""" + strFactoryID + @"\""
+                    		},
+                    		\""FPAYORGID\"": {
+                    			\""FNumber\"": \""" + strFactoryID + @"\""
+                    		},
+                    		\""FSALEORGID\"": {
+                    			\""FNumber\"": \""" + strFactoryID + @"\""
+                    		},
+                    		\""FISTAX\"": true,
+                    		\""FCancelStatus\"": \""A\"",
+                    		\""FBUSINESSTYPE\"": \""BZ\"",
+                    		\""FMatchMethodID\"": 0,
+                    		\""FAR_Remark\"": \""\"",
+                            \""F_PAEZ_CCNum\"": \""" + strSalesOutBillCode + @"\"",
+                            \""F_PAEZ_RCNum\"": \""" + strSalesInBillCode + @"\"",
+                    		\""FSetAccountType\"": \""1\"",
+                    		\""FISHookMatch\"": false,
+                    		\""FISINVOICEARLIER\"": false,
+                    		\""F_PAEZ_SiBangYuan\"": \""" + strOutCreateBy + @"\"",
+                    		\""FsubHeadSuppiler\"": {
+                    			\""FORDERID\"": {
+                    				\""FNumber\"": \""" + strK3CustomerCode + @"\""
+                    			},
+                    			\""FTRANSFERID\"": {
+                    				\""FNumber\"": \""" + strK3CustomerCode + @"\""
+                    			},
+                    			\""FChargeId\"": {
+                    				\""FNumber\"": \""" + strK3CustomerCode + @"\""
+                    			}
+                    		},
+                    		\""FsubHeadFinc\"": {
+                    			\""FACCNTTIMEJUDGETIME\"": \""" + strOutBillDate + @"\"",
+                    			\""FSettleTypeID\"": {
+                    				\""FNumber\"": \""\""
+                    			},
+                    			\""FMAINBOOKSTDCURRID\"": {
+                    				\""FNumber\"": \""PRE001\""
+                    			},
+                    			\""FEXCHANGETYPE\"": {
+                    				\""FNumber\"": \""HLTX01_SYS\""
+                    			},
+                    			\""FExchangeRate\"": 1.0,
+                    			\""FTaxAmountFor\"": 0,
+                    			\""FNoTaxAmountFor\"":  " + decAmount + @"
+                    		},
+                    		\""FEntityDetail\"": [{
+                    			\""FEntryID\"": null,
+                    			\""FMATERIALID\"": {
+                    				\""FNumber\"": \""" + strK3ItemCode + @"\""
+                    			},
+                    			\""FMaterialDesc\"": \""\"",
+                    			\""FPRICEUNITID\"": {
+                    				\""FNumber\"": \""ton\""
+                    			},
+                    			\""FPriceQty\"": " + decSuttleWeight / 1000 + @",
+                    			\""FTaxPrice\"": " + decPrice * 1000 + @",
+                    			\""FPrice\"": " + decPrice * 1000 + @",
+                    			\""FTaxCombination\"": {
+                    				\""FNumber\"": \""\""
+                    			},
+                    			\""FEntryTaxRate\"": 0,
+                    			\""FEntryDiscountRate\"": 0.0,
+                    			\""FNoTaxAmountFor_D\"": " + decAmount + @",
+                    			\""FDISCOUNTAMOUNTFOR\"": 0.0,
+                    			\""FTAXAMOUNTFOR_D\"": 0,
+                    			\""FALLAMOUNTFOR_D\"": " + decAmount + @",
+                    			\""FDeliveryControl\"": false,
+                    			\""FMONUMBER\"": null,
+                    			\""FMOENTRYSEQ\"": 0,
+                    			\""FOPNO\"": null,
+                    			\""FSEQNUMBER\"": null,
+
+                    			\""FOPERNUMBER\"": 0,
+                    			\""FStockUnitId\"": {
+                    				\""FNumber\"": \""ton\""
+                    			},
+                    			\""FSRCROWID\"": 0,
+                    			\""FStockQty\"": " + decSuttleWeight / 1000 + @",
+                    			\""FIsFree\"": false,
+                    			\""FStockBaseQty\"": " + decSuttleWeight + @",
+                    			\""FSalUnitId\"": {
+                    				\""FNumber\"": \""ton\""
+                    			},
+                    			\""FSalQty\"": " + decSuttleWeight / 1000 + @",
+                    			\""FSalBaseQty\"": " + decSuttleWeight + @",
+                    			\""FPriceBaseDen\"": 1.0,
+                    			\""FSalBaseNum\"": 1.0,
+                    			\""FStockBaseNum\"": 1.0,
+                    			\""F_PAEZ_ShiJia\"": " + decMaterialPrice * 1000 + @",
+                    			\""F_PAEZ_YunFei\"": " + decFarePrice * 1000 + @",
+                    			\""F_PAEZ_ShuiFei\"": " + decTaxPrice * 1000 + @",
+                    			\""F_PAEZ_YongJin\"": " + decBrokerPrice * 1000 + @",		
+                    			\""F_PAEZ_MaoZhong\"": " + decTotalWeight + @",	
+                    			\""F_PAEZ_PiZhong\"": " + decCarTare + @",	
+                    			\""F_PAEZ_JingZHong\"": " + decSuttleWeight + @",	
+                    			\""F_PAEZ_JingZHongDun\"": " + (decSuttleWeight / 1000) + @",	
+                    			\""F_PAEZ_SKFangShi\"": \""" + ReceiveTypeName.Value + @"\"",	
+                    			\""F_PAEZ_CheHao\"": \""" + strCarNum + @"\"",		
+                    			\""F_PAEZ_PZShiJian\"": \""" + strInBillDate + @"\"",		
+                    			\""F_PAEZ_MZShiJian\"": \""" + strOutBillDate + @"\""
+                            
+                    			}],
+                    		\""FEntityPlan\"": [{
+                    			\""FEntryID\"": null,
+                    			\""FENDDATE\"": \""" + strOutBillDate + @"\"",
+                    			\""FPAYRATE\"": 100.0,
+                    			\""FPAYAMOUNTFOR\"":" + decAmount + @",
+                    			\""FORDERBILLNO\"": null,
+                    			\""FSALEORDERID_S\"": 0,
+                    			\""FRECEIVABLEENTRYID\"": 0,
+                    			\""FMATERIALSEQ\"": 0,
+                    			\""FMATERIALID_S\"": {
+                    				\""FNumber\"": \""\""
+                    			},
+                    			\""FWRITTENOFFAMOUNT\"": 0.0
+                    		}]
+                    	}
+                    }
+                    ";
+
+                                #endregion  -- Json文本 --
+
+                                strJson = strJson.Replace("\r\n", "").Replace("\r", "").Replace("\t", "").Replace("\n", "").Replace("\\", "");
+
+                                SynBillToK3(args, SaleCarInBillID, client, "AR_receivable", strJson, ref ReceiveIsSuccess, ref ReceiveSynError);
+                                if (ReceiveIsSuccess.Value == 1)
+                                {
+                                    ReceiveSynError.Value = "";
+                                }
+                            }
+                            else
+                            {
+                                ReceiveIsSuccess.Value = 1;
+                                ReceiveSynError.Value = "该单已同步过！";
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    throw new Exception("K3系统登录失败！");
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void SynBillToK3(FactoryArgs args,t_BigID SaleCarInBillID, K3CloudApiClient client, string FormID,string strJson,
+            ref t_Bool IsSuccess,ref t_String SynResult)
+        {
+            try
+            {
+                string strOut = "";
+                switch (FormID)
+                {
+                    case "SAL_OUTSTOCK":
+                        strOut = client.Save(FormID, strJson);
+                        break;
+
+                    case "AR_receivable":
+                        strOut = client.Save(FormID, strJson);
+                        break;
+                }
+
+                JObject jo = JObject.Parse(strOut);
+                if (jo["Result"] != null)
+                {
+                    string strResult = jo["Result"].ToString();
+                    JObject joResult = JObject.Parse(strResult);
+                    if (joResult["ResponseStatus"] != null)
+                    {
+                        string strResponseStatus = joResult["ResponseStatus"].ToString();
+                        JObject joResponseStatus = JObject.Parse(strResponseStatus);
+                        if (joResponseStatus["IsSuccess"] != null)
+                        {
+                            string strIsSuccess = joResponseStatus["IsSuccess"].ToString();
+                            if (strIsSuccess.ToLower().Equals("true"))
+                            {
+                                IsSuccess.Value = 1;
+                            }
+                            else
+                            {
+                                IsSuccess.Value = 0;
+                            }
+                        }
+                        if (IsSuccess.Value == 0 && joResponseStatus["Errors"] != null)
+                        {
+                            SynResult.Value = joResponseStatus["Errors"].ToString().TrimEnd();
+                            //_DALSaleCarInOutBill.SynchronousK3Error(args, SaleCarInBillID, new t_String(joResponseStatus["Errors"].ToString()));
+                        }
+                        if(IsSuccess.Value==1&&joResponseStatus["SuccessEntitys"] != null)
+                        {
+                            SynResult.Value = joResponseStatus["SuccessEntitys"].ToString().TrimEnd();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                SynResult.Value = ex.Message;
+            }
+
+            switch (FormID)
+            {
+                case "SAL_OUTSTOCK":
+                    _DALSaleCarInOutBill.SynchronousK3OutBillStatus(args, SaleCarInBillID, IsSuccess, SynResult);
+                    break;
+
+                case "AR_receivable":
+                    _DALSaleCarInOutBill.SynchronousK3ReceiveStatus(args, SaleCarInBillID, IsSuccess, SynResult);
+                    break;
+            }
         }
 
         #endregion

@@ -175,6 +175,10 @@ namespace LB.Common
                 string strOut = client.Save("SAL_OUTSTOCK", strJson);
                 //throw new Exception(strOut);
             }
+            else
+            {
+
+            }
         }
     }
 }

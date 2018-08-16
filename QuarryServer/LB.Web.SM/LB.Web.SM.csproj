@@ -31,6 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Kingdee.BOS.WebApi.Client, Version=6.2.321.9, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LB.Web.ServiceMonitor\bin\Debug\Kingdee.BOS.WebApi.Client.DLL</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LB.Web.ServiceMonitor\bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -42,6 +50,7 @@
     <Compile Include="BLL\BLLSaleCarReturnBill.cs" />
     <Compile Include="BLL\Factory\AssemblyStart.cs" />
     <Compile Include="BLL\Factory\SaleInTimer.cs" />
+    <Compile Include="BLL\IniClass.cs" />
     <Compile Include="DAL\DALModifyBillDetail.cs" />
     <Compile Include="DAL\DALModifyBillHeader.cs" />
     <Compile Include="DAL\DALSaleCarInOutBill.cs" />

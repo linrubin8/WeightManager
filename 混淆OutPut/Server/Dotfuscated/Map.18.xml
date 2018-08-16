@@ -2,7 +2,7 @@
 <!DOCTYPE dotfuscatorMap SYSTEM "http://www.preemptive.com/dotfuscator/dtd/dotfuscatorMap_v1.2.dtd">
 <dotfuscatorMap version="1.1">
     <header>
-        <timestamp>2018-08-16T09:50:31</timestamp>
+        <timestamp>2018-07-24T23:37:17</timestamp>
         <product version="4.9.6005.29054" user="firefly " serial="124576-PRO-AC6AB7C5-7A50E312-F0BBEBCC-829D98D7">Dotfuscator Professional Edition</product>
     </header>
     <mapping>
@@ -180,7 +180,7 @@
             </type>
             <type>
                 <name>LB.RMT.Base.RemotingHelper</name>
-                <newname>d</newname>
+                <newname>c</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -211,7 +211,7 @@
             <name>LB.Web.Base.dll</name>
             <type>
                 <name>&lt;PrivateImplementationDetails&gt;</name>
-                <newname>c</newname>
+                <newname>b</newname>
                 <methodlist>
                     <method>
                         <signature>unsigned int32(string)</signature>
@@ -4352,7 +4352,7 @@
             </type>
             <type>
                 <name>LB.Web.Encrypt.IniClass</name>
-                <newname>f</newname>
+                <newname>e</newname>
                 <methodlist>
                     <method>
                         <signature>void(string)</signature>
@@ -6547,7 +6547,7 @@
             </type>
             <type>
                 <name>LB.Web.Server.Program</name>
-                <newname>g</newname>
+                <newname>f</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -6646,7 +6646,7 @@
             <name>LB.Web.ServiceMonitor.exe</name>
             <type>
                 <name>LB.Web.Program</name>
-                <newname>e</newname>
+                <newname>d</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -7940,7 +7940,7 @@
             </type>
             <type>
                 <name>LB.Web.ServiceMonitor.MonitorHelper</name>
-                <newname>h</newname>
+                <newname>g</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -7968,7 +7968,7 @@
             </type>
             <type>
                 <name>LB.Web.ServiceMonitor.WebLinkHelper</name>
-                <newname>i</newname>
+                <newname>h</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -8277,17 +8277,8 @@
                         <name>SaveScreenImage</name>
                     </method>
                     <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, Kingdee.BOS.WebApi.Client.K3CloudApiClient, string, string, LB.Web.Contants.DBType.t_Bool&amp;, LB.Web.Contants.DBType.t_String&amp;)</signature>
-                        <name>SynBillToK3</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
                         <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_Table, LB.Web.Contants.DBType.t_Bool&amp;)</signature>
                         <name>SynchronousBillFromClient</name>
-                    </method>
-                    <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Bool&amp;, LB.Web.Contants.DBType.t_String&amp;, LB.Web.Contants.DBType.t_Bool&amp;, LB.Web.Contants.DBType.t_String&amp;)</signature>
-                        <name>SynchronousBillToK3</name>
                     </method>
                     <method>
                         <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
@@ -8344,11 +8335,6 @@
                         <newname>a</newname>
                     </field>
                     <field>
-                        <signature>LB.Web.IBLL.IBLL.IBLLDB.IBLLDbSystemConst</signature>
-                        <name>_IBLLDbSystemConst</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
                         <signature>LB.Web.IBLL.IBLL.IBLLSM.IBLLModifyBillHeader</signature>
                         <name>_IBLLModifyBillHeader</name>
                         <newname>a</newname>
@@ -8368,102 +8354,8 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass10_0</name>
-                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/a</newname>
-                <methodlist>
-                    <method>
-                        <signature>void()</signature>
-                        <name>.ctor</name>
-                    </method>
-                    <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs)</signature>
-                        <name>&lt;InsertInBill&gt;b__0</name>
-                        <newname>a</newname>
-                    </method>
-                </methodlist>
-                <fieldlist>
-                    <field>
-                        <signature>LB.Web.SM.BLL.BLLSaleCarInOutBill</signature>
-                        <name>&lt;&gt;4__this</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>LB.Web.Contants.DBType.t_DTSmall</signature>
-                        <name>BillDate_temp</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>LB.Web.Contants.DBType.t_ID</signature>
-                        <name>CalculateType</name>
-                        <newname>b</newname>
-                    </field>
-                    <field>
-                        <signature>LB.Web.Contants.DBType.t_BigID</signature>
-                        <name>CarID</name>
-                        <newname>b</newname>
-                    </field>
-                    <field>
-                        <signature>LB.Web.Contants.DBType.t_Float</signature>
-                        <name>CarTare</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>LB.Web.Contants.DBType.t_String</signature>
-                        <name>CreateBy</name>
-                        <newname>c</newname>
-                    </field>
-                    <field>
-                        <signature>LB.Web.Contants.DBType.t_BigID</signature>
-                        <name>CustomerID</name>
-                        <newname>d</newname>
-                    </field>
-                    <field>
-                        <signature>LB.Web.Contants.DBType.t_String</signature>
-                        <name>Description</name>
-                        <newname>b</newname>
-                    </field>
-                    <field>
-                        <signature>LB.Web.Contants.DBType.t_ID</signature>
-                        <name>InBillFrom</name>
-                        <newname>d</newname>
-                    </field>
-                    <field>
-                        <signature>LB.Web.Contants.DBType.t_BigID</signature>
-                        <name>ItemID</name>
-                        <newname>c</newname>
-                    </field>
-                    <field>
-                        <signature>LB.Web.Contants.DBType.t_ID</signature>
-                        <name>ReceiveType</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>LB.Web.Contants.DBType.t_ID</signature>
-                        <name>SaleBillType</name>
-                        <newname>c</newname>
-                    </field>
-                    <field>
-                        <signature>LB.Web.Contants.DBType.t_String</signature>
-                        <name>SaleCarInBillCode_temp</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>LB.Web.Contants.DBType.t_BigID</signature>
-                        <name>SaleCarInBillID_temp</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>LB.Web.Contants.DBType.t_BigID</signature>
-                        <name>SaleCarInBillIDFromClient</name>
-                        <newname>e</newname>
-                    </field>
-                </fieldlist>
-                <propertylist />
-                <eventlist />
-            </type>
-            <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass12_0</name>
-                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/k</newname>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass11_0</name>
+                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/d</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -8576,8 +8468,8 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass13_0</name>
-                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/j</newname>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass12_0</name>
+                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/k</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -8715,8 +8607,8 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass20_0</name>
-                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/c</newname>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass19_0</name>
+                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/h</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -8759,8 +8651,8 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass21_0</name>
-                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/b</newname>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass20_0</name>
+                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/c</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -8798,8 +8690,8 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass29_0</name>
-                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/h</newname>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass28_0</name>
+                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/g</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -8902,8 +8794,8 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass30_0</name>
-                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/e</newname>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass29_0</name>
+                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/f</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -8956,8 +8848,8 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass31_0</name>
-                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/d</newname>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass30_0</name>
+                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/i</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -9010,8 +8902,8 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass33_0</name>
-                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/i</newname>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass32_0</name>
+                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/a</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -9084,8 +8976,8 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass34_0</name>
-                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/g</newname>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass33_0</name>
+                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/j</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -9128,8 +9020,8 @@
                 <eventlist />
             </type>
             <type>
-                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass35_0</name>
-                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/f</newname>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass34_0</name>
+                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/e</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -9255,6 +9147,100 @@
                     <field>
                         <signature>LB.Web.Contants.DBType.t_Decimal</signature>
                         <name>TotalWeight</name>
+                        <newname>e</newname>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass9_0</name>
+                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/b</newname>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs)</signature>
+                        <name>&lt;InsertInBill&gt;b__0</name>
+                        <newname>a</newname>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>LB.Web.SM.BLL.BLLSaleCarInOutBill</signature>
+                        <name>&lt;&gt;4__this</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_DTSmall</signature>
+                        <name>BillDate_temp</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_ID</signature>
+                        <name>CalculateType</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_BigID</signature>
+                        <name>CarID</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Float</signature>
+                        <name>CarTare</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>CreateBy</name>
+                        <newname>c</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_BigID</signature>
+                        <name>CustomerID</name>
+                        <newname>d</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>Description</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_ID</signature>
+                        <name>InBillFrom</name>
+                        <newname>d</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_BigID</signature>
+                        <name>ItemID</name>
+                        <newname>c</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_ID</signature>
+                        <name>ReceiveType</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_ID</signature>
+                        <name>SaleBillType</name>
+                        <newname>c</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_String</signature>
+                        <name>SaleCarInBillCode_temp</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_BigID</signature>
+                        <name>SaleCarInBillID_temp</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_BigID</signature>
+                        <name>SaleCarInBillIDFromClient</name>
                         <newname>e</newname>
                     </field>
                 </fieldlist>
@@ -9487,43 +9473,6 @@
                     </method>
                 </methodlist>
                 <fieldlist />
-                <propertylist />
-                <eventlist />
-            </type>
-            <type>
-                <name>LB.Web.SM.BLL.IniClass</name>
-                <newname>b</newname>
-                <methodlist>
-                    <method>
-                        <signature>void(string)</signature>
-                        <name>.ctor</name>
-                    </method>
-                    <method>
-                        <signature>int32(string, string, string, System.Text.StringBuilder, int32, string)</signature>
-                        <name>GetPrivateProfileString</name>
-                    </method>
-                    <method>
-                        <signature>string(string, string)</signature>
-                        <name>ReadValue</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>int64(string, string, string, string)</signature>
-                        <name>WritePrivateProfileString</name>
-                    </method>
-                    <method>
-                        <signature>void(string, string, string)</signature>
-                        <name>WriteValue</name>
-                        <newname>a</newname>
-                    </method>
-                </methodlist>
-                <fieldlist>
-                    <field>
-                        <signature>string</signature>
-                        <name>sPath</name>
-                        <newname>a</newname>
-                    </field>
-                </fieldlist>
                 <propertylist />
                 <eventlist />
             </type>
@@ -9767,18 +9716,6 @@
                         <name>SynchronousFinish</name>
                     </method>
                     <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String)</signature>
-                        <name>SynchronousK3Error</name>
-                    </method>
-                    <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_String)</signature>
-                        <name>SynchronousK3OutBillStatus</name>
-                    </method>
-                    <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_String)</signature>
-                        <name>SynchronousK3ReceiveStatus</name>
-                    </method>
-                    <method>
                         <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
                         <name>UnApprove</name>
                     </method>
@@ -9876,15 +9813,15 @@
     <statistics>
         <statisticline>
             <description>Total Classes</description>
-            <statistic>191</statistic>
+            <statistic>190</statistic>
         </statisticline>
         <statisticline>
             <description>Total Methods</description>
-            <statistic>1056</statistic>
+            <statistic>1046</statistic>
         </statisticline>
         <statisticline>
             <description>Total Fields</description>
-            <statistic>709</statistic>
+            <statistic>707</statistic>
         </statisticline>
         <statisticline>
             <description>Total Properties</description>
@@ -9896,18 +9833,18 @@
         </statisticline>
         <statisticline>
             <description>Total Classes Renamed</description>
-            <statistic>36</statistic>
-            <statistic>18.85%</statistic>
+            <statistic>35</statistic>
+            <statistic>18.42%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Methods Renamed</description>
-            <statistic>169</statistic>
-            <statistic>16.00%</statistic>
+            <statistic>166</statistic>
+            <statistic>15.87%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Fields Renamed</description>
-            <statistic>519</statistic>
-            <statistic>73.20%</statistic>
+            <statistic>517</statistic>
+            <statistic>73.13%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Properties Renamed</description>
@@ -9921,38 +9858,38 @@
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'a'</description>
-            <statistic>103</statistic>
-            <statistic>9.75%</statistic>
+            <statistic>100</statistic>
+            <statistic>9.56%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'b'</description>
             <statistic>17</statistic>
-            <statistic>1.61%</statistic>
+            <statistic>1.63%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'c'</description>
             <statistic>9</statistic>
-            <statistic>0.85%</statistic>
+            <statistic>0.86%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'd'</description>
             <statistic>5</statistic>
-            <statistic>0.47%</statistic>
+            <statistic>0.48%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'e'</description>
             <statistic>3</statistic>
-            <statistic>0.28%</statistic>
+            <statistic>0.29%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'f'</description>
             <statistic>3</statistic>
-            <statistic>0.28%</statistic>
+            <statistic>0.29%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'g'</description>
             <statistic>3</statistic>
-            <statistic>0.28%</statistic>
+            <statistic>0.29%</statistic>
         </statisticline>
     </statistics>
 </dotfuscatorMap>

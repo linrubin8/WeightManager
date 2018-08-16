@@ -254,12 +254,17 @@ where SaleCarInBillID = @SaleCarInBillID";
             parms.Add(new LBDbParameter("SaleCarInBillID", SaleCarInBillID));
 
             string strSQL = @"
-select SaleCarOutBillID,i.BillDate as BillDateIn,o.BillDate as BillDateOut,c.CarNum,i.*,o.*
+select SaleCarOutBillID,i.BillDate as BillDateIn,o.BillDate as BillDateOut, o.CreateBy as OutCreateBy ,c.CarNum,i.*,o.*,
+        b.K3ItemCode,s.K3CustomerCode,s.CustomerName
 from dbo.SaleCarInBill i
     left outer join SaleCarOutBill o on 
         i.SaleCarInBillID = o.SaleCarInBillID
     left outer join DbCar c on 
         c.CarID = i.CarID
+    left outer join dbo.DBItemBase b on
+        b.ItemID = i.ItemID
+    inner join dbo.DBCustomer s on
+        s.CustomerID = i.CustomerID
 where i.SaleCarInBillID = @SaleCarInBillID
 ";
             return DBHelper.ExecuteQuery(args, strSQL, parms);
@@ -857,6 +862,62 @@ where SaleCarInBillID = @SaleCarInBillID
 update dbo.SaleCarInBill
 set IsSynchronousToServer = 1,
     SynchronousToServerTime=getdate()
+where SaleCarInBillID = @SaleCarInBillID
+";
+            DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);
+        }
+
+        public void SynchronousK3OutBillStatus(FactoryArgs args, t_BigID SaleCarInBillID,
+            t_Bool IsSynchronousToK3OutBill,t_String SynchronousK3OutBillResult)
+        {
+            IsSynchronousToK3OutBill.IsNullToZero();
+            LBDbParameterCollection parms = new LBDbParameterCollection();
+            parms.Add(new LBDbParameter("SaleCarInBillID", SaleCarInBillID));
+            parms.Add(new LBDbParameter("IsSynchronousToK3OutBill", IsSynchronousToK3OutBill));
+            parms.Add(new LBDbParameter("SynchronousK3OutBillResult", SynchronousK3OutBillResult));
+            parms.Add(new LBDbParameter("SynchronousK3ByOutBill", new t_String(args.LoginName)));
+
+            string strSQL = @"
+update dbo.SaleCarInBill
+set IsSynchronousToK3OutBill = @IsSynchronousToK3OutBill,
+    SynchronousToTimeOutBill = getdate(),
+    SynchronousK3ByOutBill= @SynchronousK3ByOutBill,
+    SynchronousK3OutBillResult = @SynchronousK3OutBillResult
+where SaleCarInBillID = @SaleCarInBillID
+";
+            DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);
+        }
+
+        public void SynchronousK3ReceiveStatus(FactoryArgs args, t_BigID SaleCarInBillID,
+            t_Bool IsSynchronousToK3Receive, t_String SynchronousK3ReceiveResult)
+        {
+            IsSynchronousToK3Receive.IsNullToZero();
+            LBDbParameterCollection parms = new LBDbParameterCollection();
+            parms.Add(new LBDbParameter("SaleCarInBillID", SaleCarInBillID));
+            parms.Add(new LBDbParameter("IsSynchronousToK3Receive", IsSynchronousToK3Receive));
+            parms.Add(new LBDbParameter("SynchronousK3ReceiveResult", SynchronousK3ReceiveResult));
+            parms.Add(new LBDbParameter("SynchronousK3ByReceive", new t_String(args.LoginName)));
+
+            string strSQL = @"
+update dbo.SaleCarInBill
+set IsSynchronousToK3Receive = @IsSynchronousToK3Receive,
+    SynchronousToTimeReceive = getdate(),
+    SynchronousK3ByReceive= @SynchronousK3ByReceive,
+    SynchronousK3ReceiveResult = @SynchronousK3ReceiveResult
+where SaleCarInBillID = @SaleCarInBillID
+";
+            DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);
+        }
+
+        public void SynchronousK3Error(FactoryArgs args, t_BigID SaleCarInBillID,t_String SynchronousK3Error)
+        {
+            LBDbParameterCollection parms = new LBDbParameterCollection();
+            parms.Add(new LBDbParameter("SaleCarInBillID", SaleCarInBillID));
+            parms.Add(new LBDbParameter("SynchronousK3Error", SynchronousK3Error));
+
+            string strSQL = @"
+update dbo.SaleCarInBill
+set SynchronousK3Error= @SynchronousK3Error
 where SaleCarInBillID = @SaleCarInBillID
 ";
             DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);

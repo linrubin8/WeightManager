@@ -280,6 +280,10 @@ namespace LB.MI.MI
                         dr["PriceT"] = DBNull.Value;
                         dr["Price"] = DBNull.Value;
                         dr["Amount"] = DBNull.Value;
+                        dr["MaterialPrice"] = DBNull.Value;
+                        dr["FarePrice"] = DBNull.Value;
+                        dr["TaxPrice"] = DBNull.Value;
+                        dr["BrokerPrice"] = DBNull.Value;
                     }
                 }
             }

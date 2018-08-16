@@ -1615,7 +1615,8 @@ namespace LB.MainForm
             decimal decPrice = LBConverter.ToDecimal(this.txtPrice.Text);
             decimal decAmount = LBConverter.ToDecimal(this.txtAmount.Text);
 
-            if (_WeightType != enWeightType.WeightOutNull && decPrice > 0 && ( decSuttleWeight < 100 || decAmount < 1))//重车保存时出现异常，记录日志
+            //iReceiveType=3免费
+            if (iReceiveType!=3 && _WeightType != enWeightType.WeightOutNull && decPrice > 0 && ( decSuttleWeight < 100 || decAmount < 1))//重车保存时出现异常，记录日志
             {
                 Thread thread = new Thread(SaveScreenPicture);
                 thread.Start(lSaleCarInBillID);

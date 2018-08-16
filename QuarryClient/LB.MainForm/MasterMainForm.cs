@@ -486,8 +486,7 @@ namespace LB.MainForm
             frmSaleCarInOutBillSynchornous frm = new MI.MI.frmSaleCarInOutBillSynchornous();
             LBShowForm.ShowMainPage(frm);
         }
-
-
+        
         private void btnSynPrice_Click(object sender, EventArgs e)
         {
             try
@@ -499,6 +498,18 @@ namespace LB.MainForm
             {
                 LB.WinFunction.LBCommonHelper.DealWithErrorMessage(ex);
             }
+        }
+        
+        private void btnSaleInOutSynK3Receive_Click(object sender, EventArgs e)
+        {
+            frmSaleCarInOutBillManagerSynK3 frm = new frmSaleCarInOutBillManagerSynK3(0);
+            LBShowForm.ShowMainPage(frm);
+        }
+        
+        private void btnSaleInOutSynK3OutBill_Click(object sender, EventArgs e)
+        {
+            frmSaleCarInOutBillManagerSynK3 frm = new frmSaleCarInOutBillManagerSynK3(1);
+            LBShowForm.ShowMainPage(frm);
         }
         #endregion -- 按钮事件  --
 
@@ -689,6 +700,6 @@ namespace LB.MainForm
         {
 
         }
-
+        
     }
 }

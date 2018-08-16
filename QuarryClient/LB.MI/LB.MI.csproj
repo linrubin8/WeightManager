@@ -104,6 +104,12 @@
     <Compile Include="MI\frmCustomerImport.Designer.cs">
       <DependentUpon>frmCustomerImport.cs</DependentUpon>
     </Compile>
+    <Compile Include="MI\frmSaleCarInOutBillManagerSynK3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmSaleCarInOutBillManagerSynK3.Designer.cs">
+      <DependentUpon>frmSaleCarInOutBillManagerSynK3.cs</DependentUpon>
+    </Compile>
     <Compile Include="MI\frmSaleCarInOutBillSynchornous.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -145,6 +151,12 @@
     </Compile>
     <Compile Include="MI\frmSynchornousCustomerData.Designer.cs">
       <DependentUpon>frmSynchornousCustomerData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmSynK3Process.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmSynK3Process.Designer.cs">
+      <DependentUpon>frmSynK3Process.cs</DependentUpon>
     </Compile>
     <Compile Include="MI\LBPreviceReport.cs" />
     <Compile Include="MI\MIControls\SaleChangeItem.cs">
@@ -305,6 +317,9 @@
     <EmbeddedResource Include="MI\frmCustomerImport.resx">
       <DependentUpon>frmCustomerImport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmSaleCarInOutBillManagerSynK3.resx">
+      <DependentUpon>frmSaleCarInOutBillManagerSynK3.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MI\frmSaleCarInOutBillSynchornous.resx">
       <DependentUpon>frmSaleCarInOutBillSynchornous.cs</DependentUpon>
     </EmbeddedResource>
@@ -325,6 +340,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MI\frmSynchornousCustomerData.resx">
       <DependentUpon>frmSynchornousCustomerData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmSynK3Process.resx">
+      <DependentUpon>frmSynK3Process.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MI\MIControls\SaleChangeItem.resx">
       <DependentUpon>SaleChangeItem.cs</DependentUpon>
