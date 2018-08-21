@@ -85,7 +85,6 @@ namespace LB.Web.Remoting
             out string strOut, out string ErrorMsg, out bool bolIsError)
         {
             strOut = "";
-            LogHelper.WriteLog("开始RunProcedure：" + ProcedureType.ToString());
             DataTable dtOut = null;
             bolIsError = false;
             DataSet dsReturn = null;
@@ -336,7 +335,6 @@ namespace LB.Web.Remoting
             out string ErrorMsg, out bool bolIsError)
         {
             VerifyEncrypt();
-            LogHelper.WriteLog("开始RunView：" + iViewType.ToString());
             DataTable dtReturn = null;
             bolIsError = false;
             ErrorMsg = "";
@@ -484,7 +482,6 @@ from {1}
 
                     if (tpe != null)
                     {
-                        LogHelper.WriteLog("tpe不为空：" + strDLLName + "");
                         //获取对象
                         object obj = Activator.CreateInstance(tpe, true);
 
@@ -494,7 +491,7 @@ from {1}
                         if (method != null)
                         {
                             int result = (int)tpe.InvokeMember("AssemblyStart", BindingFlags.InvokeMethod, null, obj, null);
-                            LogHelper.WriteLog("成功加载：" + strDLLName);
+                           // LogHelper.WriteLog("成功加载：" + strDLLName);
                         }
                     }
                 }

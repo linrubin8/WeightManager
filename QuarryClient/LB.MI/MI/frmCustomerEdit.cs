@@ -23,6 +23,7 @@ namespace LB.MI
             InitializeComponent();
 
             this.grdCar.CellDoubleClick += GrdCar_CellDoubleClick;
+            this.lblForbid.Visible = this.btnForbid.Visible = this.btnUnForbid.Visible = false;
         }
 
         private void GrdCar_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -97,7 +98,7 @@ namespace LB.MI
                 this.btnAddCar.Visible = true;
                 this.btnCopy.Visible = false;
                 this.btnReflesh.Visible = false;
-
+                this.btnForbid.Visible = this.btnUnForbid.Visible = false;
                 ClearFieldValue();
             }
         }
@@ -158,6 +159,8 @@ namespace LB.MI
                 SaveCustomer();
                 SetButtonStatus();
                 LB.WinFunction.LBCommonHelper.ShowCommonMessage("保存成功！");
+
+                ReadFieldValue();
             }
             catch (Exception ex)
             {
@@ -246,6 +249,51 @@ namespace LB.MI
             }
         }
 
+        private void btnForbid_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (LB.WinFunction.LBCommonHelper.ConfirmMessage("是否确认禁用该客户？", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    if (mlCustomerID > 0)
+                    {
+                        LBDbParameterCollection parmCol = new LBDbParameterCollection();
+                        parmCol.Add(new LBParameter("CustomerID", enLBDbType.Int64, mlCustomerID));
+                        DataSet dsReturn;
+                        Dictionary<string, object> dictValue;
+                        ExecuteSQL.CallSP(13405, parmCol, out dsReturn, out dictValue);
+                        this.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LB.WinFunction.LBCommonHelper.DealWithErrorMessage(ex);
+            }
+        }
+
+        private void btnUnForbid_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (LB.WinFunction.LBCommonHelper.ConfirmMessage("是否确认取消禁用该客户？", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    if (mlCustomerID > 0)
+                    {
+                        LBDbParameterCollection parmCol = new LBDbParameterCollection();
+                        parmCol.Add(new LBParameter("CustomerID", enLBDbType.Int64, mlCustomerID));
+                        DataSet dsReturn;
+                        Dictionary<string, object> dictValue;
+                        ExecuteSQL.CallSP(13406, parmCol, out dsReturn, out dictValue);
+                        ReadFieldValue();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LB.WinFunction.LBCommonHelper.DealWithErrorMessage(ex);
+            }
+        }
         #endregion -- 按钮事件 --
 
         #region --保存客户信息 --
@@ -334,6 +382,12 @@ namespace LB.MI
                     decimal decOverRangeAmount = decSalesReceivedAmount - decTotalReceivedAmount;
                     this.lblOverRangeAmount.Text = decOverRangeAmount > 0 ? decOverRangeAmount.ToString("0.00") : "0";
                     this.lblRemainAmount.Text = decTotalReceivedAmount > decSalesReceivedAmount ? (decTotalReceivedAmount - decSalesReceivedAmount).ToString("0.00") : "0";
+
+                    //是否禁用
+                    bool bolIsForbid = LBConverter.ToBoolean(drHeader["IsForbid"]);
+                    this.btnForbid.Visible = !bolIsForbid;
+                    this.btnUnForbid.Visible = bolIsForbid;
+                    this.lblForbid.Visible = bolIsForbid;
                 }
             }
         }

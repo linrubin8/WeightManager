@@ -8,8 +8,44 @@ namespace LB.Web.Base.Base.Helper
 {
     public class LogHelper
     {
+        internal static object objLock = new object();
         public static void WriteLog( string strLog)
         {
+            //lock (objLock)
+            //{
+            //    string strLogFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Log.log");
+            //    if (!File.Exists(strLogFile))
+            //    {
+            //        File.Create(strLogFile);
+            //    }
+
+            //    FileStream fs = null;
+            //    StreamWriter sw = null;
+            //    try
+            //    {
+            //        fs = new FileStream(strLog, FileMode.Append, FileAccess.Write);
+            //        sw = new StreamWriter(fs);
+            //        sw.WriteLine(DateTime.Now.ToString("yy-MM-dd hhmmss"));
+            //        sw.WriteLine(strLog);
+            //    }
+            //    catch(Exception ex)
+            //    {
+
+            //    }
+            //    finally
+            //    {
+            //        if (fs != null)
+            //        {
+            //            fs.Close();
+            //            fs.Dispose();
+            //        }
+            //        if (sw != null)
+            //        {
+            //            sw.Close();
+            //            sw.Dispose();
+            //        }
+            //    }
+            //}
             //string strLogPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LogServer.log");
             //FileStream fs = new FileStream(strLogPath, FileMode.Append);
             //StreamWriter sw = new StreamWriter(fs);
@@ -27,6 +63,8 @@ namespace LB.Web.Base.Base.Helper
                 log.Source = "我的应用程序";
                 log.WriteEntry(strLog, EventLogEntryType.Information);
                 //throw new System.IO.FileNotFoundException("readme.txt文件未找到");
+
+
             }
             catch (System.IO.FileNotFoundException exception)
             {

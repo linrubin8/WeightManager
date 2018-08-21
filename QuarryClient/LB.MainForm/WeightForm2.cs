@@ -432,9 +432,10 @@ namespace LB.MainForm
             this.txtCalculateType.DisplayMember = "ConstText";
             this.txtCalculateType.ValueMember = "ConstValue";
 
-            DataTable dtCustom = ExecuteSQL.CallView(110,"","", "SortLevel desc,CustomerName asc");
+            DataTable dtCustom = ExecuteSQL.CallView(110,"","isnull(IsForbid,0)=0", "SortLevel desc,CustomerName asc");
             this.txtCustomerID.TextBox.LBViewType = 110;
             this.txtCustomerID.TextBox.LBSort = "SortLevel desc,CustomerName asc";
+            this.txtCustomerID.TextBox.LBFilter = "isnull(IsForbid,0)=0";
             this.txtCustomerID.TextBox.IDColumnName = "CustomerID";
             this.txtCustomerID.TextBox.TextColumnName = "CustomerName";
             this.txtCustomerID.TextBox.PopDataSource = dtCustom.DefaultView;
@@ -583,7 +584,11 @@ namespace LB.MainForm
                 string strValue = txtCustomerID.TextBox.Text.TrimEnd();
                 if (strValue != "")
                 {
-                    strFilter = "CustomerName like '%" + strValue + "%'";
+                    strFilter = "CustomerName like '%" + strValue + "%' and isnull(IsForbid,0)=0";
+                }
+                else
+                {
+                    strFilter = "isnull(IsForbid,0)=0";
                 }
                 _ctlBaseInfo.LoadDataSource(strFilter);
             }

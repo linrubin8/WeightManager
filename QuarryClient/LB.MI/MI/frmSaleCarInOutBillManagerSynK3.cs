@@ -252,7 +252,7 @@ namespace LB.MI.MI
             strFilter += "isnull(K3ItemCode,'')<>'' and isnull(K3CustomerCode,'')<>'' and isnull(BillStatus,0) =2";
             
             // strFilter += "(BillDateIn>='" + dtBillDateFrom.ToString("yyyy-MM-dd") + "' and BillDateIn<='" + dtBillDateTo.AddDays(1).ToString("yyyy-MM-dd") + "')";
-            DataTable dtBill = ExecuteSQL.CallView(125, "", strFilter, "SaleCarOutBillID desc,SaleCarInBillID desc");
+            DataTable dtBill = ExecuteSQL.CallView(125, "", strFilter, "SaleCarOutBillID asc,SaleCarInBillID asc");
 
             decimal decTotalWeight = 0;
             decimal decCarTare = 0;

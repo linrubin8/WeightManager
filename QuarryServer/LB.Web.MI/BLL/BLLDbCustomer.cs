@@ -9,7 +9,7 @@ using System.Text;
 
 namespace LB.Web.MI.BLL
 {
-    public class BLLDbCustomer: IBLLFunction
+    public class BLLDbCustomer : IBLLFunction
     {
         private DALDbCustomer _DALDbCustomer = null;
         private DALDbCar _DALDbCar = null;
@@ -43,14 +43,22 @@ namespace LB.Web.MI.BLL
                 case 13404:
                     strFunName = "Customer_UpdateFromService";
                     break;
+
+                case 13405:
+                    strFunName = "Forbid";
+                    break;
+
+                case 13406:
+                    strFunName = "UnForbid";
+                    break;
             }
             return strFunName;
         }
 
-        public void Customer_Insert(FactoryArgs args, out t_BigID CustomerID,out t_String CustomerCode, t_String CustomerName, t_String Contact, t_String Phone, t_String Address,
-            t_Bool CarIsLimit, t_ID AmountType, t_String LicenceNum, t_String Description, t_Bool IsForbid, t_ID ReceiveType,
+        public void Customer_Insert(FactoryArgs args, out t_BigID CustomerID, out t_String CustomerCode, t_String CustomerName, t_String Contact, t_String Phone, t_String Address,
+            t_Bool CarIsLimit, t_ID AmountType, t_String LicenceNum, t_String Description, t_ID ReceiveType,
             t_Decimal CreditAmount, t_Bool IsDisplayPrice, t_Bool IsDisplayAmount, t_Bool IsPrintAmount, t_Bool IsAllowOverFul,
-            t_Bool IsAllowEmptyIn,t_Decimal AmountNotEnough, t_String K3CustomerCode)
+            t_Bool IsAllowEmptyIn, t_Decimal AmountNotEnough, t_String K3CustomerCode)
         {
             CustomerCode = new t_String();
             CustomerID = new t_BigID();
@@ -75,15 +83,15 @@ namespace LB.Web.MI.BLL
             else if (CodeIndex < 1000)
                 CustomerCode.SetValueWithObject("K0" + CodeIndex.ToString());
             else
-                CustomerCode.SetValueWithObject("K"+CodeIndex.ToString());
+                CustomerCode.SetValueWithObject("K" + CodeIndex.ToString());
 
             _DALDbCustomer.Customer_Insert(args, out CustomerID, CustomerCode, CustomerName, Contact, Phone, Address, CarIsLimit, AmountType, LicenceNum, Description,
-                IsForbid, ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, IsAllowEmptyIn, AmountNotEnough,
+                ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, IsAllowEmptyIn, AmountNotEnough,
                 K3CustomerCode);
         }
 
         public void Customer_Update(FactoryArgs args, t_BigID CustomerID, t_String CustomerName, t_String Contact, t_String Phone, t_String Address,
-            t_Bool CarIsLimit, t_ID AmountType, t_String LicenceNum, t_String Description, t_Bool IsForbid, t_ID ReceiveType,
+            t_Bool CarIsLimit, t_ID AmountType, t_String LicenceNum, t_String Description, t_ID ReceiveType,
             t_Decimal CreditAmount, t_Bool IsDisplayPrice, t_Bool IsDisplayAmount, t_Bool IsPrintAmount, t_Bool IsAllowOverFul,
             t_Bool IsAllowEmptyIn, t_Decimal AmountNotEnough, t_String K3CustomerCode)
         {
@@ -97,7 +105,7 @@ namespace LB.Web.MI.BLL
             }
 
             _DALDbCustomer.Customer_Update(args, CustomerID, CustomerName, Contact, Phone, Address, CarIsLimit, AmountType, LicenceNum, Description,
-                IsForbid, ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, IsAllowEmptyIn, AmountNotEnough,
+                ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, IsAllowEmptyIn, AmountNotEnough,
                 K3CustomerCode);
         }
 
@@ -117,13 +125,13 @@ namespace LB.Web.MI.BLL
                 _DALDbCustomer.Customer_Delete(args, CustomerID);
             };
             DBHelper.ExecInTrans(args, exec);
-            
+
         }
 
         public void Customer_InsertFromService(FactoryArgs args, out t_BigID CustomerID, out t_String CustomerCode, t_String CustomerName, t_String Contact, t_String Phone, t_String Address,
             t_Bool CarIsLimit, t_ID AmountType, t_String LicenceNum, t_String Description, t_Bool IsForbid, t_ID ReceiveType,
             t_Decimal CreditAmount, t_Bool IsDisplayPrice, t_Bool IsDisplayAmount, t_Bool IsPrintAmount, t_Bool IsAllowOverFul,
-            t_Bool IsAllowEmptyIn, t_Decimal AmountNotEnough, t_Decimal TotalReceivedAmount, t_Decimal SalesReceivedAmount,t_String K3CustomerCode)
+            t_Bool IsAllowEmptyIn, t_Decimal AmountNotEnough, t_Decimal TotalReceivedAmount, t_Decimal SalesReceivedAmount, t_String K3CustomerCode)
         {
             CustomerID = new t_BigID();
             CustomerCode = new t_String();
@@ -132,7 +140,7 @@ namespace LB.Web.MI.BLL
             DBHelper.ExecInTransDelegate exec = delegate (FactoryArgs argsInTrans)
             {
                 this.Customer_Insert(argsInTrans, out CustomerIDTemp, out CustomerCodeTemp, CustomerName, Contact, Phone, Address, CarIsLimit, AmountType, LicenceNum, Description,
-                IsForbid, ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, IsAllowEmptyIn, AmountNotEnough, K3CustomerCode);
+                 ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, IsAllowEmptyIn, AmountNotEnough, K3CustomerCode);
 
                 _DALDbCustomer.UpdateAmount(argsInTrans, CustomerIDTemp, TotalReceivedAmount, SalesReceivedAmount);
             };
@@ -144,17 +152,59 @@ namespace LB.Web.MI.BLL
         public void Customer_UpdateFromService(FactoryArgs args, t_BigID CustomerID, t_String CustomerName, t_String Contact, t_String Phone, t_String Address,
             t_Bool CarIsLimit, t_ID AmountType, t_String LicenceNum, t_String Description, t_Bool IsForbid, t_ID ReceiveType,
             t_Decimal CreditAmount, t_Bool IsDisplayPrice, t_Bool IsDisplayAmount, t_Bool IsPrintAmount, t_Bool IsAllowOverFul,
-            t_Bool IsAllowEmptyIn, t_Decimal AmountNotEnough, t_Decimal TotalReceivedAmount, t_Decimal SalesReceivedAmount,t_String K3CustomerCode)
+            t_Bool IsAllowEmptyIn, t_Decimal AmountNotEnough, t_Decimal TotalReceivedAmount, t_Decimal SalesReceivedAmount, t_String K3CustomerCode)
         {
             DBHelper.ExecInTransDelegate exec = delegate (FactoryArgs argsInTrans)
             {
                 this.Customer_Update(argsInTrans, CustomerID, CustomerName, Contact, Phone, Address, CarIsLimit, AmountType, LicenceNum, Description,
-                IsForbid, ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, IsAllowEmptyIn, AmountNotEnough,
+                    ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, IsAllowEmptyIn, AmountNotEnough,
                 K3CustomerCode);
 
                 _DALDbCustomer.UpdateAmount(argsInTrans, CustomerID, TotalReceivedAmount, SalesReceivedAmount);
+
+                IsForbid.IsNullToZero();
+                if (IsForbid.Value == 1)
+                {
+                    _DALDbCustomer.Forbid(args, CustomerID);
+                }
+                else
+                {
+                    _DALDbCustomer.UnForbid(args, CustomerID);
+                }
             };
             DBHelper.ExecInTrans(args, exec);
+        }
+
+        public void Forbid(FactoryArgs args, t_BigID CustomerID)
+        {
+            using (DataTable dtCustomer = _DALDbCustomer.GetCustomerByID(args, CustomerID))
+            {
+                if (dtCustomer.Rows.Count > 0)
+                {
+                    bool bolIsForbid = LBConverter.ToBoolean(dtCustomer.Rows[0]["IsForbid"]);
+                    if (bolIsForbid)
+                    {
+                        throw new Exception("该客户已禁用！");
+                    }
+                }
+            }
+            _DALDbCustomer.Forbid(args, CustomerID);
+        }
+
+        public void UnForbid(FactoryArgs args, t_BigID CustomerID)
+        {
+            using (DataTable dtCustomer = _DALDbCustomer.GetCustomerByID(args, CustomerID))
+            {
+                if (dtCustomer.Rows.Count > 0)
+                {
+                    bool bolIsForbid = LBConverter.ToBoolean(dtCustomer.Rows[0]["IsForbid"]);
+                    if (!bolIsForbid)
+                    {
+                        throw new Exception("该客户未禁用，无法取消禁用！");
+                    }
+                }
+            }
+            _DALDbCustomer.UnForbid(args, CustomerID);
         }
     }
 }

@@ -177,7 +177,7 @@ else
 				strResult = string.Format( MC_strConnectionByUser, server, dbName, UserID, Password );
 			}
 
-            LogHelper.WriteLog(strResult);
+            //LogHelper.WriteLog(strResult);
 
 
             return strResult;

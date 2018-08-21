@@ -351,6 +351,20 @@ namespace LB.Controls.LBTextBox
             }
         }
 
+        private string _LBFilter = "";
+        [Description("过滤条件")]
+        public string LBFilter
+        {
+            get
+            {
+                return _LBFilter;
+            }
+            set
+            {
+                _LBFilter = value;
+            }
+        }
+
         [Browsable(true)]
         public override string Text
         {
@@ -555,7 +569,7 @@ namespace LB.Controls.LBTextBox
         {
             if (LBViewType > 0 && IDColumnName != "")
             {
-                PopDataSource = ExecuteSQL.CallView(LBViewType, "", "", LBSort).DefaultView;
+                PopDataSource = ExecuteSQL.CallView(LBViewType, "", LBFilter, LBSort).DefaultView;
             }
         }
 
@@ -581,7 +595,7 @@ namespace LB.Controls.LBTextBox
                 if (LBViewType > 0)
                 {
                     //点击下拉时重新读取数据
-                    PopDataSource = ExecuteSQL.CallView(LBViewType, "", "", LBSort).DefaultView;
+                    PopDataSource = ExecuteSQL.CallView(LBViewType, "", LBFilter, LBSort).DefaultView;
                 }
                 this.ShowList(false);
             }
@@ -684,7 +698,7 @@ namespace LB.Controls.LBTextBox
                         {
                             if (LBViewType > 0)
                             {
-                                PopDataSource = ExecuteSQL.CallView(LBViewType, "", "", LBSort).DefaultView;
+                                PopDataSource = ExecuteSQL.CallView(LBViewType, "", LBFilter, LBSort).DefaultView;
                             }
                             this.ShowList(true);
                         }

@@ -256,6 +256,25 @@ namespace LB.MI
                 LB.WinFunction.LBCommonHelper.DealWithErrorMessage(ex);
             }
         }
-        
+
+        private void grdMain_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+                {
+                    DataRowView drv = this.grdMain.Rows[e.RowIndex].DataBoundItem as DataRowView;
+                    bool bolIsForbid = LBConverter.ToBoolean(drv["IsForbid"]);
+                    if (bolIsForbid)
+                    {
+                        e.CellStyle.ForeColor = Color.Red;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LB.WinFunction.LBCommonHelper.DealWithErrorMessage(ex);
+            }
+        }
     }
 }

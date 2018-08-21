@@ -11,7 +11,7 @@ namespace LB.Web.MI.DAL
     public class DALDbCustomer
     {
         public void Customer_Insert(FactoryArgs args, out t_BigID CustomerID, t_String CustomerCode,t_String CustomerName, t_String Contact, t_String Phone, t_String Address, 
-            t_Bool CarIsLimit,t_ID AmountType, t_String LicenceNum, t_String Description,t_Bool IsForbid,t_ID ReceiveType,
+            t_Bool CarIsLimit,t_ID AmountType, t_String LicenceNum, t_String Description,t_ID ReceiveType,
             t_Decimal CreditAmount,t_Bool IsDisplayPrice, t_Bool IsDisplayAmount, t_Bool IsPrintAmount, t_Bool IsAllowOverFul,
             t_Bool IsAllowEmptyIn, t_Decimal AmountNotEnough, t_String K3CustomerCode)
         {
@@ -21,7 +21,6 @@ namespace LB.Web.MI.DAL
             IsPrintAmount.IsNullToZero();
             IsAllowOverFul.IsNullToZero();
             CreditAmount.IsNullToZero();
-            IsForbid.IsNullToZero();
             CreditAmount.IsNullToZero();
 
             CustomerID = new t_BigID();
@@ -36,7 +35,6 @@ namespace LB.Web.MI.DAL
             parms.Add(new LBDbParameter("AmountType", AmountType));
             parms.Add(new LBDbParameter("LicenceNum", LicenceNum));
             parms.Add(new LBDbParameter("Description", Description));
-            parms.Add(new LBDbParameter("IsForbid", IsForbid));
             parms.Add(new LBDbParameter("ReceiveType", ReceiveType));
             parms.Add(new LBDbParameter("CreditAmount", CreditAmount));
             parms.Add(new LBDbParameter("IsDisplayPrice", IsDisplayPrice));
@@ -53,10 +51,10 @@ namespace LB.Web.MI.DAL
 
             string strSQL = @"
 insert into dbo.DbCustomer(CustomerCode,CustomerName, Contact, Phone, Address, CarIsLimit, AmountType, LicenceNum, 
-    Description, IsForbid, ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, 
+    Description, ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, 
     CreateBy, CreateTime, ChangeBy, ChangeTime,IsAllowEmptyIn,AmountNotEnough,K3CustomerCode)
 values(@CustomerCode, @CustomerName, @Contact, @Phone, @Address, @CarIsLimit, @AmountType, @LicenceNum, 
-    @Description, @IsForbid, @ReceiveType, @CreditAmount, @IsDisplayPrice, @IsDisplayAmount, @IsPrintAmount, @IsAllowOverFul, 
+    @Description, @ReceiveType, @CreditAmount, @IsDisplayPrice, @IsDisplayAmount, @IsPrintAmount, @IsAllowOverFul, 
     @CreateBy, @CreateTime, @ChangeBy, @ChangeTime,@IsAllowEmptyIn,@AmountNotEnough,@K3CustomerCode)
 
 set @CustomerID = @@identity
@@ -66,7 +64,7 @@ set @CustomerID = @@identity
         }
 
         public void Customer_Update(FactoryArgs args, t_BigID CustomerID, t_String CustomerName, t_String Contact, t_String Phone, t_String Address,
-            t_Bool CarIsLimit, t_ID AmountType, t_String LicenceNum, t_String Description, t_Bool IsForbid, t_ID ReceiveType,
+            t_Bool CarIsLimit, t_ID AmountType, t_String LicenceNum, t_String Description, t_ID ReceiveType,
             t_Decimal CreditAmount, t_Bool IsDisplayPrice, t_Bool IsDisplayAmount, t_Bool IsPrintAmount, t_Bool IsAllowOverFul,
             t_Bool IsAllowEmptyIn, t_Decimal AmountNotEnough, t_String K3CustomerCode)
         {
@@ -76,7 +74,6 @@ set @CustomerID = @@identity
             IsPrintAmount.IsNullToZero();
             IsAllowOverFul.IsNullToZero();
             CreditAmount.IsNullToZero();
-            IsForbid.IsNullToZero();
             CreditAmount.IsNullToZero();
 
             LBDbParameterCollection parms = new LBDbParameterCollection();
@@ -89,7 +86,6 @@ set @CustomerID = @@identity
             parms.Add(new LBDbParameter("AmountType", AmountType));
             parms.Add(new LBDbParameter("LicenceNum", LicenceNum));
             parms.Add(new LBDbParameter("Description", Description));
-            parms.Add(new LBDbParameter("IsForbid", IsForbid));
             parms.Add(new LBDbParameter("ReceiveType", ReceiveType));
             parms.Add(new LBDbParameter("CreditAmount", CreditAmount));
             parms.Add(new LBDbParameter("IsDisplayPrice", IsDisplayPrice));
@@ -111,8 +107,7 @@ set CustomerName = @CustomerName,
     CarIsLimit=@CarIsLimit, 
     AmountType=@AmountType, 
     LicenceNum=@LicenceNum, 
-    Description=@Description, 
-    IsForbid=@IsForbid, 
+    Description=@Description,
     ReceiveType=@ReceiveType, 
     CreditAmount=@CreditAmount, 
     IsDisplayPrice=@IsDisplayPrice, 
@@ -189,6 +184,18 @@ end
             return DBHelper.ExecuteQuery(args, strSQL, parms);
         }
 
+        public DataTable GetCustomerByID(FactoryArgs args, t_BigID CustomerID)
+        {
+            LBDbParameterCollection parms = new LBDbParameterCollection();
+            parms.Add(new LBDbParameter("CustomerID", CustomerID));
+            string strSQL = @"
+    select *
+    from dbo.DbCustomer
+    where CustomerID=@CustomerID
+";
+            return DBHelper.ExecuteQuery(args, strSQL, parms);
+        }
+
         public DataTable GetCarByCustomer(FactoryArgs args, t_BigID CustomerID)
         {
             LBDbParameterCollection parms = new LBDbParameterCollection();
@@ -215,6 +222,37 @@ where CustomerID = @CustomerID
 update dbo.DbCustomer
 set TotalReceivedAmount = @TotalReceivedAmount, 
     SalesReceivedAmount=@SalesReceivedAmount
+where CustomerID =  @CustomerID
+";
+            DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);
+        }
+
+        public void Forbid(FactoryArgs args, t_BigID CustomerID)
+        {
+            LBDbParameterCollection parms = new LBDbParameterCollection();
+            parms.Add(new LBDbParameter("CustomerID", CustomerID));
+            parms.Add(new LBDbParameter("ForbidBy", new t_String(args.LoginName)));
+            parms.Add(new LBDbParameter("ForbidTime", new t_DTSmall(DateTime.Now)));
+
+            string strSQL = @"
+update dbo.DbCustomer
+set IsForbid = 1, 
+    ForbidBy=@ForbidBy, 
+    ForbidTime=@ForbidTime
+where CustomerID =  @CustomerID
+";
+            DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);
+        }
+        public void UnForbid(FactoryArgs args, t_BigID CustomerID)
+        {
+            LBDbParameterCollection parms = new LBDbParameterCollection();
+            parms.Add(new LBDbParameter("CustomerID", CustomerID));
+
+            string strSQL = @"
+update dbo.DbCustomer
+set IsForbid = 0, 
+    ForbidBy=null, 
+    ForbidTime=null
 where CustomerID =  @CustomerID
 ";
             DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);

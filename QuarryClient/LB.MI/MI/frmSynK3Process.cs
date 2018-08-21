@@ -27,6 +27,7 @@ namespace LB.MI.MI
         public frmSynK3Process(List<DataRow> lstRows,int iSynType)
         {
             InitializeComponent();
+            //LogHelper.WriteLog("行数：" + lstRows.Count);
             mlstRows = lstRows;
             this.lblTotal.Text = lstRows.Count.ToString();
             _SynType = iSynType;
@@ -78,6 +79,8 @@ namespace LB.MI.MI
         {
             foreach(DataRow dr in mlstRows)
             {
+                bool bolIsSuccess = false;
+                string strSynError = "";
                 string strSaleCarOutBillCode = dr["SaleCarOutBillCode"].ToString().TrimEnd();
                 try
                 {
@@ -90,7 +93,7 @@ namespace LB.MI.MI
                     Dictionary<string, object> dictValue;
                     ExecuteSQL.CallSP(14124, parmCol, out dsReturn, out dictValue);
                     strMsg = "已同步磅单：" + strSaleCarOutBillCode;
-
+                    //LogHelper.WriteLog("准备同步：" + strSaleCarOutBillCode);
                     bool bolOutBillIsSuccess = false;
                     bool bolReceiveIsSuccess = false;
                     string strOutBillSynError = "";
@@ -113,8 +116,7 @@ namespace LB.MI.MI
                         strReceiveSynError = dictValue["ReceiveSynError"].ToString().TrimEnd();
                     }
 
-                    bool bolIsSuccess = false;
-                    string strSynError = "";
+                    
                     if (_SynType == 0)//应收
                     {
                         bolIsSuccess = bolReceiveIsSuccess;
@@ -125,7 +127,16 @@ namespace LB.MI.MI
                         bolIsSuccess = bolOutBillIsSuccess;
                         strSynError = strOutBillSynError;
                     }
+                    //LogHelper.WriteLog("同步结果：" + strSynError);
+                }
+                catch (Exception ex)
+                {
+                    strSynError = "磅单同步错误："+ strSaleCarOutBillCode+" 原因："+ex.Message;
 
+                    //LogHelper.WriteLog("报错：" + strSynError);
+                }
+                finally
+                {
                     if (this.listView1.InvokeRequired)
                     {
                         this.listView1.Invoke((MethodInvoker)delegate {
@@ -144,13 +155,7 @@ namespace LB.MI.MI
                             this.listView1.Items.Add(item);
                         });
                     }
-                }
-                catch (Exception ex)
-                {
-                    strMsg = "磅单同步错误："+ strSaleCarOutBillCode;
-                }
-                finally
-                {
+
                     TotalSynRows++;
                 }
             }

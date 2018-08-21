@@ -1929,7 +1929,7 @@ namespace LB.Web.SM.BLL
             ReceiveSynError = new t_String();
             try
             {
-                
+                LogHelper.WriteLog("准备调用SynchronousBillToK3");
                 string strPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "K3Cloud.ini");
                 IniClass iniClass = new IniClass(strPath);
                 string strFactoryID = iniClass.ReadValue("K3Config", "FactoryID");//企业标识
@@ -1938,14 +1938,16 @@ namespace LB.Web.SM.BLL
                 string strname = iniClass.ReadValue("K3Config", "name");
                 string strpassword = iniClass.ReadValue("K3Config", "password");
                 string stricid = iniClass.ReadValue("K3Config", "icid");
-
+                LogHelper.WriteLog("已读取K3Cloud配置");
                 DataTable dtBill = _DALSaleCarInOutBill.GetGetSaleCarInOutBill(args, SaleCarInBillID);
                 K3CloudApiClient client = new K3CloudApiClient(strUrl);//测试地址
                 var ret = client.ValidateLogin(strid, strname, strpassword, LBConverter.ToInt32(stricid));
                 var result = JObject.Parse(ret)["LoginResultType"].Value<int>();
+                
                 // 登陆成功
                 if (result == 1)
                 {
+                    LogHelper.WriteLog("登录K3成功");
                     foreach (DataRow dr in dtBill.Rows)
                     {
                         string strSalesInBillCode = dr["SaleCarInBillCode"].ToString().TrimEnd();
@@ -2152,6 +2154,7 @@ namespace LB.Web.SM.BLL
                         {
                             if (!IsSynchronousToK3Receive)//如果未同步应收单，则执行应收单同步
                             {
+                                LogHelper.WriteLog("准备导入应收单");
                                 #region  -- 应收Json文本 --
                                 string strJson = @"
                     {
@@ -2281,7 +2284,9 @@ namespace LB.Web.SM.BLL
                     			\""F_PAEZ_SKFangShi\"": \""" + ReceiveTypeName.Value + @"\"",	
                     			\""F_PAEZ_CheHao\"": \""" + strCarNum + @"\"",		
                     			\""F_PAEZ_PZShiJian\"": \""" + strInBillDate + @"\"",		
-                    			\""F_PAEZ_MZShiJian\"": \""" + strOutBillDate + @"\""
+                    			\""F_PAEZ_MZShiJian\"": \""" + strOutBillDate + @"\"",		
+                    			\""F_PAEZ_PZShiJian1\"": \""" + strInBillDate + @"\"",		
+                    			\""F_PAEZ_MZShiJian1\"": \""" + strOutBillDate + @"\""
                             
                     			}],
                     		\""FEntityPlan\"": [{
@@ -2310,6 +2315,7 @@ namespace LB.Web.SM.BLL
                                 if (ReceiveIsSuccess.Value == 1)
                                 {
                                     ReceiveSynError.Value = "";
+                                    LogHelper.WriteLog("应收单导入成功！");
                                 }
                             }
                             else
@@ -2322,12 +2328,14 @@ namespace LB.Web.SM.BLL
                 }
                 else
                 {
+                    LogHelper.WriteLog("登录K3失败");
                     throw new Exception("K3系统登录失败！");
                 }
             }
             catch(Exception ex)
             {
-
+                LogHelper.WriteLog("调用报错！"+ex.Message);
+                throw new Exception(ex.Message);
             }
         }
 

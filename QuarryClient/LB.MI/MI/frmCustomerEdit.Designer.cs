@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomerEdit));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
             this.skinToolStrip1 = new CCWin.SkinControl.SkinToolStrip();
             this.btnClose = new LB.Controls.LBToolStripButton(this.components);
             this.btnAdd = new LB.Controls.LBToolStripButton(this.components);
@@ -50,6 +50,8 @@
             this.btnRefCar = new LB.Controls.LBToolStripButton(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.skinLabel22 = new CCWin.SkinControl.SkinLabel();
+            this.txtK3CustomerCode = new LB.Controls.LBSkinTextBox(this.components);
             this.txtCustomerCode = new LB.Controls.LBSkinTextBox(this.components);
             this.skinLabel20 = new CCWin.SkinControl.SkinLabel();
             this.chkIsAllowEmptyIn = new System.Windows.Forms.CheckBox();
@@ -112,8 +114,10 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CarID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtK3CustomerCode = new LB.Controls.LBSkinTextBox(this.components);
-            this.skinLabel22 = new CCWin.SkinControl.SkinLabel();
+            this.btnForbid = new LB.Controls.LBToolStripButton(this.components);
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnUnForbid = new LB.Controls.LBToolStripButton(this.components);
+            this.lblForbid = new System.Windows.Forms.Label();
             this.skinToolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -169,7 +173,10 @@
             this.btnReflesh,
             this.toolStripSeparator1,
             this.btnAddCar,
-            this.btnRefCar});
+            this.btnRefCar,
+            this.toolStripSeparator2,
+            this.btnForbid,
+            this.btnUnForbid});
             this.skinToolStrip1.Location = new System.Drawing.Point(0, 0);
             this.skinToolStrip1.Name = "skinToolStrip1";
             this.skinToolStrip1.RadiusStyle = CCWin.SkinClass.RoundStyle.All;
@@ -288,6 +295,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.lblForbid);
             this.tabPage1.Controls.Add(this.skinLabel22);
             this.tabPage1.Controls.Add(this.txtK3CustomerCode);
             this.tabPage1.Controls.Add(this.txtCustomerCode);
@@ -326,6 +334,67 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "客户基础信息";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // skinLabel22
+            // 
+            this.skinLabel22.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel22.BorderColor = System.Drawing.Color.White;
+            this.skinLabel22.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel22.Location = new System.Drawing.Point(339, 114);
+            this.skinLabel22.Name = "skinLabel22";
+            this.skinLabel22.Size = new System.Drawing.Size(83, 32);
+            this.skinLabel22.TabIndex = 38;
+            this.skinLabel22.Text = "K3编码";
+            this.skinLabel22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtK3CustomerCode
+            // 
+            this.txtK3CustomerCode.BackColor = System.Drawing.Color.Transparent;
+            this.txtK3CustomerCode.CanBeEmpty = true;
+            this.txtK3CustomerCode.Caption = "";
+            this.txtK3CustomerCode.DownBack = null;
+            this.txtK3CustomerCode.Icon = null;
+            this.txtK3CustomerCode.IconIsButton = false;
+            this.txtK3CustomerCode.IconMouseState = CCWin.SkinClass.ControlState.Normal;
+            this.txtK3CustomerCode.IsPasswordChat = '\0';
+            this.txtK3CustomerCode.IsSystemPasswordChar = false;
+            this.txtK3CustomerCode.Lines = new string[0];
+            this.txtK3CustomerCode.Location = new System.Drawing.Point(435, 118);
+            this.txtK3CustomerCode.Margin = new System.Windows.Forms.Padding(0);
+            this.txtK3CustomerCode.MaxLength = 32767;
+            this.txtK3CustomerCode.MinimumSize = new System.Drawing.Size(28, 28);
+            this.txtK3CustomerCode.MouseBack = null;
+            this.txtK3CustomerCode.MouseState = CCWin.SkinClass.ControlState.Normal;
+            this.txtK3CustomerCode.Multiline = false;
+            this.txtK3CustomerCode.Name = "txtK3CustomerCode";
+            this.txtK3CustomerCode.NormlBack = null;
+            this.txtK3CustomerCode.Padding = new System.Windows.Forms.Padding(5);
+            this.txtK3CustomerCode.ReadOnly = false;
+            this.txtK3CustomerCode.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtK3CustomerCode.Size = new System.Drawing.Size(179, 28);
+            // 
+            // 
+            // 
+            this.txtK3CustomerCode.SkinTxt.AccessibleName = "";
+            this.txtK3CustomerCode.SkinTxt.AutoCompleteCustomSource.AddRange(new string[] {
+            "asdfasdf",
+            "adsfasdf"});
+            this.txtK3CustomerCode.SkinTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.txtK3CustomerCode.SkinTxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtK3CustomerCode.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtK3CustomerCode.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtK3CustomerCode.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
+            this.txtK3CustomerCode.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.txtK3CustomerCode.SkinTxt.Name = "BaseText";
+            this.txtK3CustomerCode.SkinTxt.Size = new System.Drawing.Size(169, 18);
+            this.txtK3CustomerCode.SkinTxt.TabIndex = 0;
+            this.txtK3CustomerCode.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.txtK3CustomerCode.SkinTxt.WaterText = "";
+            this.txtK3CustomerCode.TabIndex = 37;
+            this.txtK3CustomerCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtK3CustomerCode.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.txtK3CustomerCode.WaterText = "";
+            this.txtK3CustomerCode.WordWrap = true;
             // 
             // txtCustomerCode
             // 
@@ -1266,27 +1335,27 @@
             // grdCar
             // 
             this.grdCar.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(246)))), ((int)(((byte)(253)))));
-            this.grdCar.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(246)))), ((int)(((byte)(253)))));
+            this.grdCar.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle33;
             this.grdCar.BackgroundColor = System.Drawing.SystemColors.Window;
             this.grdCar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.grdCar.ColumnFont = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.grdCar.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F);
-            this.grdCar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("宋体", 9F);
+            this.grdCar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle34;
             this.grdCar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdCar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CarNum,
             this.DefaultCarWeight});
             this.grdCar.ColumnSelectForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(188)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdCar.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle35.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("宋体", 9F);
+            dataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(188)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdCar.DefaultCellStyle = dataGridViewCellStyle35;
             this.grdCar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdCar.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.grdCar.EnableHeadersVisualStyles = false;
@@ -1300,12 +1369,12 @@
             this.grdCar.Name = "grdCar";
             this.grdCar.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.grdCar.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.grdCar.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle36.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.grdCar.RowsDefaultCellStyle = dataGridViewCellStyle36;
             this.grdCar.RowTemplate.Height = 23;
             this.grdCar.Size = new System.Drawing.Size(283, 476);
             this.grdCar.TabIndex = 7;
@@ -1413,15 +1482,15 @@
             // grdMain
             // 
             this.grdMain.AllowUserToAddRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(246)))), ((int)(((byte)(253)))));
-            this.grdMain.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(246)))), ((int)(((byte)(253)))));
+            this.grdMain.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle37;
             this.grdMain.BackgroundColor = System.Drawing.SystemColors.Window;
             this.grdMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.grdMain.ColumnFont = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.grdMain.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.grdMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle38.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.grdMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle38;
             this.grdMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemID,
@@ -1435,14 +1504,14 @@
             this.CarID,
             this.Price});
             this.grdMain.ColumnSelectForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("微软雅黑", 12F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(188)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdMain.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle39.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("微软雅黑", 12F);
+            dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(188)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdMain.DefaultCellStyle = dataGridViewCellStyle39;
             this.grdMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdMain.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.grdMain.EnableHeadersVisualStyles = false;
@@ -1456,12 +1525,12 @@
             this.grdMain.Name = "grdMain";
             this.grdMain.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.grdMain.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.grdMain.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle40.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle40.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.grdMain.RowsDefaultCellStyle = dataGridViewCellStyle40;
             this.grdMain.RowTemplate.Height = 23;
             this.grdMain.Size = new System.Drawing.Size(906, 496);
             this.grdMain.TabIndex = 10;
@@ -1541,66 +1610,43 @@
             this.Price.HeaderText = "单价";
             this.Price.Name = "Price";
             // 
-            // txtK3CustomerCode
+            // btnForbid
             // 
-            this.txtK3CustomerCode.BackColor = System.Drawing.Color.Transparent;
-            this.txtK3CustomerCode.CanBeEmpty = true;
-            this.txtK3CustomerCode.Caption = "";
-            this.txtK3CustomerCode.DownBack = null;
-            this.txtK3CustomerCode.Icon = null;
-            this.txtK3CustomerCode.IconIsButton = false;
-            this.txtK3CustomerCode.IconMouseState = CCWin.SkinClass.ControlState.Normal;
-            this.txtK3CustomerCode.IsPasswordChat = '\0';
-            this.txtK3CustomerCode.IsSystemPasswordChar = false;
-            this.txtK3CustomerCode.Lines = new string[0];
-            this.txtK3CustomerCode.Location = new System.Drawing.Point(435, 118);
-            this.txtK3CustomerCode.Margin = new System.Windows.Forms.Padding(0);
-            this.txtK3CustomerCode.MaxLength = 32767;
-            this.txtK3CustomerCode.MinimumSize = new System.Drawing.Size(28, 28);
-            this.txtK3CustomerCode.MouseBack = null;
-            this.txtK3CustomerCode.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.txtK3CustomerCode.Multiline = false;
-            this.txtK3CustomerCode.Name = "txtK3CustomerCode";
-            this.txtK3CustomerCode.NormlBack = null;
-            this.txtK3CustomerCode.Padding = new System.Windows.Forms.Padding(5);
-            this.txtK3CustomerCode.ReadOnly = false;
-            this.txtK3CustomerCode.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtK3CustomerCode.Size = new System.Drawing.Size(179, 28);
+            this.btnForbid.Image = ((System.Drawing.Image)(resources.GetObject("btnForbid.Image")));
+            this.btnForbid.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnForbid.LBPermissionCode = "DBCustomer_Forbid";
+            this.btnForbid.Name = "btnForbid";
+            this.btnForbid.Size = new System.Drawing.Size(36, 37);
+            this.btnForbid.Text = "禁用";
+            this.btnForbid.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnForbid.Click += new System.EventHandler(this.btnForbid_Click);
             // 
+            // toolStripSeparator2
             // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 40);
             // 
-            this.txtK3CustomerCode.SkinTxt.AccessibleName = "";
-            this.txtK3CustomerCode.SkinTxt.AutoCompleteCustomSource.AddRange(new string[] {
-            "asdfasdf",
-            "adsfasdf"});
-            this.txtK3CustomerCode.SkinTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.txtK3CustomerCode.SkinTxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtK3CustomerCode.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtK3CustomerCode.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtK3CustomerCode.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
-            this.txtK3CustomerCode.SkinTxt.Location = new System.Drawing.Point(5, 5);
-            this.txtK3CustomerCode.SkinTxt.Name = "BaseText";
-            this.txtK3CustomerCode.SkinTxt.Size = new System.Drawing.Size(169, 18);
-            this.txtK3CustomerCode.SkinTxt.TabIndex = 0;
-            this.txtK3CustomerCode.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
-            this.txtK3CustomerCode.SkinTxt.WaterText = "";
-            this.txtK3CustomerCode.TabIndex = 37;
-            this.txtK3CustomerCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtK3CustomerCode.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
-            this.txtK3CustomerCode.WaterText = "";
-            this.txtK3CustomerCode.WordWrap = true;
+            // btnUnForbid
             // 
-            // skinLabel22
+            this.btnUnForbid.Image = ((System.Drawing.Image)(resources.GetObject("btnUnForbid.Image")));
+            this.btnUnForbid.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnUnForbid.LBPermissionCode = "DBCustomer_UnForbid";
+            this.btnUnForbid.Name = "btnUnForbid";
+            this.btnUnForbid.Size = new System.Drawing.Size(60, 37);
+            this.btnUnForbid.Text = "取消禁用";
+            this.btnUnForbid.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnUnForbid.Click += new System.EventHandler(this.btnUnForbid_Click);
             // 
-            this.skinLabel22.BackColor = System.Drawing.Color.Transparent;
-            this.skinLabel22.BorderColor = System.Drawing.Color.White;
-            this.skinLabel22.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel22.Location = new System.Drawing.Point(339, 114);
-            this.skinLabel22.Name = "skinLabel22";
-            this.skinLabel22.Size = new System.Drawing.Size(83, 32);
-            this.skinLabel22.TabIndex = 38;
-            this.skinLabel22.Text = "K3编码";
-            this.skinLabel22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // lblForbid
+            // 
+            this.lblForbid.AutoSize = true;
+            this.lblForbid.Font = new System.Drawing.Font("黑体", 14F, System.Drawing.FontStyle.Bold);
+            this.lblForbid.ForeColor = System.Drawing.Color.Red;
+            this.lblForbid.Location = new System.Drawing.Point(3, 3);
+            this.lblForbid.Name = "lblForbid";
+            this.lblForbid.Size = new System.Drawing.Size(72, 19);
+            this.lblForbid.TabIndex = 39;
+            this.lblForbid.Text = "已禁用";
             // 
             // frmCustomerEdit
             // 
@@ -1615,6 +1661,7 @@
             this.skinToolStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdCar)).EndInit();
@@ -1703,5 +1750,9 @@
         private Controls.LBSkinTextBox txtAmountNotEnough;
         private CCWin.SkinControl.SkinLabel skinLabel22;
         private Controls.LBSkinTextBox txtK3CustomerCode;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private Controls.LBToolStripButton btnForbid;
+        private Controls.LBToolStripButton btnUnForbid;
+        private System.Windows.Forms.Label lblForbid;
     }
 }
