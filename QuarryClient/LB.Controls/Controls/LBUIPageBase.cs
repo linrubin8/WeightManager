@@ -183,7 +183,7 @@ namespace LB.Controls
                     btnEditReport.Click += BtnEditReport_Click;
                     args.LBToolStrip.Items.Add(btnEditReport);
                 }
-                DataTable dtReportTemp = ExecuteSQL.CallView(105, "", "ReportTypeID=" + args.ReportTypeID, "");
+                DataTable dtReportTemp = ReportHelper.GetReportTemplateRowByType(args.ReportTypeID);
                 if (args.LBToolStrip.Items.ContainsKey("btnReportViewSingle"))
                 {
                     args.LBToolStrip.Items.RemoveByKey("btnReportViewSingle");

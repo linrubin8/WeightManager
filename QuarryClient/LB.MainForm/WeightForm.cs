@@ -1688,11 +1688,11 @@ namespace LB.MainForm
             if (weightType == enWeightType.WeightIn)
             {
                 ProcessStep.AddStep("StartPreviceReport", DateTime.Now.ToString("MMdd HH:mm:ss ") + DateTime.Now.Millisecond);
-                DataTable dtReportTemp = ExecuteSQL.CallView(105, "", "ReportTypeID=6", "");
+                DataTable dtReport = ReportHelper.GetReportTemplateRowByType(6);
                 ProcessStep.AddStep("CallView_105", DateTime.Now.ToString("MMdd HH:mm:ss ") + DateTime.Now.Millisecond);
-                if (dtReportTemp.Rows.Count > 0)
+                if (dtReport.Rows.Count>0)
                 {
-                    DataRow drReport = dtReportTemp.Rows[0];
+                    DataRow drReport = dtReport.Rows[0];
                     long lReportTemplateID = Convert.ToInt64(drReport["ReportTemplateID"]);
                     long lReportTypeID = Convert.ToInt64(drReport["ReportTypeID"]);
 
@@ -1726,10 +1726,10 @@ namespace LB.MainForm
             else if (weightType == enWeightType.WeightOut || 
                     weightType == enWeightType.WeightOnlyOut)
             {
-                DataTable dtReportTemp = ExecuteSQL.CallView(105, "", "ReportTypeID=7", "");
-                if (dtReportTemp.Rows.Count > 0)
+                DataTable dtReport = ReportHelper.GetReportTemplateRowByType(7);
+                if (dtReport.Rows.Count>0)
                 {
-                    DataRow drReport = dtReportTemp.Rows[0];
+                    DataRow drReport = dtReport.Rows[0];
                     long lReportTemplateID = Convert.ToInt64(drReport["ReportTemplateID"]);
                     long lReportTypeID = Convert.ToInt64(drReport["ReportTypeID"]);
 

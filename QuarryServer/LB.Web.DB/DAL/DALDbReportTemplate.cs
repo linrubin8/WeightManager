@@ -97,7 +97,7 @@ set ReportTemplateName = @ReportTemplateName,
     TemplateFileTime = (case when @TemplateData is null then TemplateFileTime else @TemplateFileTime end)
 where ReportTemplateID = @ReportTemplateID
 
-if not exists(select 1 from dbo.DbPrinterConfig where ReportTemplateID = @ReportTemplateID)
+if not exists(select 1 from dbo.DbPrinterConfig where ReportTemplateID = @ReportTemplateID and MachineName = @MachineName)
 begin
     insert dbo.DbPrinterConfig( ReportTemplateID, PrinterName, MachineName, IsManualPaperType, 
     PaperType, IsManualPaperSize, PaperSizeHeight, PaperSizeWidth, IsPaperTransverse,PrintCount)
@@ -108,7 +108,6 @@ else
 begin
     update dbo.DbPrinterConfig
     set PrinterName = @PrinterName,
-        MachineName = @MachineName,
         IsManualPaperType = @IsManualPaperType,
         PaperType = @PaperType,
         IsManualPaperSize = @IsManualPaperSize,
@@ -116,7 +115,7 @@ begin
         PaperSizeWidth = @PaperSizeWidth,
         IsPaperTransverse = @IsPaperTransverse,
         PrintCount = @PrintCount
-    where ReportTemplateID = @ReportTemplateID
+    where ReportTemplateID = @ReportTemplateID and MachineName = @MachineName
 end
 ";
             DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);
@@ -153,6 +152,42 @@ where ReportTemplateID = @ReportTemplateID
 
 ";
             DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);
+        }
+
+        public DataTable GetReportTemplateByType(FactoryArgs args, t_BigID ReportTypeID, t_String MachineName)
+        {
+            LBDbParameterCollection parms = new LBDbParameterCollection();
+            parms.Add(new LBDbParameter("MachineName", MachineName));
+            parms.Add(new LBDbParameter("ReportTypeID", ReportTypeID));
+            string strSQL = @"
+select *
+from dbo.DbReportTemplate d
+    left outer join dbo.DbPrinterConfig p on
+        p.ReportTemplateID = d.ReportTemplateID and
+        p.MachineName = @MachineName
+where d.ReportTypeID = @ReportTypeID
+order by d.TemplateFileTime desc
+";
+            DataTable dtReturn = DBHelper.ExecuteQuery(args, strSQL, parms);
+            return dtReturn;
+        }
+
+        public DataTable GetReportTemplateByID(FactoryArgs args, t_BigID ReportTemplateID, t_String MachineName)
+        {
+            LBDbParameterCollection parms = new LBDbParameterCollection();
+            parms.Add(new LBDbParameter("MachineName", MachineName));
+            parms.Add(new LBDbParameter("ReportTemplateID", ReportTemplateID));
+            string strSQL = @"
+select *
+from dbo.DbReportTemplate d
+    left outer join dbo.DbPrinterConfig p on
+        p.ReportTemplateID = d.ReportTemplateID and
+        p.MachineName = @MachineName
+where d.ReportTemplateID = @ReportTemplateID
+order by d.TemplateFileTime desc
+";
+            DataTable dtReturn = DBHelper.ExecuteQuery(args, strSQL, parms);
+            return dtReturn;
         }
     }
 }

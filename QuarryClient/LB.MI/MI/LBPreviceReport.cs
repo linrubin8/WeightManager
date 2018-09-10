@@ -20,7 +20,7 @@ namespace LB.MI
             if (weightType == enWeightType.WeightIn)
             {
                 ProcessStep.AddStep("StartPreviceReport", DateTime.Now.ToString("MMdd HH:mm:ss ") + DateTime.Now.Millisecond);
-                DataTable dtReportTemp = ExecuteSQL.CallView(105, "", "ReportTypeID=6", "");
+                DataTable dtReportTemp = ReportHelper.GetReportTemplateRowByType(6);
                 ProcessStep.AddStep("CallView_105", DateTime.Now.ToString("MMdd HH:mm:ss ") + DateTime.Now.Millisecond);
                 if (dtReportTemp.Rows.Count > 0)
                 {
@@ -69,7 +69,7 @@ namespace LB.MI
             else if (weightType == enWeightType.WeightOut ||
                     weightType == enWeightType.WeightOnlyOut)
             {
-                DataTable dtReportTemp = ExecuteSQL.CallView(105, "", "ReportTypeID=7", "");
+                DataTable dtReportTemp = ReportHelper.GetReportTemplateRowByType(7);
                 if (dtReportTemp.Rows.Count > 0)
                 {
                     //打印磅单

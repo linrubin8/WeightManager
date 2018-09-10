@@ -48,5 +48,10 @@ namespace LB.Controls.Report
                 LB.WinFunction.LBCommonHelper.DealWithErrorMessage(ex);
             }
         }
+
+        public void GetReportTempleteUserData()
+        {
+
+        }
     }
 }

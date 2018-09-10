@@ -2,7 +2,7 @@
 <!DOCTYPE dotfuscatorMap SYSTEM "http://www.preemptive.com/dotfuscator/dtd/dotfuscatorMap_v1.2.dtd">
 <dotfuscatorMap version="1.1">
     <header>
-        <timestamp>2018-08-16T09:50:31</timestamp>
+        <timestamp>2018-08-21T23:15:03</timestamp>
         <product version="4.9.6005.29054" user="firefly " serial="124576-PRO-AC6AB7C5-7A50E312-F0BBEBCC-829D98D7">Dotfuscator Professional Edition</product>
     </header>
     <mapping>
@@ -351,6 +351,10 @@
                 <methodlist>
                     <method>
                         <signature>void()</signature>
+                        <name>.cctor</name>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
                         <name>.ctor</name>
                     </method>
                     <method>
@@ -358,7 +362,13 @@
                         <name>WriteLog</name>
                     </method>
                 </methodlist>
-                <fieldlist />
+                <fieldlist>
+                    <field>
+                        <signature>object</signature>
+                        <name>objLock</name>
+                        <newname>a</newname>
+                    </field>
+                </fieldlist>
                 <propertylist />
                 <eventlist />
             </type>
@@ -4969,7 +4979,7 @@
                         <name>Customer_Delete</name>
                     </method>
                     <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String)</signature>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String)</signature>
                         <name>Customer_Insert</name>
                     </method>
                     <method>
@@ -4977,7 +4987,7 @@
                         <name>Customer_InsertFromService</name>
                     </method>
                     <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String)</signature>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String)</signature>
                         <name>Customer_Update</name>
                     </method>
                     <method>
@@ -4985,8 +4995,16 @@
                         <name>Customer_UpdateFromService</name>
                     </method>
                     <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
+                        <name>Forbid</name>
+                    </method>
+                    <method>
                         <signature>string(int32)</signature>
                         <name>GetFunctionName</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
+                        <name>UnForbid</name>
                     </method>
                 </methodlist>
                 <fieldlist>
@@ -5111,32 +5129,27 @@
                     <field>
                         <signature>LB.Web.Contants.DBType.t_Bool</signature>
                         <name>IsAllowEmptyIn</name>
-                        <newname>g</newname>
-                    </field>
-                    <field>
-                        <signature>LB.Web.Contants.DBType.t_Bool</signature>
-                        <name>IsAllowOverFul</name>
                         <newname>f</newname>
                     </field>
                     <field>
                         <signature>LB.Web.Contants.DBType.t_Bool</signature>
-                        <name>IsDisplayAmount</name>
-                        <newname>d</newname>
+                        <name>IsAllowOverFul</name>
+                        <newname>e</newname>
                     </field>
                     <field>
                         <signature>LB.Web.Contants.DBType.t_Bool</signature>
-                        <name>IsDisplayPrice</name>
+                        <name>IsDisplayAmount</name>
                         <newname>c</newname>
                     </field>
                     <field>
                         <signature>LB.Web.Contants.DBType.t_Bool</signature>
-                        <name>IsForbid</name>
+                        <name>IsDisplayPrice</name>
                         <newname>b</newname>
                     </field>
                     <field>
                         <signature>LB.Web.Contants.DBType.t_Bool</signature>
                         <name>IsPrintAmount</name>
-                        <newname>e</newname>
+                        <newname>d</newname>
                     </field>
                     <field>
                         <signature>LB.Web.Contants.DBType.t_String</signature>
@@ -5208,6 +5221,11 @@
                         <newname>a</newname>
                     </field>
                     <field>
+                        <signature>LB.Web.Base.Factory.FactoryArgs</signature>
+                        <name>args</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
                         <signature>LB.Web.Contants.DBType.t_Bool</signature>
                         <name>CarIsLimit</name>
                         <newname>a</newname>
@@ -5240,32 +5258,32 @@
                     <field>
                         <signature>LB.Web.Contants.DBType.t_Bool</signature>
                         <name>IsAllowEmptyIn</name>
-                        <newname>g</newname>
-                    </field>
-                    <field>
-                        <signature>LB.Web.Contants.DBType.t_Bool</signature>
-                        <name>IsAllowOverFul</name>
                         <newname>f</newname>
                     </field>
                     <field>
                         <signature>LB.Web.Contants.DBType.t_Bool</signature>
-                        <name>IsDisplayAmount</name>
-                        <newname>d</newname>
+                        <name>IsAllowOverFul</name>
+                        <newname>e</newname>
                     </field>
                     <field>
                         <signature>LB.Web.Contants.DBType.t_Bool</signature>
-                        <name>IsDisplayPrice</name>
+                        <name>IsDisplayAmount</name>
                         <newname>c</newname>
                     </field>
                     <field>
                         <signature>LB.Web.Contants.DBType.t_Bool</signature>
-                        <name>IsForbid</name>
+                        <name>IsDisplayPrice</name>
                         <newname>b</newname>
                     </field>
                     <field>
                         <signature>LB.Web.Contants.DBType.t_Bool</signature>
+                        <name>IsForbid</name>
+                        <newname>g</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Bool</signature>
                         <name>IsPrintAmount</name>
-                        <newname>e</newname>
+                        <newname>d</newname>
                     </field>
                     <field>
                         <signature>LB.Web.Contants.DBType.t_String</signature>
@@ -5572,16 +5590,24 @@
                         <name>Customer_Delete</name>
                     </method>
                     <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String)</signature>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String)</signature>
                         <name>Customer_Insert</name>
                     </method>
                     <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String)</signature>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String)</signature>
                         <name>Customer_Update</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
+                        <name>Forbid</name>
                     </method>
                     <method>
                         <signature>System.Data.DataTable(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
                         <name>GetCarByCustomer</name>
+                    </method>
+                    <method>
+                        <signature>System.Data.DataTable(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
+                        <name>GetCustomerByID</name>
                     </method>
                     <method>
                         <signature>System.Data.DataTable(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String)</signature>
@@ -5594,6 +5620,10 @@
                     <method>
                         <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_String&amp;)</signature>
                         <name>GetMaxCode</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
+                        <name>UnForbid</name>
                     </method>
                     <method>
                         <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal)</signature>
@@ -9880,11 +9910,11 @@
         </statisticline>
         <statisticline>
             <description>Total Methods</description>
-            <statistic>1056</statistic>
+            <statistic>1062</statistic>
         </statisticline>
         <statisticline>
             <description>Total Fields</description>
-            <statistic>709</statistic>
+            <statistic>710</statistic>
         </statisticline>
         <statisticline>
             <description>Total Properties</description>
@@ -9902,12 +9932,12 @@
         <statisticline>
             <description>Total Methods Renamed</description>
             <statistic>169</statistic>
-            <statistic>16.00%</statistic>
+            <statistic>15.91%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Fields Renamed</description>
-            <statistic>519</statistic>
-            <statistic>73.20%</statistic>
+            <statistic>520</statistic>
+            <statistic>73.24%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Properties Renamed</description>
@@ -9922,12 +9952,12 @@
         <statisticline>
             <description>Methods Renamed to 'a'</description>
             <statistic>103</statistic>
-            <statistic>9.75%</statistic>
+            <statistic>9.70%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'b'</description>
             <statistic>17</statistic>
-            <statistic>1.61%</statistic>
+            <statistic>1.60%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'c'</description>

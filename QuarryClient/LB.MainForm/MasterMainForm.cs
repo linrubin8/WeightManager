@@ -511,6 +511,12 @@ namespace LB.MainForm
             frmSaleCarInOutBillManagerSynK3 frm = new frmSaleCarInOutBillManagerSynK3(1);
             LBShowForm.ShowMainPage(frm);
         }
+        
+        private void btnSynBaseInfo_Click(object sender, EventArgs e)
+        {
+            frmSynBaseInfoFromServer frm = new frmSynBaseInfoFromServer();
+            LBShowForm.ShowDialog(frm);
+        }
         #endregion -- 按钮事件  --
 
         #region -- ShowMainPage --
@@ -700,6 +706,6 @@ namespace LB.MainForm
         {
 
         }
-        
+
     }
 }

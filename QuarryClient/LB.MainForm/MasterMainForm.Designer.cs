@@ -92,6 +92,7 @@ namespace LB.MainForm
             this.lblLoginTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblConnectStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnSynBaseInfo = new LB.Controls.LBToolStripMenuItem(this.components);
             this.toolStrip1.SuspendLayout();
             this.tcMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -477,7 +478,8 @@ namespace LB.MainForm
             this.btnSynCustomer,
             this.btnSynCar,
             this.btnSynSalesBill,
-            this.btnSynPrice});
+            this.btnSynPrice,
+            this.btnSynBaseInfo});
             this.btnSynchornousData.Image = ((System.Drawing.Image)(resources.GetObject("btnSynchornousData.Image")));
             this.btnSynchornousData.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSynchornousData.LBPermissionCode = "";
@@ -489,32 +491,35 @@ namespace LB.MainForm
             // 
             this.btnSynCustomer.LBPermissionCode = "Customer_Synchornous";
             this.btnSynCustomer.Name = "btnSynCustomer";
-            this.btnSynCustomer.Size = new System.Drawing.Size(148, 22);
+            this.btnSynCustomer.Size = new System.Drawing.Size(240, 22);
             this.btnSynCustomer.Text = "客户资料同步";
+            this.btnSynCustomer.Visible = false;
             this.btnSynCustomer.Click += new System.EventHandler(this.btnSynCustomer_Click);
             // 
             // btnSynCar
             // 
             this.btnSynCar.LBPermissionCode = "Car_Synchornous";
             this.btnSynCar.Name = "btnSynCar";
-            this.btnSynCar.Size = new System.Drawing.Size(148, 22);
+            this.btnSynCar.Size = new System.Drawing.Size(240, 22);
             this.btnSynCar.Text = "车辆资料同步";
+            this.btnSynCar.Visible = false;
             this.btnSynCar.Click += new System.EventHandler(this.btnSynCar_Click);
             // 
             // btnSynSalesBill
             // 
             this.btnSynSalesBill.LBPermissionCode = "SalesBill_Synchornous";
             this.btnSynSalesBill.Name = "btnSynSalesBill";
-            this.btnSynSalesBill.Size = new System.Drawing.Size(148, 22);
-            this.btnSynSalesBill.Text = "单据信息同步";
+            this.btnSynSalesBill.Size = new System.Drawing.Size(204, 22);
+            this.btnSynSalesBill.Text = "单据信息同步至服务器";
             this.btnSynSalesBill.Click += new System.EventHandler(this.btnSynSalesBill_Click);
             // 
             // btnSynPrice
             // 
             this.btnSynPrice.LBPermissionCode = "ItemPrice_Synchornous";
             this.btnSynPrice.Name = "btnSynPrice";
-            this.btnSynPrice.Size = new System.Drawing.Size(148, 22);
+            this.btnSynPrice.Size = new System.Drawing.Size(240, 22);
             this.btnSynPrice.Text = "价格表同步";
+            this.btnSynPrice.Visible = false;
             this.btnSynPrice.Click += new System.EventHandler(this.btnSynPrice_Click);
             // 
             // btnReportManager
@@ -653,6 +658,14 @@ namespace LB.MainForm
             this.lblConnectStatus.Size = new System.Drawing.Size(42, 22);
             this.lblConnectStatus.Text = "正常";
             // 
+            // btnSynBaseInfo
+            // 
+            this.btnSynBaseInfo.LBPermissionCode = "BaseInfo_Synchornous";
+            this.btnSynBaseInfo.Name = "btnSynBaseInfo";
+            this.btnSynBaseInfo.Size = new System.Drawing.Size(240, 22);
+            this.btnSynBaseInfo.Text = "同步到本地(客户、车辆、单价)";
+            this.btnSynBaseInfo.Click += new System.EventHandler(this.btnSynBaseInfo_Click);
+            // 
             // MasterMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -736,6 +749,7 @@ namespace LB.MainForm
         private LBToolStripMenuItem btnSynPrice;
         private LBToolStripMenuItem btnSaleInOutSynK3Receive;
         private LBToolStripMenuItem btnSaleInOutSynK3OutBill;
+        private LBToolStripMenuItem btnSynBaseInfo;
     }
 }
 

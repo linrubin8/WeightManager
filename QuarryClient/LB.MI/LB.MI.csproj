@@ -152,6 +152,12 @@
     <Compile Include="MI\frmSynchornousCustomerData.Designer.cs">
       <DependentUpon>frmSynchornousCustomerData.cs</DependentUpon>
     </Compile>
+    <Compile Include="MI\frmSynBaseInfoFromServer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmSynBaseInfoFromServer.Designer.cs">
+      <DependentUpon>frmSynBaseInfoFromServer.cs</DependentUpon>
+    </Compile>
     <Compile Include="MI\frmSynK3Process.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -340,6 +346,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MI\frmSynchornousCustomerData.resx">
       <DependentUpon>frmSynchornousCustomerData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmSynBaseInfoFromServer.resx">
+      <DependentUpon>frmSynBaseInfoFromServer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MI\frmSynK3Process.resx">
       <DependentUpon>frmSynK3Process.cs</DependentUpon>

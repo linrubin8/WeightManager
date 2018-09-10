@@ -28,7 +28,8 @@ namespace LB.Controls.Report
 
         private void LoadReportData()
         {
-            DataTable dtUser = ExecuteSQL.CallView(105,"", "ReportTypeID="+ mReportArgs.ReportTypeID, "");
+            DataTable dtUser = ReportHelper.GetReportTemplateRowByType(mReportArgs.ReportTypeID);
+
             this.grdMain.DataSource = dtUser.DefaultView;
         }
 

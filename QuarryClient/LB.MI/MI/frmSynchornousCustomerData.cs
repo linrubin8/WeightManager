@@ -188,42 +188,6 @@ namespace LB.MI.MI
         {
             try
             {
-                //#region -- 同步至服务器 --
-                //foreach(KeyValuePair<int, DataRow> keyvalue in _dictUploadToServer)
-                //{
-                //    DataRow drCustomer = keyvalue.Value;
-                //    DataTable dtCustomer = drCustomer.Table.Clone();
-                //    dtCustomer.ImportRow(drCustomer);
-
-                //    try
-                //    {
-                //        DataSet dsResult;
-                //        DataTable dtResult;
-                //        SynchronousCustomer.AddServerCustomerData(dtCustomer, out dsResult, out dtResult);
-                //        long lCustomerID = 0;
-                //        if (dtResult != null && dtResult.Rows.Count > 0)
-                //        {
-                //            foreach (DataColumn dc in dtResult.Columns)
-                //            {
-                //                if (dc.ColumnName.Contains("CustomerID"))
-                //                {
-                //                    lCustomerID = LBConverter.ToInt64(dtResult.Rows[0]["CustomerID"]);
-                //                    break;
-                //                }
-                //            }
-                //        }
-                //        if (lCustomerID > 0)
-                //        {
-                //            _dictUploadMsg.Add(keyvalue.Key, "成功");
-                //        }
-                //    }
-                //    catch (Exception ex)
-                //    {
-                //        _dictUploadMsg.Add(keyvalue.Key, ex.Message);
-                //    }
-                //}
-                //#endregion -- 同步至服务器 --
-
                 #region -- 将客户资料下载到本地 --
 
                 foreach (KeyValuePair<int, DataRow> keyvalue in _dictDownLoadToClient)

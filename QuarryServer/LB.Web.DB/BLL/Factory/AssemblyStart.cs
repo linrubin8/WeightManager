@@ -44,6 +44,8 @@ namespace LB.Web.DB.BLL.Factory
                 case 12001:
                 case 12002:
                 case 12003:
+                case 12004:
+                case 12005:
                     args.BLLFunction = new BLLDbReportTemplate();
                     break;
 

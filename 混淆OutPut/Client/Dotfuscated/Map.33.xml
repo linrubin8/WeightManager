@@ -2,7 +2,7 @@
 <!DOCTYPE dotfuscatorMap SYSTEM "http://www.preemptive.com/dotfuscator/dtd/dotfuscatorMap_v1.2.dtd">
 <dotfuscatorMap version="1.1">
     <header>
-        <timestamp>2018-08-23T22:55:28</timestamp>
+        <timestamp>2018-08-21T23:17:56</timestamp>
         <product version="4.9.6005.29054" user="firefly " serial="124576-PRO-AC6AB7C5-7A50E312-F0BBEBCC-829D98D7">Dotfuscator Professional Edition</product>
     </header>
     <mapping>
@@ -37665,6 +37665,22 @@
                 <eventlist />
             </type>
             <type>
+                <name>LB.Common.K3Cloud</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(string, string, string, string, string, string, System.Decimal, System.Decimal, System.Decimal, System.Decimal, System.Decimal)</signature>
+                        <name>InsertK3Bill</name>
+                    </method>
+                </methodlist>
+                <fieldlist />
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
                 <name>LB.Common.LBConst</name>
                 <methodlist>
                     <method>
@@ -50160,193 +50176,188 @@
                     </method>
                     <method>
                         <signature>void()</signature>
-                        <name>&lt;TestServerConnectStatus&gt;b__50_0</name>
+                        <name>&lt;TestServerConnectStatus&gt;b__49_0</name>
                         <newname>c</newname>
                     </method>
                     <method>
                         <signature>void()</signature>
-                        <name>&lt;TestServerConnectStatus&gt;b__50_1</name>
+                        <name>&lt;TestServerConnectStatus&gt;b__49_1</name>
                         <newname>b</newname>
                     </method>
                     <method>
                         <signature>void()</signature>
-                        <name>&lt;TestServerConnectStatus&gt;b__50_2</name>
+                        <name>&lt;TestServerConnectStatus&gt;b__49_2</name>
                         <newname>a</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>btnAddCar_Click</name>
-                        <newname>w</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnAddChangePriceBill_Click</name>
-                        <newname>n</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnAddCustomer_Click</name>
-                        <newname>t</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnBankManager_Click</name>
-                        <newname>l</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnCameraDevice_Click</name>
-                        <newname>q</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnCancel_Click</name>
-                        <newname>al</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnCarQuery_Click</name>
                         <newname>v</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnCarWeightManager_Click</name>
-                        <newname>p</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnChangePassword_Click</name>
-                        <newname>ak</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnChangePriceManager_Click</name>
-                        <newname>u</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnChargeManager_Click</name>
-                        <newname>k</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnCustomerManager_Click</name>
-                        <newname>x</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnDBBackUp_Click</name>
-                        <newname>ac</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnDbSysConfig_Click</name>
-                        <newname>af</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnDescriptionManager_Click</name>
-                        <newname>s</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnExportConfigSQL_Click</name>
-                        <newname>ah</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnItemBaseManager_Click</name>
-                        <newname>z</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnLogManager_Click</name>
-                        <newname>ad</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnPermissionConfig_Click</name>
-                        <newname>ag</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnReportManager_Click</name>
+                        <name>btnAddChangePriceBill_Click</name>
                         <newname>m</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnRPReceive_Click</name>
-                        <newname>ab</newname>
+                        <name>btnAddCustomer_Click</name>
+                        <newname>s</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnRPReceiveList_Click</name>
-                        <newname>aa</newname>
+                        <name>btnBankManager_Click</name>
+                        <newname>k</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSaleInOutManager_Click</name>
+                        <name>btnCameraDevice_Click</name>
+                        <newname>p</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnCancel_Click</name>
+                        <newname>ak</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnCarQuery_Click</name>
+                        <newname>u</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnCarWeightManager_Click</name>
                         <newname>o</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSaleInOutSynK3OutBill_Click</name>
-                        <newname>e</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSaleInOutSynK3Receive_Click</name>
-                        <newname>f</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSQLBuilder_Click</name>
-                        <newname>ae</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSynBaseInfo_Click</name>
-                        <newname>d</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSynCar_Click</name>
-                        <newname>j</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSynCustomer_Click</name>
-                        <newname>i</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSynPrice_Click</name>
-                        <newname>g</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSynSalesBill_Click</name>
-                        <newname>h</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnUOMManager_Click</name>
-                        <newname>y</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnUserManager_Click</name>
+                        <name>btnChangePassword_Click</name>
                         <newname>aj</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnViewConfig_Click</name>
+                        <name>btnChangePriceManager_Click</name>
+                        <newname>t</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnChargeManager_Click</name>
+                        <newname>j</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnCustomerManager_Click</name>
+                        <newname>w</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnDBBackUp_Click</name>
+                        <newname>ab</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnDbSysConfig_Click</name>
+                        <newname>ae</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnDescriptionManager_Click</name>
+                        <newname>r</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnExportConfigSQL_Click</name>
+                        <newname>ag</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnItemBaseManager_Click</name>
+                        <newname>y</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnLogManager_Click</name>
+                        <newname>ac</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnPermissionConfig_Click</name>
+                        <newname>af</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnReportManager_Click</name>
+                        <newname>l</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnRPReceive_Click</name>
+                        <newname>aa</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnRPReceiveList_Click</name>
+                        <newname>z</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSaleInOutManager_Click</name>
+                        <newname>n</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSaleInOutSynK3OutBill_Click</name>
+                        <newname>d</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSaleInOutSynK3Receive_Click</name>
+                        <newname>e</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSQLBuilder_Click</name>
+                        <newname>ad</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSynCar_Click</name>
+                        <newname>i</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSynCustomer_Click</name>
+                        <newname>h</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSynPrice_Click</name>
+                        <newname>f</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSynSalesBill_Click</name>
+                        <newname>g</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnUOMManager_Click</name>
+                        <newname>x</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnUserManager_Click</name>
                         <newname>ai</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
+                        <name>btnViewConfig_Click</name>
+                        <newname>ah</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
                         <name>btnWeightDevice_Click</name>
-                        <newname>r</newname>
+                        <newname>q</newname>
                     </method>
                     <method>
                         <signature>void(bool)</signature>
@@ -50579,11 +50590,6 @@
                         <signature>LB.Controls.LBToolStripMenuItem</signature>
                         <name>btnSQLBuilder</name>
                         <newname>g</newname>
-                    </field>
-                    <field>
-                        <signature>LB.Controls.LBToolStripMenuItem</signature>
-                        <name>btnSynBaseInfo</name>
-                        <newname>ai</newname>
                     </field>
                     <field>
                         <signature>LB.Controls.LBToolStripMenuItem</signature>
@@ -61622,254 +61628,6 @@
                 </eventlist>
             </type>
             <type>
-                <name>LB.MI.MI.frmSynBaseInfoFromServer</name>
-                <methodlist>
-                    <method>
-                        <signature>void()</signature>
-                        <name>.ctor</name>
-                    </method>
-                    <method>
-                        <signature>void(bool)</signature>
-                        <name>Dispose</name>
-                    </method>
-                    <method>
-                        <signature>void(object, System.Windows.Forms.FormClosingEventArgs)</signature>
-                        <name>FrmSynK3Process_FormClosing</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void()</signature>
-                        <name>InitializeComponent</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void(string, string)</signature>
-                        <name>InsertCarListView</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void(string, string)</signature>
-                        <name>InsertCustomerListView</name>
-                        <newname>b</newname>
-                    </method>
-                    <method>
-                        <signature>void(string)</signature>
-                        <name>InsertPriceListView</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>Mtimer_Tick</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void(System.EventArgs)</signature>
-                        <name>OnLoad</name>
-                    </method>
-                    <method>
-                        <signature>void()</signature>
-                        <name>SynBaseInfo</name>
-                        <newname>b</newname>
-                    </method>
-                </methodlist>
-                <fieldlist>
-                    <field>
-                        <signature>bool</signature>
-                        <name>bolIsFinished</name>
-                        <newname>b</newname>
-                    </field>
-                    <field>
-                        <signature>bool</signature>
-                        <name>bolIsKillThread</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.ColumnHeader</signature>
-                        <name>columnHeader1</name>
-                        <newname>b</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.ColumnHeader</signature>
-                        <name>columnHeader2</name>
-                        <newname>c</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.ColumnHeader</signature>
-                        <name>columnHeader3</name>
-                        <newname>d</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.ColumnHeader</signature>
-                        <name>columnHeader5</name>
-                        <newname>e</newname>
-                    </field>
-                    <field>
-                        <signature>System.ComponentModel.IContainer</signature>
-                        <name>components</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.GroupBox</signature>
-                        <name>groupBox1</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.GroupBox</signature>
-                        <name>groupBox2</name>
-                        <newname>b</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.GroupBox</signature>
-                        <name>groupBox3</name>
-                        <newname>c</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.Label</signature>
-                        <name>lblWaist</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.ListView</signature>
-                        <name>lvCar</name>
-                        <newname>b</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.ListView</signature>
-                        <name>lvCustomer</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.ListView</signature>
-                        <name>lvPrice</name>
-                        <newname>c</newname>
-                    </field>
-                    <field>
-                        <signature>System.Threading.Thread</signature>
-                        <name>mThread</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.Timer</signature>
-                        <name>mtimer</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.Panel</signature>
-                        <name>panel1</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>string</signature>
-                        <name>strMsg</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.ColumnHeader</signature>
-                        <name>单号</name>
-                        <newname>a</newname>
-                    </field>
-                </fieldlist>
-                <propertylist />
-                <eventlist />
-            </type>
-            <type>
-                <name>LB.MI.MI.frmSynBaseInfoFromServer/&lt;&gt;c__DisplayClass10_0</name>
-                <newname>LB.MI.MI.frmSynBaseInfoFromServer/c</newname>
-                <methodlist>
-                    <method>
-                        <signature>void()</signature>
-                        <name>.ctor</name>
-                    </method>
-                    <method>
-                        <signature>void()</signature>
-                        <name>&lt;InsertCustomerListView&gt;b__0</name>
-                        <newname>a</newname>
-                    </method>
-                </methodlist>
-                <fieldlist>
-                    <field>
-                        <signature>LB.MI.MI.frmSynBaseInfoFromServer</signature>
-                        <name>&lt;&gt;4__this</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>string</signature>
-                        <name>strCustomerName</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>string</signature>
-                        <name>strResult</name>
-                        <newname>b</newname>
-                    </field>
-                </fieldlist>
-                <propertylist />
-                <eventlist />
-            </type>
-            <type>
-                <name>LB.MI.MI.frmSynBaseInfoFromServer/&lt;&gt;c__DisplayClass11_0</name>
-                <newname>LB.MI.MI.frmSynBaseInfoFromServer/a</newname>
-                <methodlist>
-                    <method>
-                        <signature>void()</signature>
-                        <name>.ctor</name>
-                    </method>
-                    <method>
-                        <signature>void()</signature>
-                        <name>&lt;InsertCarListView&gt;b__0</name>
-                        <newname>a</newname>
-                    </method>
-                </methodlist>
-                <fieldlist>
-                    <field>
-                        <signature>LB.MI.MI.frmSynBaseInfoFromServer</signature>
-                        <name>&lt;&gt;4__this</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>string</signature>
-                        <name>strCarNum</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>string</signature>
-                        <name>strResult</name>
-                        <newname>b</newname>
-                    </field>
-                </fieldlist>
-                <propertylist />
-                <eventlist />
-            </type>
-            <type>
-                <name>LB.MI.MI.frmSynBaseInfoFromServer/&lt;&gt;c__DisplayClass12_0</name>
-                <newname>LB.MI.MI.frmSynBaseInfoFromServer/b</newname>
-                <methodlist>
-                    <method>
-                        <signature>void()</signature>
-                        <name>.ctor</name>
-                    </method>
-                    <method>
-                        <signature>void()</signature>
-                        <name>&lt;InsertPriceListView&gt;b__0</name>
-                        <newname>a</newname>
-                    </method>
-                </methodlist>
-                <fieldlist>
-                    <field>
-                        <signature>LB.MI.MI.frmSynBaseInfoFromServer</signature>
-                        <name>&lt;&gt;4__this</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>string</signature>
-                        <name>strResult</name>
-                        <newname>a</newname>
-                    </field>
-                </fieldlist>
-                <propertylist />
-                <eventlist />
-            </type>
-            <type>
                 <name>LB.MI.MI.frmSynchornousCarData</name>
                 <methodlist>
                     <method>
@@ -70788,15 +70546,15 @@
     <statistics>
         <statisticline>
             <description>Total Classes</description>
-            <statistic>1199</statistic>
+            <statistic>1196</statistic>
         </statisticline>
         <statisticline>
             <description>Total Methods</description>
-            <statistic>3761</statistic>
+            <statistic>3746</statistic>
         </statisticline>
         <statisticline>
             <description>Total Fields</description>
-            <statistic>9533</statistic>
+            <statistic>9505</statistic>
         </statisticline>
         <statisticline>
             <description>Total Properties</description>
@@ -70808,18 +70566,18 @@
         </statisticline>
         <statisticline>
             <description>Total Classes Renamed</description>
-            <statistic>29</statistic>
-            <statistic>2.42%</statistic>
+            <statistic>26</statistic>
+            <statistic>2.17%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Methods Renamed</description>
-            <statistic>1113</statistic>
-            <statistic>29.59%</statistic>
+            <statistic>1102</statistic>
+            <statistic>29.42%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Fields Renamed</description>
-            <statistic>2650</statistic>
-            <statistic>27.80%</statistic>
+            <statistic>2622</statistic>
+            <statistic>27.59%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Properties Renamed</description>
@@ -70833,23 +70591,23 @@
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'a'</description>
-            <statistic>450</statistic>
-            <statistic>11.96%</statistic>
+            <statistic>442</statistic>
+            <statistic>11.80%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'b'</description>
-            <statistic>180</statistic>
-            <statistic>4.79%</statistic>
+            <statistic>178</statistic>
+            <statistic>4.75%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'c'</description>
             <statistic>119</statistic>
-            <statistic>3.16%</statistic>
+            <statistic>3.18%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'd'</description>
             <statistic>75</statistic>
-            <statistic>1.99%</statistic>
+            <statistic>2.00%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'e'</description>
@@ -70864,7 +70622,7 @@
         <statisticline>
             <description>Methods Renamed to 'g'</description>
             <statistic>25</statistic>
-            <statistic>0.66%</statistic>
+            <statistic>0.67%</statistic>
         </statisticline>
     </statistics>
 </dotfuscatorMap>

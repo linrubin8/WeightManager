@@ -58,10 +58,6 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Kingdee.BOS.WebApi.Client, Version=6.2.321.9, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LB.MainForm\bin\Debug\Kingdee.BOS.WebApi.Client.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -91,7 +87,6 @@
     <Compile Include="Common\CHCNetSDK.cs" />
     <Compile Include="Common\CommonHelper.cs" />
     <Compile Include="Common\HikSDK.cs" />
-    <Compile Include="Common\K3Cloud.cs" />
     <Compile Include="Common\LBConst.cs" />
     <Compile Include="Common\LBConverter.cs" />
     <Compile Include="Common\LBEnum.cs" />

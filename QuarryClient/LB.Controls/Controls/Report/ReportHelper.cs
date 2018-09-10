@@ -134,26 +134,30 @@ namespace LB.Controls.Report
         public static void OpenReportDialog(enRequestReportActionType eActionType, ReportRequestArgs reportRequestArgs)
         {
             ProcessStep.AddStep("OpenReportDialog_Start", DateTime.Now.ToString("MMdd HH:mm:ss ") + DateTime.Now.Millisecond);
-            DataRow drReportTemplateConfig = GetReportTemplateRow(reportRequestArgs.ReportTemplateID);
+            //DataRow drReportTemplateConfig = GetReportTemplateRow(reportRequestArgs.ReportTemplateID);
             int iPrintCount = 1;
 
-            if(eActionType == enRequestReportActionType.DirectPrint)
+            DataTable dtReport = ReportHelper.GetReportTemplateByID(reportRequestArgs.ReportTemplateID);
+            if (dtReport.Rows.Count > 0)
             {
-                iPrintCount = LBConverter.ToInt32(drReportTemplateConfig["PrintCount"]);
-                if (iPrintCount <= 0)
+                DataRow drReportTemplateConfig = dtReport.Rows[0];
+                if (eActionType == enRequestReportActionType.DirectPrint)
                 {
-                    iPrintCount = 1;
+                    iPrintCount = LBConverter.ToInt32(drReportTemplateConfig["PrintCount"]);
+                    if (iPrintCount <= 0)
+                    {
+                        iPrintCount = 1;
+                    }
+                }
+
+                ProcessStep.AddStep("GetReportTemplateRow", DateTime.Now.ToString("MMdd HH:mm:ss ") + DateTime.Now.Millisecond);
+                reportRequestArgs.ReportTemplateConfig = drReportTemplateConfig;
+
+                for (int i = 0; i < iPrintCount; i++)
+                {
+                    ShowReport(eActionType, reportRequestArgs);
                 }
             }
-
-            ProcessStep.AddStep("GetReportTemplateRow", DateTime.Now.ToString("MMdd HH:mm:ss ") + DateTime.Now.Millisecond);
-            reportRequestArgs.ReportTemplateConfig = drReportTemplateConfig;
-
-            for(int i=0;i< iPrintCount; i++)
-            {
-                ShowReport(eActionType, reportRequestArgs);
-            }
-            
             ProcessStep.AddStep("ShowReport_End", DateTime.Now.ToString("MMdd HH:mm:ss ") + DateTime.Now.Millisecond);
         }
 
@@ -191,7 +195,12 @@ namespace LB.Controls.Report
         /// <param name="lReportTemplateID"></param>
         public static void ResetLocalReport(long lReportTemplateID, DataSet dsSource, DataRow drRecord)
         {
-            DataRow drReportTemplateConfig = GetReportTemplateRow(lReportTemplateID);
+            DataTable dtReportTemplateConfig = ReportHelper.GetReportTemplateByID(lReportTemplateID);
+            if (dtReportTemplateConfig.Rows.Count == 0)
+            {
+                return;
+            }
+            DataRow drReportTemplateConfig = dtReportTemplateConfig.Rows[0];
 
             byte[] reportTempleData = (byte[])drReportTemplateConfig["TemplateData"];
             long lReportTypeID = Convert.ToInt64(drReportTemplateConfig["ReportTypeID"]);
@@ -299,7 +308,12 @@ namespace LB.Controls.Report
 
         public static FastReport.Report GetReport(ReportRequestArgs e)
         {
-            DataRow drReportTemplateConfig = GetReportTemplateRow(e.ReportTemplateID);
+            DataTable dtReportTemplateConfig = ReportHelper.GetReportTemplateByID(e.ReportTemplateID);
+            if (dtReportTemplateConfig.Rows.Count == 0)
+            {
+                return null;
+            }
+            DataRow drReportTemplateConfig = dtReportTemplateConfig.Rows[0];
             e.ReportTemplateConfig = drReportTemplateConfig;
 
             long lReportTemplateID = Convert.ToInt64(e.ReportTemplateConfig["ReportTemplateID"]);
@@ -369,14 +383,60 @@ namespace LB.Controls.Report
         }
 
 
-        private static DataRow GetReportTemplateRow(long lReportTemplateID)
+        public static DataTable GetReportTemplateByID(long lReportTemplateID)
         {
-            DataTable dtReportTemplate = ExecuteSQL.CallView(105, "", "ReportTemplateID=" + lReportTemplateID, "");
-            if (dtReportTemplate.Rows.Count > 0)
+            DataTable dtTemplate = null;
+            //记录磅单打印次数
+            LBDbParameterCollection parmCol = new LBDbParameterCollection();
+            parmCol.Add(new LBParameter("ReportTemplateID", enLBDbType.Int64, lReportTemplateID));
+            parmCol.Add(new LBParameter("MachineName", enLBDbType.String, LoginInfo.MachineName));
+
+            DataSet dsReturn;
+            Dictionary<string, object> dictValue;
+            ExecuteSQL.CallSP(12005, parmCol, out dsReturn, out dictValue);
+            if (dsReturn != null && dsReturn.Tables.Count > 0)
             {
-                return dtReportTemplate.Rows[0];
+                dtTemplate = dsReturn.Tables[0];
             }
-            return null;
+            //DataTable dtReportTemplate = ExecuteSQL.CallView(105, "", "ReportTemplateID=" + lReportTemplateID, "");
+            //dtReportTemplate.DefaultView.RowFilter = "MachineName='" + LoginInfo.MachineName + "'";
+            //if (dtReportTemplate.DefaultView.Count > 0)
+            //{
+            //    return dtReportTemplate.DefaultView[0].Row;
+            //}
+            //else if (dtReportTemplate.Rows.Count > 0)
+            //{
+            //    return dtReportTemplate.Rows[0];
+            //}
+            return dtTemplate;
+        }
+
+        public static DataTable GetReportTemplateRowByType(long lReportTypeID)
+        {
+            DataTable dtTemplate = null;
+            LBDbParameterCollection parmCol = new LBDbParameterCollection();
+            parmCol.Add(new LBParameter("ReportTypeID", enLBDbType.Int64, lReportTypeID));
+            parmCol.Add(new LBParameter("MachineName", enLBDbType.String, LoginInfo.MachineName));
+
+            DataSet dsReturn;
+            Dictionary<string, object> dictValue;
+            ExecuteSQL.CallSP(12004, parmCol, out dsReturn, out dictValue);
+
+            if(dsReturn!=null&& dsReturn.Tables.Count > 0)
+            {
+                dtTemplate = dsReturn.Tables[0];
+            }
+            //DataTable dtReportTemplate = ExecuteSQL.CallView(105, "", "ReportTypeID=" + lReportTypeID, "");
+            //dtReportTemplate.DefaultView.RowFilter = "MachineName='" + LoginInfo.MachineName + "'";
+            //if (dtReportTemplate.DefaultView.Count > 0)
+            //{
+            //    return dtReportTemplate.DefaultView[0].Row;
+            //}
+            //else if (dtReportTemplate.Rows.Count > 0)
+            //{
+            //    return dtReportTemplate.Rows[0];
+            //}
+            return dtTemplate;
         }
 
         public static void BuildParmsAndData(ReportRequestArgs e, FastReport.Report report, enBuildParmsAndDataActionType actionType)
@@ -435,10 +495,16 @@ namespace LB.Controls.Report
         {
             bool bolExists = false;
             strReportFileName = "";
-            DataTable dtReportTemp = ExecuteSQL.CallView(105, "", "ReportTemplateID=" + lReportTemplateID, "");
-            if (dtReportTemp.Rows.Count > 0)
+            //DataTable dtReportTemp = ExecuteSQL.CallView(105, "", "ReportTemplateID=" + lReportTemplateID, "");
+
+            DataRow drReportTemp = null;
+            DataTable dtReportTemplate = ReportHelper.GetReportTemplateByID(lReportTemplateID);
+            if (dtReportTemplate.Rows.Count > 0)
             {
-                DataRow drReportTemp = dtReportTemp.Rows[0];
+                drReportTemp = dtReportTemplate.Rows[0];
+            }
+            if (drReportTemp!=null)
+            {
                 string strReportTemplateName = drReportTemp["ReportTemplateName"].ToString().TrimEnd();
                 DateTime dTemplateFileTime = Convert.ToDateTime(drReportTemp["TemplateFileTime"]);
                 string strReportTemplateNameExt = drReportTemp["ReportTemplateNameExt"].ToString().TrimEnd();
@@ -522,11 +588,16 @@ namespace LB.Controls.Report
 
         private static void SetPrintSettings(FastReport.Report report, long lReportTemplateID)
         {
-            DataTable dtReportTemplate = ExecuteSQL.CallView(105, "", "ReportTemplateID=" + lReportTemplateID, "");
+            DataRow drReport = null;
+            DataTable dtReportTemplate = ReportHelper.GetReportTemplateByID(lReportTemplateID);
             if (dtReportTemplate.Rows.Count > 0)
             {
-                DataRow drReport = dtReportTemplate.Rows[0];
-
+                drReport = dtReportTemplate.Rows[0];
+            }
+            //DataTable dtReportTemplate = ExecuteSQL.CallView(105, "", "ReportTemplateID=" + lReportTemplateID, "");
+            if (drReport != null)
+            {
+                //DataRow drReport = dtReportTemplate.Rows[0];
                 string strPrinterName = drReport["PrinterName"].ToString().TrimEnd();
                 string strPaperType = drReport["PaperType"].ToString().TrimEnd();
                 int PaperSizeHeight =LBConverter.ToInt32( drReport["PaperSizeHeight"]);
@@ -538,32 +609,6 @@ namespace LB.Controls.Report
                 if (strPrinterName != "")
                 {
                     report.PrintSettings.Printer = strPrinterName;
-                    /*if (IsManualPaperType)
-                    {
-                        System.Drawing.Printing.PrinterSettings mSelectedPrinter = new System.Drawing.Printing.PrinterSettings();
-                        int iIndex = 0;
-                        foreach (System.Drawing.Printing.PaperSize pageSize in mSelectedPrinter.PaperSizes)
-                        {
-                            if (pageSize.PaperName.Equals(strPaperType))
-                            {
-                                //report.PrintSettings.PaperSource = Convert.ToInt32(pageSize.Kind);
-                                break;
-                            }
-                            iIndex++;
-                        }
-
-                        report.PrintSettings.PaperSource = iIndex;
-                    }
-
-                    if (IsManualPaperSize)
-                    {
-                        report.PrintSettings.PrintOnSheetHeight = PaperSizeHeight;
-                        report.PrintSettings.PrintOnSheetWidth = PaperSizeWidth;
-                    }
-
-                    report.PrintSettings.Duplex = IsPaperTransverse ? System.Drawing.Printing.Duplex.Vertical :
-                         System.Drawing.Printing.Duplex.Horizontal;
-                         */
                 }
             }
         }

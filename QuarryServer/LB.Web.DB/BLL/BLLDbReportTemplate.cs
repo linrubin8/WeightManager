@@ -35,6 +35,14 @@ namespace LB.Web.DB.BLL
                 case 12003:
                     strFunName = "UpdateReportTemplate";
                     break;
+
+                case 12004:
+                    strFunName = "GetReportTemplateByType";
+                    break;
+
+                case 12005:
+                    strFunName = "GetReportTemplateByID";
+                    break;
             }
             return strFunName;
         }
@@ -105,6 +113,16 @@ namespace LB.Web.DB.BLL
            t_BigID ReportTemplateID, t_DTSmall TemplateFileTime,t_Image TemplateData)
         {
             _DALDbReportTemplate.UpdateReportTemplate(args, ReportTemplateID, TemplateFileTime, TemplateData);
+        }
+
+        public void GetReportTemplateByType(FactoryArgs args, t_BigID ReportTypeID, t_String MachineName)
+        {
+            args.SelectResult = _DALDbReportTemplate.GetReportTemplateByType(args, ReportTypeID, MachineName);
+        }
+
+        public void GetReportTemplateByID(FactoryArgs args, t_BigID ReportTemplateID, t_String MachineName)
+        {
+            args.SelectResult = _DALDbReportTemplate.GetReportTemplateByID(args, ReportTemplateID, MachineName);
         }
     }
 }

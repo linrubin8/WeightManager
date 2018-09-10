@@ -251,23 +251,23 @@ namespace LB.Controls.Report
 
         private void ReadFieldValue()
         {
-            DataTable dtReportTemplate = ExecuteSQL.CallView(105, "", "ReportTemplateID=" + mReportArgs.ReportTemplateID, "");
-            if (dtReportTemplate.Rows.Count > 0)
+            DataTable dtReport = ReportHelper.GetReportTemplateByID(mReportArgs.ReportTemplateID);
+            if (dtReport.Rows.Count>0)
             {
-                DataRow drReport = dtReportTemplate.Rows[0];
+                DataRow drReport = dtReport.Rows[0];
                 this.txtReportTemplateName.Text = drReport["ReportTemplateName"].ToString();
                 this.txtDescription.Text = drReport["Description"].ToString();
                 this.txtPrinterName.SelectedValue = drReport["PrinterName"].ToString().TrimEnd();
-                this.txtPaperType.SelectedValue= drReport["PaperType"].ToString().TrimEnd();
+                this.txtPaperType.SelectedValue = drReport["PaperType"].ToString().TrimEnd();
                 this.txtPaperSizeHeight.Text = drReport["PaperSizeHeight"].ToString().TrimEnd();
-                this.txtPaperSizeWidth.Text= drReport["PaperSizeWidth"].ToString().TrimEnd();
-                this.rbManualPaperType.Checked = drReport["IsManualPaperType"] == DBNull.Value ? 
+                this.txtPaperSizeWidth.Text = drReport["PaperSizeWidth"].ToString().TrimEnd();
+                this.rbManualPaperType.Checked = drReport["IsManualPaperType"] == DBNull.Value ?
                     false : Convert.ToBoolean(drReport["IsManualPaperType"]);
                 this.rbManualPaperSize.Checked = drReport["IsManualPaperSize"] == DBNull.Value ?
                     false : Convert.ToBoolean(drReport["IsManualPaperSize"]);
-                this.rbPaperTransverse.Checked= drReport["IsPaperTransverse"] == DBNull.Value ?
+                this.rbPaperTransverse.Checked = drReport["IsPaperTransverse"] == DBNull.Value ?
                     false : Convert.ToBoolean(drReport["IsPaperTransverse"]);
-                this.txtPrintCount.Text= drReport["PrintCount"].ToString().TrimEnd();
+                this.txtPrintCount.Text = drReport["PrintCount"].ToString().TrimEnd();
                 //this.txtReportPath.Text = Path.Combine(ReportHelper.ReportPath, drReport["ReportTemplateName"].ToString() + ".frx");
             }
         }
