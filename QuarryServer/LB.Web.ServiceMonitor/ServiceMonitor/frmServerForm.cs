@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.ServiceProcess;
+using System.IO;
 
 namespace LB.Web.ServiceMonitor
 {
@@ -81,7 +82,10 @@ namespace LB.Web.ServiceMonitor
 				// 定时刷新状态
 				timerStatus.Enabled = true;
 				timerStatus.Start();
-			}
+
+                LoadPictureSavePath();//读取保存路径
+
+            }
 			catch( Exception err )
 			{
 				MonitorHelper.DealWithError( err );
@@ -1031,6 +1035,44 @@ namespace LB.Web.ServiceMonitor
             {
                 frmDisk frm = new ServiceMonitor.frmDisk();
                 frm.ShowDialog();
+            }
+            catch (Exception err)
+            {
+                MonitorHelper.DealWithError(err);
+            }
+        }
+
+        //读取图片保存路径
+        private void LoadPictureSavePath()
+        {
+            string strIniPath =Path.Combine( Application.StartupPath,"LBPicturePath.ini");
+            IniClass ini = new IniClass(strIniPath);
+            this.txtInPath.Text =  ini.ReadValue("Path", "InPath");
+            this.txtOutPath.Text = ini.ReadValue("Path", "OutPath");
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.txtInPath.Text.TrimEnd() != "" && !Directory.Exists(this.txtInPath.Text))
+                {
+                    throw new Exception("[入场图片保存路径]不存在，请输入有效并且可访问的目录！保存失败！");
+                }
+                if (this.txtOutPath.Text.TrimEnd() != "" && !Directory.Exists(this.txtOutPath.Text))
+                {
+                    throw new Exception("[出场图片保存路径]不存在，请输入有效并且可访问的目录！保存失败！");
+                }
+                if (this.txtOutPath.Text.TrimEnd()!="" && 
+                    this.txtOutPath.Text.TrimEnd()== this.txtInPath.Text.TrimEnd())
+                {
+                    throw new Exception("[入场图片保存路径]和[出场图片保存路径]不能相同！保存失败！");
+                }
+
+                string strIniPath = Path.Combine(Application.StartupPath, "LBPicturePath.ini");
+                IniClass ini = new IniClass(strIniPath);
+                ini.WriteValue("Path", "InPath", this.txtInPath.Text);
+                ini.WriteValue("Path", "OutPath", this.txtOutPath.Text);
             }
             catch (Exception err)
             {

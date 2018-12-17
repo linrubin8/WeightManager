@@ -17,6 +17,7 @@ using LB.MI;
 using LB.RPReceive.RPReceive;
 using LB.MI.MI;
 using LB.SysConfig.SysConfig;
+using LB.MainForm.MainForm;
 
 namespace LB.MainForm
 {
@@ -43,6 +44,7 @@ namespace LB.MainForm
             }
 
             InitData();
+            SessionHelper.StartTakeSession();//开启定时检测Session
 
             mThreadStatus = new Thread(TestServerConnectStatus);
             mThreadStatus.Start();
@@ -62,6 +64,16 @@ namespace LB.MainForm
             {
                 bolIsClosing = true;
                 this.mThreadStatus.Abort();
+            }
+
+            try
+            {
+                SessionHelper.EndTakeSession();
+                ExecuteSQL.LogOutSession();//删除Session
+            }
+            catch (Exception ex)
+            {
+
             }
         }
 
@@ -148,6 +160,19 @@ namespace LB.MainForm
             {
                 frmPermissionConfig frmView = new frmPermissionConfig();
                 LBShowForm.ShowMainPage(frmView);
+            }
+            catch (Exception ex)
+            {
+                LB.WinFunction.LBCommonHelper.DealWithErrorMessage(ex);
+            }
+        }
+
+        private void btnSessionManager_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmSessionManager frmSession = new frmSessionManager();
+                LBShowForm.ShowMainPage(frmSession);
             }
             catch (Exception ex)
             {
@@ -287,6 +312,13 @@ namespace LB.MainForm
             {
                 LB.WinFunction.LBCommonHelper.DealWithErrorMessage(ex);
             }
+        }
+
+        //客户类型管理
+        private void btnCustomerTypeManager_Click(object sender, EventArgs e)
+        {
+            frmCustomerTypeManager frmType = new frmCustomerTypeManager();
+            LBShowForm.ShowMainPage(frmType);
         }
 
         //添加车辆
@@ -707,5 +739,10 @@ namespace LB.MainForm
 
         }
 
+        private void 关于我们ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAboud frm = new MainForm.frmAboud();
+            LBShowForm.ShowDialog(frm);
+        }
     }
 }

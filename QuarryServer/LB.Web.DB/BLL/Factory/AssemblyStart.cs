@@ -15,6 +15,7 @@ namespace LB.Web.DB.BLL.Factory
 
         private void DBHelper_GetBLLObjectMethodEevent(Base.Base.Factory.GetBLLObjectEventArgs args)
         {
+            //300~399
             int iSPType = args.SPType;
             if (iSPType == 0 || args.BLLFunction != null)
             {
@@ -46,6 +47,7 @@ namespace LB.Web.DB.BLL.Factory
                 case 12003:
                 case 12004:
                 case 12005:
+                case 12006:
                     args.BLLFunction = new BLLDbReportTemplate();
                     break;
 
@@ -108,6 +110,12 @@ namespace LB.Web.DB.BLL.Factory
 
                 case 20100:
                     args.BLLFunction = new BLLDbSystemConst();
+                    break;
+
+                case 30000:
+                case 30001:
+                case 30002:
+                    args.BLLFunction = new BLLSysSession();
                     break;
             }
         }

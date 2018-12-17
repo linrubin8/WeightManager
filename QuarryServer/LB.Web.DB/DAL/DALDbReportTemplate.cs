@@ -189,5 +189,40 @@ order by d.TemplateFileTime desc
             DataTable dtReturn = DBHelper.ExecuteQuery(args, strSQL, parms);
             return dtReturn;
         }
+
+        public DataTable GetReportTemplateByID4Print(FactoryArgs args, t_BigID ReportTemplateID, t_String MachineName)
+        {
+            LBDbParameterCollection parms = new LBDbParameterCollection();
+            parms.Add(new LBDbParameter("MachineName", MachineName));
+            parms.Add(new LBDbParameter("ReportTemplateID", ReportTemplateID));
+            string strSQL = @" 
+if exists(  select 1 
+            from dbo.DbReportTemplate d
+                inner join dbo.DbPrinterConfig p on
+                    p.ReportTemplateID = d.ReportTemplateID and
+                    p.MachineName = @MachineName
+            where d.ReportTemplateID = @ReportTemplateID)
+begin
+    select *
+    from dbo.DbReportTemplate d
+        left outer join dbo.DbPrinterConfig p on
+            p.ReportTemplateID = d.ReportTemplateID and
+            p.MachineName = @MachineName
+    where d.ReportTemplateID = @ReportTemplateID
+    order by d.TemplateFileTime desc
+end
+else
+begin
+    select top 1 *
+    from dbo.DbReportTemplate d
+        left outer join dbo.DbPrinterConfig p on
+            p.ReportTemplateID = d.ReportTemplateID
+    where d.ReportTemplateID = @ReportTemplateID
+    order by p.PrinterConfigID desc
+end
+";
+            DataTable dtReturn = DBHelper.ExecuteQuery(args, strSQL, parms);
+            return dtReturn;
+        }
     }
 }

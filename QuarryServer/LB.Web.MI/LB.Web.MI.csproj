@@ -42,6 +42,7 @@
     <Compile Include="BLL\BLLDbCar.cs" />
     <Compile Include="BLL\BLLDbCustomer.cs" />
     <Compile Include="BLL\BLLDBItemBase.cs" />
+    <Compile Include="BLL\BLLDBCustomerType.cs" />
     <Compile Include="BLL\BLLDBItemType.cs" />
     <Compile Include="BLL\BLLDBUOM.cs" />
     <Compile Include="BLL\Factory\AssemblyStart.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="DAL\DALDbCarWeight.cs" />
     <Compile Include="DAL\DALDbCustomer.cs" />
     <Compile Include="DAL\DALDBItemBase.cs" />
+    <Compile Include="DAL\DALDBCustomerType.cs" />
     <Compile Include="DAL\DALDBItemType.cs" />
     <Compile Include="DAL\DALDBUOM.cs" />
     <Compile Include="DAL\DALDbCar.cs" />

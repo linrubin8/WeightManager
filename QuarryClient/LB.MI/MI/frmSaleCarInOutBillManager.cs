@@ -28,9 +28,12 @@ namespace LB.MI.MI
         {
             base.OnLoad(e);
 
+            this.btnDeleteBill.Visible = LBRegisterPermission.Permission_ModelRemoveInOutBill;
+
             this.grdMain.LBLoadConst();
             InitData();
             LoadAllSalesBill();//磅单清单
+            LoadCustomerTypeDataSource();//客户类型
 
             this.grdMain.CellDoubleClick += GrdMain_CellDoubleClick;
 
@@ -68,6 +71,25 @@ namespace LB.MI.MI
             this.grdMain.Dock = DockStyle.Fill;
             this.grdSumMain.Visible = false;
         }
+
+        #region -- 读取客户类型 --
+
+        private void LoadCustomerTypeDataSource()
+        {
+            DataTable dtCustomerType = ExecuteSQL.CallView(139, "", "", "");
+
+            DataRow drNew = dtCustomerType.NewRow();
+            drNew["CustomerTypeID"] = 0;
+            drNew["CustomerTypeName"] = "不限";
+            dtCustomerType.Rows.Add(drNew);
+            dtCustomerType.DefaultView.Sort = "CustomerTypeID asc";
+            this.txtCustomerTypeID.DataSource = dtCustomerType.DefaultView;
+
+            this.txtCustomerTypeID.DisplayMember = "CustomerTypeName";
+            this.txtCustomerTypeID.ValueMember = "CustomerTypeID";
+        }
+
+        #endregion
 
         #region -- 双击打开清单  --
 
@@ -107,6 +129,20 @@ namespace LB.MI.MI
                     strFilter += " and ";
                 }
                 strFilter += "CustomerName like '%" + this.txtCustomerID.Text + "%'";
+            }
+
+            if (this.txtCustomerTypeID.SelectedValue != null)
+            {
+                long lCustomerTypeID;
+                long.TryParse(this.txtCustomerTypeID.SelectedValue.ToString(), out lCustomerTypeID);
+                if (lCustomerTypeID > 0)
+                {
+                    if (strFilter != "")
+                    {
+                        strFilter += " and ";
+                    }
+                    strFilter += "CustomerTypeID =" + lCustomerTypeID;
+                }
             }
 
             if (this.txtCarID.Text != "")
@@ -700,5 +736,60 @@ namespace LB.MI.MI
                 LB.WinFunction.LBCommonHelper.DealWithErrorMessage(ex);
             }
 }
+
+        private void btnDeleteBill_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<DataRow> lstSelected = ReadSelectedRows();
+                int iUnOutBillCount = lstSelected.Where(l => l["SaleCarOutBillID"] == DBNull.Value).ToList().Count;
+                if (iUnOutBillCount > 0)
+                {
+                    if(LB.WinFunction.LBCommonHelper.ConfirmMessage("有"+ iUnOutBillCount.ToString()+"张单生成出场单，是否继续删除？","提示", MessageBoxButtons.YesNo)== DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+
+                if (lstSelected.Count == 0)
+                {
+                    throw new Exception("请选择需要删除的榜单行！");
+                }
+
+                if (LB.WinFunction.LBCommonHelper.ConfirmMessage("是否确认删除选中行？删除后将无法恢复。", "提示", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    return;
+                }
+
+                DataTable dtInBill = new DataTable("Bill");
+                dtInBill.Columns.Add("SaleCarInBillID", typeof(long));
+
+                foreach(DataRow dr in lstSelected)
+                {
+                    DataRow drNew = dtInBill.NewRow();
+                    drNew["SaleCarInBillID"] = dr["SaleCarInBillID"];
+                    dtInBill.Rows.Add(drNew);
+                }
+                dtInBill.AcceptChanges();
+
+                DataTable dtSP = new DataTable("SP");
+                dtSP.Columns.Add("DTDelete", typeof(DataTable));
+                DataRow drSP = dtSP.NewRow();
+                drSP["DTDelete"] = dtInBill;
+                dtSP.Rows.Add(drSP);
+
+                DataSet dsReturn;
+                DataTable dtReturn;
+                Dictionary<string, object> dictValue;
+                ExecuteSQL.CallSP(14125, dtSP, out dsReturn, out dtReturn);
+
+                LB.WinFunction.LBCommonHelper.ShowCommonMessage("删除成功！");
+                this.LoadAllSalesBill();
+            }
+            catch (Exception ex)
+            {
+                LB.WinFunction.LBCommonHelper.DealWithErrorMessage(ex);
+            }
+        }
     }
 }

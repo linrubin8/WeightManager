@@ -130,7 +130,7 @@ namespace LB.MainForm
             InitData();
             LBSerialHelper.StartSerial();//启动串口
             LBInFrareHelper.StartSerial();//红外线对射串口
-
+            SessionHelper.StartTakeSession();//开启定时检测Session
             InitCameraPanel();
             SetButtonReadOnlyByPermission();
 
@@ -2004,6 +2004,15 @@ namespace LB.MainForm
             LBSerialHelper.StopTimer();
             LBInFrareHelper.StopTimer();
             LBPortHelper.EndThread();
+            SessionHelper.EndTakeSession();
+            try
+            {
+                ExecuteSQL.LogOutSession();//删除Session
+            }
+            catch(Exception ex)
+            {
+
+            }
 
             foreach (KeyValuePair<ViewCamera,Panel> keyvalue in dictCamera)
             {

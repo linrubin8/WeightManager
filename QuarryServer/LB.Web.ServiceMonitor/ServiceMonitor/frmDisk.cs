@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LB.Web.Encrypt;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -38,6 +39,21 @@ namespace LB.Web.ServiceMonitor
             {
                 if(this.txtDisk.Text.TrimEnd()!="" && this.txtRegister.Text.TrimEnd() != "")
                 {
+                    //先校验注册码是否合法
+                    string strDiskID = LBEncrypt.GetDiskID();//硬盘ID
+                    try
+                    {
+                        string strDecrypt = LBEncrypt.DecryptAes(this.txtRegister.Text, "linrubin" + strDiskID);
+                        if (!strDecrypt.Contains("ProductType"))
+                        {
+                            throw new Exception("注册码不合法！");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("注册码不合法！");
+                    }
+
                     string strIniPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LBTSR.ini");
                     IniClass iniClass = new IniClass(strIniPath);
                     iniClass.WriteValue("TSR", "value", this.txtRegister.Text.TrimEnd());

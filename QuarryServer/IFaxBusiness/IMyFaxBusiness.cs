@@ -11,13 +11,13 @@ namespace IFaxBusiness
     {
         void SendFax(string fax);
 
-        string RunProcedure(int ProcedureType, string strLoginName, byte[] bSerializeValue, byte[] bSerializeDataType,
+        string RunProcedure(int ProcedureType, long SessionID,bool IsNeedSession, string strLoginName, byte[] bSerializeValue, byte[] bSerializeDataType,
             out string strdtOut, out string ErrorMsg, out bool bolIsError);
-
-        string RunView(int iViewType, string strLoginName, string strFieldNames, string strWhere, string strOrderBy,
+        
+        string RunView(int iViewType, long SessionID, bool IsNeedSession, string strLoginName, string strFieldNames, string strWhere, string strOrderBy,
             out string ErrorMsg, out bool bolIsError);
 
-        string RunDirectSQL(string strLoginName, string strSQL,
+        string RunDirectSQL(long SessionID, bool IsNeedSession, string strLoginName, string strSQL,
            out string ErrorMsg, out bool bolIsError);
 
         bool ConnectServer();
@@ -36,5 +36,17 @@ namespace IFaxBusiness
 
         string RunDirectSQL_Service(string strLoginName, string strSQL,
            out string ErrorMsg, out bool bolIsError);
+
+        void TakeSession(long SessionID);
+        void LogOutSession(long SessionID);
+
+        //string RunProcedureWithSession(int ProcedureType, long SessionID, string strLoginName, byte[] bSerializeValue, byte[] bSerializeDataType,
+        //    out string strdtOut, out string ErrorMsg, out bool bolIsError);
+
+        //string RunViewWithSession(int iViewType, long SessionID, string strLoginName, string strFieldNames, string strWhere, string strOrderBy,
+        //    out string ErrorMsg, out bool bolIsError);
+
+        //string RunDirectSQLWithSession(string strLoginName, long SessionID, string strSQL,
+        //   out string ErrorMsg, out bool bolIsError);
     }
 }

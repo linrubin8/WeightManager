@@ -13,8 +13,9 @@ namespace LB.Web.MI.DAL
         public void Customer_Insert(FactoryArgs args, out t_BigID CustomerID, t_String CustomerCode,t_String CustomerName, t_String Contact, t_String Phone, t_String Address, 
             t_Bool CarIsLimit,t_ID AmountType, t_String LicenceNum, t_String Description,t_ID ReceiveType,
             t_Decimal CreditAmount,t_Bool IsDisplayPrice, t_Bool IsDisplayAmount, t_Bool IsPrintAmount, t_Bool IsAllowOverFul,
-            t_Bool IsAllowEmptyIn, t_Decimal AmountNotEnough, t_String K3CustomerCode)
+            t_Bool IsAllowEmptyIn, t_Decimal AmountNotEnough, t_String K3CustomerCode, t_BigID CustomerTypeID)
         {
+            CustomerTypeID.NullIfZero();
             CarIsLimit.IsNullToZero();
             IsDisplayPrice.IsNullToZero();
             IsDisplayAmount.IsNullToZero();
@@ -28,6 +29,7 @@ namespace LB.Web.MI.DAL
             parms.Add(new LBDbParameter("CustomerID", CustomerID, true));
             parms.Add(new LBDbParameter("CustomerCode", CustomerCode));
             parms.Add(new LBDbParameter("CustomerName", CustomerName));
+            parms.Add(new LBDbParameter("CustomerTypeID", CustomerTypeID));
             parms.Add(new LBDbParameter("Contact", Contact));
             parms.Add(new LBDbParameter("Phone", Phone));
             parms.Add(new LBDbParameter("Address", Address));
@@ -52,10 +54,10 @@ namespace LB.Web.MI.DAL
             string strSQL = @"
 insert into dbo.DbCustomer(CustomerCode,CustomerName, Contact, Phone, Address, CarIsLimit, AmountType, LicenceNum, 
     Description, ReceiveType, CreditAmount, IsDisplayPrice, IsDisplayAmount, IsPrintAmount, IsAllowOverFul, 
-    CreateBy, CreateTime, ChangeBy, ChangeTime,IsAllowEmptyIn,AmountNotEnough,K3CustomerCode)
+    CreateBy, CreateTime, ChangeBy, ChangeTime,IsAllowEmptyIn,AmountNotEnough,K3CustomerCode, CustomerTypeID)
 values(@CustomerCode, @CustomerName, @Contact, @Phone, @Address, @CarIsLimit, @AmountType, @LicenceNum, 
     @Description, @ReceiveType, @CreditAmount, @IsDisplayPrice, @IsDisplayAmount, @IsPrintAmount, @IsAllowOverFul, 
-    @CreateBy, @CreateTime, @ChangeBy, @ChangeTime,@IsAllowEmptyIn,@AmountNotEnough,@K3CustomerCode)
+    @CreateBy, @CreateTime, @ChangeBy, @ChangeTime,@IsAllowEmptyIn,@AmountNotEnough,@K3CustomerCode, @CustomerTypeID)
 
 set @CustomerID = @@identity
 ";
@@ -66,8 +68,9 @@ set @CustomerID = @@identity
         public void Customer_Update(FactoryArgs args, t_BigID CustomerID, t_String CustomerName, t_String Contact, t_String Phone, t_String Address,
             t_Bool CarIsLimit, t_ID AmountType, t_String LicenceNum, t_String Description, t_ID ReceiveType,
             t_Decimal CreditAmount, t_Bool IsDisplayPrice, t_Bool IsDisplayAmount, t_Bool IsPrintAmount, t_Bool IsAllowOverFul,
-            t_Bool IsAllowEmptyIn, t_Decimal AmountNotEnough, t_String K3CustomerCode)
+            t_Bool IsAllowEmptyIn, t_Decimal AmountNotEnough, t_String K3CustomerCode, t_BigID CustomerTypeID)
         {
+            CustomerTypeID.NullIfZero();
             CarIsLimit.IsNullToZero();
             IsDisplayPrice.IsNullToZero();
             IsDisplayAmount.IsNullToZero();
@@ -79,6 +82,7 @@ set @CustomerID = @@identity
             LBDbParameterCollection parms = new LBDbParameterCollection();
             parms.Add(new LBDbParameter("CustomerID", CustomerID));
             parms.Add(new LBDbParameter("CustomerName", CustomerName));
+            parms.Add(new LBDbParameter("CustomerTypeID", CustomerTypeID));
             parms.Add(new LBDbParameter("Contact", Contact));
             parms.Add(new LBDbParameter("Phone", Phone));
             parms.Add(new LBDbParameter("Address", Address));
@@ -118,7 +122,8 @@ set CustomerName = @CustomerName,
     ChangeTime=@ChangeTime,
     IsAllowEmptyIn = @IsAllowEmptyIn,   
     AmountNotEnough = @AmountNotEnough,
-    K3CustomerCode = @K3CustomerCode
+    K3CustomerCode = @K3CustomerCode,
+    CustomerTypeID = @CustomerTypeID
 where CustomerID =  @CustomerID
 ";
             DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);

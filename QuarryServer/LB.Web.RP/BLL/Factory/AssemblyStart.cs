@@ -15,6 +15,7 @@ namespace LB.Web.RP.BLL.Factory
 
         private void DBHelper_GetBLLObjectMethodEevent(Base.Base.Factory.GetBLLObjectEventArgs args)
         {
+            //600~699
             int iSPType = args.SPType;
             if (iSPType == 0 || args.BLLFunction != null)
             {

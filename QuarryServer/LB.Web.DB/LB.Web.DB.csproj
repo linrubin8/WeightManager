@@ -41,6 +41,7 @@
     <Compile Include="BLL\BLLDbReportView.cs" />
     <Compile Include="BLL\BLLDbInfraredDeviceConfig.cs" />
     <Compile Include="BLL\BLLDbErrorLog.cs" />
+    <Compile Include="BLL\BLLSysSession.cs" />
     <Compile Include="BLL\BLLDbSystemConst.cs" />
     <Compile Include="BLL\BLLDbWeightType.cs" />
     <Compile Include="BLL\BLLDbDescription.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="DAL\DALDbReportView.cs" />
     <Compile Include="DAL\DALDbInfraredDeviceConfig.cs" />
     <Compile Include="DAL\DALDbErrorLog.cs" />
+    <Compile Include="DAL\DALSysSession.cs" />
     <Compile Include="DAL\DALDbSystemConst.cs" />
     <Compile Include="DAL\DALDbWeightType.cs" />
     <Compile Include="DAL\DALDbDescription.cs" />
@@ -81,6 +83,10 @@
     <ProjectReference Include="..\LB.Web.Contants\LB.Web.Contants.csproj">
       <Project>{dad2cbf3-e516-412b-8350-e4e0e717b09e}</Project>
       <Name>LB.Web.Contants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LB.Web.Encrypt\LB.Web.Encrypt.csproj">
+      <Project>{cdf00a86-5bfa-4b80-aa97-fb96ad59fde8}</Project>
+      <Name>LB.Web.Encrypt</Name>
     </ProjectReference>
     <ProjectReference Include="..\LB.Web.IBLL\LB.Web.IBLL.csproj">
       <Project>{df0ffe8c-33b4-46fe-85a1-44689ec20f01}</Project>

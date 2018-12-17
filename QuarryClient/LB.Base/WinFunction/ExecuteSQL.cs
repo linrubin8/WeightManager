@@ -17,7 +17,8 @@ namespace LB.WinFunction
     public class ExecuteSQL
     {
         public static event CallSPHandle CallSPEvent;
-        
+
+        #region -- SP --
         /// <summary>
         /// 调用存储过程或中间层
         /// </summary>
@@ -27,6 +28,11 @@ namespace LB.WinFunction
         /// <param name="dtOut">返回的参数值</param>
         public static void CallSP(int iSPType,DataTable dtInput,out DataSet dsReturn,out DataTable dtOut)
         {
+            CallSP(iSPType, true, dtInput, out dsReturn, out dtOut);
+        }
+
+        public static void CallSP(int iSPType,bool bolIsNeedSession, DataTable dtInput, out DataSet dsReturn, out DataTable dtOut)
+        {
             if (string.IsNullOrEmpty(dtInput.TableName))
             {
                 dtInput.TableName = "SPIN";
@@ -34,8 +40,8 @@ namespace LB.WinFunction
 
             IFaxBusiness.IMyFaxBusiness webservice = GetWebService();
             //LBWebService.LBWebService webservice = GetLBWebService();
-            string strErrorMsg="";
-            bool bolIsError=false;
+            string strErrorMsg = "";
+            bool bolIsError = false;
             dsReturn = null;
             dtOut = null;
             List<Dictionary<object, object>> lstDictValue = new List<Dictionary<object, object>>();
@@ -58,20 +64,76 @@ namespace LB.WinFunction
             byte[] bSerialDataType = SerializeObject(dictDataType);
 
             string strdtOut;
-            string strReturn = webservice.RunProcedure(iSPType, LoginInfo.LoginName, bSerialValue, bSerialDataType, out strdtOut, out strErrorMsg, out bolIsError);
+            string strReturn = webservice.RunProcedure(iSPType, LoginInfo.SessionID,bolIsNeedSession, LoginInfo.LoginName, bSerialValue, bSerialDataType, out strdtOut, out strErrorMsg, out bolIsError);
             if (bolIsError)
             {
                 throw new Exception(strErrorMsg);
             }
-            dsReturn =UnRarDataSet(strReturn);
+            dsReturn = UnRarDataSet(strReturn);
             dtOut = UnRarDataTable(strdtOut);
-            
+
             if (CallSPEvent != null)
             {
                 CallSPArgs args = new Args.CallSPArgs(iSPType, dtInput);
                 CallSPEvent(args);
             }
         }
+
+
+        /// <summary>
+        /// 调用存储过程或中间层
+        /// </summary>
+        /// <param name="iSPType">存储过程号</param>
+        /// <param name="parmCollection">参数数据</param>
+        /// <param name="dsReturn">返回的查询数据</param>
+        /// <param name="dictReturn">返回的参数值</param>
+        public static void CallSP(int iSPType, LBDbParameterCollection parmCollection, out DataSet dsReturn, out Dictionary<string, object> dictReturn)
+        {
+            CallSP(iSPType, true, parmCollection, out dsReturn, out dictReturn);
+        }
+
+        public static void CallSP(int iSPType, bool bolIsNeedSession, LBDbParameterCollection parmCollection, out DataSet dsReturn, out Dictionary<string, object> dictReturn)
+        {
+            dictReturn = new Dictionary<string, object>();
+            DataTable dtSPIN = new DataTable("SPIN");
+            foreach (LBParameter parm in parmCollection)
+            {
+                if (!dtSPIN.Columns.Contains(parm.ParameterName))
+                {
+                    dtSPIN.Columns.Add(parm.ParameterName, LBDbType.GetSqlDbType(parm.LBDBType));
+                }
+            }
+
+            DataRow drNew = dtSPIN.NewRow();
+            foreach (LBParameter parm in parmCollection)
+            {
+                if (parm.Direction != ParameterDirection.Output)
+                {
+                    drNew[parm.ParameterName] = parm.Value;
+                }
+            }
+            dtSPIN.Rows.Add(drNew);
+
+            //LBWebService.LBWebService webservice = GetLBWebService();
+            string strErrorMsg;
+            bool bolIsError;
+            DataTable dtOut;
+
+            CallSP(iSPType, bolIsNeedSession, dtSPIN, out dsReturn, out dtOut);
+
+            if (dtOut != null && dtOut.Rows.Count > 0)
+            {
+                foreach (DataColumn dc in dtOut.Columns)
+                {
+                    if (!dictReturn.ContainsKey(dc.ColumnName))
+                    {
+                        dictReturn.Add(dc.ColumnName, dtOut.Rows[0][dc.ColumnName]);
+                    }
+                }
+            }
+        }
+
+        #endregion -- SP --
 
         private static IFaxBusiness.IMyFaxBusiness GetWebService()
         {
@@ -118,54 +180,7 @@ namespace LB.WinFunction
             return newOjb;
         }
 
-        /// <summary>
-        /// 调用存储过程或中间层
-        /// </summary>
-        /// <param name="iSPType">存储过程号</param>
-        /// <param name="parmCollection">参数数据</param>
-        /// <param name="dsReturn">返回的查询数据</param>
-        /// <param name="dictReturn">返回的参数值</param>
-        public static void CallSP(int iSPType, LBDbParameterCollection parmCollection,out DataSet dsReturn,out Dictionary<string,object> dictReturn)
-        {
-            dictReturn = new Dictionary<string, object>();
-            DataTable dtSPIN = new DataTable("SPIN");
-            foreach(LBParameter parm in parmCollection)
-            {
-                if (!dtSPIN.Columns.Contains(parm.ParameterName))
-                {
-                    dtSPIN.Columns.Add(parm.ParameterName, LBDbType.GetSqlDbType( parm.LBDBType));
-                }
-            }
-
-            DataRow drNew = dtSPIN.NewRow();
-            foreach (LBParameter parm in parmCollection)
-            {
-                if(parm.Direction!= ParameterDirection.Output)
-                {
-                    drNew[parm.ParameterName] = parm.Value;
-                }
-            }
-            dtSPIN.Rows.Add(drNew);
-            
-            //LBWebService.LBWebService webservice = GetLBWebService();
-            string strErrorMsg;
-            bool bolIsError;
-            DataTable dtOut;
-
-            CallSP(iSPType, dtSPIN, out dsReturn, out dtOut);
-
-            if (dtOut != null && dtOut.Rows.Count > 0)
-            {
-                foreach(DataColumn dc in dtOut.Columns)
-                {
-                    if (!dictReturn.ContainsKey(dc.ColumnName))
-                    {
-                        dictReturn.Add(dc.ColumnName, dtOut.Rows[0][dc.ColumnName]);
-                    }
-                }
-            }
-        }
-
+        #region -- View --
         /// <summary>
         /// 查询视图
         /// </summary>
@@ -176,21 +191,26 @@ namespace LB.WinFunction
         /// <returns></returns>
         public static DataTable CallView(int iViewType,string strFieldNames,string strWhere ,string strOrderBy)
         {
+            return CallView(iViewType, true, strFieldNames, strWhere, strOrderBy);
+        }
+
+        public static DataTable CallView(int iViewType,bool bolIsNeedSession, string strFieldNames, string strWhere, string strOrderBy)
+        {
             DataTable dtResult = null;
             IFaxBusiness.IMyFaxBusiness webservice = GetWebService();
             //LBWebService.LBWebService webservice = GetLBWebService();
-            string strErrorMsg="";
-            bool bolIsError=false;
+            string strErrorMsg = "";
+            bool bolIsError = false;
             try
             {
-                string strReturn = webservice.RunView(iViewType, LoginInfo.LoginName, strFieldNames, strWhere, strOrderBy, out strErrorMsg, out bolIsError);
+                string strReturn = webservice.RunView(iViewType, LoginInfo.SessionID, bolIsNeedSession, LoginInfo.LoginName, strFieldNames, strWhere, strOrderBy, out strErrorMsg, out bolIsError);
                 if (bolIsError)
                 {
                     throw new Exception(strErrorMsg);
                 }
                 dtResult = UnRarDataTable(strReturn);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
@@ -206,6 +226,15 @@ namespace LB.WinFunction
         {
             return CallView(iViewType, "", "", "");
         }
+
+        public static DataTable CallView(int iViewType, bool bolIsNeedSession)
+        {
+            return CallView(iViewType,bolIsNeedSession, "", "", "");
+        }
+
+        #endregion -- View --
+
+        #region -- DirectSQL --
         /// <summary>
         /// 直接执行SQL
         /// </summary>
@@ -213,13 +242,18 @@ namespace LB.WinFunction
         /// <returns></returns>
         public static DataTable CallDirectSQL(string strSQL)
         {
+            return CallDirectSQL(strSQL, true);
+        }
+
+        public static DataTable CallDirectSQL(string strSQL,bool bolIsNeedSession)
+        {
             DataTable dtResult = null;
             IFaxBusiness.IMyFaxBusiness webservice = GetWebService();
             //LBWebService.LBWebService webservice = GetLBWebService();
-            string strErrorMsg="";
-            bool bolIsError=false;
+            string strErrorMsg = "";
+            bool bolIsError = false;
 
-            string strReturn = webservice.RunDirectSQL(LoginInfo.LoginName, strSQL, out strErrorMsg, out bolIsError);
+            string strReturn = webservice.RunDirectSQL(LoginInfo.SessionID, bolIsNeedSession, LoginInfo.LoginName, strSQL, out strErrorMsg, out bolIsError);
             if (bolIsError)
             {
                 throw new Exception(strErrorMsg);
@@ -227,6 +261,8 @@ namespace LB.WinFunction
             dtResult = UnRarDataTable(strReturn);
             return dtResult;
         }
+
+        #endregion -- DirectSQL --
 
         /// <summary>
         /// 测试连接状态
@@ -462,5 +498,21 @@ namespace LB.WinFunction
                 dictModel = LBEncrypt.GetRegisterModelInfo(RegisterInfoJson);
             }
         }
+
+        #region -- Session --
+
+        public static void TakeSession()
+        {
+            IFaxBusiness.IMyFaxBusiness webservice = GetWebService();
+            webservice.TakeSession(LoginInfo.SessionID);
+        }
+
+        public static void LogOutSession()
+        {
+            IFaxBusiness.IMyFaxBusiness webservice = GetWebService();
+            webservice.LogOutSession(LoginInfo.SessionID);
+        }
+
+        #endregion
     }
 }

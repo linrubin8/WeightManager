@@ -37,7 +37,7 @@ namespace LB.Web.SM.BLL.Factory
                         isnull(IsCancel,0) = 0 and
                         DATEADD(mi, @SysSaleReceiveOverdue,isnull(CancelByDate,BillDate))<= GETDATE()";
 
-            FactoryArgs args = new FactoryArgs(DBHelper.DBName, "系统", null, null);
+            FactoryArgs args = new FactoryArgs(DBHelper.DBName, "系统",0, false, null, null);
             string strConn = GetConnectionStr();
             DBHelper.Provider = new DBMSSQL();
             SQLServerDAL.GetConnectionString = strConn;

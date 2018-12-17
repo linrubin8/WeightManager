@@ -2,7 +2,7 @@
 <!DOCTYPE dotfuscatorMap SYSTEM "http://www.preemptive.com/dotfuscator/dtd/dotfuscatorMap_v1.2.dtd">
 <dotfuscatorMap version="1.1">
     <header>
-        <timestamp>2018-08-21T23:15:03</timestamp>
+        <timestamp>2018-12-04T22:30:47</timestamp>
         <product version="4.9.6005.29054" user="firefly " serial="124576-PRO-AC6AB7C5-7A50E312-F0BBEBCC-829D98D7">Dotfuscator Professional Edition</product>
     </header>
     <mapping>
@@ -40,6 +40,10 @@
                         <name>ConnectServer</name>
                     </method>
                     <method>
+                        <signature>void(int64)</signature>
+                        <name>LogOutSession</name>
+                    </method>
+                    <method>
                         <signature>System.Data.DataTable()</signature>
                         <name>ReadClientFileInfo</name>
                     </method>
@@ -52,7 +56,7 @@
                         <name>ReadRegister</name>
                     </method>
                     <method>
-                        <signature>string(string, string, string&amp;, bool&amp;)</signature>
+                        <signature>string(int64, bool, string, string, string&amp;, bool&amp;)</signature>
                         <name>RunDirectSQL</name>
                     </method>
                     <method>
@@ -60,7 +64,7 @@
                         <name>RunDirectSQL_Service</name>
                     </method>
                     <method>
-                        <signature>string(int32, string, unsigned int8[], unsigned int8[], string&amp;, string&amp;, bool&amp;)</signature>
+                        <signature>string(int32, int64, bool, string, unsigned int8[], unsigned int8[], string&amp;, string&amp;, bool&amp;)</signature>
                         <name>RunProcedure</name>
                     </method>
                     <method>
@@ -68,7 +72,7 @@
                         <name>RunProcedure_Service</name>
                     </method>
                     <method>
-                        <signature>string(int32, string, string, string, string, string&amp;, bool&amp;)</signature>
+                        <signature>string(int32, int64, bool, string, string, string, string, string&amp;, bool&amp;)</signature>
                         <name>RunView</name>
                     </method>
                     <method>
@@ -78,6 +82,10 @@
                     <method>
                         <signature>void(string)</signature>
                         <name>SendFax</name>
+                    </method>
+                    <method>
+                        <signature>void(int64)</signature>
+                        <name>TakeSession</name>
                     </method>
                 </methodlist>
                 <fieldlist />
@@ -327,6 +335,14 @@
                         <name>.ctor</name>
                     </method>
                     <method>
+                        <signature>string(string)</signature>
+                        <name>Compress</name>
+                    </method>
+                    <method>
+                        <signature>string(string)</signature>
+                        <name>Decompress</name>
+                    </method>
+                    <method>
                         <signature>unsigned int8[](string)</signature>
                         <name>ReadFile</name>
                     </method>
@@ -400,7 +416,7 @@
                 <name>LB.Web.Base.Factory.FactoryArgs</name>
                 <methodlist>
                     <method>
-                        <signature>void(string, string, System.Data.Common.DbConnection, System.Data.Common.DbTransaction)</signature>
+                        <signature>void(string, string, int64, bool, System.Data.Common.DbConnection, System.Data.Common.DbTransaction)</signature>
                         <name>.ctor</name>
                     </method>
                     <method>
@@ -416,12 +432,20 @@
                         <name>get_DbTrans</name>
                     </method>
                     <method>
+                        <signature>bool()</signature>
+                        <name>get_IsNeedSession</name>
+                    </method>
+                    <method>
                         <signature>string()</signature>
                         <name>get_LoginName</name>
                     </method>
                     <method>
                         <signature>System.Data.DataTable()</signature>
                         <name>get_SelectResult</name>
+                    </method>
+                    <method>
+                        <signature>int64()</signature>
+                        <name>get_SessionID</name>
                     </method>
                     <method>
                         <signature>System.Data.DataTable()</signature>
@@ -443,9 +467,19 @@
                         <newname>a</newname>
                     </field>
                     <field>
+                        <signature>bool</signature>
+                        <name>_IsNeedSession</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
                         <signature>string</signature>
                         <name>_LoginName</name>
                         <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>int64</signature>
+                        <name>_SessionID</name>
+                        <newname>a</newname>
                     </field>
                     <field>
                         <signature>System.Data.Common.DbConnection</signature>
@@ -482,12 +516,20 @@
                         <name>DbTrans</name>
                     </property>
                     <property>
+                        <signature>bool()</signature>
+                        <name>IsNeedSession</name>
+                    </property>
+                    <property>
                         <signature>string()</signature>
                         <name>LoginName</name>
                     </property>
                     <property>
                         <signature>System.Data.DataTable()</signature>
                         <name>SelectResult</name>
+                    </property>
+                    <property>
+                        <signature>int64()</signature>
+                        <name>SessionID</name>
                     </property>
                     <property>
                         <signature>System.Data.DataTable()</signature>
@@ -3003,6 +3045,18 @@
                         <name>GetFunctionName</name>
                     </method>
                     <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String)</signature>
+                        <name>GetReportTemplateByID</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String)</signature>
+                        <name>GetReportTemplateByID4Print</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String)</signature>
+                        <name>GetReportTemplateByType</name>
+                    </method>
+                    <method>
                         <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_DTSmall, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Image, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID)</signature>
                         <name>Insert</name>
                     </method>
@@ -3400,6 +3454,40 @@
                 <eventlist />
             </type>
             <type>
+                <name>LB.Web.DB.BLL.BLLSysSession</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
+                        <name>Delete</name>
+                    </method>
+                    <method>
+                        <signature>string(int32)</signature>
+                        <name>GetFunctionName</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool&amp;)</signature>
+                        <name>Insert</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
+                        <name>UpdateLastCheckTime</name>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>LB.Web.DB.DAL.DALSysSession</signature>
+                        <name>_DALSysSession</name>
+                        <newname>a</newname>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
                 <name>LB.Web.DB.BLL.BLLSysViewType</name>
                 <methodlist>
                     <method>
@@ -3681,6 +3769,18 @@
                         <name>ExistsTemplateName</name>
                     </method>
                     <method>
+                        <signature>System.Data.DataTable(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String)</signature>
+                        <name>GetReportTemplateByID</name>
+                    </method>
+                    <method>
+                        <signature>System.Data.DataTable(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String)</signature>
+                        <name>GetReportTemplateByID4Print</name>
+                    </method>
+                    <method>
+                        <signature>System.Data.DataTable(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String)</signature>
+                        <name>GetReportTemplateByType</name>
+                    </method>
+                    <method>
                         <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_DTSmall, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Image, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID)</signature>
                         <name>Insert</name>
                     </method>
@@ -3959,6 +4059,34 @@
                     <method>
                         <signature>bool(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
                         <name>VerifyIsAdmin</name>
+                    </method>
+                </methodlist>
+                <fieldlist />
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>LB.Web.DB.DAL.DALSysSession</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
+                        <name>Delete</name>
+                    </method>
+                    <method>
+                        <signature>System.Data.DataTable(LB.Web.Base.Factory.FactoryArgs)</signature>
+                        <name>GetAllSysSession</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String)</signature>
+                        <name>Insert</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
+                        <name>UpdateLastCheckTime</name>
                     </method>
                 </methodlist>
                 <fieldlist />
@@ -4417,6 +4545,10 @@
                         <name>DecryptAes</name>
                     </method>
                     <method>
+                        <signature>string()</signature>
+                        <name>get_RegisterInfoJson</name>
+                    </method>
+                    <method>
                         <signature>unsigned int8[](string)</signature>
                         <name>GetAesKey</name>
                         <newname>a</newname>
@@ -4429,8 +4561,17 @@
                         <signature>string()</signature>
                         <name>GetRegisterCode</name>
                     </method>
+                    <method>
+                        <signature>void(string)</signature>
+                        <name>set_RegisterInfoJson</name>
+                    </method>
                 </methodlist>
                 <fieldlist>
+                    <field>
+                        <signature>string</signature>
+                        <name>_RegisterInfoJson</name>
+                        <newname>a</newname>
+                    </field>
                     <field>
                         <signature>string</signature>
                         <name>AesKey</name>
@@ -4448,11 +4589,20 @@
                         <name>ProductType</name>
                     </field>
                     <field>
-                        <signature>string</signature>
-                        <name>RegisterInfoJson</name>
+                        <signature>int32</signature>
+                        <name>SessionLimitCount</name>
+                    </field>
+                    <field>
+                        <signature>bool</signature>
+                        <name>UseSessionLimit</name>
                     </field>
                 </fieldlist>
-                <propertylist />
+                <propertylist>
+                    <property>
+                        <signature>string()</signature>
+                        <name>RegisterInfoJson</name>
+                    </property>
+                </propertylist>
                 <eventlist />
             </type>
         </module>
@@ -4758,7 +4908,7 @@
             </type>
             <type>
                 <name>LB.Web.MI.BLL.BLLDbCar/&lt;&gt;c__DisplayClass3_0</name>
-                <newname>LB.Web.MI.BLL.BLLDbCar/a</newname>
+                <newname>LB.Web.MI.BLL.BLLDbCar/b</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -4812,7 +4962,7 @@
             </type>
             <type>
                 <name>LB.Web.MI.BLL.BLLDbCar/&lt;&gt;c__DisplayClass5_0</name>
-                <newname>LB.Web.MI.BLL.BLLDbCar/b</newname>
+                <newname>LB.Web.MI.BLL.BLLDbCar/a</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -4979,19 +5129,19 @@
                         <name>Customer_Delete</name>
                     </method>
                     <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String)</signature>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_BigID)</signature>
                         <name>Customer_Insert</name>
                     </method>
                     <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String)</signature>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_BigID)</signature>
                         <name>Customer_InsertFromService</name>
                     </method>
                     <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String)</signature>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_BigID)</signature>
                         <name>Customer_Update</name>
                     </method>
                     <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String)</signature>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_BigID)</signature>
                         <name>Customer_UpdateFromService</name>
                     </method>
                     <method>
@@ -5024,7 +5174,7 @@
             </type>
             <type>
                 <name>LB.Web.MI.BLL.BLLDbCustomer/&lt;&gt;c__DisplayClass6_0</name>
-                <newname>LB.Web.MI.BLL.BLLDbCustomer/c</newname>
+                <newname>LB.Web.MI.BLL.BLLDbCustomer/b</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -5058,7 +5208,7 @@
             </type>
             <type>
                 <name>LB.Web.MI.BLL.BLLDbCustomer/&lt;&gt;c__DisplayClass7_0</name>
-                <newname>LB.Web.MI.BLL.BLLDbCustomer/b</newname>
+                <newname>LB.Web.MI.BLL.BLLDbCustomer/c</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -5119,6 +5269,11 @@
                     <field>
                         <signature>LB.Web.Contants.DBType.t_String</signature>
                         <name>CustomerName</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_BigID</signature>
+                        <name>CustomerTypeID</name>
                         <newname>b</newname>
                     </field>
                     <field>
@@ -5251,6 +5406,11 @@
                         <newname>a</newname>
                     </field>
                     <field>
+                        <signature>LB.Web.Contants.DBType.t_BigID</signature>
+                        <name>CustomerTypeID</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
                         <signature>LB.Web.Contants.DBType.t_String</signature>
                         <name>Description</name>
                         <newname>f</newname>
@@ -5314,6 +5474,40 @@
                         <signature>LB.Web.Contants.DBType.t_Decimal</signature>
                         <name>TotalReceivedAmount</name>
                         <newname>c</newname>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>LB.Web.MI.BLL.BLLDBCustomerType</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
+                        <name>DBCustomerType_Delete</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String)</signature>
+                        <name>DBCustomerType_Insert</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String)</signature>
+                        <name>DBCustomerType_Update</name>
+                    </method>
+                    <method>
+                        <signature>string(int32)</signature>
+                        <name>GetFunctionName</name>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>LB.Web.MI.DAL.DALDBCustomerType</signature>
+                        <name>_DALDBCustomerType</name>
+                        <newname>a</newname>
                     </field>
                 </fieldlist>
                 <propertylist />
@@ -5590,11 +5784,11 @@
                         <name>Customer_Delete</name>
                     </method>
                     <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String)</signature>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_BigID)</signature>
                         <name>Customer_Insert</name>
                     </method>
                     <method>
-                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String)</signature>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_ID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Bool, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_BigID)</signature>
                         <name>Customer_Update</name>
                     </method>
                     <method>
@@ -5628,6 +5822,38 @@
                     <method>
                         <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_Decimal, LB.Web.Contants.DBType.t_Decimal)</signature>
                         <name>UpdateAmount</name>
+                    </method>
+                </methodlist>
+                <fieldlist />
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>LB.Web.MI.DAL.DALDBCustomerType</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
+                        <name>Delete</name>
+                    </method>
+                    <method>
+                        <signature>System.Data.DataTable(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String)</signature>
+                        <name>GetCustomerTypeByCode</name>
+                    </method>
+                    <method>
+                        <signature>System.Data.DataTable(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String)</signature>
+                        <name>GetCustomerTypeByName</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID&amp;, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String)</signature>
+                        <name>Insert</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String, LB.Web.Contants.DBType.t_String)</signature>
+                        <name>Update</name>
                     </method>
                 </methodlist>
                 <fieldlist />
@@ -5804,6 +6030,53 @@
                 <eventlist />
             </type>
             <type>
+                <name>LB.Web.Remoting.SessionTimer</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.cctor</name>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(int64)</signature>
+                        <name>LogOutSession</name>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>MTimer_Tick</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>StartListenSession</name>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>StopListenSession</name>
+                    </method>
+                    <method>
+                        <signature>void(int64)</signature>
+                        <name>TakeSession</name>
+                    </method>
+                    <method>
+                        <signature>bool(LB.Web.Base.Factory.FactoryArgs)</signature>
+                        <name>VerifySession</name>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>System.Windows.Forms.Timer</signature>
+                        <name>mTimer</name>
+                        <newname>a</newname>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
                 <name>LB.Web.Remoting.WebRemoting</name>
                 <methodlist>
                     <method>
@@ -5819,16 +6092,8 @@
                         <name>add_FaxSendedEvent</name>
                     </method>
                     <method>
-                        <signature>string(string)</signature>
-                        <name>Compress</name>
-                    </method>
-                    <method>
                         <signature>bool()</signature>
                         <name>ConnectServer</name>
-                    </method>
-                    <method>
-                        <signature>string(string)</signature>
-                        <name>Decompress</name>
                     </method>
                     <method>
                         <signature>System.Data.DataTable(string)</signature>
@@ -5860,6 +6125,10 @@
                         <name>LoadAllBLLFunction</name>
                     </method>
                     <method>
+                        <signature>void(int64)</signature>
+                        <name>LogOutSession</name>
+                    </method>
+                    <method>
                         <signature>string(System.Data.DataSet)</signature>
                         <name>RarDataSet</name>
                         <newname>b</newname>
@@ -5886,7 +6155,7 @@
                         <name>remove_FaxSendedEvent</name>
                     </method>
                     <method>
-                        <signature>string(string, string, string&amp;, bool&amp;)</signature>
+                        <signature>string(int64, bool, string, string, string&amp;, bool&amp;)</signature>
                         <name>RunDirectSQL</name>
                     </method>
                     <method>
@@ -5894,7 +6163,7 @@
                         <name>RunDirectSQL_Service</name>
                     </method>
                     <method>
-                        <signature>string(int32, string, unsigned int8[], unsigned int8[], string&amp;, string&amp;, bool&amp;)</signature>
+                        <signature>string(int32, int64, bool, string, unsigned int8[], unsigned int8[], string&amp;, string&amp;, bool&amp;)</signature>
                         <name>RunProcedure</name>
                     </method>
                     <method>
@@ -5902,7 +6171,7 @@
                         <name>RunProcedure_Service</name>
                     </method>
                     <method>
-                        <signature>string(int32, string, string, string, string, string&amp;, bool&amp;)</signature>
+                        <signature>string(int32, int64, bool, string, string, string, string, string&amp;, bool&amp;)</signature>
                         <name>RunView</name>
                     </method>
                     <method>
@@ -5930,6 +6199,10 @@
                     <method>
                         <signature>void()</signature>
                         <name>StopServer</name>
+                    </method>
+                    <method>
+                        <signature>void(int64)</signature>
+                        <name>TakeSession</name>
                     </method>
                     <method>
                         <signature>void()</signature>
@@ -7156,77 +7429,82 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>btnConfig_Click</name>
-                        <newname>t</newname>
+                        <newname>u</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>btnRefresh_Click</name>
-                        <newname>y</newname>
+                        <newname>z</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>btnRefresh4DBAutoBackUp_Click</name>
-                        <newname>n</newname>
+                        <newname>o</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>btnRefresh4WebAutoUpdate_Click</name>
-                        <newname>q</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnRegister_Click</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnReStart_Click</name>
-                        <newname>h</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnReStart4DBAutoBackUp_Click</name>
-                        <newname>d</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnReStart4WebAutoUpdate_Click</name>
-                        <newname>f</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnStart_Click</name>
-                        <newname>ab</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnStart4DBAutoBackUp_Click</name>
-                        <newname>m</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnStart4WebAutoUpdate_Click</name>
-                        <newname>s</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnStop_Click</name>
-                        <newname>aa</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnStop4DBAutoBackUp_Click</name>
-                        <newname>l</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnStop4WebAutoUpdate_Click</name>
                         <newname>r</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnWebLink_Click</name>
+                        <name>btnRegister_Click</name>
                         <newname>b</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnReStart_Click</name>
+                        <newname>i</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnReStart4DBAutoBackUp_Click</name>
+                        <newname>e</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnReStart4WebAutoUpdate_Click</name>
+                        <newname>g</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSave_Click</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnStart_Click</name>
+                        <newname>ac</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnStart4DBAutoBackUp_Click</name>
+                        <newname>n</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnStart4WebAutoUpdate_Click</name>
+                        <newname>t</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnStop_Click</name>
+                        <newname>ab</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnStop4DBAutoBackUp_Click</name>
+                        <newname>m</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnStop4WebAutoUpdate_Click</name>
+                        <newname>s</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnWebLink_Click</name>
+                        <newname>c</newname>
                     </method>
                     <method>
                         <signature>void(System.ServiceProcess.ServiceControllerStatus, bool)</signature>
@@ -7265,42 +7543,47 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>itemExit_Click</name>
-                        <newname>u</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>itemOpenForm_Click</name>
-                        <newname>x</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>itemStart_Click</name>
-                        <newname>w</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>itemStart4DBAutoBackUp_Click</name>
-                        <newname>j</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>itemStart4itemWebAutoUpdate_Click</name>
-                        <newname>p</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>itemStop_Click</name>
                         <newname>v</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
+                        <name>itemOpenForm_Click</name>
+                        <newname>y</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>itemStart_Click</name>
+                        <newname>x</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>itemStart4DBAutoBackUp_Click</name>
+                        <newname>k</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>itemStart4itemWebAutoUpdate_Click</name>
+                        <newname>q</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>itemStop_Click</name>
+                        <newname>w</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
                         <name>itemStop4DBAutoBackUp_Click</name>
-                        <newname>i</newname>
+                        <newname>j</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>itemStop4itemWebAutoUpdate_Click</name>
-                        <newname>o</newname>
+                        <newname>p</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>LoadPictureSavePath</name>
+                        <newname>b</newname>
                     </method>
                     <method>
                         <signature>void(object, System.Windows.Forms.MouseEventArgs)</signature>
@@ -7310,17 +7593,17 @@
                     <method>
                         <signature>void()</signature>
                         <name>RefreshStatus</name>
-                        <newname>h</newname>
+                        <newname>i</newname>
                     </method>
                     <method>
                         <signature>void()</signature>
                         <name>RefreshStatus4DBAutoBackUp</name>
-                        <newname>d</newname>
+                        <newname>e</newname>
                     </method>
                     <method>
                         <signature>void()</signature>
                         <name>RefreshStatus4WebAutoUpdate</name>
-                        <newname>g</newname>
+                        <newname>h</newname>
                     </method>
                     <method>
                         <signature>void(object, System.Windows.Forms.FormClosingEventArgs)</signature>
@@ -7330,62 +7613,62 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>ServerForm_Load</name>
-                        <newname>ac</newname>
+                        <newname>ad</newname>
                     </method>
                     <method>
                         <signature>void()</signature>
                         <name>Start</name>
-                        <newname>i</newname>
-                    </method>
-                    <method>
-                        <signature>void()</signature>
-                        <name>Start4DBAutoBackUp</name>
-                        <newname>b</newname>
-                    </method>
-                    <method>
-                        <signature>void()</signature>
-                        <name>Start4WebAutoUpdate</name>
-                        <newname>e</newname>
-                    </method>
-                    <method>
-                        <signature>void()</signature>
-                        <name>Stop</name>
                         <newname>j</newname>
                     </method>
                     <method>
                         <signature>void()</signature>
-                        <name>Stop4DBAutoBackUp</name>
+                        <name>Start4DBAutoBackUp</name>
                         <newname>c</newname>
                     </method>
                     <method>
                         <signature>void()</signature>
-                        <name>Stop4WebAutoUpdate</name>
+                        <name>Start4WebAutoUpdate</name>
                         <newname>f</newname>
                     </method>
                     <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>timerReStart_Tick</name>
+                        <signature>void()</signature>
+                        <name>Stop</name>
+                        <newname>k</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>Stop4DBAutoBackUp</name>
+                        <newname>d</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>Stop4WebAutoUpdate</name>
                         <newname>g</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
+                        <name>timerReStart_Tick</name>
+                        <newname>h</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
                         <name>timerReStart4DBAutoBackUp_Tick</name>
-                        <newname>c</newname>
+                        <newname>d</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>timerReStart4WebAutoUpdate_Tick</name>
-                        <newname>e</newname>
+                        <newname>f</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>timerStatus_Tick</name>
-                        <newname>z</newname>
+                        <newname>aa</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>timerStatus4DBAutoBackUp_Tick</name>
-                        <newname>k</newname>
+                        <newname>l</newname>
                     </method>
                 </methodlist>
                 <fieldlist>
@@ -7428,6 +7711,11 @@
                         <signature>System.Windows.Forms.Button</signature>
                         <name>btnReStart4WebAutoUpdate</name>
                         <newname>l</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.Button</signature>
+                        <name>btnSave</name>
+                        <newname>p</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.Button</signature>
@@ -7570,6 +7858,16 @@
                         <newname>d</newname>
                     </field>
                     <field>
+                        <signature>System.Windows.Forms.Label</signature>
+                        <name>label5</name>
+                        <newname>e</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.Label</signature>
+                        <name>label6</name>
+                        <newname>f</newname>
+                    </field>
+                    <field>
                         <signature>bool</signature>
                         <name>mbCloseFromNotifyIcon</name>
                         <newname>c</newname>
@@ -7671,8 +7969,18 @@
                     </field>
                     <field>
                         <signature>System.Windows.Forms.TabPage</signature>
+                        <name>tpPath</name>
+                        <newname>d</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.TabPage</signature>
                         <name>tpWebAutoUpdate</name>
                         <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.TextBox</signature>
+                        <name>txtInPath</name>
+                        <newname>i</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.TextBox</signature>
@@ -7688,6 +7996,11 @@
                         <signature>System.Windows.Forms.TextBox</signature>
                         <name>txtName4WebAutoUpdate</name>
                         <newname>d</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.TextBox</signature>
+                        <name>txtOutPath</name>
+                        <newname>h</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.TextBox</signature>
@@ -7970,7 +8283,7 @@
             </type>
             <type>
                 <name>LB.Web.ServiceMonitor.MonitorHelper</name>
-                <newname>h</newname>
+                <newname>i</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -7998,7 +8311,7 @@
             </type>
             <type>
                 <name>LB.Web.ServiceMonitor.WebLinkHelper</name>
-                <newname>i</newname>
+                <newname>h</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -8242,6 +8555,10 @@
                         <name>CopySaleBill</name>
                     </method>
                     <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_Table)</signature>
+                        <name>DeleteBillBatch</name>
+                    </method>
+                    <method>
                         <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_Image&amp;, LB.Web.Contants.DBType.t_Image&amp;, LB.Web.Contants.DBType.t_Image&amp;, LB.Web.Contants.DBType.t_Image&amp;, LB.Web.Contants.DBType.t_Image&amp;, LB.Web.Contants.DBType.t_Image&amp;, LB.Web.Contants.DBType.t_Image&amp;, LB.Web.Contants.DBType.t_Image&amp;)</signature>
                         <name>GetCameraImage</name>
                     </method>
@@ -8399,7 +8716,7 @@
             </type>
             <type>
                 <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass10_0</name>
-                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/a</newname>
+                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/e</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -8493,7 +8810,7 @@
             </type>
             <type>
                 <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass12_0</name>
-                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/k</newname>
+                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/l</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -8607,7 +8924,7 @@
             </type>
             <type>
                 <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass13_0</name>
-                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/j</newname>
+                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/k</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -8746,7 +9063,7 @@
             </type>
             <type>
                 <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass20_0</name>
-                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/c</newname>
+                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/b</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -8790,7 +9107,7 @@
             </type>
             <type>
                 <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass21_0</name>
-                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/b</newname>
+                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/a</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -8933,7 +9250,7 @@
             </type>
             <type>
                 <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass30_0</name>
-                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/e</newname>
+                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/d</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -8987,7 +9304,7 @@
             </type>
             <type>
                 <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass31_0</name>
-                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/d</newname>
+                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/c</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -9041,7 +9358,7 @@
             </type>
             <type>
                 <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass33_0</name>
-                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/i</newname>
+                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/j</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -9286,6 +9603,35 @@
                         <signature>LB.Web.Contants.DBType.t_Decimal</signature>
                         <name>TotalWeight</name>
                         <newname>e</newname>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>LB.Web.SM.BLL.BLLSaleCarInOutBill/&lt;&gt;c__DisplayClass39_0</name>
+                <newname>LB.Web.SM.BLL.BLLSaleCarInOutBill/i</newname>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs)</signature>
+                        <name>&lt;DeleteBillBatch&gt;b__0</name>
+                        <newname>a</newname>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>LB.Web.SM.BLL.BLLSaleCarInOutBill</signature>
+                        <name>&lt;&gt;4__this</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Web.Contants.DBType.t_Table</signature>
+                        <name>DTDelete</name>
+                        <newname>a</newname>
                     </field>
                 </fieldlist>
                 <propertylist />
@@ -9721,6 +10067,10 @@
                         <name>GetGetSaleCarInOutBill</name>
                     </method>
                     <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String&amp;)</signature>
+                        <name>GetInBillSpecialCode</name>
+                    </method>
+                    <method>
                         <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_ID&amp;)</signature>
                         <name>GetInsideCarCount</name>
                     </method>
@@ -9741,12 +10091,20 @@
                         <name>GetMaxOutBillCode</name>
                     </method>
                     <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_String&amp;)</signature>
+                        <name>GetOutBillSpecialCode</name>
+                    </method>
+                    <method>
                         <signature>System.Data.DataTable(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
                         <name>GetRPReceiveBillHeader</name>
                     </method>
                     <method>
                         <signature>System.Data.DataTable(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
                         <name>GetSaleCarInBill</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_String, System.Data.DataTable&amp;, System.Data.DataTable&amp;)</signature>
+                        <name>GetSalesBillInOut</name>
                     </method>
                     <method>
                         <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_Decimal&amp;, LB.Web.Contants.DBType.t_ID&amp;)</signature>
@@ -9791,6 +10149,14 @@
                     <method>
                         <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID, LB.Web.Contants.DBType.t_ID&amp;)</signature>
                         <name>ReadReceiveType</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
+                        <name>RemoveInOutBill</name>
+                    </method>
+                    <method>
+                        <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_nText, LB.Web.Contants.DBType.t_nText)</signature>
+                        <name>SaleCarBillRemoved_Insert</name>
                     </method>
                     <method>
                         <signature>void(LB.Web.Base.Factory.FactoryArgs, LB.Web.Contants.DBType.t_BigID)</signature>
@@ -9906,19 +10272,19 @@
     <statistics>
         <statisticline>
             <description>Total Classes</description>
-            <statistic>191</statistic>
+            <statistic>197</statistic>
         </statisticline>
         <statisticline>
             <description>Total Methods</description>
-            <statistic>1062</statistic>
+            <statistic>1115</statistic>
         </statisticline>
         <statisticline>
             <description>Total Fields</description>
-            <statistic>710</statistic>
+            <statistic>727</statistic>
         </statisticline>
         <statisticline>
             <description>Total Properties</description>
-            <statistic>88</statistic>
+            <statistic>91</statistic>
         </statisticline>
         <statisticline>
             <description>Total Events</description>
@@ -9926,18 +10292,18 @@
         </statisticline>
         <statisticline>
             <description>Total Classes Renamed</description>
-            <statistic>36</statistic>
-            <statistic>18.85%</statistic>
+            <statistic>37</statistic>
+            <statistic>18.78%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Methods Renamed</description>
-            <statistic>169</statistic>
-            <statistic>15.91%</statistic>
+            <statistic>173</statistic>
+            <statistic>15.52%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Fields Renamed</description>
-            <statistic>520</statistic>
-            <statistic>73.24%</statistic>
+            <statistic>536</statistic>
+            <statistic>73.73%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Properties Renamed</description>
@@ -9951,38 +10317,38 @@
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'a'</description>
-            <statistic>103</statistic>
-            <statistic>9.70%</statistic>
+            <statistic>105</statistic>
+            <statistic>9.42%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'b'</description>
             <statistic>17</statistic>
-            <statistic>1.60%</statistic>
+            <statistic>1.52%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'c'</description>
             <statistic>9</statistic>
-            <statistic>0.85%</statistic>
+            <statistic>0.81%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'd'</description>
             <statistic>5</statistic>
-            <statistic>0.47%</statistic>
+            <statistic>0.45%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'e'</description>
             <statistic>3</statistic>
-            <statistic>0.28%</statistic>
+            <statistic>0.27%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'f'</description>
             <statistic>3</statistic>
-            <statistic>0.28%</statistic>
+            <statistic>0.27%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'g'</description>
             <statistic>3</statistic>
-            <statistic>0.28%</statistic>
+            <statistic>0.27%</statistic>
         </statisticline>
     </statistics>
 </dotfuscatorMap>

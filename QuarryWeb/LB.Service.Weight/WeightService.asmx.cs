@@ -64,7 +64,7 @@ namespace LB.Service
             byte[] bSerialDataType = SerializeObject(dictDataType);
 
             string strdtOut;
-            string strReturn = webservice.RunProcedure(iSPType, LoginName, bSerialValue, bSerialDataType, out strdtOut, out strErrorMsg, out bolIsError);
+            string strReturn = webservice.RunProcedure(iSPType,0,false, LoginName, bSerialValue, bSerialDataType, out strdtOut, out strErrorMsg, out bolIsError);
             if (bolIsError)
             {
                 throw new Exception(strErrorMsg);
@@ -81,7 +81,7 @@ namespace LB.Service
             //LBWebService.LBWebService webservice = GetLBWebService();
             string strErrorMsg = "";
             bool bolIsError = false;
-            string strReturn = webservice.RunDirectSQL(LoginName, strSQL, out strErrorMsg, out bolIsError);
+            string strReturn = webservice.RunDirectSQL(0, false, LoginName, strSQL, out strErrorMsg, out bolIsError);
             if (bolIsError)
             {
                 throw new Exception(strErrorMsg);
@@ -100,7 +100,7 @@ namespace LB.Service
             bool bolIsError = false;
             try
             {
-                dtResult = UnRarDataTable(webservice.RunView(iViewType, LoginName, strFieldNames, strWhere, strOrderBy, out strErrorMsg, out bolIsError));
+                dtResult = UnRarDataTable(webservice.RunView(iViewType, 0, false, LoginName, strFieldNames, strWhere, strOrderBy, out strErrorMsg, out bolIsError));
                 if (bolIsError)
                 {
                     throw new Exception(strErrorMsg);

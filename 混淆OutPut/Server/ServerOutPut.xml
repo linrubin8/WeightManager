@@ -9,103 +9,103 @@
   <input>
     <loadpaths />
     <asmlist>
-      <inputassembly refid="b73a24fc-a25c-4643-b608-9e9ffc32a78d">
+      <inputassembly refid="418334d2-72aa-4206-a395-5103940f26a4">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.ServiceMonitor.exe" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.Server.exe" />
       </inputassembly>
-      <inputassembly refid="4101a025-ac4d-48af-80c4-84535fdae1ed">
+      <inputassembly refid="81b54b83-7b08-406c-8c45-ac0412019102">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.SM.dll" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.IRemoting.dll" />
       </inputassembly>
-      <inputassembly refid="e56cc995-9fe9-4968-9475-d67b3b9658b7">
+      <inputassembly refid="441bf6c2-7ddb-4e86-8637-865e89c403bd">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="IFaxBusiness.dll" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.SM.dll" />
       </inputassembly>
-      <inputassembly refid="3cdd0c63-dd84-4ccc-a6ea-9364693e6619">
+      <inputassembly refid="9414e78e-f579-4c31-8de7-3640d2a1ab9d">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.RMT.Base.dll" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="IFaxBusiness.dll" />
       </inputassembly>
-      <inputassembly refid="965e8694-7a92-4d11-bd27-736e33f0f999">
+      <inputassembly refid="c7ba74fa-486a-4917-9859-ed3a6c79d41a">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.Base.dll" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.RMT.Base.dll" />
       </inputassembly>
-      <inputassembly refid="8631fe46-f9d4-4530-9e3c-acfa2dd12c5e">
+      <inputassembly refid="0b80cc46-0e48-476a-a1be-6a3e226e1bf0">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.Contants.dll" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.Base.dll" />
       </inputassembly>
-      <inputassembly refid="d3426c36-ccf6-4985-9d65-af4d1f400cd8">
+      <inputassembly refid="3c11ab43-bdba-45a5-b2c7-98888cbfecd7">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.DB.dll" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.Contants.dll" />
       </inputassembly>
-      <inputassembly refid="bebb1c3e-6697-47e1-8e62-d2ce3d79eb7c">
+      <inputassembly refid="127fd6c7-d166-4a8d-b9ff-6a9b66b5ba80">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.Encrypt.dll" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.DB.dll" />
       </inputassembly>
-      <inputassembly refid="e5dbb6d4-fc27-42a2-b515-93184fe9bfdc">
+      <inputassembly refid="c17a0345-1525-4561-b8df-6b3d5bc4590d">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.IBLL.dll" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.Encrypt.dll" />
       </inputassembly>
-      <inputassembly refid="ebbc0e83-0c73-411a-a89e-8919a636888e">
+      <inputassembly refid="272f872d-7605-436c-b589-298b546b52c0">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.IRemoting.dll" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.IBLL.dll" />
       </inputassembly>
-      <inputassembly refid="aaeb30c8-5b09-43e2-a219-51d013a96da9">
+      <inputassembly refid="2e43cc58-25b3-415e-aca7-1caf309fb4ed">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.MI.dll" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.MI.dll" />
       </inputassembly>
-      <inputassembly refid="782c517d-6ade-446e-ac0d-e3c9e92c768d">
+      <inputassembly refid="f7e1d57a-001d-4325-92a0-492f314d07ea">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.Remoting.dll" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.Remoting.dll" />
       </inputassembly>
-      <inputassembly refid="a0cb039f-84fc-4c96-8457-06ef65b03f1a">
+      <inputassembly refid="14658fa2-92a4-4866-828d-728dc68bc6d1">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.RP.dll" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.RP.dll" />
       </inputassembly>
-      <inputassembly refid="771de95c-e52b-4293-b639-bfada343bc72">
+      <inputassembly refid="77331a0b-cf1e-4646-b831-42e64b8c9ba0">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.Server.exe" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryServer\LB.Web.ServiceMonitor\bin\Debug" name="LB.Web.ServiceMonitor.exe" />
       </inputassembly>
     </asmlist>
   </input>
@@ -123,9 +123,9 @@
       <referencerule rulekey="{6655B10A-FD58-462d-8D4F-5B1316DFF0FF}" />
       <referencerule rulekey="{229FD6F8-5BCC-427b-8F72-A7A413ECDF1A}" />
       <referencerule rulekey="{2B7E7C8C-A39A-4db8-9DFC-6AFD38509061}" />
-      <referencerule rulekey="{494EA3BA-B947-44B5-BEE8-A11CC85AAF9B}" />
-      <referencerule rulekey="{89769974-93E9-4e71-8D92-BE70E855ACFC}" />
       <referencerule rulekey="{7D9C8B02-2383-420f-8740-A9760394C2C1}" />
+      <referencerule rulekey="{89769974-93E9-4e71-8D92-BE70E855ACFC}" />
+      <referencerule rulekey="{494EA3BA-B947-44B5-BEE8-A11CC85AAF9B}" />
     </referencerulelist>
   </renaming>
   <controlflow level="high" />

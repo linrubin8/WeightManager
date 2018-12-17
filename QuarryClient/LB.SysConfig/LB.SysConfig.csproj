@@ -106,6 +106,12 @@
     <Compile Include="SysConfig\frmDescriptionAdd.Designer.cs">
       <DependentUpon>frmDescriptionAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="SysConfig\frmSessionManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SysConfig\frmSessionManager.Designer.cs">
+      <DependentUpon>frmSessionManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="SysConfig\frmDescriptionManager.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -201,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SysConfig\frmDescriptionAdd.resx">
       <DependentUpon>frmDescriptionAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysConfig\frmSessionManager.resx">
+      <DependentUpon>frmSessionManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SysConfig\frmDescriptionManager.resx">
       <DependentUpon>frmDescriptionManager.cs</DependentUpon>

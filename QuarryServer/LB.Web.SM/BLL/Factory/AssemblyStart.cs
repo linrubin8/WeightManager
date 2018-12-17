@@ -41,6 +41,7 @@ namespace LB.Web.SM.BLL.Factory
 
         private void DBHelper_GetBLLObjectMethodEevent(Base.Base.Factory.GetBLLObjectEventArgs args)
         {
+            //500~599
             int iSPType = args.SPType;
             if (iSPType == 0 || args.BLLFunction != null)
             {
@@ -92,6 +93,7 @@ namespace LB.Web.SM.BLL.Factory
                 case 14122:
                 case 14123:
                 case 14124:
+                case 14125:
                     args.BLLFunction = new BLLSaleCarInOutBill();
                     break;
 

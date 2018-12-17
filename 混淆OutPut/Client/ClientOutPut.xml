@@ -9,89 +9,89 @@
   <input>
     <loadpaths />
     <asmlist>
-      <inputassembly refid="9ab13aa5-bd70-458e-9036-583c466dfb76">
+      <inputassembly refid="8edb0845-e78a-46c2-828d-5f02935b60e8">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.Base.dll" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.Common.dll" />
       </inputassembly>
-      <inputassembly refid="d93c6c32-f388-45ba-8e79-95c6991d152a">
+      <inputassembly refid="24037ee5-80d4-49e4-906f-565d01cf488d">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.PageType.dll" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.StyleResource.dll" />
       </inputassembly>
-      <inputassembly refid="49c3bb34-3f5a-475d-8ad1-3e432eb7b037">
+      <inputassembly refid="32359698-d997-4c2d-90a6-c5924fbeb328">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.StyleResource.dll" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.Base.dll" />
       </inputassembly>
-      <inputassembly refid="814740ea-e68b-416f-8a8d-04c164804934">
+      <inputassembly refid="2c3f2705-7397-4a21-9aa7-82e8024bf25b">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="IFaxBusiness.dll" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.PageType.dll" />
       </inputassembly>
-      <inputassembly refid="6a59c2bd-c164-400e-80ae-12c6faecb132">
+      <inputassembly refid="e4bf369b-7e58-442b-a8ea-2417eb164e7f">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.MainForm.exe" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="IFaxBusiness.dll" />
       </inputassembly>
-      <inputassembly refid="73d4e8ca-2959-4d64-b7bb-b3e8a2adde3c">
+      <inputassembly refid="c340ff80-e884-4d86-949d-e029cd184247">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.MI.dll" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.MainForm.exe" />
       </inputassembly>
-      <inputassembly refid="ae9299a9-58a8-4121-bb0a-2008830653e3">
+      <inputassembly refid="d5c45f8e-bfe1-4be4-a6d7-55df7fcea17c">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.SysConfig.dll" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.MI.dll" />
       </inputassembly>
-      <inputassembly refid="023a9e4c-9386-499b-b174-8bee634ff18f">
+      <inputassembly refid="5275e4c5-a5d8-4d93-a830-adf43028d6da">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.RPReceive.dll" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.Controls.dll" />
       </inputassembly>
-      <inputassembly refid="40dbb61c-da0c-4a2a-9b17-c620e3e99e62">
+      <inputassembly refid="758a4588-6866-4363-9635-9dcadf429f7a">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.Login.dll" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.Login.dll" />
       </inputassembly>
-      <inputassembly refid="16646449-5615-4830-870e-12ef1bfc2e14">
+      <inputassembly refid="cc6f62c7-0650-44fb-9822-eec386c79f36">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.Report.dll" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.Report.dll" />
       </inputassembly>
-      <inputassembly refid="05632462-7262-4096-8345-4e779bf8fee8">
+      <inputassembly refid="1bde248b-fbfb-439b-9048-3d8e45ad6170">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.Controls.dll" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.RPReceive.dll" />
       </inputassembly>
-      <inputassembly refid="a3879e00-2353-4d2b-a12c-d8cf649456f0">
+      <inputassembly refid="450c19ee-34c6-49a0-b2a4-c48f89eb99f0">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="G:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.Common.dll" />
+        <file dir="E:\Git Source\Weight\WeightManager\QuarryClient\LB.MainForm\bin\Debug" name="LB.SysConfig.dll" />
       </inputassembly>
     </asmlist>
   </input>
@@ -109,9 +109,9 @@
       <referencerule rulekey="{6655B10A-FD58-462d-8D4F-5B1316DFF0FF}" />
       <referencerule rulekey="{229FD6F8-5BCC-427b-8F72-A7A413ECDF1A}" />
       <referencerule rulekey="{2B7E7C8C-A39A-4db8-9DFC-6AFD38509061}" />
-      <referencerule rulekey="{7D9C8B02-2383-420f-8740-A9760394C2C1}" />
-      <referencerule rulekey="{89769974-93E9-4e71-8D92-BE70E855ACFC}" />
       <referencerule rulekey="{494EA3BA-B947-44B5-BEE8-A11CC85AAF9B}" />
+      <referencerule rulekey="{89769974-93E9-4e71-8D92-BE70E855ACFC}" />
+      <referencerule rulekey="{7D9C8B02-2383-420f-8740-A9760394C2C1}" />
     </referencerulelist>
   </renaming>
   <controlflow level="high" />

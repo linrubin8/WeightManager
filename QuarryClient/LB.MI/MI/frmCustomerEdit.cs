@@ -62,6 +62,8 @@ namespace LB.MI
             this.txtReceiveType.DisplayMember = "ConstText";
             this.txtReceiveType.ValueMember = "ConstValue";
 
+            LoadCustomerTypeDataSource();//加载客户类型
+
             ReadFieldValue();
 
             SetButtonStatus();
@@ -320,6 +322,7 @@ namespace LB.MI
             //parmCol.Add(new LBParameter("CarIsLimit", enLBDbType.Boolean, this.txtLicenceNum.te));
             //parmCol.Add(new LBParameter("IsForbid", enLBDbType.Boolean, this.chkIsForbid.Checked));
             parmCol.Add(new LBParameter("ReceiveType", enLBDbType.Int32, this.txtReceiveType.SelectedValue));
+            parmCol.Add(new LBParameter("CustomerTypeID", enLBDbType.Int64, this.txtCustomerTypeID.SelectedValue==null?DBNull.Value: this.txtCustomerTypeID.SelectedValue));
             parmCol.Add(new LBParameter("CreditAmount", enLBDbType.Decimal, this.txtCreditAmount.Text==""?"0": this.txtCreditAmount.Text));
             parmCol.Add(new LBParameter("IsDisplayPrice", enLBDbType.Boolean, this.chkIsDisplayPrice.Checked));
             parmCol.Add(new LBParameter("IsDisplayAmount", enLBDbType.Boolean, this.chkIsDisplayAmount.Checked));
@@ -363,6 +366,7 @@ namespace LB.MI
                     this.txtCreditAmount.Text = drHeader["CreditAmount"].ToString();
                     this.txtAmountType.SelectedValue = LBConverter.ToInt32(drHeader["AmountType"]);
                     this.txtReceiveType.SelectedValue = LBConverter.ToInt32(drHeader["ReceiveType"]);
+                    this.txtCustomerTypeID.SelectedValue = LBConverter.ToInt32(drHeader["CustomerTypeID"]);
                     this.txtAmountNotEnough.Text = drHeader["AmountNotEnough"].ToString();
 
                     this.chkCarIsLimit.Checked = LBConverter.ToBoolean(drHeader["CarIsLimit"]);
@@ -403,6 +407,19 @@ namespace LB.MI
         }
 
         #endregion -- 加载车辆数据 --
+
+        #region -- 读取客户类型 --
+
+        private void LoadCustomerTypeDataSource()
+        {
+            DataTable dtCustomerType = ExecuteSQL.CallView(139, "", "", "");
+            this.txtCustomerTypeID.DataSource = dtCustomerType.DefaultView;
+
+            this.txtCustomerTypeID.DisplayMember = "CustomerTypeName";
+            this.txtCustomerTypeID.ValueMember = "CustomerTypeID";
+        }
+
+        #endregion
 
         #region -- 加载调价单管理清单 --
 

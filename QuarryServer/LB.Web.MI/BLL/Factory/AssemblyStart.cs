@@ -15,6 +15,7 @@ namespace LB.Web.MI.BLL.Factory
 
         private void DBHelper_GetBLLObjectMethodEevent(Base.Base.Factory.GetBLLObjectEventArgs args)
         {
+            //400~499
             int iSPType = args.SPType;
             if (iSPType == 0 || args.BLLFunction != null)
             {
@@ -72,6 +73,12 @@ namespace LB.Web.MI.BLL.Factory
                 case 14701:
                 case 14702:
                     args.BLLFunction = new BLLDbChargeType();
+                    break;
+
+                case 14800:
+                case 14801:
+                case 14802:
+                    args.BLLFunction = new BLLDBCustomerType();
                     break;
             }
         }

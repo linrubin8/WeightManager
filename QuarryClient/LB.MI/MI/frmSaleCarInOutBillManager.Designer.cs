@@ -49,6 +49,7 @@
             this.CarNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BillType = new LB.Controls.LBDataGridViewComboBoxColumn();
+            this.CustomerTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CarTare = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SuttleWeightT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,6 +73,8 @@
             this.ChangeDetail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSearch = new LB.Controls.LBSkinButton(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtCustomerTypeID = new LB.Controls.LBMetroComboBox(this.components);
+            this.skinLabel19 = new CCWin.SkinControl.SkinLabel();
             this.txtBillCodeOut = new LB.Controls.LBSkinTextBox(this.components);
             this.skinLabel18 = new CCWin.SkinControl.SkinLabel();
             this.btnSumSearch = new LB.Controls.LBSkinButton(this.components);
@@ -145,6 +148,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnApprove = new LB.Controls.LBToolStripButton(this.components);
             this.btnUnApprove = new LB.Controls.LBToolStripButton(this.components);
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCancel = new LB.Controls.LBToolStripButton(this.components);
             this.btnUnCancel = new LB.Controls.LBToolStripButton(this.components);
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -152,6 +156,7 @@
             this.btnAddOutBill = new LB.Controls.LBToolStripButton(this.components);
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnSynToK3 = new System.Windows.Forms.ToolStripButton();
+            this.btnDeleteBill = new LB.Controls.LBToolStripButton(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -182,6 +187,7 @@
             this.CarNum,
             this.ItemName,
             this.BillType,
+            this.CustomerTypeName,
             this.TotalWeight,
             this.CarTare,
             this.SuttleWeightT,
@@ -232,7 +238,7 @@
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.grdMain.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.grdMain.RowTemplate.Height = 23;
-            this.grdMain.Size = new System.Drawing.Size(727, 179);
+            this.grdMain.Size = new System.Drawing.Size(727, 155);
             this.grdMain.TabIndex = 9;
             this.grdMain.TitleBack = null;
             this.grdMain.TitleBackColorBegin = System.Drawing.Color.White;
@@ -276,6 +282,14 @@
             this.BillType.Name = "BillType";
             this.BillType.ReadOnly = true;
             this.BillType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // CustomerTypeName
+            // 
+            this.CustomerTypeName.DataPropertyName = "CustomerTypeName";
+            this.CustomerTypeName.HeaderText = "客户类型";
+            this.CustomerTypeName.Name = "CustomerTypeName";
+            this.CustomerTypeName.ReadOnly = true;
+            this.CustomerTypeName.Width = 80;
             // 
             // TotalWeight
             // 
@@ -464,11 +478,11 @@
             this.btnSearch.DownBack = null;
             this.btnSearch.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.btnSearch.LBPermissionCode = "";
-            this.btnSearch.Location = new System.Drawing.Point(876, 89);
+            this.btnSearch.Location = new System.Drawing.Point(877, 115);
             this.btnSearch.MouseBack = null;
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.NormlBack = null;
-            this.btnSearch.Size = new System.Drawing.Size(97, 44);
+            this.btnSearch.Size = new System.Drawing.Size(97, 34);
             this.btnSearch.TabIndex = 31;
             this.btnSearch.Text = "查询";
             this.btnSearch.UseVisualStyleBackColor = false;
@@ -476,6 +490,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtCustomerTypeID);
+            this.panel1.Controls.Add(this.skinLabel19);
             this.panel1.Controls.Add(this.txtBillCodeOut);
             this.panel1.Controls.Add(this.skinLabel18);
             this.panel1.Controls.Add(this.btnSumSearch);
@@ -511,8 +527,32 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 40);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1296, 194);
+            this.panel1.Size = new System.Drawing.Size(1296, 218);
             this.panel1.TabIndex = 32;
+            // 
+            // txtCustomerTypeID
+            // 
+            this.txtCustomerTypeID.CanBeEmpty = false;
+            this.txtCustomerTypeID.Caption = "";
+            this.txtCustomerTypeID.DM_UseSelectable = true;
+            this.txtCustomerTypeID.FormattingEnabled = true;
+            this.txtCustomerTypeID.ItemHeight = 24;
+            this.txtCustomerTypeID.Location = new System.Drawing.Point(97, 43);
+            this.txtCustomerTypeID.Name = "txtCustomerTypeID";
+            this.txtCustomerTypeID.Size = new System.Drawing.Size(167, 30);
+            this.txtCustomerTypeID.TabIndex = 69;
+            // 
+            // skinLabel19
+            // 
+            this.skinLabel19.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel19.BorderColor = System.Drawing.Color.White;
+            this.skinLabel19.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.skinLabel19.Location = new System.Drawing.Point(3, 46);
+            this.skinLabel19.Name = "skinLabel19";
+            this.skinLabel19.Size = new System.Drawing.Size(91, 21);
+            this.skinLabel19.TabIndex = 68;
+            this.skinLabel19.Text = "客户类型";
+            this.skinLabel19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtBillCodeOut
             // 
@@ -526,7 +566,7 @@
             this.txtBillCodeOut.IsPasswordChat = '\0';
             this.txtBillCodeOut.IsSystemPasswordChar = false;
             this.txtBillCodeOut.Lines = new string[0];
-            this.txtBillCodeOut.Location = new System.Drawing.Point(977, 8);
+            this.txtBillCodeOut.Location = new System.Drawing.Point(620, 44);
             this.txtBillCodeOut.Margin = new System.Windows.Forms.Padding(0);
             this.txtBillCodeOut.MaxLength = 32767;
             this.txtBillCodeOut.MinimumSize = new System.Drawing.Size(28, 28);
@@ -538,7 +578,7 @@
             this.txtBillCodeOut.Padding = new System.Windows.Forms.Padding(5);
             this.txtBillCodeOut.ReadOnly = false;
             this.txtBillCodeOut.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtBillCodeOut.Size = new System.Drawing.Size(124, 29);
+            this.txtBillCodeOut.Size = new System.Drawing.Size(148, 29);
             // 
             // 
             // 
@@ -554,7 +594,7 @@
             this.txtBillCodeOut.SkinTxt.Location = new System.Drawing.Point(5, 5);
             this.txtBillCodeOut.SkinTxt.Multiline = true;
             this.txtBillCodeOut.SkinTxt.Name = "BaseText";
-            this.txtBillCodeOut.SkinTxt.Size = new System.Drawing.Size(114, 19);
+            this.txtBillCodeOut.SkinTxt.Size = new System.Drawing.Size(138, 19);
             this.txtBillCodeOut.SkinTxt.TabIndex = 0;
             this.txtBillCodeOut.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.txtBillCodeOut.SkinTxt.WaterText = "";
@@ -569,7 +609,7 @@
             this.skinLabel18.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel18.BorderColor = System.Drawing.Color.White;
             this.skinLabel18.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.skinLabel18.Location = new System.Drawing.Point(901, 11);
+            this.skinLabel18.Location = new System.Drawing.Point(536, 46);
             this.skinLabel18.Name = "skinLabel18";
             this.skinLabel18.Size = new System.Drawing.Size(73, 21);
             this.skinLabel18.TabIndex = 66;
@@ -585,7 +625,7 @@
             this.btnSumSearch.DownBack = null;
             this.btnSumSearch.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.btnSumSearch.LBPermissionCode = "";
-            this.btnSumSearch.Location = new System.Drawing.Point(876, 139);
+            this.btnSumSearch.Location = new System.Drawing.Point(457, 159);
             this.btnSumSearch.MouseBack = null;
             this.btnSumSearch.Name = "btnSumSearch";
             this.btnSumSearch.NormlBack = null;
@@ -603,9 +643,9 @@
             this.groupBox4.Controls.Add(this.cbSumCar);
             this.groupBox4.Controls.Add(this.skinLabel15);
             this.groupBox4.Controls.Add(this.cbSumCustomer);
-            this.groupBox4.Location = new System.Drawing.Point(7, 135);
+            this.groupBox4.Location = new System.Drawing.Point(3, 155);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(448, 52);
+            this.groupBox4.Size = new System.Drawing.Size(448, 46);
             this.groupBox4.TabIndex = 64;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "汇总统计条件";
@@ -615,7 +655,7 @@
             this.skinLabel17.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel17.BorderColor = System.Drawing.Color.White;
             this.skinLabel17.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.skinLabel17.Location = new System.Drawing.Point(293, 21);
+            this.skinLabel17.Location = new System.Drawing.Point(293, 20);
             this.skinLabel17.Name = "skinLabel17";
             this.skinLabel17.Size = new System.Drawing.Size(93, 21);
             this.skinLabel17.TabIndex = 68;
@@ -624,7 +664,7 @@
             // 
             // cbSumItem
             // 
-            this.cbSumItem.Location = new System.Drawing.Point(264, 19);
+            this.cbSumItem.Location = new System.Drawing.Point(264, 18);
             this.cbSumItem.Name = "cbSumItem";
             this.cbSumItem.Size = new System.Drawing.Size(23, 27);
             this.cbSumItem.TabIndex = 67;
@@ -635,7 +675,7 @@
             this.skinLabel16.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel16.BorderColor = System.Drawing.Color.White;
             this.skinLabel16.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.skinLabel16.Location = new System.Drawing.Point(163, 21);
+            this.skinLabel16.Location = new System.Drawing.Point(163, 20);
             this.skinLabel16.Name = "skinLabel16";
             this.skinLabel16.Size = new System.Drawing.Size(67, 21);
             this.skinLabel16.TabIndex = 66;
@@ -644,7 +684,7 @@
             // 
             // cbSumCar
             // 
-            this.cbSumCar.Location = new System.Drawing.Point(134, 19);
+            this.cbSumCar.Location = new System.Drawing.Point(134, 18);
             this.cbSumCar.Name = "cbSumCar";
             this.cbSumCar.Size = new System.Drawing.Size(23, 27);
             this.cbSumCar.TabIndex = 65;
@@ -655,7 +695,7 @@
             this.skinLabel15.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel15.BorderColor = System.Drawing.Color.White;
             this.skinLabel15.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.skinLabel15.Location = new System.Drawing.Point(45, 21);
+            this.skinLabel15.Location = new System.Drawing.Point(45, 20);
             this.skinLabel15.Name = "skinLabel15";
             this.skinLabel15.Size = new System.Drawing.Size(70, 21);
             this.skinLabel15.TabIndex = 64;
@@ -664,7 +704,7 @@
             // 
             // cbSumCustomer
             // 
-            this.cbSumCustomer.Location = new System.Drawing.Point(16, 19);
+            this.cbSumCustomer.Location = new System.Drawing.Point(16, 18);
             this.cbSumCustomer.Name = "cbSumCustomer";
             this.cbSumCustomer.Size = new System.Drawing.Size(23, 27);
             this.cbSumCustomer.TabIndex = 63;
@@ -674,7 +714,7 @@
             // 
             this.cbUseOutDate.Checked = true;
             this.cbUseOutDate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbUseOutDate.Location = new System.Drawing.Point(23, 48);
+            this.cbUseOutDate.Location = new System.Drawing.Point(10, 80);
             this.cbUseOutDate.Name = "cbUseOutDate";
             this.cbUseOutDate.Size = new System.Drawing.Size(23, 27);
             this.cbUseOutDate.TabIndex = 63;
@@ -682,7 +722,7 @@
             // 
             // cbUseInDate
             // 
-            this.cbUseInDate.Location = new System.Drawing.Point(638, 47);
+            this.cbUseInDate.Location = new System.Drawing.Point(625, 79);
             this.cbUseInDate.Name = "cbUseInDate";
             this.cbUseInDate.Size = new System.Drawing.Size(23, 27);
             this.cbUseInDate.TabIndex = 62;
@@ -693,9 +733,9 @@
             this.groupBox3.Controls.Add(this.rbUnApprove);
             this.groupBox3.Controls.Add(this.rbApproved);
             this.groupBox3.Controls.Add(this.rbApproveAll);
-            this.groupBox3.Location = new System.Drawing.Point(583, 81);
+            this.groupBox3.Location = new System.Drawing.Point(583, 110);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(287, 52);
+            this.groupBox3.Size = new System.Drawing.Size(287, 41);
             this.groupBox3.TabIndex = 61;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "审核状态";
@@ -737,9 +777,9 @@
             this.groupBox2.Controls.Add(this.rbCanceled);
             this.groupBox2.Controls.Add(this.rbUnCancel);
             this.groupBox2.Controls.Add(this.rbCancelAll);
-            this.groupBox2.Location = new System.Drawing.Point(295, 81);
+            this.groupBox2.Location = new System.Drawing.Point(295, 110);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(282, 52);
+            this.groupBox2.Size = new System.Drawing.Size(282, 41);
             this.groupBox2.TabIndex = 60;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "作废状态";
@@ -781,9 +821,9 @@
             this.groupBox1.Controls.Add(this.rbUnFinish);
             this.groupBox1.Controls.Add(this.rbFinished);
             this.groupBox1.Controls.Add(this.rbFinishAll);
-            this.groupBox1.Location = new System.Drawing.Point(7, 81);
+            this.groupBox1.Location = new System.Drawing.Point(7, 110);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(282, 52);
+            this.groupBox1.Size = new System.Drawing.Size(282, 41);
             this.groupBox1.TabIndex = 59;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "完成状态";
@@ -825,7 +865,7 @@
             this.txtInBillTimeTo.CalendarFont = new System.Drawing.Font("宋体", 10F);
             this.txtInBillTimeTo.Font = new System.Drawing.Font("宋体", 12F);
             this.txtInBillTimeTo.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.txtInBillTimeTo.Location = new System.Drawing.Point(1097, 47);
+            this.txtInBillTimeTo.Location = new System.Drawing.Point(1084, 79);
             this.txtInBillTimeTo.Name = "txtInBillTimeTo";
             this.txtInBillTimeTo.Size = new System.Drawing.Size(106, 26);
             this.txtInBillTimeTo.TabIndex = 58;
@@ -835,7 +875,7 @@
             this.txtInBillDateTo.CalendarFont = new System.Drawing.Font("宋体", 10F);
             this.txtInBillDateTo.Font = new System.Drawing.Font("宋体", 12F);
             this.txtInBillDateTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.txtInBillDateTo.Location = new System.Drawing.Point(992, 48);
+            this.txtInBillDateTo.Location = new System.Drawing.Point(979, 80);
             this.txtInBillDateTo.Name = "txtInBillDateTo";
             this.txtInBillDateTo.Size = new System.Drawing.Size(99, 26);
             this.txtInBillDateTo.TabIndex = 57;
@@ -845,7 +885,7 @@
             this.txtOutBillTimeTo.CalendarFont = new System.Drawing.Font("宋体", 10F);
             this.txtOutBillTimeTo.Font = new System.Drawing.Font("宋体", 12F);
             this.txtOutBillTimeTo.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.txtOutBillTimeTo.Location = new System.Drawing.Point(524, 47);
+            this.txtOutBillTimeTo.Location = new System.Drawing.Point(511, 79);
             this.txtOutBillTimeTo.Name = "txtOutBillTimeTo";
             this.txtOutBillTimeTo.Size = new System.Drawing.Size(85, 26);
             this.txtOutBillTimeTo.TabIndex = 56;
@@ -855,7 +895,7 @@
             this.txtOutBillDateTo.CalendarFont = new System.Drawing.Font("宋体", 10F);
             this.txtOutBillDateTo.Font = new System.Drawing.Font("宋体", 12F);
             this.txtOutBillDateTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.txtOutBillDateTo.Location = new System.Drawing.Point(393, 47);
+            this.txtOutBillDateTo.Location = new System.Drawing.Point(380, 79);
             this.txtOutBillDateTo.Name = "txtOutBillDateTo";
             this.txtOutBillDateTo.Size = new System.Drawing.Size(125, 26);
             this.txtOutBillDateTo.TabIndex = 55;
@@ -865,7 +905,7 @@
             this.txtOutBillTimeFrom.CalendarFont = new System.Drawing.Font("宋体", 10F);
             this.txtOutBillTimeFrom.Font = new System.Drawing.Font("宋体", 12F);
             this.txtOutBillTimeFrom.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.txtOutBillTimeFrom.Location = new System.Drawing.Point(254, 46);
+            this.txtOutBillTimeFrom.Location = new System.Drawing.Point(241, 78);
             this.txtOutBillTimeFrom.Name = "txtOutBillTimeFrom";
             this.txtOutBillTimeFrom.Size = new System.Drawing.Size(96, 26);
             this.txtOutBillTimeFrom.TabIndex = 54;
@@ -875,7 +915,7 @@
             this.txtOutBillDateFrom.CalendarFont = new System.Drawing.Font("宋体", 10F);
             this.txtOutBillDateFrom.Font = new System.Drawing.Font("宋体", 12F);
             this.txtOutBillDateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.txtOutBillDateFrom.Location = new System.Drawing.Point(125, 46);
+            this.txtOutBillDateFrom.Location = new System.Drawing.Point(112, 78);
             this.txtOutBillDateFrom.Name = "txtOutBillDateFrom";
             this.txtOutBillDateFrom.Size = new System.Drawing.Size(123, 26);
             this.txtOutBillDateFrom.TabIndex = 53;
@@ -885,7 +925,7 @@
             this.txtInBillTimeFrom.CalendarFont = new System.Drawing.Font("宋体", 10F);
             this.txtInBillTimeFrom.Font = new System.Drawing.Font("宋体", 12F);
             this.txtInBillTimeFrom.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.txtInBillTimeFrom.Location = new System.Drawing.Point(866, 48);
+            this.txtInBillTimeFrom.Location = new System.Drawing.Point(853, 80);
             this.txtInBillTimeFrom.Name = "txtInBillTimeFrom";
             this.txtInBillTimeFrom.Size = new System.Drawing.Size(86, 26);
             this.txtInBillTimeFrom.TabIndex = 52;
@@ -895,7 +935,7 @@
             this.txtInBillDateFrom.CalendarFont = new System.Drawing.Font("宋体", 10F);
             this.txtInBillDateFrom.Font = new System.Drawing.Font("宋体", 12F);
             this.txtInBillDateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.txtInBillDateFrom.Location = new System.Drawing.Point(751, 48);
+            this.txtInBillDateFrom.Location = new System.Drawing.Point(738, 80);
             this.txtInBillDateFrom.Name = "txtInBillDateFrom";
             this.txtInBillDateFrom.Size = new System.Drawing.Size(109, 26);
             this.txtInBillDateFrom.TabIndex = 51;
@@ -912,7 +952,7 @@
             this.txtOutBillCraeteBy.IsPasswordChat = '\0';
             this.txtOutBillCraeteBy.IsSystemPasswordChar = false;
             this.txtOutBillCraeteBy.Lines = new string[0];
-            this.txtOutBillCraeteBy.Location = new System.Drawing.Point(1200, 8);
+            this.txtOutBillCraeteBy.Location = new System.Drawing.Point(887, 8);
             this.txtOutBillCraeteBy.Margin = new System.Windows.Forms.Padding(0);
             this.txtOutBillCraeteBy.MaxLength = 32767;
             this.txtOutBillCraeteBy.MinimumSize = new System.Drawing.Size(28, 28);
@@ -924,7 +964,7 @@
             this.txtOutBillCraeteBy.Padding = new System.Windows.Forms.Padding(5);
             this.txtOutBillCraeteBy.ReadOnly = false;
             this.txtOutBillCraeteBy.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtOutBillCraeteBy.Size = new System.Drawing.Size(86, 29);
+            this.txtOutBillCraeteBy.Size = new System.Drawing.Size(140, 29);
             // 
             // 
             // 
@@ -940,7 +980,7 @@
             this.txtOutBillCraeteBy.SkinTxt.Location = new System.Drawing.Point(5, 5);
             this.txtOutBillCraeteBy.SkinTxt.Multiline = true;
             this.txtOutBillCraeteBy.SkinTxt.Name = "BaseText";
-            this.txtOutBillCraeteBy.SkinTxt.Size = new System.Drawing.Size(76, 19);
+            this.txtOutBillCraeteBy.SkinTxt.Size = new System.Drawing.Size(130, 19);
             this.txtOutBillCraeteBy.SkinTxt.TabIndex = 0;
             this.txtOutBillCraeteBy.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.txtOutBillCraeteBy.SkinTxt.WaterText = "";
@@ -955,7 +995,7 @@
             this.skinLabel9.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel9.BorderColor = System.Drawing.Color.White;
             this.skinLabel9.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.skinLabel9.Location = new System.Drawing.Point(1104, 11);
+            this.skinLabel9.Location = new System.Drawing.Point(785, 11);
             this.skinLabel9.Name = "skinLabel9";
             this.skinLabel9.Size = new System.Drawing.Size(92, 21);
             this.skinLabel9.TabIndex = 49;
@@ -971,13 +1011,13 @@
             this.txtItemID.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.txtItemID.LBTitle = "  ";
             this.txtItemID.LBTitleVisible = false;
-            this.txtItemID.Location = new System.Drawing.Point(570, 8);
+            this.txtItemID.Location = new System.Drawing.Point(351, 44);
             this.txtItemID.Margin = new System.Windows.Forms.Padding(0);
             this.txtItemID.Name = "txtItemID";
             this.txtItemID.PopupWidth = 120;
             this.txtItemID.SelectedItemBackColor = System.Drawing.SystemColors.Highlight;
             this.txtItemID.SelectedItemForeColor = System.Drawing.SystemColors.HighlightText;
-            this.txtItemID.Size = new System.Drawing.Size(100, 29);
+            this.txtItemID.Size = new System.Drawing.Size(163, 29);
             this.txtItemID.TabIndex = 48;
             // 
             // skinLabel8
@@ -985,7 +1025,7 @@
             this.skinLabel8.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel8.BorderColor = System.Drawing.Color.White;
             this.skinLabel8.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.skinLabel8.Location = new System.Drawing.Point(488, 11);
+            this.skinLabel8.Location = new System.Drawing.Point(271, 46);
             this.skinLabel8.Name = "skinLabel8";
             this.skinLabel8.Size = new System.Drawing.Size(79, 21);
             this.skinLabel8.TabIndex = 47;
@@ -997,7 +1037,7 @@
             this.skinLabel6.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel6.BorderColor = System.Drawing.Color.White;
             this.skinLabel6.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.skinLabel6.Location = new System.Drawing.Point(354, 49);
+            this.skinLabel6.Location = new System.Drawing.Point(341, 81);
             this.skinLabel6.Name = "skinLabel6";
             this.skinLabel6.Size = new System.Drawing.Size(28, 21);
             this.skinLabel6.TabIndex = 44;
@@ -1009,7 +1049,7 @@
             this.skinLabel7.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel7.BorderColor = System.Drawing.Color.White;
             this.skinLabel7.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.skinLabel7.Location = new System.Drawing.Point(39, 49);
+            this.skinLabel7.Location = new System.Drawing.Point(26, 81);
             this.skinLabel7.Name = "skinLabel7";
             this.skinLabel7.Size = new System.Drawing.Size(83, 21);
             this.skinLabel7.TabIndex = 41;
@@ -1021,7 +1061,7 @@
             this.skinLabel5.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel5.BorderColor = System.Drawing.Color.White;
             this.skinLabel5.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.skinLabel5.Location = new System.Drawing.Point(958, 50);
+            this.skinLabel5.Location = new System.Drawing.Point(945, 82);
             this.skinLabel5.Name = "skinLabel5";
             this.skinLabel5.Size = new System.Drawing.Size(28, 21);
             this.skinLabel5.TabIndex = 38;
@@ -1033,7 +1073,7 @@
             this.skinLabel4.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel4.BorderColor = System.Drawing.Color.White;
             this.skinLabel4.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.skinLabel4.Location = new System.Drawing.Point(658, 49);
+            this.skinLabel4.Location = new System.Drawing.Point(645, 81);
             this.skinLabel4.Name = "skinLabel4";
             this.skinLabel4.Size = new System.Drawing.Size(87, 21);
             this.skinLabel4.TabIndex = 35;
@@ -1052,7 +1092,7 @@
             this.txtBillCode.IsPasswordChat = '\0';
             this.txtBillCode.IsSystemPasswordChar = false;
             this.txtBillCode.Lines = new string[0];
-            this.txtBillCode.Location = new System.Drawing.Point(750, 8);
+            this.txtBillCode.Location = new System.Drawing.Point(620, 8);
             this.txtBillCode.Margin = new System.Windows.Forms.Padding(0);
             this.txtBillCode.MaxLength = 32767;
             this.txtBillCode.MinimumSize = new System.Drawing.Size(28, 28);
@@ -1095,7 +1135,7 @@
             this.skinLabel3.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel3.BorderColor = System.Drawing.Color.White;
             this.skinLabel3.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.skinLabel3.Location = new System.Drawing.Point(672, 11);
+            this.skinLabel3.Location = new System.Drawing.Point(536, 11);
             this.skinLabel3.Name = "skinLabel3";
             this.skinLabel3.Size = new System.Drawing.Size(73, 21);
             this.skinLabel3.TabIndex = 33;
@@ -1117,7 +1157,7 @@
             this.txtCarID.PopupWidth = 120;
             this.txtCarID.SelectedItemBackColor = System.Drawing.SystemColors.Highlight;
             this.txtCarID.SelectedItemForeColor = System.Drawing.SystemColors.HighlightText;
-            this.txtCarID.Size = new System.Drawing.Size(125, 29);
+            this.txtCarID.Size = new System.Drawing.Size(163, 29);
             this.txtCarID.TabIndex = 32;
             // 
             // skinLabel2
@@ -1500,9 +1540,9 @@
             this.pnlMain.Controls.Add(this.grdSumMain);
             this.pnlMain.Controls.Add(this.grdMain);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(0, 234);
+            this.pnlMain.Location = new System.Drawing.Point(0, 258);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1296, 179);
+            this.pnlMain.Size = new System.Drawing.Size(1296, 155);
             this.pnlMain.TabIndex = 34;
             // 
             // grdSumMain
@@ -1555,7 +1595,7 @@
             dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.grdSumMain.RowsDefaultCellStyle = dataGridViewCellStyle13;
             this.grdSumMain.RowTemplate.Height = 23;
-            this.grdSumMain.Size = new System.Drawing.Size(300, 179);
+            this.grdSumMain.Size = new System.Drawing.Size(300, 155);
             this.grdSumMain.TabIndex = 10;
             this.grdSumMain.TitleBack = null;
             this.grdSumMain.TitleBackColorBegin = System.Drawing.Color.White;
@@ -1659,13 +1699,15 @@
             this.toolStripSeparator1,
             this.btnApprove,
             this.btnUnApprove,
+            this.toolStripSeparator4,
             this.btnCancel,
             this.btnUnCancel,
             this.toolStripSeparator2,
             this.btnAddInBill,
             this.btnAddOutBill,
             this.toolStripSeparator3,
-            this.btnSynToK3});
+            this.btnSynToK3,
+            this.btnDeleteBill});
             this.skinToolStrip1.Location = new System.Drawing.Point(0, 0);
             this.skinToolStrip1.Name = "skinToolStrip1";
             this.skinToolStrip1.RadiusStyle = CCWin.SkinClass.RoundStyle.All;
@@ -1726,6 +1768,11 @@
             this.btnUnApprove.Text = "批量取消审核";
             this.btnUnApprove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnUnApprove.Click += new System.EventHandler(this.btnUnApprove_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 40);
             // 
             // btnCancel
             // 
@@ -1791,6 +1838,17 @@
             this.btnSynToK3.Text = "同步K3";
             this.btnSynToK3.Visible = false;
             this.btnSynToK3.Click += new System.EventHandler(this.btnSynToK3_Click);
+            // 
+            // btnDeleteBill
+            // 
+            this.btnDeleteBill.Image = global::LB.MI.Properties.Resources.btnEdit;
+            this.btnDeleteBill.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDeleteBill.LBPermissionCode = "SalesManager_DeleteBill";
+            this.btnDeleteBill.Name = "btnDeleteBill";
+            this.btnDeleteBill.Size = new System.Drawing.Size(84, 37);
+            this.btnDeleteBill.Text = "删除选中榜单";
+            this.btnDeleteBill.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDeleteBill.Click += new System.EventHandler(this.btnDeleteBill_Click);
             // 
             // frmSaleCarInOutBillManager
             // 
@@ -1906,11 +1964,13 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private CCWin.SkinControl.SkinLabel skinLabel18;
         private Controls.LBSkinTextBox txtBillCodeOut;
+        private System.Windows.Forms.ToolStripButton btnSynToK3;
         private System.Windows.Forms.DataGridViewTextBoxColumn SaleCarOutBillCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CarNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
         private Controls.LBDataGridViewComboBoxColumn BillType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerTypeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalWeight;
         private System.Windows.Forms.DataGridViewTextBoxColumn CarTare;
         private System.Windows.Forms.DataGridViewTextBoxColumn SuttleWeightT;
@@ -1932,6 +1992,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateTimeOut;
         private System.Windows.Forms.DataGridViewTextBoxColumn SaleCarInBillID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChangeDetail;
-        private System.Windows.Forms.ToolStripButton btnSynToK3;
+        private CCWin.SkinControl.SkinLabel skinLabel19;
+        private Controls.LBMetroComboBox txtCustomerTypeID;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private Controls.LBToolStripButton btnDeleteBill;
     }
 }

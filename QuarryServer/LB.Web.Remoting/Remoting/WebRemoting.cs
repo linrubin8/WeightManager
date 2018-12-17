@@ -81,7 +81,7 @@ namespace LB.Web.Remoting
 
         #endregion
 
-        public string RunProcedure(int ProcedureType, string strLoginName, byte[] bSerializeValue, byte[] bSerializeDataType,
+        public string RunProcedure(int ProcedureType, long SessionID, bool IsNeedSession, string strLoginName, byte[] bSerializeValue, byte[] bSerializeDataType,
             out string strOut, out string ErrorMsg, out bool bolIsError)
         {
             strOut = "";
@@ -144,8 +144,7 @@ namespace LB.Web.Remoting
                 else
                 {
                     #region -- 调用中间层程序方法 --
-
-
+                    
                     string strMethod = function.GetFunctionName(ProcedureType);
                     string str = function.ToString();
 
@@ -175,13 +174,29 @@ namespace LB.Web.Remoting
 
                     if (dtParmValue == null || dtParmValue.Rows.Count == 0)
                         return null;
+                    
+                    FactoryArgs factoryArgs = new FactoryArgs(strDBName, strLoginName, SessionID, IsNeedSession, null, null);
+
+                    #region -- 校验Session --
+
+                    if (factoryArgs.SessionID > 0)
+                    {
+                        bool bolExistsSession = SessionTimer.VerifySession(factoryArgs);
+                        if (IsNeedSession && !bolExistsSession)
+                        {
+                            bolIsError = true;
+                            ErrorMsg = "长时间未操作或者被其他人逼退，请重新登录！";
+                            return "";
+                        }
+                    }
+
+                    #endregion -- 校验Session --
 
                     foreach (DataRow drParmValue in dtParmValue.Rows)
                     {
                         //获取需要传入的参数
                         ParameterInfo[] parms = method.GetParameters();
 
-                        FactoryArgs factoryArgs = new FactoryArgs(strDBName, strLoginName, null, null);
                         Dictionary<int, string> dictOutFieldName = new Dictionary<int, string>();
                         object[] objValue = new object[parms.Length];
                         int iParmIndex = 0;
@@ -331,7 +346,7 @@ namespace LB.Web.Remoting
             return RarDataSet(dsReturn);
         }
 
-        public string RunView(int iViewType, string strLoginName, string strFieldNames, string strWhere, string strOrderBy,
+        public string RunView(int iViewType, long SessionID, bool IsNeedSession, string strLoginName, string strFieldNames, string strWhere, string strOrderBy,
             out string ErrorMsg, out bool bolIsError)
         {
             VerifyEncrypt();
@@ -392,7 +407,7 @@ from {1}
             return RarDataTable(dtReturn);
         }
 
-        public string RunDirectSQL(string strLoginName, string strSQL,
+        public string RunDirectSQL(long SessionID, bool IsNeedSession, string strLoginName, string strSQL,
             out string ErrorMsg, out bool bolIsError)
         {
             DataTable dtReturn = null;
@@ -496,6 +511,8 @@ from {1}
                     }
                 }
             }
+
+            SessionTimer.StartListenSession();
         }
 
         public static string GetConnectionStr()
@@ -519,6 +536,7 @@ from {1}
         public static void StopServer()
         {
             DBHelper.StopServer();
+            SessionTimer.StopListenSession();
         }
 
         //反序列化
@@ -665,12 +683,12 @@ from {1}
         private static string RarDataTable(DataTable dt)
         {
             string strSerial = SerializeDataTableXml(dt);
-            return Compress(strSerial);
+            return CommonHelper.Compress(strSerial);
         }
         private static string RarDataSet(DataSet ds)
         {
             string strSerial = SerializeDataSetXml(ds);
-            return Compress(strSerial);
+            return CommonHelper.Compress(strSerial);
         }
 
         private static string SerializeDataTableXml(DataTable pDt)
@@ -725,45 +743,29 @@ from {1}
         }
 
 
-        public static string Compress(string text)
-        {
-            byte[] buffer = Encoding.Default.GetBytes(text);
-            MemoryStream ms = new MemoryStream();
-            using (GZipStream zip = new GZipStream(ms, CompressionMode.Compress, true))
-            {
-                zip.Write(buffer, 0, buffer.Length);
-            }
-
-            ms.Position = 0;
-            MemoryStream outStream = new MemoryStream();
-
-            byte[] compressed = new byte[ms.Length];
-            ms.Read(compressed, 0, compressed.Length);
-
-            byte[] gzBuffer = new byte[compressed.Length + 4];
-            System.Buffer.BlockCopy(compressed, 0, gzBuffer, 4, compressed.Length);
-            System.Buffer.BlockCopy(BitConverter.GetBytes(buffer.Length), 0, gzBuffer, 0, 4);
-            return Convert.ToBase64String(gzBuffer);
-        }
-
-        public static string Decompress(string compressedText)
-        {
-            byte[] gzBuffer = Convert.FromBase64String(compressedText);
-            using (MemoryStream ms = new MemoryStream())
-            {
-                int msgLength = BitConverter.ToInt32(gzBuffer, 0);
-                ms.Write(gzBuffer, 4, gzBuffer.Length - 4);
-                byte[] buffer = new byte[msgLength];
-                ms.Position = 0;
-                using (GZipStream zip = new GZipStream(ms, CompressionMode.Decompress))
-                {
-                    zip.Read(buffer, 0, buffer.Length);
-                }
-                return Encoding.Default.GetString(buffer);
-            }
-        }
 
         #endregion
 
+        #region -- Session接口 --
+        public void TakeSession(long SessionID)
+        {
+            DBHelper.Provider = new DBMSSQL();
+            SqlConnection con = new SqlConnection(SQLServerDAL.GetConnectionString);
+            string strDBName = con.Database;
+            DBMSSQL.InitSettings(5000, con.DataSource, strDBName, true, "", "");
+            con.Close();
+            SessionTimer.TakeSession(SessionID);
+        }
+
+        public void LogOutSession(long SessionID)
+        {
+            DBHelper.Provider = new DBMSSQL();
+            SqlConnection con = new SqlConnection(SQLServerDAL.GetConnectionString);
+            string strDBName = con.Database;
+            DBMSSQL.InitSettings(5000, con.DataSource, strDBName, true, "", "");
+            con.Close();
+            SessionTimer.LogOutSession(SessionID);
+        }
+        #endregion
     }
 }

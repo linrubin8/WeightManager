@@ -62,6 +62,7 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.tcService = new System.Windows.Forms.TabControl();
             this.tpgM3 = new System.Windows.Forms.TabPage();
+            this.btnRegister = new System.Windows.Forms.Button();
             this.btnWebLink = new System.Windows.Forms.Button();
             this.btnReStart = new System.Windows.Forms.Button();
             this.tpWebAutoUpdate = new System.Windows.Forms.TabPage();
@@ -82,7 +83,12 @@
             this.picStatus4DBAutoBackUp = new System.Windows.Forms.PictureBox();
             this.txtName4DBAutoBackUp = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnRegister = new System.Windows.Forms.Button();
+            this.tpPath = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtInPath = new System.Windows.Forms.TextBox();
+            this.txtOutPath = new System.Windows.Forms.TextBox();
+            this.btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picStatus)).BeginInit();
             this.contextMenuIcon.SuspendLayout();
             this.tcService.SuspendLayout();
@@ -91,6 +97,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picStatus4WebAutoUpdate)).BeginInit();
             this.tpDBAutoBackUp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picStatus4DBAutoBackUp)).BeginInit();
+            this.tpPath.SuspendLayout();
             this.SuspendLayout();
             // 
             // picStatus
@@ -111,7 +118,7 @@
             this.txtServerURL.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtServerURL.Location = new System.Drawing.Point(31, 68);
             this.txtServerURL.Name = "txtServerURL";
-            this.txtServerURL.Size = new System.Drawing.Size(247, 14);
+            this.txtServerURL.Size = new System.Drawing.Size(294, 14);
             this.txtServerURL.TabIndex = 2;
             this.txtServerURL.Text = "ServerURL";
             // 
@@ -124,7 +131,7 @@
             this.txtStatus.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtStatus.Location = new System.Drawing.Point(142, 96);
             this.txtStatus.Name = "txtStatus";
-            this.txtStatus.Size = new System.Drawing.Size(135, 16);
+            this.txtStatus.Size = new System.Drawing.Size(182, 16);
             this.txtStatus.TabIndex = 3;
             this.txtStatus.Text = "正在检测服务状态...";
             // 
@@ -349,7 +356,7 @@
             this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtName.Location = new System.Drawing.Point(31, 26);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(247, 14);
+            this.txtName.Size = new System.Drawing.Size(294, 14);
             this.txtName.TabIndex = 10;
             this.txtName.Text = "ServiceName";
             // 
@@ -358,11 +365,12 @@
             this.tcService.Controls.Add(this.tpgM3);
             this.tcService.Controls.Add(this.tpWebAutoUpdate);
             this.tcService.Controls.Add(this.tpDBAutoBackUp);
+            this.tcService.Controls.Add(this.tpPath);
             this.tcService.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcService.Location = new System.Drawing.Point(0, 0);
             this.tcService.Name = "tcService";
             this.tcService.SelectedIndex = 0;
-            this.tcService.Size = new System.Drawing.Size(290, 268);
+            this.tcService.Size = new System.Drawing.Size(337, 268);
             this.tcService.TabIndex = 11;
             // 
             // tpgM3
@@ -383,10 +391,21 @@
             this.tpgM3.Location = new System.Drawing.Point(4, 22);
             this.tpgM3.Name = "tpgM3";
             this.tpgM3.Padding = new System.Windows.Forms.Padding(3);
-            this.tpgM3.Size = new System.Drawing.Size(282, 242);
+            this.tpgM3.Size = new System.Drawing.Size(329, 242);
             this.tpgM3.TabIndex = 0;
             this.tpgM3.Text = "M3服务";
             this.tpgM3.UseVisualStyleBackColor = true;
+            // 
+            // btnRegister
+            // 
+            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRegister.Location = new System.Drawing.Point(27, 219);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(74, 20);
+            this.btnRegister.TabIndex = 13;
+            this.btnRegister.Text = "注册";
+            this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // btnWebLink
             // 
@@ -424,7 +443,7 @@
             this.tpWebAutoUpdate.Location = new System.Drawing.Point(4, 22);
             this.tpWebAutoUpdate.Name = "tpWebAutoUpdate";
             this.tpWebAutoUpdate.Padding = new System.Windows.Forms.Padding(3);
-            this.tpWebAutoUpdate.Size = new System.Drawing.Size(282, 242);
+            this.tpWebAutoUpdate.Size = new System.Drawing.Size(329, 242);
             this.tpWebAutoUpdate.TabIndex = 1;
             this.tpWebAutoUpdate.Text = "自动更新服务";
             this.tpWebAutoUpdate.ToolTipText = "自动更新服务";
@@ -483,7 +502,7 @@
             this.txtStatus4WebAutoUpdate.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtStatus4WebAutoUpdate.Location = new System.Drawing.Point(139, 70);
             this.txtStatus4WebAutoUpdate.Name = "txtStatus4WebAutoUpdate";
-            this.txtStatus4WebAutoUpdate.Size = new System.Drawing.Size(135, 16);
+            this.txtStatus4WebAutoUpdate.Size = new System.Drawing.Size(182, 16);
             this.txtStatus4WebAutoUpdate.TabIndex = 14;
             this.txtStatus4WebAutoUpdate.Text = "正在检测服务状态...";
             // 
@@ -505,7 +524,7 @@
             this.txtName4WebAutoUpdate.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtName4WebAutoUpdate.Location = new System.Drawing.Point(28, 37);
             this.txtName4WebAutoUpdate.Name = "txtName4WebAutoUpdate";
-            this.txtName4WebAutoUpdate.Size = new System.Drawing.Size(247, 14);
+            this.txtName4WebAutoUpdate.Size = new System.Drawing.Size(294, 14);
             this.txtName4WebAutoUpdate.TabIndex = 12;
             this.txtName4WebAutoUpdate.Text = "ServiceName";
             // 
@@ -531,7 +550,7 @@
             this.tpDBAutoBackUp.Location = new System.Drawing.Point(4, 22);
             this.tpDBAutoBackUp.Name = "tpDBAutoBackUp";
             this.tpDBAutoBackUp.Padding = new System.Windows.Forms.Padding(3);
-            this.tpDBAutoBackUp.Size = new System.Drawing.Size(282, 242);
+            this.tpDBAutoBackUp.Size = new System.Drawing.Size(329, 242);
             this.tpDBAutoBackUp.TabIndex = 2;
             this.tpDBAutoBackUp.Text = "自动备份服务";
             this.tpDBAutoBackUp.UseVisualStyleBackColor = true;
@@ -589,7 +608,7 @@
             this.txtStatus4DBAutoBackUp.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtStatus4DBAutoBackUp.Location = new System.Drawing.Point(139, 70);
             this.txtStatus4DBAutoBackUp.Name = "txtStatus4DBAutoBackUp";
-            this.txtStatus4DBAutoBackUp.Size = new System.Drawing.Size(135, 16);
+            this.txtStatus4DBAutoBackUp.Size = new System.Drawing.Size(182, 16);
             this.txtStatus4DBAutoBackUp.TabIndex = 22;
             this.txtStatus4DBAutoBackUp.Text = "正在检测服务状态...";
             // 
@@ -611,7 +630,7 @@
             this.txtName4DBAutoBackUp.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtName4DBAutoBackUp.Location = new System.Drawing.Point(28, 37);
             this.txtName4DBAutoBackUp.Name = "txtName4DBAutoBackUp";
-            this.txtName4DBAutoBackUp.Size = new System.Drawing.Size(247, 14);
+            this.txtName4DBAutoBackUp.Size = new System.Drawing.Size(294, 14);
             this.txtName4DBAutoBackUp.TabIndex = 20;
             this.txtName4DBAutoBackUp.Text = "ServiceName";
             // 
@@ -624,23 +643,69 @@
             this.label4.TabIndex = 19;
             this.label4.Text = "服务名称：";
             // 
-            // btnRegister
+            // tpPath
             // 
-            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRegister.Location = new System.Drawing.Point(27, 219);
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(74, 20);
-            this.btnRegister.TabIndex = 13;
-            this.btnRegister.Text = "注册";
-            this.btnRegister.UseVisualStyleBackColor = true;
-            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+            this.tpPath.Controls.Add(this.btnSave);
+            this.tpPath.Controls.Add(this.txtOutPath);
+            this.tpPath.Controls.Add(this.txtInPath);
+            this.tpPath.Controls.Add(this.label6);
+            this.tpPath.Controls.Add(this.label5);
+            this.tpPath.Location = new System.Drawing.Point(4, 22);
+            this.tpPath.Name = "tpPath";
+            this.tpPath.Padding = new System.Windows.Forms.Padding(3);
+            this.tpPath.Size = new System.Drawing.Size(329, 242);
+            this.tpPath.TabIndex = 3;
+            this.tpPath.Text = "图片保存地址";
+            this.tpPath.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 7);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(101, 12);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "入场图片保存路径";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 56);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(101, 12);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "出场图片保存路径";
+            // 
+            // txtInPath
+            // 
+            this.txtInPath.Location = new System.Drawing.Point(11, 22);
+            this.txtInPath.Name = "txtInPath";
+            this.txtInPath.Size = new System.Drawing.Size(310, 21);
+            this.txtInPath.TabIndex = 2;
+            // 
+            // txtOutPath
+            // 
+            this.txtOutPath.Location = new System.Drawing.Point(8, 71);
+            this.txtOutPath.Name = "txtOutPath";
+            this.txtOutPath.Size = new System.Drawing.Size(310, 21);
+            this.txtOutPath.TabIndex = 3;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(114, 110);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 4;
+            this.btnSave.Text = "保存设置";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // frmServerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(290, 268);
+            this.ClientSize = new System.Drawing.Size(337, 268);
             this.Controls.Add(this.tcService);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -662,6 +727,8 @@
             this.tpDBAutoBackUp.ResumeLayout(false);
             this.tpDBAutoBackUp.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picStatus4DBAutoBackUp)).EndInit();
+            this.tpPath.ResumeLayout(false);
+            this.tpPath.PerformLayout();
             this.ResumeLayout(false);
 
 		}
@@ -721,5 +788,11 @@
 		private System.Windows.Forms.ToolStripMenuItem itemRestart4DBAutoBackUp;
         private System.Windows.Forms.Button btnWebLink;
         private System.Windows.Forms.Button btnRegister;
+        private System.Windows.Forms.TabPage tpPath;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.TextBox txtOutPath;
+        private System.Windows.Forms.TextBox txtInPath;
+        private System.Windows.Forms.Label label6;
     }
 }

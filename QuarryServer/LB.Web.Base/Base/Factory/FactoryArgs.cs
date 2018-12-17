@@ -28,6 +28,24 @@ namespace LB.Web.Base.Factory
             }
         }
 
+        private bool _IsNeedSession=true;
+        public bool IsNeedSession
+        {
+            get
+            {
+                return _IsNeedSession;
+            }
+        }
+
+        private long _SessionID;
+        public long SessionID
+        {
+            get
+            {
+                return _SessionID;
+            }
+        }
+
         private DbConnection mDbConnection = null;
         public DbConnection DbConnection
         {
@@ -72,8 +90,10 @@ namespace LB.Web.Base.Factory
             }
         }
 
-        public FactoryArgs(string dbName, string loginName, DbConnection conn, DbTransaction trans)
+        public FactoryArgs(string dbName, string loginName,long sessionID,bool isNeedSession, DbConnection conn, DbTransaction trans)
         {
+            _IsNeedSession = isNeedSession;
+            _SessionID = sessionID;
             _DBName = dbName;
             _LoginName = loginName;
             mDbConnection = conn;

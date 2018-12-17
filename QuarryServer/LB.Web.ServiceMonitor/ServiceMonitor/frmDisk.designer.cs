@@ -49,7 +49,7 @@
             // 
             this.txtDisk.Location = new System.Drawing.Point(72, 6);
             this.txtDisk.Name = "txtDisk";
-            this.txtDisk.Size = new System.Drawing.Size(200, 21);
+            this.txtDisk.Size = new System.Drawing.Size(522, 21);
             this.txtDisk.TabIndex = 1;
             // 
             // label2
@@ -65,12 +65,12 @@
             // 
             this.txtRegister.Location = new System.Drawing.Point(71, 38);
             this.txtRegister.Name = "txtRegister";
-            this.txtRegister.Size = new System.Drawing.Size(200, 21);
+            this.txtRegister.Size = new System.Drawing.Size(522, 21);
             this.txtRegister.TabIndex = 3;
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(53, 65);
+            this.btnRegister.Location = new System.Drawing.Point(222, 65);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(75, 23);
             this.btnRegister.TabIndex = 4;
@@ -80,7 +80,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(155, 65);
+            this.btnCancel.Location = new System.Drawing.Point(324, 65);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 5;
@@ -92,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 93);
+            this.ClientSize = new System.Drawing.Size(606, 93);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.txtRegister);

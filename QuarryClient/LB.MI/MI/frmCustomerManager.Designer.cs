@@ -46,13 +46,24 @@
             this.btnImportExcel = new LB.Controls.LBToolStripButton(this.components);
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.grdMain = new LB.Controls.LBDataGridView(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSearch = new LB.Controls.LBSkinButton(this.components);
+            this.txtReceiveType = new LB.Controls.LBMetroComboBox(this.components);
+            this.skinLabel11 = new CCWin.SkinControl.SkinLabel();
+            this.txtAmountTo = new LB.Controls.LBSkinTextBox(this.components);
+            this.skinLabel3 = new CCWin.SkinControl.SkinLabel();
+            this.txtAmountFrom = new LB.Controls.LBSkinTextBox(this.components);
+            this.skinLabel2 = new CCWin.SkinControl.SkinLabel();
+            this.txtCustomerID = new LB.Controls.LBTextBox.CoolTextBox();
+            this.skinLabel1 = new CCWin.SkinControl.SkinLabel();
             this.CustomerCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.K3CustomerCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RemainReceivedAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Contact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.K3CustomerCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CarIsLimit = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.AmountTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LicenceNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,16 +80,6 @@
             this.CreateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChangeBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChangeTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnSearch = new LB.Controls.LBSkinButton(this.components);
-            this.txtReceiveType = new LB.Controls.LBMetroComboBox(this.components);
-            this.skinLabel11 = new CCWin.SkinControl.SkinLabel();
-            this.txtAmountTo = new LB.Controls.LBSkinTextBox(this.components);
-            this.skinLabel3 = new CCWin.SkinControl.SkinLabel();
-            this.txtAmountFrom = new LB.Controls.LBSkinTextBox(this.components);
-            this.skinLabel2 = new CCWin.SkinControl.SkinLabel();
-            this.txtCustomerID = new LB.Controls.LBTextBox.CoolTextBox();
-            this.skinLabel1 = new CCWin.SkinControl.SkinLabel();
             this.skinToolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).BeginInit();
             this.panel1.SuspendLayout();
@@ -243,12 +244,13 @@
             this.grdMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CustomerCode,
-            this.K3CustomerCode,
+            this.CustomerTypeName,
             this.CustomerName,
             this.RemainReceivedAmount,
             this.Contact,
             this.Phone,
             this.Address,
+            this.K3CustomerCode,
             this.CarIsLimit,
             this.AmountTypeName,
             this.LicenceNum,
@@ -300,173 +302,6 @@
             this.grdMain.TitleBackColorBegin = System.Drawing.Color.White;
             this.grdMain.TitleBackColorEnd = System.Drawing.SystemColors.ActiveBorder;
             this.grdMain.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdMain_CellFormatting);
-            // 
-            // CustomerCode
-            // 
-            this.CustomerCode.DataPropertyName = "CustomerCode";
-            this.CustomerCode.HeaderText = "编码";
-            this.CustomerCode.Name = "CustomerCode";
-            this.CustomerCode.ReadOnly = true;
-            this.CustomerCode.Width = 80;
-            // 
-            // K3CustomerCode
-            // 
-            this.K3CustomerCode.DataPropertyName = "K3CustomerCode";
-            this.K3CustomerCode.HeaderText = "K3编码";
-            this.K3CustomerCode.Name = "K3CustomerCode";
-            this.K3CustomerCode.ReadOnly = true;
-            // 
-            // CustomerName
-            // 
-            this.CustomerName.DataPropertyName = "CustomerName";
-            this.CustomerName.HeaderText = "客户名称";
-            this.CustomerName.Name = "CustomerName";
-            this.CustomerName.ReadOnly = true;
-            // 
-            // RemainReceivedAmount
-            // 
-            this.RemainReceivedAmount.DataPropertyName = "RemainReceivedAmount";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N2";
-            this.RemainReceivedAmount.DefaultCellStyle = dataGridViewCellStyle3;
-            this.RemainReceivedAmount.HeaderText = "客户余额";
-            this.RemainReceivedAmount.Name = "RemainReceivedAmount";
-            this.RemainReceivedAmount.ReadOnly = true;
-            // 
-            // Contact
-            // 
-            this.Contact.DataPropertyName = "Contact";
-            this.Contact.HeaderText = "联系人名称";
-            this.Contact.Name = "Contact";
-            this.Contact.ReadOnly = true;
-            // 
-            // Phone
-            // 
-            this.Phone.DataPropertyName = "Phone";
-            this.Phone.HeaderText = "联系人电话";
-            this.Phone.Name = "Phone";
-            this.Phone.ReadOnly = true;
-            // 
-            // Address
-            // 
-            this.Address.DataPropertyName = "Address";
-            this.Address.HeaderText = "地址";
-            this.Address.Name = "Address";
-            this.Address.ReadOnly = true;
-            // 
-            // CarIsLimit
-            // 
-            this.CarIsLimit.DataPropertyName = "CarIsLimit";
-            this.CarIsLimit.HeaderText = "车辆是否限制";
-            this.CarIsLimit.Name = "CarIsLimit";
-            this.CarIsLimit.ReadOnly = true;
-            this.CarIsLimit.Width = 120;
-            // 
-            // AmountTypeName
-            // 
-            this.AmountTypeName.DataPropertyName = "AmountTypeName";
-            this.AmountTypeName.HeaderText = "金额格式";
-            this.AmountTypeName.Name = "AmountTypeName";
-            this.AmountTypeName.ReadOnly = true;
-            // 
-            // LicenceNum
-            // 
-            this.LicenceNum.DataPropertyName = "LicenceNum";
-            this.LicenceNum.HeaderText = "营业执照号";
-            this.LicenceNum.Name = "LicenceNum";
-            this.LicenceNum.ReadOnly = true;
-            this.LicenceNum.Visible = false;
-            // 
-            // Description
-            // 
-            this.Description.DataPropertyName = "Description";
-            this.Description.HeaderText = "备注";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            // 
-            // IsForbid
-            // 
-            this.IsForbid.DataPropertyName = "IsForbid";
-            this.IsForbid.HeaderText = "是否禁用";
-            this.IsForbid.Name = "IsForbid";
-            this.IsForbid.ReadOnly = true;
-            // 
-            // ReceiveTypeName
-            // 
-            this.ReceiveTypeName.DataPropertyName = "ReceiveTypeName";
-            this.ReceiveTypeName.HeaderText = "收款方式";
-            this.ReceiveTypeName.Name = "ReceiveTypeName";
-            this.ReceiveTypeName.ReadOnly = true;
-            // 
-            // CreditAmount
-            // 
-            this.CreditAmount.DataPropertyName = "CreditAmount";
-            this.CreditAmount.HeaderText = "信用额度";
-            this.CreditAmount.Name = "CreditAmount";
-            this.CreditAmount.ReadOnly = true;
-            // 
-            // AmountNotEnough
-            // 
-            this.AmountNotEnough.DataPropertyName = "AmountNotEnough";
-            this.AmountNotEnough.HeaderText = "预警余额";
-            this.AmountNotEnough.Name = "AmountNotEnough";
-            this.AmountNotEnough.ReadOnly = true;
-            // 
-            // IsDisplayAmount
-            // 
-            this.IsDisplayAmount.DataPropertyName = "IsDisplayAmount";
-            this.IsDisplayAmount.HeaderText = "显示金额";
-            this.IsDisplayAmount.Name = "IsDisplayAmount";
-            this.IsDisplayAmount.ReadOnly = true;
-            // 
-            // IsDisplayPrice
-            // 
-            this.IsDisplayPrice.DataPropertyName = "IsDisplayPrice";
-            this.IsDisplayPrice.HeaderText = "显示单价";
-            this.IsDisplayPrice.Name = "IsDisplayPrice";
-            this.IsDisplayPrice.ReadOnly = true;
-            // 
-            // IsPrintAmount
-            // 
-            this.IsPrintAmount.DataPropertyName = "IsPrintAmount";
-            this.IsPrintAmount.HeaderText = "是否打印金额";
-            this.IsPrintAmount.Name = "IsPrintAmount";
-            this.IsPrintAmount.ReadOnly = true;
-            // 
-            // IsAllowOverFul
-            // 
-            this.IsAllowOverFul.DataPropertyName = "IsAllowOverFul";
-            this.IsAllowOverFul.HeaderText = "是否允许超额提货";
-            this.IsAllowOverFul.Name = "IsAllowOverFul";
-            this.IsAllowOverFul.ReadOnly = true;
-            // 
-            // CreateBy
-            // 
-            this.CreateBy.DataPropertyName = "CreateBy";
-            this.CreateBy.HeaderText = "创建人";
-            this.CreateBy.Name = "CreateBy";
-            this.CreateBy.ReadOnly = true;
-            // 
-            // CreateTime
-            // 
-            this.CreateTime.DataPropertyName = "CreateTime";
-            this.CreateTime.HeaderText = "创建时间";
-            this.CreateTime.Name = "CreateTime";
-            this.CreateTime.ReadOnly = true;
-            // 
-            // ChangeBy
-            // 
-            this.ChangeBy.DataPropertyName = "ChangeBy";
-            this.ChangeBy.HeaderText = "修改人";
-            this.ChangeBy.Name = "ChangeBy";
-            this.ChangeBy.ReadOnly = true;
-            // 
-            // ChangeTime
-            // 
-            this.ChangeTime.DataPropertyName = "ChangeTime";
-            this.ChangeTime.HeaderText = "修改时间";
-            this.ChangeTime.Name = "ChangeTime";
-            this.ChangeTime.ReadOnly = true;
             // 
             // panel1
             // 
@@ -685,6 +520,181 @@
             this.skinLabel1.Text = "客户名称包含";
             this.skinLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // CustomerCode
+            // 
+            this.CustomerCode.DataPropertyName = "CustomerCode";
+            this.CustomerCode.HeaderText = "编码";
+            this.CustomerCode.Name = "CustomerCode";
+            this.CustomerCode.ReadOnly = true;
+            this.CustomerCode.Width = 80;
+            // 
+            // CustomerTypeName
+            // 
+            this.CustomerTypeName.DataPropertyName = "CustomerTypeName";
+            this.CustomerTypeName.HeaderText = "客户类型";
+            this.CustomerTypeName.Name = "CustomerTypeName";
+            this.CustomerTypeName.ReadOnly = true;
+            this.CustomerTypeName.Width = 80;
+            // 
+            // CustomerName
+            // 
+            this.CustomerName.DataPropertyName = "CustomerName";
+            this.CustomerName.HeaderText = "客户名称";
+            this.CustomerName.Name = "CustomerName";
+            this.CustomerName.ReadOnly = true;
+            // 
+            // RemainReceivedAmount
+            // 
+            this.RemainReceivedAmount.DataPropertyName = "RemainReceivedAmount";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N2";
+            this.RemainReceivedAmount.DefaultCellStyle = dataGridViewCellStyle3;
+            this.RemainReceivedAmount.HeaderText = "客户余额";
+            this.RemainReceivedAmount.Name = "RemainReceivedAmount";
+            this.RemainReceivedAmount.ReadOnly = true;
+            // 
+            // Contact
+            // 
+            this.Contact.DataPropertyName = "Contact";
+            this.Contact.HeaderText = "联系人名称";
+            this.Contact.Name = "Contact";
+            this.Contact.ReadOnly = true;
+            // 
+            // Phone
+            // 
+            this.Phone.DataPropertyName = "Phone";
+            this.Phone.HeaderText = "联系人电话";
+            this.Phone.Name = "Phone";
+            this.Phone.ReadOnly = true;
+            // 
+            // Address
+            // 
+            this.Address.DataPropertyName = "Address";
+            this.Address.HeaderText = "地址";
+            this.Address.Name = "Address";
+            this.Address.ReadOnly = true;
+            // 
+            // K3CustomerCode
+            // 
+            this.K3CustomerCode.DataPropertyName = "K3CustomerCode";
+            this.K3CustomerCode.HeaderText = "K3编码";
+            this.K3CustomerCode.Name = "K3CustomerCode";
+            this.K3CustomerCode.ReadOnly = true;
+            // 
+            // CarIsLimit
+            // 
+            this.CarIsLimit.DataPropertyName = "CarIsLimit";
+            this.CarIsLimit.HeaderText = "车辆是否限制";
+            this.CarIsLimit.Name = "CarIsLimit";
+            this.CarIsLimit.ReadOnly = true;
+            this.CarIsLimit.Width = 120;
+            // 
+            // AmountTypeName
+            // 
+            this.AmountTypeName.DataPropertyName = "AmountTypeName";
+            this.AmountTypeName.HeaderText = "金额格式";
+            this.AmountTypeName.Name = "AmountTypeName";
+            this.AmountTypeName.ReadOnly = true;
+            // 
+            // LicenceNum
+            // 
+            this.LicenceNum.DataPropertyName = "LicenceNum";
+            this.LicenceNum.HeaderText = "营业执照号";
+            this.LicenceNum.Name = "LicenceNum";
+            this.LicenceNum.ReadOnly = true;
+            this.LicenceNum.Visible = false;
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "备注";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            // 
+            // IsForbid
+            // 
+            this.IsForbid.DataPropertyName = "IsForbid";
+            this.IsForbid.HeaderText = "是否禁用";
+            this.IsForbid.Name = "IsForbid";
+            this.IsForbid.ReadOnly = true;
+            // 
+            // ReceiveTypeName
+            // 
+            this.ReceiveTypeName.DataPropertyName = "ReceiveTypeName";
+            this.ReceiveTypeName.HeaderText = "收款方式";
+            this.ReceiveTypeName.Name = "ReceiveTypeName";
+            this.ReceiveTypeName.ReadOnly = true;
+            // 
+            // CreditAmount
+            // 
+            this.CreditAmount.DataPropertyName = "CreditAmount";
+            this.CreditAmount.HeaderText = "信用额度";
+            this.CreditAmount.Name = "CreditAmount";
+            this.CreditAmount.ReadOnly = true;
+            // 
+            // AmountNotEnough
+            // 
+            this.AmountNotEnough.DataPropertyName = "AmountNotEnough";
+            this.AmountNotEnough.HeaderText = "预警余额";
+            this.AmountNotEnough.Name = "AmountNotEnough";
+            this.AmountNotEnough.ReadOnly = true;
+            // 
+            // IsDisplayAmount
+            // 
+            this.IsDisplayAmount.DataPropertyName = "IsDisplayAmount";
+            this.IsDisplayAmount.HeaderText = "显示金额";
+            this.IsDisplayAmount.Name = "IsDisplayAmount";
+            this.IsDisplayAmount.ReadOnly = true;
+            // 
+            // IsDisplayPrice
+            // 
+            this.IsDisplayPrice.DataPropertyName = "IsDisplayPrice";
+            this.IsDisplayPrice.HeaderText = "显示单价";
+            this.IsDisplayPrice.Name = "IsDisplayPrice";
+            this.IsDisplayPrice.ReadOnly = true;
+            // 
+            // IsPrintAmount
+            // 
+            this.IsPrintAmount.DataPropertyName = "IsPrintAmount";
+            this.IsPrintAmount.HeaderText = "是否打印金额";
+            this.IsPrintAmount.Name = "IsPrintAmount";
+            this.IsPrintAmount.ReadOnly = true;
+            // 
+            // IsAllowOverFul
+            // 
+            this.IsAllowOverFul.DataPropertyName = "IsAllowOverFul";
+            this.IsAllowOverFul.HeaderText = "是否允许超额提货";
+            this.IsAllowOverFul.Name = "IsAllowOverFul";
+            this.IsAllowOverFul.ReadOnly = true;
+            // 
+            // CreateBy
+            // 
+            this.CreateBy.DataPropertyName = "CreateBy";
+            this.CreateBy.HeaderText = "创建人";
+            this.CreateBy.Name = "CreateBy";
+            this.CreateBy.ReadOnly = true;
+            // 
+            // CreateTime
+            // 
+            this.CreateTime.DataPropertyName = "CreateTime";
+            this.CreateTime.HeaderText = "创建时间";
+            this.CreateTime.Name = "CreateTime";
+            this.CreateTime.ReadOnly = true;
+            // 
+            // ChangeBy
+            // 
+            this.ChangeBy.DataPropertyName = "ChangeBy";
+            this.ChangeBy.HeaderText = "修改人";
+            this.ChangeBy.Name = "ChangeBy";
+            this.ChangeBy.ReadOnly = true;
+            // 
+            // ChangeTime
+            // 
+            this.ChangeTime.DataPropertyName = "ChangeTime";
+            this.ChangeTime.HeaderText = "修改时间";
+            this.ChangeTime.Name = "ChangeTime";
+            this.ChangeTime.ReadOnly = true;
+            // 
             // frmCustomerManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -728,12 +738,13 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private Controls.LBToolStripButton btnImportExcel;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn K3CustomerCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerTypeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn RemainReceivedAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn Contact;
         private System.Windows.Forms.DataGridViewTextBoxColumn Phone;
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
+        private System.Windows.Forms.DataGridViewTextBoxColumn K3CustomerCode;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CarIsLimit;
         private System.Windows.Forms.DataGridViewTextBoxColumn AmountTypeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LicenceNum;

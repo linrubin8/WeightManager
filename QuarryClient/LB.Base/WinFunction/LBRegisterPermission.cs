@@ -11,6 +11,7 @@ namespace LB.WinFunction
         public static int ProductType = 0;//产品类型
         public static DateTime DeadLine = DateTime.MinValue;//到期日期
         public static bool Permission_ModelSynchorToServer = false;//同步数据至服务器权限
+        public static bool Permission_ModelRemoveInOutBill = false;//批量删除榜单权限
 
         public static void VerifyPermission()
         {
@@ -24,6 +25,15 @@ namespace LB.WinFunction
                 if (iPermissoin > 0)
                 {
                     Permission_ModelSynchorToServer = true;
+                }
+            }
+            if (dictModel.ContainsKey("RemoveInOutBill"))
+            {
+                int iPermissoin;
+                int.TryParse(dictModel["RemoveInOutBill"].ToString(), out iPermissoin);
+                if (iPermissoin > 0)
+                {
+                    Permission_ModelRemoveInOutBill = true;
                 }
             }
         }

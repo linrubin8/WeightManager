@@ -141,6 +141,10 @@ namespace LB.Web.SM.BLL
                 case 14124:
                     strFunName = "SynchronousBillToK3";
                     break;
+
+                case 14125:
+                    strFunName = "DeleteBillBatch";//批量删除榜单
+                    break;
             }
             return strFunName;
         }
@@ -210,6 +214,9 @@ namespace LB.Web.SM.BLL
             {
                 SysConfigValue.Value = "JC";
             }
+
+            //读取特殊编码
+            _DALSaleCarInOutBill.GetInBillSpecialCode(args, CustomerID, ItemID, out SaleCarInBillCode);
 
             //生成编码
             if (string.IsNullOrEmpty( SaleCarInBillCode.Value))
@@ -456,6 +463,9 @@ namespace LB.Web.SM.BLL
                     throw new Exception("该车辆存在【" + dtExistsNotOut.Rows.Count + "】张入场但是未出场的订单！无法出场！");
                 }
             }
+
+            //读取特殊编码
+            _DALSaleCarInOutBill.GetOutBillSpecialCode(args, CustomerID, ItemID, out SaleCarOutBillCode);
 
             if (string.IsNullOrEmpty(SaleCarOutBillCode.Value))
             {
@@ -847,12 +857,30 @@ namespace LB.Web.SM.BLL
             }
 
             string strPicFile = pathType == enImagePathType.InBillPath ? "InBillPicture" : "OutBillPicture";
-            string strInBillPath = Path.Combine(strCameraPath, strPicFile);
-            if (!Directory.Exists(strInBillPath))
+            string strBillPath = Path.Combine(strCameraPath, strPicFile);
+
+            #region -- 读取本地路径配置 --
+            string strIniPath = Path.Combine(strPath, "LBPicturePath.ini");
+            IniClass ini = new IniClass(strIniPath);
+            string strInPath = ini.ReadValue("Path", "InPath");
+            string strOutPath = ini.ReadValue("Path", "OutPath");
+
+            if (pathType == enImagePathType.InBillPath && Directory.Exists(strInPath))
             {
-                Directory.CreateDirectory(strInBillPath);
+                strBillPath = strInPath;
             }
-            string strDatePath = Path.Combine(strInBillPath, dtDate.ToString("yyyy-MM-dd"));
+            if (pathType == enImagePathType.OutBillPath && Directory.Exists(strOutPath))
+            {
+                strBillPath = strOutPath;
+            }
+
+            #endregion
+
+            if (!Directory.Exists(strBillPath))
+            {
+                Directory.CreateDirectory(strBillPath);
+            }
+            string strDatePath = Path.Combine(strBillPath, dtDate.ToString("yyyy-MM-dd"));
             if (!Directory.Exists(strDatePath))
             {
                 Directory.CreateDirectory(strDatePath);
@@ -2406,6 +2434,57 @@ namespace LB.Web.SM.BLL
             }
         }
 
+        #endregion
+
+        #region -- 删除订单 --
+
+        public void DeleteBillBatch(FactoryArgs args,t_Table DTDelete)
+        {
+            DBHelper.ExecInTransDelegate exec = delegate (FactoryArgs argsInTrans)
+            {
+                StringBuilder strBillID = new StringBuilder();
+                foreach(DataRow drDel in DTDelete.Value.Rows)
+                {
+                    if (strBillID.ToString() != "")
+                    {
+                        strBillID.Append(",");
+                    }
+                    strBillID.Append(drDel["SaleCarInBillID"].ToString());
+                }
+
+                //查询需要删除的榜单
+                DataTable dtInBill;
+                DataTable dtOutBill;
+                _DALSaleCarInOutBill.GetSalesBillInOut(argsInTrans, new t_String(strBillID.ToString()), out dtInBill, out dtOutBill);
+
+                foreach (DataRow drDel in DTDelete.Value.Rows)
+                {
+                    long lSaleCarInBillID;
+                    long.TryParse(drDel["SaleCarInBillID"].ToString(), out lSaleCarInBillID);
+
+                    _DALSaleCarInOutBill.RemoveInOutBill(argsInTrans, new t_BigID(lSaleCarInBillID));
+                }
+
+                string strJsInBill = "";
+                string strJsOutBill = "";
+
+                if (dtInBill.Rows.Count > 0)
+                {
+                    strJsInBill = Newtonsoft.Json.JsonConvert.SerializeObject(dtInBill);
+                }
+                if (dtOutBill.Rows.Count > 0)
+                {
+                    strJsOutBill = Newtonsoft.Json.JsonConvert.SerializeObject(dtOutBill);
+                }
+
+                string strCompressInBill = LB.Web.Base.Base.Helper.CommonHelper.Compress(strJsInBill);
+                string strCompressOutBill = LB.Web.Base.Base.Helper.CommonHelper.Compress(strJsOutBill);
+
+                _DALSaleCarInOutBill.SaleCarBillRemoved_Insert(argsInTrans, new t_nText(strCompressInBill), new t_nText(strCompressOutBill));
+            };
+            DBHelper.ExecInTrans(args, exec);
+        }
+        
         #endregion
     }
 

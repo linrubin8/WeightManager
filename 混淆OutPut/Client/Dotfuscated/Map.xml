@@ -2,7 +2,7 @@
 <!DOCTYPE dotfuscatorMap SYSTEM "http://www.preemptive.com/dotfuscator/dtd/dotfuscatorMap_v1.2.dtd">
 <dotfuscatorMap version="1.1">
     <header>
-        <timestamp>2018-08-23T22:55:28</timestamp>
+        <timestamp>2018-09-24T16:35:43</timestamp>
         <product version="4.9.6005.29054" user="firefly " serial="124576-PRO-AC6AB7C5-7A50E312-F0BBEBCC-829D98D7">Dotfuscator Professional Edition</product>
     </header>
     <mapping>
@@ -40,6 +40,10 @@
                         <name>ConnectServer</name>
                     </method>
                     <method>
+                        <signature>void(int64)</signature>
+                        <name>LogOutSession</name>
+                    </method>
+                    <method>
                         <signature>System.Data.DataTable()</signature>
                         <name>ReadClientFileInfo</name>
                     </method>
@@ -52,7 +56,7 @@
                         <name>ReadRegister</name>
                     </method>
                     <method>
-                        <signature>string(string, string, string&amp;, bool&amp;)</signature>
+                        <signature>string(int64, bool, string, string, string&amp;, bool&amp;)</signature>
                         <name>RunDirectSQL</name>
                     </method>
                     <method>
@@ -60,7 +64,7 @@
                         <name>RunDirectSQL_Service</name>
                     </method>
                     <method>
-                        <signature>string(int32, string, unsigned int8[], unsigned int8[], string&amp;, string&amp;, bool&amp;)</signature>
+                        <signature>string(int32, int64, bool, string, unsigned int8[], unsigned int8[], string&amp;, string&amp;, bool&amp;)</signature>
                         <name>RunProcedure</name>
                     </method>
                     <method>
@@ -68,7 +72,7 @@
                         <name>RunProcedure_Service</name>
                     </method>
                     <method>
-                        <signature>string(int32, string, string, string, string, string&amp;, bool&amp;)</signature>
+                        <signature>string(int32, int64, bool, string, string, string, string, string&amp;, bool&amp;)</signature>
                         <name>RunView</name>
                     </method>
                     <method>
@@ -78,6 +82,10 @@
                     <method>
                         <signature>void(string)</signature>
                         <name>SendFax</name>
+                    </method>
+                    <method>
+                        <signature>void(int64)</signature>
+                        <name>TakeSession</name>
                     </method>
                 </methodlist>
                 <fieldlist />
@@ -89,7 +97,7 @@
             <name>LB.Base.dll</name>
             <type>
                 <name>&lt;PrivateImplementationDetails&gt;</name>
-                <newname>f</newname>
+                <newname>d</newname>
                 <methodlist />
                 <fieldlist>
                     <field>
@@ -1203,8 +1211,20 @@
                         <name>CallDirectSQL</name>
                     </method>
                     <method>
+                        <signature>System.Data.DataTable(string, bool)</signature>
+                        <name>CallDirectSQL</name>
+                    </method>
+                    <method>
                         <signature>System.Data.DataTable(string)</signature>
                         <name>CallDirectSQL_Service</name>
+                    </method>
+                    <method>
+                        <signature>void(int32, bool, LB.WinFunction.LBDbParameterCollection, System.Data.DataSet&amp;, System.Collections.Generic.Dictionary`2&lt;string,object&gt;&amp;)</signature>
+                        <name>CallSP</name>
+                    </method>
+                    <method>
+                        <signature>void(int32, bool, System.Data.DataTable, System.Data.DataSet&amp;, System.Data.DataTable&amp;)</signature>
+                        <name>CallSP</name>
                     </method>
                     <method>
                         <signature>void(int32, LB.WinFunction.LBDbParameterCollection, System.Data.DataSet&amp;, System.Collections.Generic.Dictionary`2&lt;string,object&gt;&amp;)</signature>
@@ -1220,6 +1240,14 @@
                     </method>
                     <method>
                         <signature>System.Data.DataTable(int32)</signature>
+                        <name>CallView</name>
+                    </method>
+                    <method>
+                        <signature>System.Data.DataTable(int32, bool)</signature>
+                        <name>CallView</name>
+                    </method>
+                    <method>
+                        <signature>System.Data.DataTable(int32, bool, string, string, string)</signature>
                         <name>CallView</name>
                     </method>
                     <method>
@@ -1260,6 +1288,10 @@
                         <newname>a</newname>
                     </method>
                     <method>
+                        <signature>void()</signature>
+                        <name>LogOutSession</name>
+                    </method>
+                    <method>
                         <signature>void(bool&amp;, int32&amp;, System.DateTime&amp;, System.Collections.Generic.Dictionary`2&lt;string,object&gt;&amp;)</signature>
                         <name>ReadRegister</name>
                     </method>
@@ -1275,6 +1307,10 @@
                     <method>
                         <signature>unsigned int8[](object)</signature>
                         <name>SerializeObject</name>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>TakeSession</name>
                     </method>
                     <method>
                         <signature>bool()</signature>
@@ -1305,6 +1341,334 @@
                         <name>CallSPEvent</name>
                     </event>
                 </eventlist>
+            </type>
+            <type>
+                <name>LB.WinFunction.HardwareInfo</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>GetCpuID</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>GetCurrentVal</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>GetHardDiskID</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>GetMacAddress</name>
+                    </method>
+                    <method>
+                        <signature>int32(string, string, int32, int32&amp;, int32, int32, string, int32)</signature>
+                        <name>GetVolumeInformation</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>HDVal</name>
+                    </method>
+                </methodlist>
+                <fieldlist />
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>LB.WinFunction.HardwareInfo/ADAPTER_STATUS</name>
+                <methodlist />
+                <fieldlist>
+                    <field>
+                        <signature>unsigned int8[]</signature>
+                        <name>adapter_address</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int8</signature>
+                        <name>adapter_type</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int16</signature>
+                        <name>duration</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int16</signature>
+                        <name>free_ncbs</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int16</signature>
+                        <name>frmr_recv</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int16</signature>
+                        <name>frmr_xmit</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int16</signature>
+                        <name>iframe_recv_err</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int16</signature>
+                        <name>iframe_xmit_err</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int16</signature>
+                        <name>max_cfg_ncbs</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int16</signature>
+                        <name>max_cfg_sess</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int16</signature>
+                        <name>max_dgram_size</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int16</signature>
+                        <name>max_ncbs</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int16</signature>
+                        <name>max_sess</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int16</signature>
+                        <name>max_sess_pkt_size</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int16</signature>
+                        <name>name_count</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int16</signature>
+                        <name>pending_sess</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int16</signature>
+                        <name>recv_buff_unavail</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int32</signature>
+                        <name>recv_success</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int8</signature>
+                        <name>reserved0</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int32</signature>
+                        <name>reserved1</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int8</signature>
+                        <name>rev_major</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int8</signature>
+                        <name>rev_minor</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int16</signature>
+                        <name>t1_timeouts</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int16</signature>
+                        <name>ti_timeouts</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int16</signature>
+                        <name>xmit_aborts</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int16</signature>
+                        <name>xmit_buf_unavail</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int32</signature>
+                        <name>xmit_success</name>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>LB.WinFunction.HardwareInfo/ASTAT</name>
+                <methodlist />
+                <fieldlist>
+                    <field>
+                        <signature>LB.WinFunction.HardwareInfo/ADAPTER_STATUS</signature>
+                        <name>adapt</name>
+                    </field>
+                    <field>
+                        <signature>LB.WinFunction.HardwareInfo/NAME_BUFFER[]</signature>
+                        <name>NameBuff</name>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>LB.WinFunction.HardwareInfo/LANA_ENUM</name>
+                <methodlist />
+                <fieldlist>
+                    <field>
+                        <signature>unsigned int8[]</signature>
+                        <name>lana</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int8</signature>
+                        <name>length</name>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>LB.WinFunction.HardwareInfo/NAME_BUFFER</name>
+                <methodlist />
+                <fieldlist>
+                    <field>
+                        <signature>unsigned int8[]</signature>
+                        <name>name</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int8</signature>
+                        <name>name_flags</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int8</signature>
+                        <name>name_num</name>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>LB.WinFunction.HardwareInfo/NCB</name>
+                <methodlist />
+                <fieldlist>
+                    <field>
+                        <signature>native int</signature>
+                        <name>ncb_buffer</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int8[]</signature>
+                        <name>ncb_callname</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int8</signature>
+                        <name>ncb_cmd_cplt</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int8</signature>
+                        <name>ncb_command</name>
+                    </field>
+                    <field>
+                        <signature>native int</signature>
+                        <name>ncb_event</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int8</signature>
+                        <name>ncb_lana_num</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int16</signature>
+                        <name>ncb_length</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int8</signature>
+                        <name>ncb_lsn</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int8[]</signature>
+                        <name>ncb_name</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int8</signature>
+                        <name>ncb_num</name>
+                    </field>
+                    <field>
+                        <signature>native int</signature>
+                        <name>ncb_post</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int8[]</signature>
+                        <name>ncb_reserve</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int8</signature>
+                        <name>ncb_retcode</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int8</signature>
+                        <name>ncb_rto</name>
+                    </field>
+                    <field>
+                        <signature>unsigned int8</signature>
+                        <name>ncb_sto</name>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>LB.WinFunction.HardwareInfo/NCBCONST</name>
+                <methodlist />
+                <fieldlist>
+                    <field>
+                        <signature>LB.WinFunction.HardwareInfo/NCBCONST</signature>
+                        <name>MAX_LANA</name>
+                    </field>
+                    <field>
+                        <signature>LB.WinFunction.HardwareInfo/NCBCONST</signature>
+                        <name>NCBASTAT</name>
+                    </field>
+                    <field>
+                        <signature>LB.WinFunction.HardwareInfo/NCBCONST</signature>
+                        <name>NCBENUM</name>
+                    </field>
+                    <field>
+                        <signature>LB.WinFunction.HardwareInfo/NCBCONST</signature>
+                        <name>NCBNAMSZ</name>
+                    </field>
+                    <field>
+                        <signature>LB.WinFunction.HardwareInfo/NCBCONST</signature>
+                        <name>NCBRESET</name>
+                    </field>
+                    <field>
+                        <signature>LB.WinFunction.HardwareInfo/NCBCONST</signature>
+                        <name>NRC_GOODRET</name>
+                    </field>
+                    <field>
+                        <signature>LB.WinFunction.HardwareInfo/NCBCONST</signature>
+                        <name>NUM_NAMEBUF</name>
+                    </field>
+                    <field>
+                        <signature>int32</signature>
+                        <name>value__</name>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>LB.WinFunction.HardwareInfo/Win32API</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>char(LB.WinFunction.HardwareInfo/NCB&amp;)</signature>
+                        <name>Netbios</name>
+                    </method>
+                </methodlist>
+                <fieldlist />
+                <propertylist />
+                <eventlist />
             </type>
             <type>
                 <name>LB.WinFunction.IniClass</name>
@@ -1654,6 +2018,10 @@
                     </field>
                     <field>
                         <signature>bool</signature>
+                        <name>Permission_ModelRemoveInOutBill</name>
+                    </field>
+                    <field>
+                        <signature>bool</signature>
                         <name>Permission_ModelSynchorToServer</name>
                     </field>
                     <field>
@@ -1716,12 +2084,25 @@
                         <name>get_MachineName</name>
                     </method>
                     <method>
+                        <signature>string()</signature>
+                        <name>get_MachineSeries</name>
+                    </method>
+                    <method>
+                        <signature>int64()</signature>
+                        <name>get_SessionID</name>
+                    </method>
+                    <method>
                         <signature>int32()</signature>
                         <name>get_UserID</name>
                     </method>
                     <method>
                         <signature>int32()</signature>
                         <name>get_UserType</name>
+                    </method>
+                    <method>
+                        <signature>int64(bool&amp;)</signature>
+                        <name>GetSessionID</name>
+                        <newname>a</newname>
                     </method>
                     <method>
                         <signature>System.Data.DataTable(int32)</signature>
@@ -1744,6 +2125,10 @@
                     <method>
                         <signature>void(System.DateTime)</signature>
                         <name>set_LoginTime</name>
+                    </method>
+                    <method>
+                        <signature>void(int64)</signature>
+                        <name>set_SessionID</name>
                     </method>
                     <method>
                         <signature>void(int32)</signature>
@@ -1788,6 +2173,16 @@
                         <name>_UserType</name>
                         <newname>b</newname>
                     </field>
+                    <field>
+                        <signature>int64</signature>
+                        <name>mlSessionID</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>string</signature>
+                        <name>mMachineSeries</name>
+                        <newname>b</newname>
+                    </field>
                 </fieldlist>
                 <propertylist>
                     <property>
@@ -1809,6 +2204,14 @@
                     <property>
                         <signature>string()</signature>
                         <name>MachineName</name>
+                    </property>
+                    <property>
+                        <signature>string()</signature>
+                        <name>MachineSeries</name>
+                    </property>
+                    <property>
+                        <signature>int64()</signature>
+                        <name>SessionID</name>
                     </property>
                     <property>
                         <signature>int32()</signature>
@@ -1922,6 +2325,46 @@
                     </method>
                 </methodlist>
                 <fieldlist />
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>LB.WinFunction.SessionHelper</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.cctor</name>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>EndTakeSession</name>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>MTimer_Tick</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>StartTakeSession</name>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>TakeSessionThread</name>
+                        <newname>a</newname>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>System.Windows.Forms.Timer</signature>
+                        <name>mTimer</name>
+                        <newname>a</newname>
+                    </field>
+                </fieldlist>
                 <propertylist />
                 <eventlist />
             </type>
@@ -38212,7 +38655,7 @@
             </type>
             <type>
                 <name>LB.Common.Serial.SerialObject</name>
-                <newname>g</newname>
+                <newname>e</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -38796,7 +39239,7 @@
             <name>LB.Controls.dll</name>
             <type>
                 <name>&lt;PrivateImplementationDetails&gt;</name>
-                <newname>d</newname>
+                <newname>a</newname>
                 <methodlist />
                 <fieldlist>
                     <field>
@@ -38810,7 +39253,7 @@
             </type>
             <type>
                 <name>&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=72</name>
-                <newname>d/a</newname>
+                <newname>a/a</newname>
                 <methodlist />
                 <fieldlist />
                 <propertylist />
@@ -42989,7 +43432,7 @@
             </type>
             <type>
                 <name>LB.Controls.LBEditor.TSPopupWindowMessageFilter</name>
-                <newname>c</newname>
+                <newname>j</newname>
                 <methodlist>
                     <method>
                         <signature>void(System.Windows.Forms.Form, System.Windows.Forms.Control)</signature>
@@ -44913,7 +45356,7 @@
             </type>
             <type>
                 <name>LB.Controls.LBEditor.TSTextBoxPopup</name>
-                <newname>i</newname>
+                <newname>h</newname>
                 <methodlist>
                     <method>
                         <signature>void(System.Windows.Forms.Control, int32)</signature>
@@ -45218,7 +45661,7 @@
             </type>
             <type>
                 <name>LB.Controls.LBEditor.TSTextBoxPopup4Calendar</name>
-                <newname>a</newname>
+                <newname>f</newname>
                 <methodlist>
                     <method>
                         <signature>void(System.Windows.Forms.Control, string)</signature>
@@ -45401,7 +45844,7 @@
             </type>
             <type>
                 <name>LB.Controls.LBEditor.TSTransparentControl</name>
-                <newname>e</newname>
+                <newname>c</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -48251,6 +48694,10 @@
                         <name>.ctor</name>
                     </method>
                     <method>
+                        <signature>void()</signature>
+                        <name>GetReportTempleteUserData</name>
+                    </method>
+                    <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>LBToolStripReportEdit_Click</name>
                         <newname>a</newname>
@@ -48310,9 +48757,16 @@
                         <name>GetReport</name>
                     </method>
                     <method>
-                        <signature>System.Data.DataRow(int64)</signature>
-                        <name>GetReportTemplateRow</name>
-                        <newname>a</newname>
+                        <signature>System.Data.DataTable(int64)</signature>
+                        <name>GetReportTemplateByID</name>
+                    </method>
+                    <method>
+                        <signature>System.Data.DataTable(int64)</signature>
+                        <name>GetReportTemplateByID4Print</name>
+                    </method>
+                    <method>
+                        <signature>System.Data.DataTable(int64)</signature>
+                        <name>GetReportTemplateRowByType</name>
                     </method>
                     <method>
                         <signature>void(LB.Controls.Report.ReportRequestArgs)</signature>
@@ -49230,7 +49684,7 @@
             <name>LB.MainForm.exe</name>
             <type>
                 <name>LB.MainForm.CameraConfig</name>
-                <newname>h</newname>
+                <newname>g</newname>
                 <methodlist>
                     <method>
                         <signature>void(string, int32, string, string)</signature>
@@ -49869,6 +50323,48 @@
                 <eventlist />
             </type>
             <type>
+                <name>LB.MainForm.MainForm.frmAboud</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(bool)</signature>
+                        <name>Dispose</name>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>InitializeComponent</name>
+                        <newname>a</newname>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>System.ComponentModel.IContainer</signature>
+                        <name>components</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.Label</signature>
+                        <name>label1</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.Label</signature>
+                        <name>label2</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.Label</signature>
+                        <name>label3</name>
+                        <newname>c</newname>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
                 <name>LB.MainForm.MainForm.frmChooseReceiveType</name>
                 <methodlist>
                     <method>
@@ -50160,193 +50656,203 @@
                     </method>
                     <method>
                         <signature>void()</signature>
-                        <name>&lt;TestServerConnectStatus&gt;b__50_0</name>
+                        <name>&lt;TestServerConnectStatus&gt;b__52_0</name>
                         <newname>c</newname>
                     </method>
                     <method>
                         <signature>void()</signature>
-                        <name>&lt;TestServerConnectStatus&gt;b__50_1</name>
+                        <name>&lt;TestServerConnectStatus&gt;b__52_1</name>
                         <newname>b</newname>
                     </method>
                     <method>
                         <signature>void()</signature>
-                        <name>&lt;TestServerConnectStatus&gt;b__50_2</name>
+                        <name>&lt;TestServerConnectStatus&gt;b__52_2</name>
                         <newname>a</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>btnAddCar_Click</name>
-                        <newname>w</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnAddChangePriceBill_Click</name>
-                        <newname>n</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnAddCustomer_Click</name>
-                        <newname>t</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnBankManager_Click</name>
-                        <newname>l</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnCameraDevice_Click</name>
-                        <newname>q</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnCancel_Click</name>
-                        <newname>al</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnCarQuery_Click</name>
-                        <newname>v</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnCarWeightManager_Click</name>
-                        <newname>p</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnChangePassword_Click</name>
-                        <newname>ak</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnChangePriceManager_Click</name>
-                        <newname>u</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnChargeManager_Click</name>
-                        <newname>k</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnCustomerManager_Click</name>
                         <newname>x</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnDBBackUp_Click</name>
-                        <newname>ac</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnDbSysConfig_Click</name>
-                        <newname>af</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnDescriptionManager_Click</name>
-                        <newname>s</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnExportConfigSQL_Click</name>
-                        <newname>ah</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnItemBaseManager_Click</name>
-                        <newname>z</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnLogManager_Click</name>
-                        <newname>ad</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnPermissionConfig_Click</name>
-                        <newname>ag</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnReportManager_Click</name>
-                        <newname>m</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnRPReceive_Click</name>
-                        <newname>ab</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnRPReceiveList_Click</name>
-                        <newname>aa</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSaleInOutManager_Click</name>
+                        <name>btnAddChangePriceBill_Click</name>
                         <newname>o</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSaleInOutSynK3OutBill_Click</name>
-                        <newname>e</newname>
+                        <name>btnAddCustomer_Click</name>
+                        <newname>u</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSaleInOutSynK3Receive_Click</name>
-                        <newname>f</newname>
+                        <name>btnBankManager_Click</name>
+                        <newname>m</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSQLBuilder_Click</name>
-                        <newname>ae</newname>
+                        <name>btnCameraDevice_Click</name>
+                        <newname>r</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSynBaseInfo_Click</name>
-                        <newname>d</newname>
+                        <name>btnCancel_Click</name>
+                        <newname>ao</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSynCar_Click</name>
-                        <newname>j</newname>
+                        <name>btnCarQuery_Click</name>
+                        <newname>w</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSynCustomer_Click</name>
-                        <newname>i</newname>
+                        <name>btnCarWeightManager_Click</name>
+                        <newname>q</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSynPrice_Click</name>
-                        <newname>g</newname>
+                        <name>btnChangePassword_Click</name>
+                        <newname>an</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSynSalesBill_Click</name>
-                        <newname>h</newname>
+                        <name>btnChangePriceManager_Click</name>
+                        <newname>v</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnUOMManager_Click</name>
+                        <name>btnChargeManager_Click</name>
+                        <newname>l</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnCustomerManager_Click</name>
+                        <newname>z</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnCustomerTypeManager_Click</name>
                         <newname>y</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnUserManager_Click</name>
+                        <name>btnDBBackUp_Click</name>
+                        <newname>ae</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnDbSysConfig_Click</name>
+                        <newname>ah</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnDescriptionManager_Click</name>
+                        <newname>t</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnExportConfigSQL_Click</name>
+                        <newname>ak</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnItemBaseManager_Click</name>
+                        <newname>ab</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnLogManager_Click</name>
+                        <newname>af</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnPermissionConfig_Click</name>
                         <newname>aj</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnViewConfig_Click</name>
+                        <name>btnReportManager_Click</name>
+                        <newname>n</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnRPReceive_Click</name>
+                        <newname>ad</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnRPReceiveList_Click</name>
+                        <newname>ac</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSaleInOutManager_Click</name>
+                        <newname>p</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSaleInOutSynK3OutBill_Click</name>
+                        <newname>f</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSaleInOutSynK3Receive_Click</name>
+                        <newname>g</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSessionManager_Click</name>
                         <newname>ai</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSQLBuilder_Click</name>
+                        <newname>ag</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSynBaseInfo_Click</name>
+                        <newname>e</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSynCar_Click</name>
+                        <newname>k</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSynCustomer_Click</name>
+                        <newname>j</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSynPrice_Click</name>
+                        <newname>h</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSynSalesBill_Click</name>
+                        <newname>i</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnUOMManager_Click</name>
+                        <newname>aa</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnUserManager_Click</name>
+                        <newname>am</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnViewConfig_Click</name>
+                        <newname>al</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
                         <name>btnWeightDevice_Click</name>
-                        <newname>r</newname>
+                        <newname>s</newname>
                     </method>
                     <method>
                         <signature>void(bool)</signature>
@@ -50365,7 +50871,7 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>LBShowForm_LBUIPageBaseAdded</name>
-                        <newname>c</newname>
+                        <newname>d</newname>
                     </method>
                     <method>
                         <signature>void(System.EventArgs)</signature>
@@ -50402,7 +50908,7 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>TpTp1_SizeChanged</name>
-                        <newname>b</newname>
+                        <newname>c</newname>
                     </method>
                     <method>
                         <signature>void(object, System.Windows.Forms.FormClosedEventArgs)</signature>
@@ -50412,6 +50918,11 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>导入客户余额ToolStripMenuItem_Click</name>
+                        <newname>b</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>关于我们ToolStripMenuItem_Click</name>
                         <newname>a</newname>
                     </method>
                 </methodlist>
@@ -50489,6 +51000,11 @@
                         <signature>LB.Controls.LBToolStripMenuItem</signature>
                         <name>btnCustomerManager</name>
                         <newname>n</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Controls.LBToolStripMenuItem</signature>
+                        <name>btnCustomerTypeManager</name>
+                        <newname>aj</newname>
                     </field>
                     <field>
                         <signature>LB.Controls.LBToolStripMenuItem</signature>
@@ -50574,6 +51090,11 @@
                         <signature>LB.Controls.LBToolStripMenuItem</signature>
                         <name>btnSaleInOutSynK3Receive</name>
                         <newname>ag</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Controls.LBToolStripMenuItem</signature>
+                        <name>btnSessionManager</name>
+                        <newname>ak</newname>
                     </field>
                     <field>
                         <signature>LB.Controls.LBToolStripMenuItem</signature>
@@ -50727,18 +51248,13 @@
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripMenuItem</signature>
-                        <name>版本信息ToolStripMenuItem</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.ToolStripMenuItem</signature>
                         <name>导入客户余额ToolStripMenuItem</name>
-                        <newname>c</newname>
+                        <newname>b</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripMenuItem</signature>
                         <name>关于我们ToolStripMenuItem</name>
-                        <newname>b</newname>
+                        <newname>a</newname>
                     </field>
                 </fieldlist>
                 <propertylist />
@@ -51068,7 +51584,7 @@
             </type>
             <type>
                 <name>LB.MainForm.Program</name>
-                <newname>j</newname>
+                <newname>i</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -54530,7 +55046,7 @@
                     <method>
                         <signature>void()</signature>
                         <name>ClearFieldValue</name>
-                        <newname>f</newname>
+                        <newname>g</newname>
                     </method>
                     <method>
                         <signature>void(bool)</signature>
@@ -54549,6 +55065,11 @@
                     <method>
                         <signature>void()</signature>
                         <name>LoadCarDataSource</name>
+                        <newname>d</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>LoadCustomerTypeDataSource</name>
                         <newname>c</newname>
                     </method>
                     <method>
@@ -54573,17 +55094,17 @@
                     <method>
                         <signature>void()</signature>
                         <name>ReadFieldValue</name>
-                        <newname>d</newname>
-                    </method>
-                    <method>
-                        <signature>void()</signature>
-                        <name>SaveCustomer</name>
                         <newname>e</newname>
                     </method>
                     <method>
                         <signature>void()</signature>
+                        <name>SaveCustomer</name>
+                        <newname>f</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
                         <name>SetButtonStatus</name>
-                        <newname>g</newname>
+                        <newname>h</newname>
                     </method>
                 </methodlist>
                 <fieldlist>
@@ -54849,6 +55370,11 @@
                     </field>
                     <field>
                         <signature>CCWin.SkinControl.SkinLabel</signature>
+                        <name>skinLabel23</name>
+                        <newname>z</newname>
+                    </field>
+                    <field>
+                        <signature>CCWin.SkinControl.SkinLabel</signature>
                         <name>skinLabel3</name>
                         <newname>c</newname>
                     </field>
@@ -54971,6 +55497,11 @@
                         <signature>LB.Controls.LBSkinTextBox</signature>
                         <name>txtCustomerName</name>
                         <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Controls.LBMetroComboBox</signature>
+                        <name>txtCustomerTypeID</name>
+                        <newname>c</newname>
                     </field>
                     <field>
                         <signature>LB.Controls.LBSkinTextBox</signature>
@@ -55099,12 +55630,12 @@
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>AmountNotEnough</name>
-                        <newname>m</newname>
+                        <newname>n</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>AmountTypeName</name>
-                        <newname>h</newname>
+                        <newname>i</newname>
                     </field>
                     <field>
                         <signature>LB.Controls.LBToolStripButton</signature>
@@ -55154,12 +55685,12 @@
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>ChangeBy</name>
-                        <newname>p</newname>
+                        <newname>q</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>ChangeTime</name>
-                        <newname>q</newname>
+                        <newname>r</newname>
                     </field>
                     <field>
                         <signature>System.ComponentModel.IContainer</signature>
@@ -55174,17 +55705,17 @@
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>CreateBy</name>
-                        <newname>n</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
-                        <name>CreateTime</name>
                         <newname>o</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
+                        <name>CreateTime</name>
+                        <newname>p</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>CreditAmount</name>
-                        <newname>l</newname>
+                        <newname>m</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
@@ -55198,8 +55729,13 @@
                     </field>
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
+                        <name>CustomerTypeName</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>Description</name>
-                        <newname>j</newname>
+                        <newname>k</newname>
                     </field>
                     <field>
                         <signature>LB.Controls.LBDataGridView</signature>
@@ -55234,12 +55770,12 @@
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>K3CustomerCode</name>
-                        <newname>b</newname>
+                        <newname>h</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>LicenceNum</name>
-                        <newname>i</newname>
+                        <newname>j</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.Panel</signature>
@@ -55254,7 +55790,7 @@
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>ReceiveTypeName</name>
-                        <newname>k</newname>
+                        <newname>l</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
@@ -55314,6 +55850,232 @@
                     <field>
                         <signature>LB.Controls.LBMetroComboBox</signature>
                         <name>txtReceiveType</name>
+                        <newname>a</newname>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>LB.MI.frmCustomerTypeAdd</name>
+                <methodlist>
+                    <method>
+                        <signature>void(int64)</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnAdd_Click</name>
+                        <newname>c</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnClose_Click</name>
+                        <newname>b</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnDelete_Click</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void(bool)</signature>
+                        <name>Dispose</name>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>InitializeComponent</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void(System.EventArgs)</signature>
+                        <name>OnLoad</name>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>SetFieldValue</name>
+                        <newname>b</newname>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>LB.Controls.LBToolStripButton</signature>
+                        <name>btnAdd</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Controls.LBToolStripButton</signature>
+                        <name>btnClose</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Controls.LBToolStripButton</signature>
+                        <name>btnDelete</name>
+                        <newname>c</newname>
+                    </field>
+                    <field>
+                        <signature>System.ComponentModel.IContainer</signature>
+                        <name>components</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>int64</signature>
+                        <name>mlCustomerTypeID</name>
+                    </field>
+                    <field>
+                        <signature>CCWin.SkinControl.SkinLabel</signature>
+                        <name>skinLabel1</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>CCWin.SkinControl.SkinLabel</signature>
+                        <name>skinLabel2</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>CCWin.SkinControl.SkinToolStrip</signature>
+                        <name>skinToolStrip1</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.ToolStripSeparator</signature>
+                        <name>toolStripSeparator1</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Controls.LBSkinTextBox</signature>
+                        <name>txtCustomerTypeCode</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Controls.LBSkinTextBox</signature>
+                        <name>txtCustomerTypeName</name>
+                        <newname>a</newname>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>LB.MI.frmCustomerTypeManager</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnAdd_Click</name>
+                        <newname>d</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnClose_Click</name>
+                        <newname>c</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnDelete_Click</name>
+                        <newname>b</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnEdit_Click</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void(bool)</signature>
+                        <name>Dispose</name>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.Forms.DataGridViewCellEventArgs)</signature>
+                        <name>GrdMain_CellDoubleClick</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>InitializeComponent</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>LoadDataSource</name>
+                        <newname>c</newname>
+                    </method>
+                    <method>
+                        <signature>void(System.EventArgs)</signature>
+                        <name>OnLoad</name>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>ShowEdit</name>
+                        <newname>b</newname>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>LB.Controls.LBToolStripButton</signature>
+                        <name>btnAdd</name>
+                        <newname>c</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Controls.LBToolStripButton</signature>
+                        <name>btnClose</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Controls.LBToolStripButton</signature>
+                        <name>btnDelete</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Controls.LBToolStripButton</signature>
+                        <name>btnEdit</name>
+                        <newname>d</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
+                        <name>ChangedBy</name>
+                        <newname>d</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
+                        <name>ChangeTime</name>
+                        <newname>e</newname>
+                    </field>
+                    <field>
+                        <signature>System.ComponentModel.IContainer</signature>
+                        <name>components</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
+                        <name>CustomerTypeCode</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
+                        <name>CustomerTypeID</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
+                        <name>CustomerTypeName</name>
+                        <newname>c</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Controls.LBDataGridView</signature>
+                        <name>grdMain</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>CCWin.SkinControl.SkinToolStrip</signature>
+                        <name>skinToolStrip1</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.ToolStripSeparator</signature>
+                        <name>toolStripSeparator1</name>
                         <newname>a</newname>
                     </field>
                 </fieldlist>
@@ -59152,67 +59914,72 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>btnAddInBill_Click</name>
-                        <newname>e</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnAddOutBill_Click</name>
-                        <newname>d</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnApprove_Click</name>
-                        <newname>m</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnCancel_Click</name>
-                        <newname>k</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnClose_Click</name>
-                        <newname>h</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnExportXML_Click</name>
-                        <newname>c</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnImportXML_Click</name>
-                        <newname>b</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnReflesh_Click</name>
-                        <newname>i</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSearch_Click</name>
-                        <newname>g</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSumSearch_Click</name>
                         <newname>f</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnSynToK3_Click</name>
-                        <newname>a</newname>
+                        <name>btnAddOutBill_Click</name>
+                        <newname>e</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnUnApprove_Click</name>
+                        <name>btnApprove_Click</name>
+                        <newname>n</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnCancel_Click</name>
                         <newname>l</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnUnCancel_Click</name>
+                        <name>btnClose_Click</name>
+                        <newname>i</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnDeleteBill_Click</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnExportXML_Click</name>
+                        <newname>d</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnImportXML_Click</name>
+                        <newname>c</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnReflesh_Click</name>
                         <newname>j</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSearch_Click</name>
+                        <newname>h</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSumSearch_Click</name>
+                        <newname>g</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnSynToK3_Click</name>
+                        <newname>b</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnUnApprove_Click</name>
+                        <newname>m</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnUnCancel_Click</name>
+                        <newname>k</newname>
                     </method>
                     <method>
                         <signature>void(bool)</signature>
@@ -59226,7 +59993,7 @@
                     <method>
                         <signature>void()</signature>
                         <name>InitData</name>
-                        <newname>c</newname>
+                        <newname>d</newname>
                     </method>
                     <method>
                         <signature>void()</signature>
@@ -59237,6 +60004,11 @@
                         <signature>void()</signature>
                         <name>LoadAllSalesBill</name>
                         <newname>b</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>LoadCustomerTypeDataSource</name>
+                        <newname>c</newname>
                     </method>
                     <method>
                         <signature>void(LB.Controls.Args.ToolStripReportArgs)</signature>
@@ -59260,17 +60032,17 @@
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>Amount</name>
-                        <newname>q</newname>
+                        <newname>r</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>BillDateIn</name>
-                        <newname>z</newname>
+                        <newname>aa</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>BillDateOut</name>
-                        <newname>y</newname>
+                        <newname>z</newname>
                     </field>
                     <field>
                         <signature>LB.Controls.LBDataGridViewComboBoxColumn</signature>
@@ -59280,7 +60052,7 @@
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>BrokerPrice</name>
-                        <newname>u</newname>
+                        <newname>v</newname>
                     </field>
                     <field>
                         <signature>LB.Controls.LBToolStripButton</signature>
@@ -59306,6 +60078,11 @@
                         <signature>LB.Controls.LBToolStripButton</signature>
                         <name>btnClose</name>
                         <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Controls.LBToolStripButton</signature>
+                        <name>btnDeleteBill</name>
+                        <newname>i</newname>
                     </field>
                     <field>
                         <signature>LB.Controls.LBToolStripButton</signature>
@@ -59345,7 +60122,7 @@
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>CancelDesc</name>
-                        <newname>x</newname>
+                        <newname>y</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
@@ -59365,7 +60142,7 @@
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>CarTare</name>
-                        <newname>n</newname>
+                        <newname>o</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.CheckBox</signature>
@@ -59395,7 +60172,7 @@
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>ChangeDetail</name>
-                        <newname>af</newname>
+                        <newname>ag</newname>
                     </field>
                     <field>
                         <signature>System.ComponentModel.IContainer</signature>
@@ -59405,22 +60182,22 @@
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>CreateByIn</name>
-                        <newname>aa</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
-                        <name>CreateByOut</name>
-                        <newname>ac</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
-                        <name>CreateTimeIn</name>
                         <newname>ab</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
-                        <name>CreateTimeOut</name>
+                        <name>CreateByOut</name>
                         <newname>ad</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
+                        <name>CreateTimeIn</name>
+                        <newname>ac</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
+                        <name>CreateTimeOut</name>
+                        <newname>ae</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
@@ -59431,6 +60208,11 @@
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>CustomerNameSum</name>
                         <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
+                        <name>CustomerTypeName</name>
+                        <newname>m</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
@@ -59455,12 +60237,12 @@
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>Description</name>
-                        <newname>v</newname>
+                        <newname>w</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>FarePrice</name>
-                        <newname>s</newname>
+                        <newname>t</newname>
                     </field>
                     <field>
                         <signature>LB.Controls.LBDataGridView</signature>
@@ -59505,7 +60287,7 @@
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>MaterialPrice</name>
-                        <newname>r</newname>
+                        <newname>s</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.Panel</signature>
@@ -59525,7 +60307,7 @@
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>PriceT</name>
-                        <newname>p</newname>
+                        <newname>q</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.RadioButton</signature>
@@ -59575,12 +60357,12 @@
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>SaleCarInBillCode</name>
-                        <newname>w</newname>
+                        <newname>x</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>SaleCarInBillID</name>
-                        <newname>ae</newname>
+                        <newname>af</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
@@ -59639,6 +60421,11 @@
                     </field>
                     <field>
                         <signature>CCWin.SkinControl.SkinLabel</signature>
+                        <name>skinLabel19</name>
+                        <newname>s</newname>
+                    </field>
+                    <field>
+                        <signature>CCWin.SkinControl.SkinLabel</signature>
                         <name>skinLabel2</name>
                         <newname>b</newname>
                     </field>
@@ -59685,12 +60472,12 @@
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>SuttleWeightT</name>
-                        <newname>o</newname>
+                        <newname>p</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>TaxPrice</name>
-                        <newname>t</newname>
+                        <newname>u</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripSeparator</signature>
@@ -59708,9 +60495,14 @@
                         <newname>c</newname>
                     </field>
                     <field>
+                        <signature>System.Windows.Forms.ToolStripSeparator</signature>
+                        <name>toolStripSeparator4</name>
+                        <newname>d</newname>
+                    </field>
+                    <field>
                         <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
                         <name>TotalWeight</name>
-                        <newname>m</newname>
+                        <newname>n</newname>
                     </field>
                     <field>
                         <signature>LB.Controls.LBSkinTextBox</signature>
@@ -59730,6 +60522,11 @@
                     <field>
                         <signature>LB.Controls.LBTextBox.CoolTextBox</signature>
                         <name>txtCustomerID</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Controls.LBMetroComboBox</signature>
+                        <name>txtCustomerTypeID</name>
                         <newname>a</newname>
                     </field>
                     <field>
@@ -59806,6 +60603,36 @@
                         <signature>LB.Controls.LBSkinTextBox</signature>
                         <name>txtTotalWeight</name>
                         <newname>c</newname>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>LB.MI.MI.frmSaleCarInOutBillManager/&lt;&gt;c</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.cctor</name>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>bool(System.Data.DataRow)</signature>
+                        <name>&lt;btnDeleteBill_Click&gt;b__22_0</name>
+                        <newname>a</newname>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>LB.MI.MI.frmSaleCarInOutBillManager/&lt;&gt;c</signature>
+                        <name>&lt;&gt;9</name>
+                    </field>
+                    <field>
+                        <signature>System.Func`2&lt;System.Data.DataRow,bool&gt;</signature>
+                        <name>&lt;&gt;9__22_0</name>
                     </field>
                 </fieldlist>
                 <propertylist />
@@ -62704,21 +63531,26 @@
                     <method>
                         <signature>System.Drawing.Bitmap()</signature>
                         <name>get_Bool_checked</name>
-                        <newname>p</newname>
+                        <newname>q</newname>
                     </method>
                     <method>
                         <signature>System.Drawing.Bitmap()</signature>
                         <name>get_Bool_uncheck</name>
-                        <newname>o</newname>
+                        <newname>p</newname>
                     </method>
                     <method>
                         <signature>System.Drawing.Bitmap()</signature>
                         <name>get_btnApprove</name>
-                        <newname>n</newname>
+                        <newname>o</newname>
                     </method>
                     <method>
                         <signature>System.Drawing.Bitmap()</signature>
                         <name>get_btnClose</name>
+                        <newname>n</newname>
+                    </method>
+                    <method>
+                        <signature>System.Drawing.Bitmap()</signature>
+                        <name>get_btnEdit</name>
                         <newname>m</newname>
                     </method>
                     <method>
@@ -62825,6 +63657,10 @@
                     <property>
                         <signature>System.Drawing.Bitmap()</signature>
                         <name>btnClose</name>
+                    </property>
+                    <property>
+                        <signature>System.Drawing.Bitmap()</signature>
+                        <name>btnEdit</name>
                     </property>
                     <property>
                         <signature>System.Drawing.Bitmap()</signature>
@@ -70264,6 +71100,112 @@
                 <eventlist />
             </type>
             <type>
+                <name>LB.SysConfig.SysConfig.frmSessionManager</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnClose_Click</name>
+                        <newname>c</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnDelete_Click</name>
+                        <newname>b</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnReflesh_Click</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void(bool)</signature>
+                        <name>Dispose</name>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>InitializeComponent</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>LoadDataSource</name>
+                        <newname>b</newname>
+                    </method>
+                    <method>
+                        <signature>void(System.EventArgs)</signature>
+                        <name>OnLoad</name>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>LB.Controls.LBToolStripButton</signature>
+                        <name>btnClose</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Controls.LBToolStripButton</signature>
+                        <name>btnDelete</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Controls.LBToolStripButton</signature>
+                        <name>btnReflesh</name>
+                        <newname>c</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
+                        <name>ClientIP</name>
+                        <newname>e</newname>
+                    </field>
+                    <field>
+                        <signature>System.ComponentModel.IContainer</signature>
+                        <name>components</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>LB.Controls.LBDataGridView</signature>
+                        <name>grdMain</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
+                        <name>LastCheckTime</name>
+                        <newname>d</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
+                        <name>LoginName</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
+                        <name>LoginTime</name>
+                        <newname>c</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.DataGridViewTextBoxColumn</signature>
+                        <name>SessionID</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>CCWin.SkinControl.SkinToolStrip</signature>
+                        <name>skinToolStrip1</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.ToolStripSeparator</signature>
+                        <name>toolStripSeparator1</name>
+                        <newname>a</newname>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
                 <name>LB.SysConfig.SysConfig.frmSysConfig</name>
                 <methodlist>
                     <method>
@@ -70788,19 +71730,19 @@
     <statistics>
         <statisticline>
             <description>Total Classes</description>
-            <statistic>1199</statistic>
+            <statistic>1213</statistic>
         </statisticline>
         <statisticline>
             <description>Total Methods</description>
-            <statistic>3761</statistic>
+            <statistic>3832</statistic>
         </statisticline>
         <statisticline>
             <description>Total Fields</description>
-            <statistic>9533</statistic>
+            <statistic>9645</statistic>
         </statisticline>
         <statisticline>
             <description>Total Properties</description>
-            <statistic>894</statistic>
+            <statistic>897</statistic>
         </statisticline>
         <statisticline>
             <description>Total Events</description>
@@ -70809,17 +71751,17 @@
         <statisticline>
             <description>Total Classes Renamed</description>
             <statistic>29</statistic>
-            <statistic>2.42%</statistic>
+            <statistic>2.39%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Methods Renamed</description>
-            <statistic>1113</statistic>
-            <statistic>29.59%</statistic>
+            <statistic>1142</statistic>
+            <statistic>29.80%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Fields Renamed</description>
-            <statistic>2650</statistic>
-            <statistic>27.80%</statistic>
+            <statistic>2701</statistic>
+            <statistic>28.00%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Properties Renamed</description>
@@ -70833,38 +71775,38 @@
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'a'</description>
-            <statistic>450</statistic>
-            <statistic>11.96%</statistic>
+            <statistic>461</statistic>
+            <statistic>12.03%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'b'</description>
-            <statistic>180</statistic>
-            <statistic>4.79%</statistic>
+            <statistic>186</statistic>
+            <statistic>4.85%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'c'</description>
-            <statistic>119</statistic>
-            <statistic>3.16%</statistic>
+            <statistic>123</statistic>
+            <statistic>3.21%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'd'</description>
-            <statistic>75</statistic>
-            <statistic>1.99%</statistic>
+            <statistic>77</statistic>
+            <statistic>2.01%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'e'</description>
             <statistic>51</statistic>
-            <statistic>1.36%</statistic>
+            <statistic>1.33%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'f'</description>
             <statistic>39</statistic>
-            <statistic>1.04%</statistic>
+            <statistic>1.02%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'g'</description>
             <statistic>25</statistic>
-            <statistic>0.66%</statistic>
+            <statistic>0.65%</statistic>
         </statisticline>
     </statistics>
 </dotfuscatorMap>

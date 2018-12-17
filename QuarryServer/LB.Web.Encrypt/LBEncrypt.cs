@@ -15,7 +15,34 @@ namespace LB.Web.Encrypt
         public static bool IsRegister = false;
         public static DateTime DeadLine = DateTime.MinValue;
         public static int ProductType=-1;
-        public static string RegisterInfoJson = "";
+        private static string _RegisterInfoJson = "";
+        public static bool UseSessionLimit = false;//启用站点数限制功能
+        public static int SessionLimitCount = 0;//站点数限制个数
+
+        public static string RegisterInfoJson
+        {
+            get
+            {
+                return _RegisterInfoJson;
+            }
+            set
+            {
+                _RegisterInfoJson = value;
+                if (_RegisterInfoJson != "")
+                {
+                    Dictionary<string, string> dictRegister = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, string>>(_RegisterInfoJson);
+                    if (dictRegister.ContainsKey("UseSessionLimit"))
+                    {
+                        if (dictRegister["UseSessionLimit"] == "1")
+                            UseSessionLimit = true;
+                    }
+                    if (dictRegister.ContainsKey("SessionLimitCount"))
+                    {
+                        int.TryParse(dictRegister["SessionLimitCount"], out SessionLimitCount);
+                    }
+                }
+            }
+        }
 
         public static void Decrypt()
         {

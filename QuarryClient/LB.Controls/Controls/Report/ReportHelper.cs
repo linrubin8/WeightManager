@@ -137,7 +137,7 @@ namespace LB.Controls.Report
             //DataRow drReportTemplateConfig = GetReportTemplateRow(reportRequestArgs.ReportTemplateID);
             int iPrintCount = 1;
 
-            DataTable dtReport = ReportHelper.GetReportTemplateByID(reportRequestArgs.ReportTemplateID);
+            DataTable dtReport = ReportHelper.GetReportTemplateByID4Print(reportRequestArgs.ReportTemplateID);
             if (dtReport.Rows.Count > 0)
             {
                 DataRow drReportTemplateConfig = dtReport.Rows[0];
@@ -398,16 +398,24 @@ namespace LB.Controls.Report
             {
                 dtTemplate = dsReturn.Tables[0];
             }
-            //DataTable dtReportTemplate = ExecuteSQL.CallView(105, "", "ReportTemplateID=" + lReportTemplateID, "");
-            //dtReportTemplate.DefaultView.RowFilter = "MachineName='" + LoginInfo.MachineName + "'";
-            //if (dtReportTemplate.DefaultView.Count > 0)
-            //{
-            //    return dtReportTemplate.DefaultView[0].Row;
-            //}
-            //else if (dtReportTemplate.Rows.Count > 0)
-            //{
-            //    return dtReportTemplate.Rows[0];
-            //}
+            return dtTemplate;
+        }
+
+        public static DataTable GetReportTemplateByID4Print(long lReportTemplateID)
+        {
+            DataTable dtTemplate = null;
+            //记录磅单打印次数
+            LBDbParameterCollection parmCol = new LBDbParameterCollection();
+            parmCol.Add(new LBParameter("ReportTemplateID", enLBDbType.Int64, lReportTemplateID));
+            parmCol.Add(new LBParameter("MachineName", enLBDbType.String, LoginInfo.MachineName));
+
+            DataSet dsReturn;
+            Dictionary<string, object> dictValue;
+            ExecuteSQL.CallSP(12006, parmCol, out dsReturn, out dictValue);
+            if (dsReturn != null && dsReturn.Tables.Count > 0)
+            {
+                dtTemplate = dsReturn.Tables[0];
+            }
             return dtTemplate;
         }
 

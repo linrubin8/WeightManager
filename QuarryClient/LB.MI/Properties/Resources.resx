@@ -136,6 +136,9 @@
   <data name="btnUnPostInUse" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnUnPostInUse.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="btnEnterEdit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnEnterEdit.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="btnNewSave31" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnNewSave31.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -144,9 +147,6 @@
   </data>
   <data name="btnFieldAndDataNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnFieldAndDataNew.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="btnEnterEdit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnEnterEdit.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="btnRedo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnRedo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -165,5 +165,8 @@
   </data>
   <data name="btnVersionDone" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnVersionDone.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnEdit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnEdit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

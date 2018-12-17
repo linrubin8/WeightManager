@@ -36,6 +36,36 @@ order by SaleCarOutBillCode desc
             return DBHelper.ExecuteQuery(args, strSQL);
         }
 
+        public void GetInBillSpecialCode(FactoryArgs args,t_BigID CustomerID,t_BigID ItemID,out t_String BillCode)
+        {
+            BillCode = new t_String();
+            LBDbParameterCollection parms = new LBDbParameterCollection();
+            parms.Add(new LBDbParameter("CustomerID", CustomerID));
+            parms.Add(new LBDbParameter("ItemID", ItemID));
+            parms.Add(new LBDbParameter("BillCode", BillCode,true));
+
+            string strSQL = @"
+EXEC dbo.SaleCarInBill_SprcialBillCode @CustomerID,@ItemID,@BillCode output
+";
+            DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);
+            BillCode.Value = parms["BillCode"].Value.ToString();
+        }
+
+        public void GetOutBillSpecialCode(FactoryArgs args, t_BigID CustomerID, t_BigID ItemID, out t_String BillCode)
+        {
+            BillCode = new t_String();
+            LBDbParameterCollection parms = new LBDbParameterCollection();
+            parms.Add(new LBDbParameter("CustomerID", CustomerID));
+            parms.Add(new LBDbParameter("ItemID", ItemID));
+            parms.Add(new LBDbParameter("BillCode", BillCode, true));
+
+            string strSQL = @"
+EXEC dbo.SaleCarOutBill_SprcialBillCode @CustomerID,@ItemID,@BillCode output
+";
+            DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);
+            BillCode.Value = parms["BillCode"].Value.ToString();
+        }
+
         public DataTable GetMaxInBillCode(FactoryArgs args, string strBillFont)
         {
 
@@ -919,6 +949,54 @@ where SaleCarInBillID = @SaleCarInBillID
 update dbo.SaleCarInBill
 set SynchronousK3Error= @SynchronousK3Error
 where SaleCarInBillID = @SaleCarInBillID
+";
+            DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);
+        }
+
+        public void GetSalesBillInOut(FactoryArgs args,t_String BillIDStr,out DataTable dtInBill,out DataTable dtOutBill)
+        {
+            dtInBill = new DataTable();
+            dtOutBill = new DataTable();
+            string strSQL = string.Format(@"
+select *
+from dbo.SaleCarInBill
+where SaleCarInBillID in ({0})
+", BillIDStr.Value);
+            dtInBill = DBHelper.ExecuteQuery(args, strSQL);
+
+            strSQL = string.Format(@"
+select *
+from dbo.SaleCarOutBill
+where SaleCarInBillID in ({0})
+", BillIDStr.Value);
+            dtOutBill = DBHelper.ExecuteQuery(args, strSQL);
+        }
+
+        public void RemoveInOutBill(FactoryArgs args, t_BigID SaleCarInBillID)
+        {
+            LBDbParameterCollection parms = new LBDbParameterCollection();
+            parms.Add(new LBDbParameter("SaleCarInBillID", SaleCarInBillID));
+
+            string strSQL = @"
+delete dbo.SaleCarOutBill
+where SaleCarInBillID = @SaleCarInBillID
+
+delete dbo.SaleCarInBill
+where SaleCarInBillID = @SaleCarInBillID
+";
+            DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);
+        }
+
+        public void SaleCarBillRemoved_Insert(FactoryArgs args,t_nText SaleInBillRemoveJson,t_nText SaleOutBillRemoveJson)
+        {
+            LBDbParameterCollection parms = new LBDbParameterCollection();
+            parms.Add(new LBDbParameter("SaleInBillRemoveJson", SaleInBillRemoveJson));
+            parms.Add(new LBDbParameter("SaleOutBillRemoveJson", SaleOutBillRemoveJson));
+            parms.Add(new LBDbParameter("RemovedBy", new t_String(args.LoginName)));
+
+            string strSQL = @"
+insert SaleCarBillRemoved(SaleInBillRemoveJson,SaleOutBillRemoveJson,RemovedTime,RemovedBy)
+values(@SaleInBillRemoveJson,@SaleOutBillRemoveJson,getdate(),@RemovedBy)
 ";
             DBHelper.ExecuteNonQuery(args, System.Data.CommandType.Text, strSQL, parms, false);
         }

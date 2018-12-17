@@ -3,3 +3,6 @@ alter table dbo.DbCustomer
 	
 alter table dbo.DbCustomer
 	add ForbidTime	datetime
+
+alter table dbo.DbCustomer
+	alter column IsForbid tinyint null

@@ -43,6 +43,10 @@ namespace LB.Web.DB.BLL
                 case 12005:
                     strFunName = "GetReportTemplateByID";
                     break;
+
+                case 12006:
+                    strFunName = "GetReportTemplateByID4Print";
+                    break;
             }
             return strFunName;
         }
@@ -123,6 +127,11 @@ namespace LB.Web.DB.BLL
         public void GetReportTemplateByID(FactoryArgs args, t_BigID ReportTemplateID, t_String MachineName)
         {
             args.SelectResult = _DALDbReportTemplate.GetReportTemplateByID(args, ReportTemplateID, MachineName);
+        }
+
+        public void GetReportTemplateByID4Print(FactoryArgs args, t_BigID ReportTemplateID, t_String MachineName)
+        {
+            args.SelectResult = _DALDbReportTemplate.GetReportTemplateByID4Print(args, ReportTemplateID, MachineName);
         }
     }
 }

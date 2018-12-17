@@ -65,6 +65,20 @@ namespace LB.WinFunction
             }
         }
 
+        private static long mlSessionID = 0;
+        public static long SessionID
+        {
+            get
+            {
+                return mlSessionID;
+            }
+            set
+            {
+                mlSessionID = value;
+            }
+        }
+
+
         public static string MachineIP
         {
             get
@@ -95,6 +109,22 @@ namespace LB.WinFunction
                     strIPAddress = IpArray[0];
                 }
                 return strIPAddress;
+            }
+        }
+
+        private static string mMachineSeries = "";
+        /// <summary>
+        /// 电脑序列号
+        /// </summary>
+        public static string MachineSeries
+        {
+            get
+            {
+                if (mMachineSeries == "")
+                {
+                    mMachineSeries = HardwareInfo.GetCurrentVal();
+                }
+                return mMachineSeries;
             }
         }
 
@@ -140,6 +170,7 @@ namespace LB.WinFunction
         /// <returns></returns>
         public static bool VerifyLogin(string strLoginName,string strPassword)
         {
+            SessionID = 0;
             _IsVerifySuccess = false;
             bool bolIsLogin = false;
             DataTable dtUser = GetUserInfo(strLoginName);
@@ -162,10 +193,17 @@ namespace LB.WinFunction
                     _LoginTime = DateTime.Now;
                     _IsVerifySuccess = true;
                     _UserType = iUserType;
+
+                    bool bolIsOverFlow;
+                    SessionID = GetSessionID(out bolIsOverFlow);
+
+                    if (bolIsOverFlow)
+                    {
+                        throw new Exception("登录站点数超过系统限定的数量，登录失败！");
+                    }
                 }
                 else
                 {
-                   
                     throw new Exception("密码不正确，请重新输入！");
                 }
             }
@@ -199,7 +237,7 @@ namespace LB.WinFunction
 
         private static DataTable GetUserInfo(string strLoginName)
         {
-            DataTable dtUser = ExecuteSQL.CallView(100, "UserID,UserPassword,UserType", "LoginName='" + strLoginName + "'", "");
+            DataTable dtUser = ExecuteSQL.CallView(100,false, "UserID,UserPassword,UserType", "LoginName='" + strLoginName + "'", "");
             return dtUser;
         }
 
@@ -207,6 +245,30 @@ namespace LB.WinFunction
         {
             DataTable dtUser = ExecuteSQL.CallView(100, "UserID,UserPassword", "UserID=" + iUserID, "");
             return dtUser;
+        }
+
+        private static long GetSessionID(out bool bolIsOverFlow)
+        {
+            long lSessionID = 0;
+            bolIsOverFlow = false;
+            LBDbParameterCollection parmCol = new LBDbParameterCollection();
+            parmCol.Add(new LBParameter("ClientIP", enLBDbType.String, MachineIP));
+            parmCol.Add(new LBParameter("ClientSerial", enLBDbType.String, MachineSeries));
+
+            DataSet dsReturn;
+            Dictionary<string, object> dictValue;
+            ExecuteSQL.CallSP(30000,false, parmCol, out dsReturn, out dictValue);
+            if (dictValue.ContainsKey("SessionID"))
+            {
+                long.TryParse(dictValue["SessionID"].ToString(),out lSessionID);
+            }
+            if (dictValue.ContainsKey("IsOverFlow"))
+            {
+                if (dictValue["IsOverFlow"].ToString() == "1")
+                    bolIsOverFlow = true;
+            }
+            
+            return lSessionID;
         }
     }
 }

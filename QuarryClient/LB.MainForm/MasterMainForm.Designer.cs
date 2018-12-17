@@ -39,6 +39,7 @@ namespace LB.MainForm
             this.btnUserManager = new LB.Controls.LBToolStripMenuItem(this.components);
             this.btnDbSysConfig = new LB.Controls.LBToolStripMenuItem(this.components);
             this.btnLogManager = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.btnSessionManager = new LB.Controls.LBToolStripMenuItem(this.components);
             this.btnCancel = new LB.Controls.LBToolStripMenuItem(this.components);
             this.tsmConfig = new LB.Controls.LBToolStripMenuItem(this.components);
             this.btnViewConfig = new LB.Controls.LBToolStripMenuItem(this.components);
@@ -60,6 +61,7 @@ namespace LB.MainForm
             this.lbToolStripDropDownButton1 = new LB.Controls.LBToolStripDropDownButton(this.components);
             this.btnAddCustomer = new LB.Controls.LBToolStripMenuItem(this.components);
             this.btnCustomerManager = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.btnCustomerTypeManager = new LB.Controls.LBToolStripMenuItem(this.components);
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAddCar = new LB.Controls.LBToolStripMenuItem(this.components);
             this.btnCarQuery = new LB.Controls.LBToolStripMenuItem(this.components);
@@ -78,9 +80,9 @@ namespace LB.MainForm
             this.btnSynCar = new LB.Controls.LBToolStripMenuItem(this.components);
             this.btnSynSalesBill = new LB.Controls.LBToolStripMenuItem(this.components);
             this.btnSynPrice = new LB.Controls.LBToolStripMenuItem(this.components);
+            this.btnSynBaseInfo = new LB.Controls.LBToolStripMenuItem(this.components);
             this.btnReportManager = new LB.Controls.LBToolStripButton(this.components);
             this.btnAbort = new LB.Controls.LBToolStripDropDownButton(this.components);
-            this.版本信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于我们ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tcMain = new LB.Controls.LBTabControl.LBMainTabControl(this.components);
             this.tpMain = new DMSkin.Metro.Controls.MetroTabPage();
@@ -92,7 +94,6 @@ namespace LB.MainForm
             this.lblLoginTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblConnectStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnSynBaseInfo = new LB.Controls.LBToolStripMenuItem(this.components);
             this.toolStrip1.SuspendLayout();
             this.tcMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -124,6 +125,7 @@ namespace LB.MainForm
             this.btnUserManager,
             this.btnDbSysConfig,
             this.btnLogManager,
+            this.btnSessionManager,
             this.btnCancel,
             this.tsmConfig});
             this.btnDDSystemManager.Image = global::LB.MainForm.Properties.Resources.btnConfig;
@@ -137,7 +139,7 @@ namespace LB.MainForm
             // 
             this.btnChangePassword.LBPermissionCode = "PMChangePassword";
             this.btnChangePassword.Name = "btnChangePassword";
-            this.btnChangePassword.Size = new System.Drawing.Size(148, 22);
+            this.btnChangePassword.Size = new System.Drawing.Size(152, 22);
             this.btnChangePassword.Text = "修改密码";
             this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
             // 
@@ -145,7 +147,7 @@ namespace LB.MainForm
             // 
             this.btnDBBackUp.LBPermissionCode = "DBBackUp_Query";
             this.btnDBBackUp.Name = "btnDBBackUp";
-            this.btnDBBackUp.Size = new System.Drawing.Size(148, 22);
+            this.btnDBBackUp.Size = new System.Drawing.Size(152, 22);
             this.btnDBBackUp.Text = "帐套备份设置";
             this.btnDBBackUp.Click += new System.EventHandler(this.btnDBBackUp_Click);
             // 
@@ -153,7 +155,7 @@ namespace LB.MainForm
             // 
             this.btnUserManager.LBPermissionCode = "PMUserManager_Query";
             this.btnUserManager.Name = "btnUserManager";
-            this.btnUserManager.Size = new System.Drawing.Size(148, 22);
+            this.btnUserManager.Size = new System.Drawing.Size(152, 22);
             this.btnUserManager.Text = "用户权限管理";
             this.btnUserManager.Click += new System.EventHandler(this.btnUserManager_Click);
             // 
@@ -161,7 +163,7 @@ namespace LB.MainForm
             // 
             this.btnDbSysConfig.LBPermissionCode = "DbSysConfig_Query";
             this.btnDbSysConfig.Name = "btnDbSysConfig";
-            this.btnDbSysConfig.Size = new System.Drawing.Size(148, 22);
+            this.btnDbSysConfig.Size = new System.Drawing.Size(152, 22);
             this.btnDbSysConfig.Text = "系统设置";
             this.btnDbSysConfig.Click += new System.EventHandler(this.btnDbSysConfig_Click);
             // 
@@ -169,15 +171,23 @@ namespace LB.MainForm
             // 
             this.btnLogManager.LBPermissionCode = "LogManager_Query";
             this.btnLogManager.Name = "btnLogManager";
-            this.btnLogManager.Size = new System.Drawing.Size(148, 22);
+            this.btnLogManager.Size = new System.Drawing.Size(152, 22);
             this.btnLogManager.Text = "操作日志";
             this.btnLogManager.Click += new System.EventHandler(this.btnLogManager_Click);
+            // 
+            // btnSessionManager
+            // 
+            this.btnSessionManager.LBPermissionCode = "OnLineManager_Query";
+            this.btnSessionManager.Name = "btnSessionManager";
+            this.btnSessionManager.Size = new System.Drawing.Size(152, 22);
+            this.btnSessionManager.Text = "在线记录管理";
+            this.btnSessionManager.Click += new System.EventHandler(this.btnSessionManager_Click);
             // 
             // btnCancel
             // 
             this.btnCancel.LBPermissionCode = "";
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(148, 22);
+            this.btnCancel.Size = new System.Drawing.Size(152, 22);
             this.btnCancel.Text = "注销";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -191,7 +201,7 @@ namespace LB.MainForm
             this.导入客户余额ToolStripMenuItem});
             this.tsmConfig.LBPermissionCode = "";
             this.tsmConfig.Name = "tsmConfig";
-            this.tsmConfig.Size = new System.Drawing.Size(148, 22);
+            this.tsmConfig.Size = new System.Drawing.Size(152, 22);
             this.tsmConfig.Text = "开发配置管理";
             // 
             // btnViewConfig
@@ -336,6 +346,7 @@ namespace LB.MainForm
             this.lbToolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAddCustomer,
             this.btnCustomerManager,
+            this.btnCustomerTypeManager,
             this.toolStripSeparator1,
             this.btnAddCar,
             this.btnCarQuery,
@@ -364,6 +375,14 @@ namespace LB.MainForm
             this.btnCustomerManager.Size = new System.Drawing.Size(148, 22);
             this.btnCustomerManager.Text = "客户资料管理";
             this.btnCustomerManager.Click += new System.EventHandler(this.btnCustomerManager_Click);
+            // 
+            // btnCustomerTypeManager
+            // 
+            this.btnCustomerTypeManager.LBPermissionCode = "DBCustomerType_Query";
+            this.btnCustomerTypeManager.Name = "btnCustomerTypeManager";
+            this.btnCustomerTypeManager.Size = new System.Drawing.Size(148, 22);
+            this.btnCustomerTypeManager.Text = "客户类型管理";
+            this.btnCustomerTypeManager.Click += new System.EventHandler(this.btnCustomerTypeManager_Click);
             // 
             // toolStripSeparator1
             // 
@@ -509,7 +528,7 @@ namespace LB.MainForm
             // 
             this.btnSynSalesBill.LBPermissionCode = "SalesBill_Synchornous";
             this.btnSynSalesBill.Name = "btnSynSalesBill";
-            this.btnSynSalesBill.Size = new System.Drawing.Size(204, 22);
+            this.btnSynSalesBill.Size = new System.Drawing.Size(240, 22);
             this.btnSynSalesBill.Text = "单据信息同步至服务器";
             this.btnSynSalesBill.Click += new System.EventHandler(this.btnSynSalesBill_Click);
             // 
@@ -521,6 +540,14 @@ namespace LB.MainForm
             this.btnSynPrice.Text = "价格表同步";
             this.btnSynPrice.Visible = false;
             this.btnSynPrice.Click += new System.EventHandler(this.btnSynPrice_Click);
+            // 
+            // btnSynBaseInfo
+            // 
+            this.btnSynBaseInfo.LBPermissionCode = "BaseInfo_Synchornous";
+            this.btnSynBaseInfo.Name = "btnSynBaseInfo";
+            this.btnSynBaseInfo.Size = new System.Drawing.Size(240, 22);
+            this.btnSynBaseInfo.Text = "同步到本地(客户、车辆、单价)";
+            this.btnSynBaseInfo.Click += new System.EventHandler(this.btnSynBaseInfo_Click);
             // 
             // btnReportManager
             // 
@@ -535,7 +562,6 @@ namespace LB.MainForm
             // btnAbort
             // 
             this.btnAbort.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.版本信息ToolStripMenuItem,
             this.关于我们ToolStripMenuItem});
             this.btnAbort.Image = ((System.Drawing.Image)(resources.GetObject("btnAbort.Image")));
             this.btnAbort.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -544,17 +570,12 @@ namespace LB.MainForm
             this.btnAbort.Size = new System.Drawing.Size(61, 22);
             this.btnAbort.Text = "关于";
             // 
-            // 版本信息ToolStripMenuItem
-            // 
-            this.版本信息ToolStripMenuItem.Name = "版本信息ToolStripMenuItem";
-            this.版本信息ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.版本信息ToolStripMenuItem.Text = "版本信息";
-            // 
             // 关于我们ToolStripMenuItem
             // 
             this.关于我们ToolStripMenuItem.Name = "关于我们ToolStripMenuItem";
-            this.关于我们ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.关于我们ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.关于我们ToolStripMenuItem.Text = "关于我们";
+            this.关于我们ToolStripMenuItem.Click += new System.EventHandler(this.关于我们ToolStripMenuItem_Click);
             // 
             // tcMain
             // 
@@ -658,14 +679,6 @@ namespace LB.MainForm
             this.lblConnectStatus.Size = new System.Drawing.Size(42, 22);
             this.lblConnectStatus.Text = "正常";
             // 
-            // btnSynBaseInfo
-            // 
-            this.btnSynBaseInfo.LBPermissionCode = "BaseInfo_Synchornous";
-            this.btnSynBaseInfo.Name = "btnSynBaseInfo";
-            this.btnSynBaseInfo.Size = new System.Drawing.Size(240, 22);
-            this.btnSynBaseInfo.Text = "同步到本地(客户、车辆、单价)";
-            this.btnSynBaseInfo.Click += new System.EventHandler(this.btnSynBaseInfo_Click);
-            // 
             // MasterMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -722,7 +735,6 @@ namespace LB.MainForm
         private LBToolStripMenuItem btnAddChangePriceBill;
         private LBToolStripMenuItem btnChangePriceManager;
         private LBToolStripDropDownButton btnAbort;
-        private System.Windows.Forms.ToolStripMenuItem 版本信息ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 关于我们ToolStripMenuItem;
         private LBToolStripMenuItem btnUOMManager;
         private LBToolStripMenuItem btnDescriptionManager;
@@ -750,6 +762,8 @@ namespace LB.MainForm
         private LBToolStripMenuItem btnSaleInOutSynK3Receive;
         private LBToolStripMenuItem btnSaleInOutSynK3OutBill;
         private LBToolStripMenuItem btnSynBaseInfo;
+        private LBToolStripMenuItem btnCustomerTypeManager;
+        private LBToolStripMenuItem btnSessionManager;
     }
 }
 

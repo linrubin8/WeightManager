@@ -104,6 +104,18 @@
     <Compile Include="MI\frmCustomerImport.Designer.cs">
       <DependentUpon>frmCustomerImport.cs</DependentUpon>
     </Compile>
+    <Compile Include="MI\frmCustomerTypeAdd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmCustomerTypeAdd.Designer.cs">
+      <DependentUpon>frmCustomerTypeAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MI\frmCustomerTypeManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MI\frmCustomerTypeManager.Designer.cs">
+      <DependentUpon>frmCustomerTypeManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="MI\frmSaleCarInOutBillManagerSynK3.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -323,6 +335,12 @@
     <EmbeddedResource Include="MI\frmCustomerImport.resx">
       <DependentUpon>frmCustomerImport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmCustomerTypeAdd.resx">
+      <DependentUpon>frmCustomerTypeAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MI\frmCustomerTypeManager.resx">
+      <DependentUpon>frmCustomerTypeManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MI\frmSaleCarInOutBillManagerSynK3.resx">
       <DependentUpon>frmSaleCarInOutBillManagerSynK3.cs</DependentUpon>
     </EmbeddedResource>
@@ -482,6 +500,9 @@
     <None Include="Resources\Bool_checked.bmp" />
     <None Include="Resources\btnRefSource.gif" />
     <None Include="Resources\btnMultiPrompt.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnEdit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

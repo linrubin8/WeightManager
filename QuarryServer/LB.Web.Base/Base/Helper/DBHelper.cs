@@ -209,7 +209,7 @@ namespace LB.Web.Base.Helper
 						{
 							using( DbCommand cmd = Provider.CreateCommand() )
 							{
-                                FactoryArgs argsTran = new FactoryArgs( args.DBName, args.LoginName, conn, trans );
+                                FactoryArgs argsTran = new FactoryArgs( args.DBName, args.LoginName, args.SessionID, args.IsNeedSession, conn, trans );
 								try
 								{
 									execDelegate( argsTran );
