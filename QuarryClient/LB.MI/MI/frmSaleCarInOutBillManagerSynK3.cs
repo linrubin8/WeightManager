@@ -303,7 +303,27 @@ namespace LB.MI.MI
             try
             {
                 List<DataRow> lstSelected = ReadSelectedRows();
-                frmSynK3Process frmProcess = new frmSynK3Process(lstSelected,_SynType);
+
+                int iIsSynCount = 0;
+                foreach(DataRow dr in lstSelected)
+                {
+                    if(LBConverter.ToBoolean(dr["IsSynchronousToK3OutBill"])|| LBConverter.ToBoolean(dr["IsSynchronousToK3Receive"]))
+                    {
+                        iIsSynCount++;
+                    }
+                }
+
+                bool bolIsReSynBill = false;
+                if (iIsSynCount > 0)
+                {
+                    if(LB.WinFunction.LBCommonHelper.ConfirmMessage("选中的单据中存在已同步过的单据，是否继续同步？","提示", MessageBoxButtons.OKCancel)
+                        == DialogResult.OK)
+                    {
+                        bolIsReSynBill = true;
+                    }
+                }
+
+                frmSynK3Process frmProcess = new frmSynK3Process(lstSelected,_SynType, bolIsReSynBill);
                 LBShowForm.ShowDialog(frmProcess);
                 this.LoadAllSalesBill();
             }

@@ -427,6 +427,7 @@ namespace LB.MainForm
             this.txtReceiveType.DataSource = LB.Common.LBConst.GetConstData("ReceiveType");//收款方式
             this.txtReceiveType.DisplayMember = "ConstText";
             this.txtReceiveType.ValueMember = "ConstValue";
+            this.txtReceiveType.SelectedIndexChanged += TxtReceiveType_SelectedIndexChanged;
 
             this.txtCalculateType.DataSource = LB.Common.LBConst.GetConstData("CalculateType");//计价方式
             this.txtCalculateType.DisplayMember = "ConstText";
@@ -594,6 +595,27 @@ namespace LB.MainForm
             }
         }
 
+
+        private void TxtReceiveType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (LBConverter.ToInt32(this.txtReceiveType.SelectedValue) == 5)
+                {
+                    this.lblWeiXinRate.Visible = true;
+                }
+                else
+                {
+                    this.lblWeiXinRate.Visible = false;
+                }
+                CalAmount();
+            }
+            catch (Exception ex)
+            {
+                LB.WinFunction.LBCommonHelper.DealWithErrorMessage(ex);
+            }
+        }
+        
         //选择单据编码触发事件
         private void BillCodeTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -1950,6 +1972,7 @@ namespace LB.MainForm
             decimal decTotalWeight = LBConverter.ToDecimal(this.txtTotalWeight.Text);
             decimal decCarTare = LBConverter.ToDecimal(this.txtCarTare.Text);
             int iCalculateType = LBConverter.ToInt32(this.txtCalculateType.SelectedValue);//0按重量计算 1按车计算
+            int iReceiveType = LBConverter.ToInt32(this.txtReceiveType.SelectedValue);//收款方式
             this.txtSuttleWeight.Text = (decTotalWeight - decCarTare).ToString("0");
             decimal decPrice = LBConverter.ToDecimal(this.txtPrice.Text);
 
@@ -1957,6 +1980,11 @@ namespace LB.MainForm
             if (this.txtCustomerID.TextBox.SelectedRow != null)
             {
                 iAmountType = LBConverter.ToInt32(this.txtCustomerID.TextBox.SelectedRow["AmountType"]);
+            }
+            decimal decRate = 1;
+            if (iReceiveType == 5)//微信支付加收0.005
+            {
+                decRate += (decimal)0.005;
             }
 
             string strFormat = "0";
@@ -1966,9 +1994,9 @@ namespace LB.MainForm
                 strFormat = "0.00";
 
             if (iCalculateType == 0)
-                this.txtAmount.Text = (decPrice * (decTotalWeight - decCarTare)).ToString(strFormat);
+                this.txtAmount.Text = (decPrice * (decTotalWeight - decCarTare)* decRate).ToString(strFormat);
             else
-                this.txtAmount.Text = decPrice.ToString(strFormat);
+                this.txtAmount.Text = (decPrice * decRate).ToString(strFormat);
         }
 
         #endregion

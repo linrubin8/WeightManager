@@ -371,6 +371,8 @@ namespace LB.MI.MI
                     MemoryStream ms = new MemoryStream(bImage);
                     Image image = System.Drawing.Image.FromStream(ms);
                     picBox.Image = image;
+                    ms.Close();
+                    ms.Dispose();
                 };
 
                 if (picBox.InvokeRequired)

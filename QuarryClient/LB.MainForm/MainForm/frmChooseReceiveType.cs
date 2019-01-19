@@ -64,9 +64,15 @@ namespace LB.MainForm.MainForm
         private void SetReceiveTypeVisible()
         {
             ReceiveType = LBConverter.ToInt32(this.txtReceiveType.SelectedValue);
-            if (ReceiveType == 0)//现金
+            lblWeixin.Visible = false;
+            if (ReceiveType == 0 || ReceiveType == 5)//现金
             {
                 lblPayAmount.Visible= this.txtPayAmount.Visible=this.lblNeedPay.Visible=this.lblNeedPayAmount.Visible = false;
+                if(ReceiveType == 5)
+                {
+                    lblWeixin.Visible = true;
+                    this.lblAmount.Text = (decAmount + decAmount * (decimal)0.005).ToString();
+                }
             }
             else if (ReceiveType == 1)//预付
             {
@@ -97,6 +103,10 @@ namespace LB.MainForm.MainForm
                 if (ReceiveType == 0)//现金
                 {
                     decPayAmount = decAmount;
+                }
+                else if (ReceiveType == 5)//微信支付宝
+                {
+                    decPayAmount = decAmount+ decAmount * (decimal)0.005;
                 }
                 else if (ReceiveType == 1)//预付
                 {

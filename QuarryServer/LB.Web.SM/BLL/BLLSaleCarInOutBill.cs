@@ -450,7 +450,7 @@ namespace LB.Web.SM.BLL
                         this._IBLLDbErrorLog.Insert(args,
                             new t_String("服务器重车异常：TotalWeight=" + TotalWeight.Value.ToString() + " CarTare=" + decCarTare.ToString() + " SuttleWeight=" + SuttleWeight.Value.ToString() + " SaleCarInBillID=" + SaleCarInBillID.Value.ToString()));
                         SuttleWeight.Value = TotalWeight.Value - decCarTare;
-                        Amount.Value = Price.Value * SuttleWeight.Value;
+                        Amount.Value = Price.Value * SuttleWeight.Value * (decimal)(ReceiveType.Value == 5 ? 1.005 : 1);
                     }
                 }
             }
@@ -1947,7 +1947,7 @@ namespace LB.Web.SM.BLL
 
         #region -- 将订单同步至K3系统 --
 
-        public void SynchronousBillToK3(FactoryArgs args, t_BigID SaleCarInBillID,t_ID SynType,
+        public void SynchronousBillToK3(FactoryArgs args, t_BigID SaleCarInBillID,t_ID SynType,t_Bool IsReSynBill,
             out t_Bool OutBillIsSuccess, out t_String OutBillSynError,
             out t_Bool ReceiveIsSuccess, out t_String ReceiveSynError)
         {
@@ -1955,6 +1955,7 @@ namespace LB.Web.SM.BLL
             OutBillSynError = new t_String();
             ReceiveIsSuccess = new t_Bool(0);
             ReceiveSynError = new t_String();
+            IsReSynBill.IsNullToZero();
             try
             {
                 LogHelper.WriteLog("准备调用SynchronousBillToK3");
@@ -2010,7 +2011,7 @@ namespace LB.Web.SM.BLL
 
                         if (SynType.Value == 1)//出库单
                         {
-                            if (!IsSynchronousToK3OutBill)//如果未同步出库单，则执行出库单同步
+                            if (!IsSynchronousToK3OutBill || IsReSynBill.Value==1)//如果未同步出库单，则执行出库单同步
                             {
                                 #region  -- 销售出库Json文本 --
                                 string strJson = @"
@@ -2180,7 +2181,7 @@ namespace LB.Web.SM.BLL
                         }
                         else if (SynType.Value == 0)//应收单
                         {
-                            if (!IsSynchronousToK3Receive)//如果未同步应收单，则执行应收单同步
+                            if (!IsSynchronousToK3Receive || IsReSynBill.Value == 1)//如果未同步应收单，则执行应收单同步
                             {
                                 LogHelper.WriteLog("准备导入应收单");
                                 #region  -- 应收Json文本 --

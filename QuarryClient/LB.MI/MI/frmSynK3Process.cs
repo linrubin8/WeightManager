@@ -24,8 +24,10 @@ namespace LB.MI.MI
         int _FailCount = 0;
         private List<DataRow> mlstRows = new List<DataRow>();
         List<SynInfo> mlstSynInfo = new List<SynInfo>();
-        public frmSynK3Process(List<DataRow> lstRows,int iSynType)
+        bool mbolIsReSynBill = false;
+        public frmSynK3Process(List<DataRow> lstRows,int iSynType,bool bolIsReSynBill)
         {
+            mbolIsReSynBill = bolIsReSynBill;
             InitializeComponent();
             //LogHelper.WriteLog("行数：" + lstRows.Count);
             mlstRows = lstRows;
@@ -88,6 +90,7 @@ namespace LB.MI.MI
                     LBDbParameterCollection parmCol = new LBDbParameterCollection();
                     parmCol.Add(new LBParameter("SaleCarInBillID", enLBDbType.Int64, lSaleCarInBillID));
                     parmCol.Add(new LBParameter("SynType", enLBDbType.Int64, _SynType));
+                    parmCol.Add(new LBParameter("IsReSynBill", enLBDbType.Boolean, mbolIsReSynBill?1:0));
 
                     DataSet dsReturn;
                     Dictionary<string, object> dictValue;
