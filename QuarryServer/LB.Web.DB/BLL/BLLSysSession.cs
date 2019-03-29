@@ -24,15 +24,15 @@ namespace LB.Web.DB.BLL
             string strFunName = "";
             switch (iFunctionType)
             {
-                case 30000:
+                case 15000:
                     strFunName = "Insert";
                     break;
 
-                case 30001:
+                case 15001:
                     strFunName = "UpdateLastCheckTime";
                     break;
 
-                case 30002:
+                case 15002:
                     strFunName = "Delete";
                     break;
             }

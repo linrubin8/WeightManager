@@ -112,9 +112,9 @@ namespace LB.Web.DB.BLL.Factory
                     args.BLLFunction = new BLLDbSystemConst();
                     break;
 
-                case 30000:
-                case 30001:
-                case 30002:
+                case 15000:
+                case 15001:
+                case 15002:
                     args.BLLFunction = new BLLSysSession();
                     break;
             }

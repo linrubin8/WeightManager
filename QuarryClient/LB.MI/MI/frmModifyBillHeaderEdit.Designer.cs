@@ -126,6 +126,7 @@
             this.skinToolStrip1.Fore = System.Drawing.Color.Black;
             this.skinToolStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 4, 2);
             this.skinToolStrip1.HoverFore = System.Drawing.Color.White;
+            this.skinToolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.skinToolStrip1.ItemAnamorphosis = true;
             this.skinToolStrip1.ItemBorder = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
             this.skinToolStrip1.ItemBorderShow = true;
@@ -151,7 +152,7 @@
             this.skinToolStrip1.Location = new System.Drawing.Point(0, 0);
             this.skinToolStrip1.Name = "skinToolStrip1";
             this.skinToolStrip1.RadiusStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinToolStrip1.Size = new System.Drawing.Size(982, 40);
+            this.skinToolStrip1.Size = new System.Drawing.Size(1309, 47);
             this.skinToolStrip1.SkinAllColor = true;
             this.skinToolStrip1.TabIndex = 5;
             this.skinToolStrip1.Text = "skinToolStrip1";
@@ -166,7 +167,7 @@
             this.btnClose.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnClose.LBPermissionCode = "";
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(36, 37);
+            this.btnClose.Size = new System.Drawing.Size(43, 44);
             this.btnClose.Text = "关闭";
             this.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -177,7 +178,7 @@
             this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAdd.LBPermissionCode = "PriceManager_Add";
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(60, 37);
+            this.btnAdd.Size = new System.Drawing.Size(73, 44);
             this.btnAdd.Text = "继续添加";
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -188,7 +189,7 @@
             this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSave.LBPermissionCode = "";
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(36, 37);
+            this.btnSave.Size = new System.Drawing.Size(43, 44);
             this.btnSave.Text = "保存";
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -199,7 +200,7 @@
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.LBPermissionCode = "PriceManager_Delete";
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(36, 37);
+            this.btnDelete.Size = new System.Drawing.Size(43, 44);
             this.btnDelete.Text = "删除";
             this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -210,7 +211,7 @@
             this.btnCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCopy.LBPermissionCode = "PriceManager_Copy";
             this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(36, 37);
+            this.btnCopy.Size = new System.Drawing.Size(43, 44);
             this.btnCopy.Text = "复制";
             this.btnCopy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
@@ -221,7 +222,7 @@
             this.btnReflesh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnReflesh.LBPermissionCode = "";
             this.btnReflesh.Name = "btnReflesh";
-            this.btnReflesh.Size = new System.Drawing.Size(36, 37);
+            this.btnReflesh.Size = new System.Drawing.Size(43, 44);
             this.btnReflesh.Text = "刷新";
             this.btnReflesh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnReflesh.Click += new System.EventHandler(this.btnReflesh_Click);
@@ -229,7 +230,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 40);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 47);
             // 
             // btnApprove
             // 
@@ -237,7 +238,7 @@
             this.btnApprove.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnApprove.LBPermissionCode = "PriceManager_Approve";
             this.btnApprove.Name = "btnApprove";
-            this.btnApprove.Size = new System.Drawing.Size(36, 37);
+            this.btnApprove.Size = new System.Drawing.Size(43, 44);
             this.btnApprove.Text = "审核";
             this.btnApprove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnApprove.Click += new System.EventHandler(this.btnApprove_Click);
@@ -248,7 +249,7 @@
             this.btnUnApprove.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnUnApprove.LBPermissionCode = "PriceManager_UnApprove";
             this.btnUnApprove.Name = "btnUnApprove";
-            this.btnUnApprove.Size = new System.Drawing.Size(60, 37);
+            this.btnUnApprove.Size = new System.Drawing.Size(73, 44);
             this.btnUnApprove.Text = "取消审核";
             this.btnUnApprove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnUnApprove.Click += new System.EventHandler(this.btnUnApprove_Click);
@@ -256,7 +257,7 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 40);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 47);
             // 
             // btnCancel
             // 
@@ -264,7 +265,7 @@
             this.btnCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCancel.LBPermissionCode = "PriceManager_Cancel";
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(36, 37);
+            this.btnCancel.Size = new System.Drawing.Size(43, 44);
             this.btnCancel.Text = "作废";
             this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -275,7 +276,7 @@
             this.btnUnCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnUnCancel.LBPermissionCode = "PriceManager_UnCancel";
             this.btnUnCancel.Name = "btnUnCancel";
-            this.btnUnCancel.Size = new System.Drawing.Size(60, 37);
+            this.btnUnCancel.Size = new System.Drawing.Size(73, 44);
             this.btnUnCancel.Text = "取消作废";
             this.btnUnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnUnCancel.Click += new System.EventHandler(this.btnUnCancel_Click);
@@ -283,7 +284,7 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 40);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 47);
             // 
             // btnAddCar
             // 
@@ -291,7 +292,7 @@
             this.btnAddCar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAddCar.LBPermissionCode = "DBCar_Add";
             this.btnAddCar.Name = "btnAddCar";
-            this.btnAddCar.Size = new System.Drawing.Size(60, 37);
+            this.btnAddCar.Size = new System.Drawing.Size(73, 44);
             this.btnAddCar.Text = "添加车辆";
             this.btnAddCar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -311,9 +312,10 @@
             this.panel1.Controls.Add(this.ctlFieldHeaderPanel1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 40);
+            this.panel1.Location = new System.Drawing.Point(0, 47);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(982, 215);
+            this.panel1.Size = new System.Drawing.Size(1309, 269);
             this.panel1.TabIndex = 6;
             // 
             // txtCustomerID
@@ -325,13 +327,13 @@
             this.txtCustomerID.Font = new System.Drawing.Font("微软雅黑", 9.75F);
             this.txtCustomerID.LBTitle = "  ";
             this.txtCustomerID.LBTitleVisible = false;
-            this.txtCustomerID.Location = new System.Drawing.Point(346, 67);
+            this.txtCustomerID.Location = new System.Drawing.Point(461, 84);
             this.txtCustomerID.Margin = new System.Windows.Forms.Padding(0);
             this.txtCustomerID.Name = "txtCustomerID";
             this.txtCustomerID.PopupWidth = 120;
             this.txtCustomerID.SelectedItemBackColor = System.Drawing.SystemColors.Highlight;
             this.txtCustomerID.SelectedItemForeColor = System.Drawing.SystemColors.HighlightText;
-            this.txtCustomerID.Size = new System.Drawing.Size(201, 28);
+            this.txtCustomerID.Size = new System.Drawing.Size(268, 34);
             this.txtCustomerID.TabIndex = 18;
             // 
             // txtApproveTime
@@ -341,10 +343,11 @@
             this.txtApproveTime.CustomFormat = "  ";
             this.txtApproveTime.Enabled = false;
             this.txtApproveTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.txtApproveTime.Location = new System.Drawing.Point(308, 179);
+            this.txtApproveTime.Location = new System.Drawing.Point(411, 224);
+            this.txtApproveTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtApproveTime.MinimumSize = new System.Drawing.Size(0, 30);
             this.txtApproveTime.Name = "txtApproveTime";
-            this.txtApproveTime.Size = new System.Drawing.Size(200, 30);
+            this.txtApproveTime.Size = new System.Drawing.Size(265, 30);
             this.txtApproveTime.TabIndex = 17;
             // 
             // txtApproveBy
@@ -359,19 +362,19 @@
             this.txtApproveBy.IsPasswordChat = '\0';
             this.txtApproveBy.IsSystemPasswordChar = false;
             this.txtApproveBy.Lines = new string[0];
-            this.txtApproveBy.Location = new System.Drawing.Point(94, 174);
+            this.txtApproveBy.Location = new System.Drawing.Point(125, 218);
             this.txtApproveBy.Margin = new System.Windows.Forms.Padding(0);
             this.txtApproveBy.MaxLength = 32767;
-            this.txtApproveBy.MinimumSize = new System.Drawing.Size(28, 28);
+            this.txtApproveBy.MinimumSize = new System.Drawing.Size(37, 35);
             this.txtApproveBy.MouseBack = null;
             this.txtApproveBy.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.txtApproveBy.Multiline = false;
+            this.txtApproveBy.Multiline = true;
             this.txtApproveBy.Name = "txtApproveBy";
             this.txtApproveBy.NormlBack = null;
-            this.txtApproveBy.Padding = new System.Windows.Forms.Padding(5);
+            this.txtApproveBy.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.txtApproveBy.ReadOnly = true;
             this.txtApproveBy.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtApproveBy.Size = new System.Drawing.Size(201, 28);
+            this.txtApproveBy.Size = new System.Drawing.Size(268, 35);
             // 
             // 
             // 
@@ -384,10 +387,12 @@
             this.txtApproveBy.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtApproveBy.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtApproveBy.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
-            this.txtApproveBy.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.txtApproveBy.SkinTxt.Location = new System.Drawing.Point(7, 6);
+            this.txtApproveBy.SkinTxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtApproveBy.SkinTxt.Multiline = true;
             this.txtApproveBy.SkinTxt.Name = "BaseText";
             this.txtApproveBy.SkinTxt.ReadOnly = true;
-            this.txtApproveBy.SkinTxt.Size = new System.Drawing.Size(191, 18);
+            this.txtApproveBy.SkinTxt.Size = new System.Drawing.Size(254, 23);
             this.txtApproveBy.SkinTxt.TabIndex = 0;
             this.txtApproveBy.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.txtApproveBy.SkinTxt.WaterText = "";
@@ -404,10 +409,11 @@
             this.txtChangeTime.CustomFormat = " ";
             this.txtChangeTime.Enabled = false;
             this.txtChangeTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.txtChangeTime.Location = new System.Drawing.Point(734, 143);
+            this.txtChangeTime.Location = new System.Drawing.Point(979, 179);
+            this.txtChangeTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtChangeTime.MinimumSize = new System.Drawing.Size(0, 30);
             this.txtChangeTime.Name = "txtChangeTime";
-            this.txtChangeTime.Size = new System.Drawing.Size(200, 30);
+            this.txtChangeTime.Size = new System.Drawing.Size(265, 30);
             this.txtChangeTime.TabIndex = 15;
             // 
             // txtCreateTime
@@ -417,10 +423,11 @@
             this.txtCreateTime.CustomFormat = " ";
             this.txtCreateTime.Enabled = false;
             this.txtCreateTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.txtCreateTime.Location = new System.Drawing.Point(308, 143);
+            this.txtCreateTime.Location = new System.Drawing.Point(411, 179);
+            this.txtCreateTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCreateTime.MinimumSize = new System.Drawing.Size(0, 30);
             this.txtCreateTime.Name = "txtCreateTime";
-            this.txtCreateTime.Size = new System.Drawing.Size(200, 30);
+            this.txtCreateTime.Size = new System.Drawing.Size(265, 30);
             this.txtCreateTime.TabIndex = 14;
             // 
             // txtChangeBy
@@ -435,19 +442,19 @@
             this.txtChangeBy.IsPasswordChat = '\0';
             this.txtChangeBy.IsSystemPasswordChar = false;
             this.txtChangeBy.Lines = new string[0];
-            this.txtChangeBy.Location = new System.Drawing.Point(511, 143);
+            this.txtChangeBy.Location = new System.Drawing.Point(681, 179);
             this.txtChangeBy.Margin = new System.Windows.Forms.Padding(0);
             this.txtChangeBy.MaxLength = 32767;
-            this.txtChangeBy.MinimumSize = new System.Drawing.Size(28, 28);
+            this.txtChangeBy.MinimumSize = new System.Drawing.Size(37, 35);
             this.txtChangeBy.MouseBack = null;
             this.txtChangeBy.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.txtChangeBy.Multiline = false;
+            this.txtChangeBy.Multiline = true;
             this.txtChangeBy.Name = "txtChangeBy";
             this.txtChangeBy.NormlBack = null;
-            this.txtChangeBy.Padding = new System.Windows.Forms.Padding(5);
+            this.txtChangeBy.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.txtChangeBy.ReadOnly = true;
             this.txtChangeBy.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtChangeBy.Size = new System.Drawing.Size(201, 28);
+            this.txtChangeBy.Size = new System.Drawing.Size(268, 35);
             // 
             // 
             // 
@@ -460,10 +467,12 @@
             this.txtChangeBy.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtChangeBy.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtChangeBy.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
-            this.txtChangeBy.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.txtChangeBy.SkinTxt.Location = new System.Drawing.Point(7, 6);
+            this.txtChangeBy.SkinTxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtChangeBy.SkinTxt.Multiline = true;
             this.txtChangeBy.SkinTxt.Name = "BaseText";
             this.txtChangeBy.SkinTxt.ReadOnly = true;
-            this.txtChangeBy.SkinTxt.Size = new System.Drawing.Size(191, 18);
+            this.txtChangeBy.SkinTxt.Size = new System.Drawing.Size(254, 23);
             this.txtChangeBy.SkinTxt.TabIndex = 0;
             this.txtChangeBy.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.txtChangeBy.SkinTxt.WaterText = "";
@@ -479,10 +488,11 @@
             this.txtEffectDate.Caption = "生效日期";
             this.txtEffectDate.CustomFormat = "  ";
             this.txtEffectDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.txtEffectDate.Location = new System.Drawing.Point(631, 90);
+            this.txtEffectDate.Location = new System.Drawing.Point(841, 112);
+            this.txtEffectDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtEffectDate.MinimumSize = new System.Drawing.Size(0, 30);
             this.txtEffectDate.Name = "txtEffectDate";
-            this.txtEffectDate.Size = new System.Drawing.Size(200, 30);
+            this.txtEffectDate.Size = new System.Drawing.Size(265, 30);
             this.txtEffectDate.TabIndex = 14;
             // 
             // txtBillDate
@@ -491,10 +501,11 @@
             this.txtBillDate.Caption = "单据日期";
             this.txtBillDate.CustomFormat = "";
             this.txtBillDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.txtBillDate.Location = new System.Drawing.Point(631, 54);
+            this.txtBillDate.Location = new System.Drawing.Point(841, 68);
+            this.txtBillDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBillDate.MinimumSize = new System.Drawing.Size(0, 30);
             this.txtBillDate.Name = "txtBillDate";
-            this.txtBillDate.Size = new System.Drawing.Size(200, 30);
+            this.txtBillDate.Size = new System.Drawing.Size(265, 30);
             this.txtBillDate.TabIndex = 13;
             // 
             // txtCreateBy
@@ -509,19 +520,19 @@
             this.txtCreateBy.IsPasswordChat = '\0';
             this.txtCreateBy.IsSystemPasswordChar = false;
             this.txtCreateBy.Lines = new string[0];
-            this.txtCreateBy.Location = new System.Drawing.Point(94, 143);
+            this.txtCreateBy.Location = new System.Drawing.Point(125, 179);
             this.txtCreateBy.Margin = new System.Windows.Forms.Padding(0);
             this.txtCreateBy.MaxLength = 32767;
-            this.txtCreateBy.MinimumSize = new System.Drawing.Size(28, 28);
+            this.txtCreateBy.MinimumSize = new System.Drawing.Size(37, 35);
             this.txtCreateBy.MouseBack = null;
             this.txtCreateBy.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.txtCreateBy.Multiline = false;
+            this.txtCreateBy.Multiline = true;
             this.txtCreateBy.Name = "txtCreateBy";
             this.txtCreateBy.NormlBack = null;
-            this.txtCreateBy.Padding = new System.Windows.Forms.Padding(5);
+            this.txtCreateBy.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.txtCreateBy.ReadOnly = true;
             this.txtCreateBy.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtCreateBy.Size = new System.Drawing.Size(201, 28);
+            this.txtCreateBy.Size = new System.Drawing.Size(268, 35);
             // 
             // 
             // 
@@ -534,10 +545,12 @@
             this.txtCreateBy.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCreateBy.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtCreateBy.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
-            this.txtCreateBy.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.txtCreateBy.SkinTxt.Location = new System.Drawing.Point(7, 6);
+            this.txtCreateBy.SkinTxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCreateBy.SkinTxt.Multiline = true;
             this.txtCreateBy.SkinTxt.Name = "BaseText";
             this.txtCreateBy.SkinTxt.ReadOnly = true;
-            this.txtCreateBy.SkinTxt.Size = new System.Drawing.Size(191, 18);
+            this.txtCreateBy.SkinTxt.Size = new System.Drawing.Size(254, 23);
             this.txtCreateBy.SkinTxt.TabIndex = 0;
             this.txtCreateBy.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.txtCreateBy.SkinTxt.WaterText = "";
@@ -559,19 +572,19 @@
             this.txtDescription.IsPasswordChat = '\0';
             this.txtDescription.IsSystemPasswordChar = false;
             this.txtDescription.Lines = new string[0];
-            this.txtDescription.Location = new System.Drawing.Point(94, 104);
+            this.txtDescription.Location = new System.Drawing.Point(125, 130);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(0);
             this.txtDescription.MaxLength = 32767;
-            this.txtDescription.MinimumSize = new System.Drawing.Size(28, 28);
+            this.txtDescription.MinimumSize = new System.Drawing.Size(37, 35);
             this.txtDescription.MouseBack = null;
             this.txtDescription.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.txtDescription.Multiline = false;
+            this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.NormlBack = null;
-            this.txtDescription.Padding = new System.Windows.Forms.Padding(5);
+            this.txtDescription.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.txtDescription.ReadOnly = false;
             this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtDescription.Size = new System.Drawing.Size(201, 28);
+            this.txtDescription.Size = new System.Drawing.Size(268, 35);
             // 
             // 
             // 
@@ -584,9 +597,11 @@
             this.txtDescription.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDescription.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDescription.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
-            this.txtDescription.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.txtDescription.SkinTxt.Location = new System.Drawing.Point(7, 6);
+            this.txtDescription.SkinTxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDescription.SkinTxt.Multiline = true;
             this.txtDescription.SkinTxt.Name = "BaseText";
-            this.txtDescription.SkinTxt.Size = new System.Drawing.Size(191, 18);
+            this.txtDescription.SkinTxt.Size = new System.Drawing.Size(254, 23);
             this.txtDescription.SkinTxt.TabIndex = 0;
             this.txtDescription.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.txtDescription.SkinTxt.WaterText = "";
@@ -608,19 +623,19 @@
             this.txtModifyBillCode.IsPasswordChat = '\0';
             this.txtModifyBillCode.IsSystemPasswordChar = false;
             this.txtModifyBillCode.Lines = new string[0];
-            this.txtModifyBillCode.Location = new System.Drawing.Point(94, 67);
+            this.txtModifyBillCode.Location = new System.Drawing.Point(125, 84);
             this.txtModifyBillCode.Margin = new System.Windows.Forms.Padding(0);
             this.txtModifyBillCode.MaxLength = 32767;
-            this.txtModifyBillCode.MinimumSize = new System.Drawing.Size(28, 28);
+            this.txtModifyBillCode.MinimumSize = new System.Drawing.Size(37, 35);
             this.txtModifyBillCode.MouseBack = null;
             this.txtModifyBillCode.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.txtModifyBillCode.Multiline = false;
+            this.txtModifyBillCode.Multiline = true;
             this.txtModifyBillCode.Name = "txtModifyBillCode";
             this.txtModifyBillCode.NormlBack = null;
-            this.txtModifyBillCode.Padding = new System.Windows.Forms.Padding(5);
+            this.txtModifyBillCode.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.txtModifyBillCode.ReadOnly = true;
             this.txtModifyBillCode.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtModifyBillCode.Size = new System.Drawing.Size(201, 28);
+            this.txtModifyBillCode.Size = new System.Drawing.Size(268, 35);
             // 
             // 
             // 
@@ -633,10 +648,12 @@
             this.txtModifyBillCode.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtModifyBillCode.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtModifyBillCode.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
-            this.txtModifyBillCode.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.txtModifyBillCode.SkinTxt.Location = new System.Drawing.Point(7, 6);
+            this.txtModifyBillCode.SkinTxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtModifyBillCode.SkinTxt.Multiline = true;
             this.txtModifyBillCode.SkinTxt.Name = "BaseText";
             this.txtModifyBillCode.SkinTxt.ReadOnly = true;
-            this.txtModifyBillCode.SkinTxt.Size = new System.Drawing.Size(191, 18);
+            this.txtModifyBillCode.SkinTxt.Size = new System.Drawing.Size(254, 23);
             this.txtModifyBillCode.SkinTxt.TabIndex = 0;
             this.txtModifyBillCode.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.txtModifyBillCode.SkinTxt.WaterText = "";
@@ -654,10 +671,10 @@
             this.ctlFieldHeaderPanel1.LBControlHorSpace = 10;
             this.ctlFieldHeaderPanel1.LBHorSpace = 20;
             this.ctlFieldHeaderPanel1.LBRowCount = 4;
-            this.ctlFieldHeaderPanel1.Location = new System.Drawing.Point(0, 51);
-            this.ctlFieldHeaderPanel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.ctlFieldHeaderPanel1.Location = new System.Drawing.Point(0, 64);
+            this.ctlFieldHeaderPanel1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.ctlFieldHeaderPanel1.Name = "ctlFieldHeaderPanel1";
-            this.ctlFieldHeaderPanel1.Size = new System.Drawing.Size(982, 164);
+            this.ctlFieldHeaderPanel1.Size = new System.Drawing.Size(1309, 205);
             this.ctlFieldHeaderPanel1.TabIndex = 1;
             // 
             // label1
@@ -665,8 +682,9 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
             this.label1.Font = new System.Drawing.Font("宋体", 24F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(982, 51);
+            this.label1.Size = new System.Drawing.Size(1309, 64);
             this.label1.TabIndex = 0;
             this.label1.Text = "销售调价单";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -721,7 +739,8 @@
             this.grdMain.HeadSelectBackColor = System.Drawing.Color.Empty;
             this.grdMain.HeadSelectForeColor = System.Drawing.Color.Empty;
             this.grdMain.LineNumberForeColor = System.Drawing.Color.MidnightBlue;
-            this.grdMain.Location = new System.Drawing.Point(0, 282);
+            this.grdMain.Location = new System.Drawing.Point(0, 350);
+            this.grdMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grdMain.Name = "grdMain";
             this.grdMain.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.grdMain.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -732,11 +751,12 @@
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.grdMain.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.grdMain.RowTemplate.Height = 23;
-            this.grdMain.Size = new System.Drawing.Size(982, 129);
+            this.grdMain.Size = new System.Drawing.Size(1309, 164);
             this.grdMain.TabIndex = 9;
             this.grdMain.TitleBack = null;
             this.grdMain.TitleBackColorBegin = System.Drawing.Color.White;
             this.grdMain.TitleBackColorEnd = System.Drawing.SystemColors.ActiveBorder;
+            this.grdMain.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdMain_CellValueChanged);
             // 
             // skinToolStrip2
             // 
@@ -768,6 +788,7 @@
             this.skinToolStrip2.Fore = System.Drawing.Color.Black;
             this.skinToolStrip2.GripMargin = new System.Windows.Forms.Padding(2, 2, 4, 2);
             this.skinToolStrip2.HoverFore = System.Drawing.Color.White;
+            this.skinToolStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.skinToolStrip2.ItemAnamorphosis = true;
             this.skinToolStrip2.ItemBorder = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
             this.skinToolStrip2.ItemBorderShow = true;
@@ -778,10 +799,10 @@
             this.skinToolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAddDetail,
             this.btnDeleteDetail});
-            this.skinToolStrip2.Location = new System.Drawing.Point(0, 255);
+            this.skinToolStrip2.Location = new System.Drawing.Point(0, 316);
             this.skinToolStrip2.Name = "skinToolStrip2";
             this.skinToolStrip2.RadiusStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinToolStrip2.Size = new System.Drawing.Size(982, 27);
+            this.skinToolStrip2.Size = new System.Drawing.Size(1309, 34);
             this.skinToolStrip2.SkinAllColor = true;
             this.skinToolStrip2.TabIndex = 10;
             this.skinToolStrip2.Text = "skinToolStrip2";
@@ -797,7 +818,7 @@
             this.btnAddDetail.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAddDetail.LBPermissionCode = "";
             this.btnAddDetail.Name = "btnAddDetail";
-            this.btnAddDetail.Size = new System.Drawing.Size(99, 24);
+            this.btnAddDetail.Size = new System.Drawing.Size(119, 31);
             this.btnAddDetail.Text = "添加明细行";
             this.btnAddDetail.Click += new System.EventHandler(this.btnAddDetail_Click);
             // 
@@ -808,7 +829,7 @@
             this.btnDeleteDetail.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDeleteDetail.LBPermissionCode = "";
             this.btnDeleteDetail.Name = "btnDeleteDetail";
-            this.btnDeleteDetail.Size = new System.Drawing.Size(99, 24);
+            this.btnDeleteDetail.Size = new System.Drawing.Size(119, 31);
             this.btnDeleteDetail.Text = "添加明细行";
             this.btnDeleteDetail.Click += new System.EventHandler(this.btnDeleteDetail_Click);
             // 
@@ -887,6 +908,7 @@
             this.Price.DefaultCellStyle = dataGridViewCellStyle3;
             this.Price.HeaderText = "单价(总)";
             this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
             this.Price.Width = 120;
             // 
             // MaterialPrice
@@ -961,14 +983,15 @@
             // 
             // frmModifyBillHeaderEdit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.grdMain);
             this.Controls.Add(this.skinToolStrip2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.skinToolStrip1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmModifyBillHeaderEdit";
-            this.Size = new System.Drawing.Size(982, 411);
+            this.Size = new System.Drawing.Size(1309, 514);
             this.skinToolStrip1.ResumeLayout(false);
             this.skinToolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);

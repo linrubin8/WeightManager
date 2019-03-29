@@ -257,7 +257,7 @@ namespace LB.WinFunction
 
             DataSet dsReturn;
             Dictionary<string, object> dictValue;
-            ExecuteSQL.CallSP(30000,false, parmCol, out dsReturn, out dictValue);
+            ExecuteSQL.CallSP(15000, false, parmCol, out dsReturn, out dictValue);
             if (dictValue.ContainsKey("SessionID"))
             {
                 long.TryParse(dictValue["SessionID"].ToString(),out lSessionID);

@@ -60,6 +60,40 @@ namespace LB.MI.MI
 
         #region -- grdMain事件 --
 
+        private void grdMain_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+                {
+                    if (_BillStatus == enBillStatus.Add || _BillStatus == enBillStatus.Edit)
+                    {
+                        string strColumn = this.grdMain.Columns[e.ColumnIndex].DataPropertyName;
+                        if (strColumn.Equals("FarePrice")|| strColumn.Equals("MaterialPrice") ||
+                            strColumn.Equals("TaxPrice") || strColumn.Equals("BrokerPrice") )
+                        {
+                            string strFarePrice = grdMain["FarePrice", e.RowIndex].Value.ToString();
+                            string strMaterialPrice = grdMain["MaterialPrice", e.RowIndex].Value.ToString();
+                            string strTaxPrice = grdMain["TaxPrice", e.RowIndex].Value.ToString();
+                            string strBrokerPrice = grdMain["BrokerPrice", e.RowIndex].Value.ToString();
+
+                            decimal decFarePrice, decMaterialPrice, decTaxPrice, decBrokerPrice;
+                            decimal.TryParse(strFarePrice, out decFarePrice);
+                            decimal.TryParse(strMaterialPrice, out decMaterialPrice);
+                            decimal.TryParse(strTaxPrice, out decTaxPrice);
+                            decimal.TryParse(strBrokerPrice, out decBrokerPrice);
+
+                            grdMain["Price", e.RowIndex].Value = decFarePrice + decMaterialPrice + decTaxPrice + decBrokerPrice;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LB.WinFunction.LBCommonHelper.DealWithErrorMessage(ex);
+            }
+        }
+
         private void GrdMain_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try

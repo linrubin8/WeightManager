@@ -78,7 +78,7 @@ namespace LB.SysConfig.SysConfig
 
                     DataSet dsReturn;
                     DataTable dtReturn;
-                    ExecuteSQL.CallSP(30002, dtSPIN, out dsReturn, out dtReturn);
+                    ExecuteSQL.CallSP(15002, dtSPIN, out dsReturn, out dtReturn);
 
                     LoadDataSource();
                 }
