@@ -7,3 +7,4 @@ FastReport/
 obj/
 *.sln
 *.dll
+.vs/
