@@ -54,6 +54,35 @@ namespace LB.Login
         {
             try
             {
+                //校验注册码
+                LBEncrypt.Decrypt();
+
+                if (LBEncrypt.ProductType != 3 || !LBEncrypt.IsRegister)
+                {
+                    if(LBCommonHelper.ConfirmMessage("当前电脑客户端未注册，是否现在注册？", "注册提示", MessageBoxButtons.OKCancel)== DialogResult.OK)
+                    {
+                        frmDisk frm = new frmDisk();
+                        frm.ShowDialog();
+                        Application.Exit();
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                if (LBEncrypt.ProductType == 3 && LBEncrypt.IsRegister && LBEncrypt.DeadLine.Subtract(DateTime.Now).TotalDays < 0)
+                {
+                    if (LBCommonHelper.ConfirmMessage("当前电脑客户端注册码已过期，是否现在注册？", "注册提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    {
+                        frmDisk frm = new frmDisk();
+                        frm.ShowDialog();
+                        Application.Exit();
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
                 //校验权限
                 LBRegisterPermission.VerifyPermission();
                 //bool IsRegister;

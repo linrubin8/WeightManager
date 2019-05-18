@@ -99,6 +99,8 @@ namespace LBRegister
                 iProductType = 1;
             else if (this.rbGrooveCount.Checked)
                 iProductType = 2;
+            else if (this.rbWeightClient.Checked)
+                iProductType = 3;
 
             if (strRegisterStr != "")
                 strRegisterStr += ";";

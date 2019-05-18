@@ -448,7 +448,7 @@ namespace LB.MI
             // 
             this.txtDescription.BackColor = System.Drawing.Color.Transparent;
             this.txtDescription.CanBeEmpty = true;
-            this.txtDescription.Caption = "货物名称";
+            this.txtDescription.Caption = "备注";
             this.txtDescription.DownBack = null;
             this.txtDescription.Icon = null;
             this.txtDescription.IconIsButton = false;
@@ -531,8 +531,8 @@ namespace LB.MI
             // txtPrice
             // 
             this.txtPrice.BackColor = System.Drawing.Color.Transparent;
-            this.txtPrice.CanBeEmpty = false;
-            this.txtPrice.Caption = "规格";
+            this.txtPrice.CanBeEmpty = true;
+            this.txtPrice.Caption = "默认单价";
             this.txtPrice.DownBack = null;
             this.txtPrice.Icon = null;
             this.txtPrice.IconIsButton = false;
@@ -604,8 +604,8 @@ namespace LB.MI
             // txtK3ItemCode
             // 
             this.txtK3ItemCode.BackColor = System.Drawing.Color.Transparent;
-            this.txtK3ItemCode.CanBeEmpty = false;
-            this.txtK3ItemCode.Caption = "规格";
+            this.txtK3ItemCode.CanBeEmpty = true;
+            this.txtK3ItemCode.Caption = "K3编码";
             this.txtK3ItemCode.DownBack = null;
             this.txtK3ItemCode.Icon = null;
             this.txtK3ItemCode.IconIsButton = false;
@@ -677,7 +677,7 @@ namespace LB.MI
             this.Controls.Add(this.skinToolStrip1);
             this.LBPageTitle = "编辑物料";
             this.Name = "frmItemBase";
-            this.Size = new System.Drawing.Size(570, 270);
+            this.Size = new System.Drawing.Size(570, 280);
             this.skinToolStrip1.ResumeLayout(false);
             this.skinToolStrip1.PerformLayout();
             this.ResumeLayout(false);

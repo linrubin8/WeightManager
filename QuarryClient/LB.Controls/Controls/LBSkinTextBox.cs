@@ -55,7 +55,7 @@ namespace LB.Controls
         {
             get
             {
-                return this.Text.TrimEnd()==""?true:false;
+                return string.IsNullOrEmpty(this.Text);
             }
         }
     }

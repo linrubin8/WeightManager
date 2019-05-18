@@ -80,10 +80,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FastReport\FastReport.csproj">
-      <Project>{7c64fbdc-25e5-47ff-b6f8-443256745e2d}</Project>
-      <Name>FastReport</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LB.Base\LB.Base.csproj">
       <Project>{739059d0-9d83-4881-b502-b08cca50a4e4}</Project>
       <Name>LB.Base</Name>

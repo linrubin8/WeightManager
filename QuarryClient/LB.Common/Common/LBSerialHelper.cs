@@ -293,6 +293,8 @@ namespace LB.Common
                             + (Convert.ToInt32(binary_data_1[6].ToString("X2")) - 30) + ""
                             + (Convert.ToInt32(binary_data_1[7].ToString("X2")) - 30) + "";
 
+                        //WriteLog(data);
+
                         string strData = "";
                         int.TryParse(data, out WeightValue);
 
@@ -387,6 +389,20 @@ namespace LB.Common
                 mPreReceiveDataTime = DateTime.Now;
             }
         }
+
+        //private static void WriteLog(string strLog)
+        //{
+        //    string strLogPath = Path.Combine(Application.StartupPath, "LogSerial.log");
+        //    FileStream fs = new FileStream(strLogPath, FileMode.Append);
+        //    StreamWriter sw = new StreamWriter(fs);
+        //    //开始写入
+        //    sw.WriteLine( strLog);
+        //    //清空缓冲区
+        //    sw.Flush();
+        //    //关闭流
+        //    sw.Close();
+        //    fs.Close();
+        //}
 
         private static StringBuilder builder = new StringBuilder();//避免在事件处理方法中反复的创建，定义到外面。
         private static List<byte> buffer = new List<byte>(4096);//默认分配1页内存，并始终限制不允许超过

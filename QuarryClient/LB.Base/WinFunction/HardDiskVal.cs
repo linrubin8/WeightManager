@@ -234,7 +234,7 @@ namespace LB.WinFunction
             {
                 DiskID = "unknow";
             }
-            return DiskID;
+            return DiskID.TrimEnd().TrimStart();
         }
 
         [DllImport("kernel32.dll")]

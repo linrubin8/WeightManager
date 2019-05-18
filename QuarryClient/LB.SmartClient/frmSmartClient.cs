@@ -215,6 +215,10 @@ namespace LB.SmartClient
                         foreach (DataRow dr in dtDiff.Rows)
                         {
                             string strFileName = dr["FileName"].ToString().TrimEnd();
+
+                            if (strFileName.Equals("LBTSR.ini"))
+                                continue;
+
                             DateTime dtFileTime = Convert.ToDateTime(dr["FileTime"]);
                             long lFileSize = Convert.ToInt64(dr["FileSize"]);
 

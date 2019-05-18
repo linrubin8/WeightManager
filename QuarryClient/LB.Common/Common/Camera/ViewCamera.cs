@@ -114,6 +114,8 @@ namespace LB.Common.Camera
                         lpPreviewInfo.dwLinkMode = 0;//连接方式：0- TCP方式，1- UDP方式，2- 多播方式，3- RTP方式，4-RTP/RTSP，5-RSTP/HTTP 
                         lpPreviewInfo.bBlocked = true; //0- 非阻塞取流，1- 阻塞取流
                         lpPreviewInfo.dwDisplayBufNum = 15; //播放库播放缓冲区最大缓冲帧数
+                        lpPreviewInfo.byProtoType = 0;
+                        lpPreviewInfo.byPreviewMode = 0;
 
                         CHCNetSDK.REALDATACALLBACK RealData = new CHCNetSDK.REALDATACALLBACK(RealDataCallBack);//预览实时流回调函数
                         IntPtr pUser = new IntPtr();//用户数据
@@ -191,7 +193,7 @@ namespace LB.Common.Camera
             //}
         }
 
-        public void RealDataCallBack(Int32 lRealHandle, UInt32 dwDataType, ref byte pBuffer, UInt32 dwBufSize, IntPtr pUser)
+        public void RealDataCallBack(Int32 lRealHandle, UInt32 dwDataType, IntPtr pBuffer, UInt32 dwBufSize, IntPtr pUser)
         {
         }
 
@@ -232,6 +234,8 @@ namespace LB.Common.Camera
             if (IsOpen)
             {
                 CHCNetSDK.NET_DVR_JPEGPARA lpJpegPara = new CHCNetSDK.NET_DVR_JPEGPARA();
+                lpJpegPara.wPicQuality = 0; //图像质量 Image quality
+                lpJpegPara.wPicSize = 0xff; //抓图分辨率 Picture size: 2- 4CIF，0xff- Auto(使用当前码流分辨率)，抓图分辨率需要设备支持，更多取值请参考SDK文档
 
                 //JEPG抓图，数据保存在缓冲区中 Capture a JPEG picture and save in the buffer
                 uint iBuffSize = 2000000; //缓冲区大小需要不小于一张图片数据的大小 The buffer size should not be less than the picture size

@@ -39,13 +39,12 @@
             this.rbGrooveWeight = new System.Windows.Forms.RadioButton();
             this.rbGrooveCount = new System.Windows.Forms.RadioButton();
             this.cbSynToServer = new System.Windows.Forms.CheckBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cbRemoveInOutBill = new System.Windows.Forms.CheckBox();
-            this.txtSessionCount = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.cbUseSessionLimit = new System.Windows.Forms.CheckBox();
-            this.groupBox2.SuspendLayout();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtSessionCount = new System.Windows.Forms.TextBox();
+            this.cbRemoveInOutBill = new System.Windows.Forms.CheckBox();
+            this.rbWeightClient = new System.Windows.Forms.RadioButton();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,7 +67,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 216);
+            this.label2.Location = new System.Drawing.Point(8, 312);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 2;
@@ -76,7 +75,7 @@
             // 
             // txtDeadLine
             // 
-            this.txtDeadLine.Location = new System.Drawing.Point(83, 212);
+            this.txtDeadLine.Location = new System.Drawing.Point(67, 308);
             this.txtDeadLine.Name = "txtDeadLine";
             this.txtDeadLine.Size = new System.Drawing.Size(304, 21);
             this.txtDeadLine.TabIndex = 3;
@@ -84,7 +83,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(242, 285);
+            this.button1.Location = new System.Drawing.Point(238, 381);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(123, 23);
             this.button1.TabIndex = 4;
@@ -95,7 +94,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 242);
+            this.label3.Location = new System.Drawing.Point(20, 338);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 12);
             this.label3.TabIndex = 5;
@@ -103,7 +102,7 @@
             // 
             // txtRegister
             // 
-            this.txtRegister.Location = new System.Drawing.Point(71, 239);
+            this.txtRegister.Location = new System.Drawing.Point(67, 335);
             this.txtRegister.Multiline = true;
             this.txtRegister.Name = "txtRegister";
             this.txtRegister.ReadOnly = true;
@@ -114,18 +113,17 @@
             // 
             this.rbWeight.AutoSize = true;
             this.rbWeight.Checked = true;
-            this.rbWeight.Location = new System.Drawing.Point(6, 20);
+            this.rbWeight.Location = new System.Drawing.Point(22, 56);
             this.rbWeight.Name = "rbWeight";
-            this.rbWeight.Size = new System.Drawing.Size(95, 16);
+            this.rbWeight.Size = new System.Drawing.Size(131, 16);
             this.rbWeight.TabIndex = 7;
-            this.rbWeight.TabStop = true;
-            this.rbWeight.Text = "销售称重系统";
+            this.rbWeight.Text = "销售称重系统服务器";
             this.rbWeight.UseVisualStyleBackColor = true;
             // 
             // rbGrooveWeight
             // 
             this.rbGrooveWeight.AutoSize = true;
-            this.rbGrooveWeight.Location = new System.Drawing.Point(145, 20);
+            this.rbGrooveWeight.Location = new System.Drawing.Point(22, 218);
             this.rbGrooveWeight.Name = "rbGrooveWeight";
             this.rbGrooveWeight.Size = new System.Drawing.Size(71, 16);
             this.rbGrooveWeight.TabIndex = 8;
@@ -136,7 +134,7 @@
             // rbGrooveCount
             // 
             this.rbGrooveCount.AutoSize = true;
-            this.rbGrooveCount.Location = new System.Drawing.Point(260, 20);
+            this.rbGrooveCount.Location = new System.Drawing.Point(22, 252);
             this.rbGrooveCount.Name = "rbGrooveCount";
             this.rbGrooveCount.Size = new System.Drawing.Size(95, 16);
             this.rbGrooveCount.TabIndex = 9;
@@ -154,18 +152,6 @@
             this.cbSynToServer.Text = "数据同步至服务器功能";
             this.cbSynToServer.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.rbWeight);
-            this.groupBox2.Controls.Add(this.rbGrooveWeight);
-            this.groupBox2.Controls.Add(this.rbGrooveCount);
-            this.groupBox2.Location = new System.Drawing.Point(22, 51);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(608, 48);
-            this.groupBox2.TabIndex = 11;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "系统类型";
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.cbUseSessionLimit);
@@ -173,38 +159,12 @@
             this.groupBox3.Controls.Add(this.txtSessionCount);
             this.groupBox3.Controls.Add(this.cbRemoveInOutBill);
             this.groupBox3.Controls.Add(this.cbSynToServer);
-            this.groupBox3.Location = new System.Drawing.Point(22, 106);
+            this.groupBox3.Location = new System.Drawing.Point(67, 78);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(608, 100);
+            this.groupBox3.Size = new System.Drawing.Size(563, 100);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "功能模块";
-            // 
-            // cbRemoveInOutBill
-            // 
-            this.cbRemoveInOutBill.AutoSize = true;
-            this.cbRemoveInOutBill.Location = new System.Drawing.Point(6, 26);
-            this.cbRemoveInOutBill.Name = "cbRemoveInOutBill";
-            this.cbRemoveInOutBill.Size = new System.Drawing.Size(96, 16);
-            this.cbRemoveInOutBill.TabIndex = 1;
-            this.cbRemoveInOutBill.Text = "订单移除功能";
-            this.cbRemoveInOutBill.UseVisualStyleBackColor = true;
-            // 
-            // txtSessionCount
-            // 
-            this.txtSessionCount.Location = new System.Drawing.Point(116, 69);
-            this.txtSessionCount.Name = "txtSessionCount";
-            this.txtSessionCount.Size = new System.Drawing.Size(44, 21);
-            this.txtSessionCount.TabIndex = 2;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(166, 73);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 12);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "个";
             // 
             // cbUseSessionLimit
             // 
@@ -216,13 +176,52 @@
             this.cbUseSessionLimit.Text = "启用站点数控制";
             this.cbUseSessionLimit.UseVisualStyleBackColor = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(166, 73);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(17, 12);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "个";
+            // 
+            // txtSessionCount
+            // 
+            this.txtSessionCount.Location = new System.Drawing.Point(116, 69);
+            this.txtSessionCount.Name = "txtSessionCount";
+            this.txtSessionCount.Size = new System.Drawing.Size(44, 21);
+            this.txtSessionCount.TabIndex = 2;
+            // 
+            // cbRemoveInOutBill
+            // 
+            this.cbRemoveInOutBill.AutoSize = true;
+            this.cbRemoveInOutBill.Location = new System.Drawing.Point(6, 26);
+            this.cbRemoveInOutBill.Name = "cbRemoveInOutBill";
+            this.cbRemoveInOutBill.Size = new System.Drawing.Size(96, 16);
+            this.cbRemoveInOutBill.TabIndex = 1;
+            this.cbRemoveInOutBill.Text = "订单移除功能";
+            this.cbRemoveInOutBill.UseVisualStyleBackColor = true;
+            // 
+            // rbWeightClient
+            // 
+            this.rbWeightClient.AutoSize = true;
+            this.rbWeightClient.Location = new System.Drawing.Point(22, 184);
+            this.rbWeightClient.Name = "rbWeightClient";
+            this.rbWeightClient.Size = new System.Drawing.Size(131, 16);
+            this.rbWeightClient.TabIndex = 13;
+            this.rbWeightClient.Text = "销售称重系统客户端";
+            this.rbWeightClient.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(642, 320);
+            this.ClientSize = new System.Drawing.Size(642, 456);
+            this.Controls.Add(this.rbGrooveCount);
+            this.Controls.Add(this.rbGrooveWeight);
+            this.Controls.Add(this.rbWeightClient);
+            this.Controls.Add(this.rbWeight);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.txtRegister);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
@@ -233,8 +232,6 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -255,12 +252,12 @@
         private System.Windows.Forms.RadioButton rbGrooveWeight;
         private System.Windows.Forms.RadioButton rbGrooveCount;
         private System.Windows.Forms.CheckBox cbSynToServer;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox cbRemoveInOutBill;
         private System.Windows.Forms.CheckBox cbUseSessionLimit;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtSessionCount;
+        private System.Windows.Forms.RadioButton rbWeightClient;
     }
 }
 
